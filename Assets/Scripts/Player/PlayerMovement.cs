@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour {
-    [SerializeField] float _moveSpeed = 1f;
-    [SerializeField] DynamicJoystick _joystick;
-
+    [SerializeField] float _moveSpeed;
 
     public Vector3 WorldPos;
 
@@ -18,12 +17,17 @@ public class PlayerMovement : MonoBehaviour {
 
 
     private void FixedUpdate() {
-
-        float verticalAxis = _joystick.Vertical;
-        float horizontalAxis = _joystick.Horizontal;
+        WorldPos = transform.position;
+        float verticalAxis = Input.GetAxisRaw("Vertical");
+        float horizontalAxis = Input.GetAxisRaw("Horizontal");
 
         Vector3 movementVector = new Vector3(horizontalAxis, verticalAxis, 0);
         movementVector = movementVector.normalized * _moveSpeed * Time.deltaTime;
         transform.position += movementVector;
     }
+
+    public void UpdateDragPos(Vector3 newPos) {
+        transform.position = newPos;
+    }
+
 }
