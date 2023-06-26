@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerShooting : MonoBehaviour
 {
     bool _toggle = false;
     float _cooldown = 1f;
     float _fireRate = .25f;
+
 
     private void Start() {
         PlayerEventManager.Instance.OnSingleTap += onSingleTap;
@@ -26,10 +28,20 @@ public class PlayerShooting : MonoBehaviour
         _cooldown = Mathf.Clamp(_cooldown - Time.deltaTime, 0, _fireRate);
         if (_toggle && _cooldown <= 0f) {
             // shoot bullet
-            StartCoroutine(fire());
+            StartCoroutine(fireAnim());
             // reset cooldown
             _cooldown = _fireRate;
         }
+    }
+
+    IEnumerator fireAnim() {
+        // play animation
+        GetComponent<Animator>().Play("PlayerShoot");
+        yield return null;
+    }
+
+    public void Fire() {
+        StartCoroutine(fire());
     }
 
     IEnumerator fire() {
@@ -37,5 +49,6 @@ public class PlayerShooting : MonoBehaviour
         GetComponent<AudioSource>().Play();
         yield return null;
     }
+
 
 }

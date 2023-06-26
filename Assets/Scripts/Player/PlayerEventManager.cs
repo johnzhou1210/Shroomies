@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Double tap original source: https://stackoverflow.com/questions/43771179/how-to-detect-single-and-double-click-in-unity */
+
 public class PlayerEventManager : MonoBehaviour {
     public event Action OnSingleTap;
     public event Action OnDoubleTap;

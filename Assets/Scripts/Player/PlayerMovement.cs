@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour {
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
-
     private void FixedUpdate() {
         WorldPos = transform.position;
         float verticalAxis = Input.GetAxisRaw("Vertical");
