@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 
@@ -14,14 +16,26 @@ public enum BulletOwnershipType {
     ENEMY
 }
 
+public struct BulletPoolEntry {
+    public BulletPoolEntry(BulletType type) {
+        Pool = new List<BulletInfo>();
+        WhatKindOfBullets = type;
+    }
+    public void AddBulletToEntryPool(BulletInfo bullet) {
+        Pool.Add(bullet);
+    }
+    public List<BulletInfo> Pool;
+    public BulletType WhatKindOfBullets;
+}
+
 public struct BulletInfo {
     public BulletInfo(int eyedee, BulletType typ, BulletOwnershipType ownshp, GameObject refrnce) {
-        id = eyedee; type = typ; ownership = ownshp; reference = refrnce;
+        Id = eyedee; Type = typ; Ownership = ownshp; Reference = refrnce;
     }
-    public int id;
-    public BulletType type;
-    public BulletOwnershipType ownership;
-    public GameObject reference;
+    public int Id;
+    public BulletType Type;
+    public BulletOwnershipType Ownership;
+    public GameObject Reference;
 }
 
 
@@ -31,7 +45,7 @@ public class BulletPool : MonoBehaviour {
 
     [SerializeField] private GameObject[] _pooledBullets;
 
-    List<BulletInfo> _bulletPool;
+    List<BulletPoolEntry> _bulletPool;
 
     private void Awake() {
         BulletPoolInstance = this;
@@ -39,51 +53,70 @@ public class BulletPool : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        _bulletPool = new List<BulletInfo>();
+        _bulletPool = new List<BulletPoolEntry>();
         // pregenerate bullets into pool
         foreach (GameObject bulletToPool in _pooledBullets) {
-            expandPool(bulletToPool);
+            // add entry first
+            BulletPoolEntry newEntry = new BulletPoolEntry(bulletToPool.GetComponent<Bullet>().Type);
+            _bulletPool.Add(newEntry);
+            expandPool(newEntry, bulletToPool, 8);
         }
     }
 
-    void expandPool(GameObject pooledBullet) {
-        for (int i = 0; i < 5; i++) {
+    void expandPool(BulletPoolEntry desiredPool, GameObject pooledBullet, int bulletsToCreate) {
+        // first get the number of these pooled bullets in the pool
+        Debug.Log("attempting to create " + bulletsToCreate + " bullets!");
+        for (int i = 0; i < bulletsToCreate; i++) {
             GameObject clone = Instantiate(pooledBullet, GameObject.FindWithTag("BulletPool").transform);
             Bullet currPooledBullet = clone.GetComponent<Bullet>();
-            BulletInfo bulletInfo = new BulletInfo(++_numCreatedBullets, currPooledBullet.type, currPooledBullet.ownership, clone);
-            _bulletPool.Add(bulletInfo);
+            BulletInfo bulletInfo = new BulletInfo(++_numCreatedBullets, currPooledBullet.Type, currPooledBullet.Ownership, clone);
+            desiredPool.AddBulletToEntryPool(bulletInfo);
             clone.SetActive(false);
         }
     }
 
     public BulletInfo GetBullet(BulletType bulletType, BulletOwnershipType bulletOwnership, float bulletVelocity, int bulletDamage) {
         BulletInfo activateBullet(BulletInfo bulletInfo) {
-            bulletInfo.reference.SetActive(true);
-            setVelocity(bulletInfo.reference.GetComponent<Bullet>(), bulletVelocity);
-            setDamage(bulletInfo.reference.GetComponent<Bullet>(), bulletDamage);
+            bulletInfo.Reference.SetActive(true);
+            setVelocity(bulletInfo.Reference.GetComponent<Bullet>(), bulletVelocity);
+            setDamage(bulletInfo.Reference.GetComponent<Bullet>(), bulletDamage);
             return bulletInfo;
         }
+        BulletPoolEntry findDesiredPool(BulletType type) {
+            foreach (BulletPoolEntry entry in _bulletPool) {
+                if (type == entry.WhatKindOfBullets) {
+                    return entry;
+                }
+            }
+            Debug.LogError("Bullet pool of desired type not found!");
+            return new BulletPoolEntry();
+        }
 
-        // first try finding the bullet
-        if (_bulletPool.Count > 0) {
-            for (int i = 0; i < _bulletPool.Count; i++) {
-                if (bulletType == _bulletPool[i].type && bulletOwnership == _bulletPool[i].ownership && !_bulletPool[i].reference.activeInHierarchy) {
-                    return activateBullet(_bulletPool[i]);
+        // first find the pool of the desired bulletType
+        BulletPoolEntry desiredPoolEntry = findDesiredPool(bulletType);
+        var desiredPool = desiredPoolEntry.Pool;
+
+        // then try finding an inactive bullet
+        if (desiredPool.Count > 0) {
+            for (int i = 0; i < desiredPool.Count; i++) {
+                if (bulletType == desiredPool[i].Type && bulletOwnership == desiredPool[i].Ownership && !desiredPool[i].Reference.activeInHierarchy) {
+                    return activateBullet(desiredPool[i]);
                 }
             }
         }
         // at this point, the bullet was not found in the pool, so create more.
-        var objToClone = Array.Find(_pooledBullets, bullet => bullet.GetComponent<Bullet>().type == bulletType);
-        expandPool(objToClone);
+        var objToClone = Array.Find(_pooledBullets, bullet => bullet.GetComponent<Bullet>().Type == bulletType);
+        expandPool(desiredPoolEntry, objToClone, desiredPool.Count^2 );
         // now try find again
-        if (_bulletPool.Count > 0) {
-            for (int i = 0; i < _bulletPool.Count; i++) {
-                if (bulletType == _bulletPool[i].type && bulletOwnership == _bulletPool[i].ownership && !_bulletPool[i].reference.activeInHierarchy) {
-                    return activateBullet(_bulletPool[i]);
+        if (desiredPool.Count > 0) {
+            for (int i = 0; i < desiredPool.Count; i++) {
+                if (bulletType == desiredPool[i].Type && bulletOwnership == desiredPool[i].Ownership && !desiredPool[i].Reference.activeInHierarchy) {
+                    return activateBullet(desiredPool[i]);
                 }
             }
         }
-        return new BulletInfo(++_numCreatedBullets, bulletType, bulletOwnership, Array.Find(_pooledBullets, bullet => bullet.GetComponent<Bullet>().type == bulletType));
+        Debug.LogError("Bullets getting produced too quickly to catch up with bullet pool!");
+        return new BulletInfo(++_numCreatedBullets, bulletType, bulletOwnership, Array.Find(_pooledBullets, bullet => bullet.GetComponent<Bullet>().Type == bulletType));
         
     }
 
@@ -91,11 +124,11 @@ public class BulletPool : MonoBehaviour {
 
 
     void setVelocity(Bullet bullet, float velocity) {
-        bullet.velocity = velocity;
+        bullet.Velocity = velocity;
     }
 
     void setDamage(Bullet bullet, int damage) {
-        bullet.damage = damage;
+        bullet.Damage = damage;
     }
 
 }

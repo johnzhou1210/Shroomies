@@ -7,14 +7,18 @@ public class PlayerShooting : MonoBehaviour
 {
     bool _toggle = false;
     float _cooldown = 1f;
+
+    [Range(.01f,5f)]
     public float _fireRate = .25f;
 
     public GameObject bullet;
 
+    Animator _animator;
 
     private void Start() {
         PlayerEventManager.Instance.OnSingleTap += onSingleTap;
         PlayerEventManager.Instance.OnDoubleTap += onDoubleTap;
+        _animator = GetComponent<Animator>();
     }
 
     void onSingleTap() {
@@ -38,7 +42,8 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator fireAnim() {
         // play animation
-        GetComponent<Animator>().Play("PlayerShoot");
+        _animator.speed = 1 / _fireRate;
+        _animator.Play("PlayerShoot");
         yield return null;
     }
 
@@ -52,7 +57,7 @@ public class PlayerShooting : MonoBehaviour
         Debug.Log("in here2");
         Debug.Log(BulletPool.BulletPoolInstance);
         BulletInfo newBulletInfo = BulletPool.BulletPoolInstance.GetBullet(BulletType.NORMAL, BulletOwnershipType.PLAYER, 5f, 1);
-        GameObject newBullet = newBulletInfo.reference;
+        GameObject newBullet = newBulletInfo.Reference;
         newBullet.transform.position = transform.position;
         newBullet.transform.rotation = Quaternion.identity;
         //GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity, GameObject.FindWithTag("PlayArea").transform.Find("Bullet Pool").transform);

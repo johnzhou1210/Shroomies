@@ -3,41 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-    Vector2 moveDir;
-    public float velocity = 10f;
+    Vector2 _moveDir;
+    public float Velocity = 10f;
 
-    public BulletType type;
-    public BulletOwnershipType ownership;
+    public BulletType Type;
+    public BulletOwnershipType Ownership;
 
-    public int damage = 1;
-    readonly float removeTime = 9f;
-    public bool bounce = false;
-    public bool pierce = false;
-    public HashSet<GameObject> hitTargets;
-    public GameObject explosionPrefab;
+    public int Damage = 1;
+    readonly float _removeTime = 9f;
+    public bool Bounce = false;
+    public bool Pierce = false;
+    public HashSet<GameObject> HitTargets;
+    public GameObject ExplosionPrefab;
 
     bool _debounce = false;
 
     private void OnEnable() {
-        Invoke("Destroy", removeTime);
-        hitTargets = new HashSet<GameObject>();
+        Invoke("Destroy", _removeTime);
+        HitTargets = new HashSet<GameObject>();
     }
 
     private void FixedUpdate() {
-        transform.Translate(velocity * Time.deltaTime * moveDir);
+        transform.Translate(Velocity * Time.deltaTime * _moveDir);
     }
 
     public void SetMoveDirection(Vector2 dir) {
-        moveDir = dir;
+        _moveDir = dir;
     }
 
     public void Destroy() {
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
     }
 
     private void OnDisable() {
-        hitTargets = null;
+        HitTargets = null;
         CancelInvoke();
     }
 
@@ -47,11 +47,11 @@ public class Bullet : MonoBehaviour {
             // check tags
             if (CompareTag("Player")) {
                 if (hitTarget.CompareTag("Enemy")) {
-                    hitTargets.Add(hitTarget);
+                    HitTargets.Add(hitTarget);
                 }
             } else if (CompareTag("Enemy")) {
                 if (hitTarget.CompareTag("Player")) {
-                    hitTargets.Add(hitTarget);
+                    HitTargets.Add(hitTarget);
                 }
             }
             _debounce = true;

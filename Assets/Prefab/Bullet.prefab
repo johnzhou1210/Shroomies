@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4305114188465493893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51111096, y: -2.3222222, z: 0}
+  m_LocalPosition: {x: 0.3487126, y: -2.2961373, z: 0}
   m_LocalScale: {x: 1.8742166, y: 1.8742166, z: 1.8742166}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7342b0f1e35f8d64a8874fad8d7df75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 5
-  type: 0
-  ownership: 0
-  damage: 1
-  bounce: 0
-  pierce: 0
-  explosionPrefab: {fileID: 5903540695073766936, guid: 2ae963d9384bc574e939de7427dc0796, type: 3}
+  Velocity: 10
+  Type: 0
+  Ownership: 0
+  Damage: 1
+  Bounce: 0
+  Pierce: 0
+  ExplosionPrefab: {fileID: 5903540695073766936, guid: 2ae963d9384bc574e939de7427dc0796, type: 3}
 --- !u!212 &7443703293665180681
 SpriteRenderer:
   m_ObjectHideFlags: 0
