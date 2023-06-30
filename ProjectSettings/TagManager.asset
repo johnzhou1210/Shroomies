@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayArea
   - BulletPool
+  - Enemy
   layers:
   - Default
   - TransparentFX

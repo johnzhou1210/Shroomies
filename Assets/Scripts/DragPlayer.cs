@@ -24,7 +24,7 @@ public class DragPlayer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData) {
-        Debug.Log("Dragging " + eventData.position);
+        //Debug.Log("Dragging " + eventData.position);
         Vector3 plrPos = Camera.main.ScreenToWorldPoint(eventData.position);
         plrPos.z = 0;
         updatePlayerPosition.Invoke(plrPos);

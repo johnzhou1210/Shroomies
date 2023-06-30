@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(PlayerStateManager))]
 public class PlayerShooting : MonoBehaviour
 {
     bool _toggle = false;
@@ -14,11 +15,18 @@ public class PlayerShooting : MonoBehaviour
     public GameObject bullet;
 
     Animator _animator;
+    PlayerStateManager _currentState;
 
     private void Start() {
-        PlayerEventManager.Instance.OnSingleTap += onSingleTap;
-        PlayerEventManager.Instance.OnDoubleTap += onDoubleTap;
+        PlayerTapHandler.Instance.OnSingleTap += onSingleTap;
+        PlayerTapHandler.Instance.OnDoubleTap += onDoubleTap;
         _animator = GetComponent<Animator>();
+        _currentState = GetComponent<PlayerStateManager>();
+    }
+
+    private void OnDisable() {
+        StopAllCoroutines();
+        // also deactivate all bullets in pool?
     }
 
     void onSingleTap() {

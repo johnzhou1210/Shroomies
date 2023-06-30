@@ -105,10 +105,11 @@ public class BulletPool : MonoBehaviour {
             }
         }
         // at this point, the bullet was not found in the pool, so create more.
-        var objToClone = Array.Find(_pooledBullets, bullet => bullet.GetComponent<Bullet>().Type == bulletType);
+        var objToClone = Array.Find(_pooledBullets, bullet => bullet.GetComponent<Bullet>().Type == bulletType && bullet.GetComponent<Bullet>().Ownership == bulletOwnership);
         expandPool(desiredPoolEntry, objToClone, desiredPool.Count^2 );
         // now try find again
         if (desiredPool.Count > 0) {
+            Debug.Log("in here");
             for (int i = 0; i < desiredPool.Count; i++) {
                 if (bulletType == desiredPool[i].Type && bulletOwnership == desiredPool[i].Ownership && !desiredPool[i].Reference.activeInHierarchy) {
                     return activateBullet(desiredPool[i]);
@@ -116,7 +117,7 @@ public class BulletPool : MonoBehaviour {
             }
         }
         Debug.LogError("Bullets getting produced too quickly to catch up with bullet pool!");
-        return new BulletInfo(++_numCreatedBullets, bulletType, bulletOwnership, Array.Find(_pooledBullets, bullet => bullet.GetComponent<Bullet>().Type == bulletType));
+        return new BulletInfo(++_numCreatedBullets, bulletType, bulletOwnership, Array.Find(_pooledBullets, bullet => bullet.GetComponent<Bullet>().Type == bulletType && bullet.GetComponent<Bullet>().Ownership == bulletOwnership));
         
     }
 

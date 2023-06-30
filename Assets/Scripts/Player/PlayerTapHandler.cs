@@ -5,7 +5,7 @@ using UnityEngine;
 
 /* Double tap original source: https://stackoverflow.com/questions/43771179/how-to-detect-single-and-double-click-in-unity */
 
-public class PlayerEventManager : MonoBehaviour {
+public class PlayerTapHandler : MonoBehaviour {
     public event Action OnSingleTap;
     public event Action OnDoubleTap;
     [Tooltip("Defines the maximum time between two taps to make it double tap")]
@@ -14,7 +14,7 @@ public class PlayerEventManager : MonoBehaviour {
     private float tapTimer = 0.0f;
     private bool tap = false;
 
-    public static PlayerEventManager Instance;
+    public static PlayerTapHandler Instance;
 
     private void Awake() {
         Instance = this;
@@ -75,7 +75,5 @@ public class PlayerEventManager : MonoBehaviour {
         //    Debug.Log("Double tap");
         //};
     }
-
-
 
 }
