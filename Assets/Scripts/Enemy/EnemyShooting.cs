@@ -14,9 +14,11 @@ public class EnemyShooting : MonoBehaviour {
     public GameObject bullet;
 
     Animator _animator;
+    EnemyStateManager _stateManager;
 
     private void Start() {
         _animator = GetComponent<Animator>();
+        _stateManager = GetComponent<EnemyStateManager>(); 
         ExecuteAI();
     }
 
@@ -29,7 +31,7 @@ public class EnemyShooting : MonoBehaviour {
         // basic flower: stationary. Attack
 
         // Flower will just loop basic bullet attack every 3-4 seconds
-        while (true) {
+        while (_stateManager.CurrentState != _stateManager.DeadState) {
             yield return new WaitForSeconds(_fireRate / 2f);
             _animator.speed = Mathf.Clamp(1 / _fireRate, 1f, 16f);
             _animator.Play("FlowerShoot");
@@ -52,7 +54,7 @@ public class EnemyShooting : MonoBehaviour {
 
     IEnumerator fire() {
         Debug.Log("Shot enemy bullet");
-        GetComponent<AudioSource>().Play();
+        AudioManager.Instance.PlaySFX("Enemy Shoot Sound");
         Debug.Log(BulletPool.BulletPoolInstance);
         BulletInfo newBulletInfo = BulletPool.BulletPoolInstance.GetBullet(BulletType.NORMAL, BulletOwnershipType.ENEMY, 5f, 1);
         GameObject newBullet = newBulletInfo.Reference;

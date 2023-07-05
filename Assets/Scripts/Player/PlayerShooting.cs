@@ -61,7 +61,7 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator fire() {
         Debug.Log("Shot bullet");
-        GetComponent<AudioSource>().Play();
+        AudioManager.Instance.PlaySFX("Player Shoot Sound");
         Debug.Log("in here2");
         Debug.Log(BulletPool.BulletPoolInstance);
         BulletInfo newBulletInfo = BulletPool.BulletPoolInstance.GetBullet(BulletType.NORMAL, BulletOwnershipType.PLAYER, 5f, 1);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAlive : EnemyBaseState
 {
+
     public override void EnterState(EnemyStateManager mgr) {
         Debug.Log("Enter EnemyAlive state");
     }
@@ -11,6 +12,9 @@ public class EnemyAlive : EnemyBaseState
     public override void UpdateState(EnemyStateManager mgr) {
         // called every frame
         // to change state:
-        // mgr.SwitchState(mgr.DeadState)
+        //mgr.SwitchState(mgr.DeadState);
     }
+
+    
+
 }

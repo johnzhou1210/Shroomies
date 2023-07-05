@@ -55,8 +55,6 @@ public class Bullet : MonoBehaviour {
                 _debounce = true;
             }
 
-
-
             if (hitTarget.CompareTag("Player")) {
                 Debug.Log("in here");
                 bool success = HitTargets.Add(GetComponent<PlayerOnHit>());

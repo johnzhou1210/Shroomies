@@ -22,4 +22,10 @@ public class EnemyStateManager : MonoBehaviour
         CurrentState = state;
         state.EnterState(this);
     }
+
+    public void onDeath() {
+        SwitchState(DeadState);
+    }
+
+
 }
