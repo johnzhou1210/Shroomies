@@ -32,21 +32,20 @@ public class EnemyShooting : MonoBehaviour {
 
         // Flower will just loop basic bullet attack every 3-4 seconds
         while (_stateManager.CurrentState != _stateManager.DeadState) {
+            Debug.Log("in loop. current state is " + _stateManager.CurrentState);
             yield return new WaitForSeconds(_fireRate / 2f);
             _animator.speed = Mathf.Clamp(1 / _fireRate, 1f, 16f);
             _animator.Play("FlowerShoot");
             yield return new WaitForSeconds(_fireRate / 2f);
 
         }
-
+        Debug.Log(" out of loop ");
         yield return null;
     }
 
-    private void Update() {
-
+    public void OnDeath() {
+        _animator.Play("Dead");
     }
-
-
 
     public void Fire() {
         StartCoroutine(fire());

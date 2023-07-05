@@ -23,7 +23,7 @@ public class EnemyStateManager : MonoBehaviour
         state.EnterState(this);
     }
 
-    public void onDeath() {
+    public void OnDeath() {
         SwitchState(DeadState);
     }
 
