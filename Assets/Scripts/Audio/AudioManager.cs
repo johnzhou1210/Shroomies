@@ -42,11 +42,19 @@ public class AudioManager : MonoBehaviour
             Debug.Log("SFX: " + SFXName + " not found!");
             return;
         }
+
+
         SFXSource.clip = sfx.AudioClip;
         SFXSource.loop = sfx.Loop;
         SFXSource.volume = sfx.Volume;
         SFXSource.pitch = sfx.Pitch;
-        SFXSource.PlayOneShot(sfx.AudioClip);
+
+        if (Time.time - sfx.LastTimePlayed >= sfx.Cooldown) { // to avoid sounds stacking volume
+            SFXSource.PlayOneShot(SFXSource.clip, SFXSource.volume);
+            sfx.LastTimePlayed = Time.time;
+        }
+
+        
     }
 
 }

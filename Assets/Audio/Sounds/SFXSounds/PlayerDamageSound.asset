@@ -17,3 +17,5 @@ MonoBehaviour:
   Loop: 0
   Volume: 0.5
   Pitch: 1
+  Cooldown: 0.01
+  LastTimePlayed: 24.1
