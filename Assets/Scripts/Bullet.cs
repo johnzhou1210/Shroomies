@@ -26,6 +26,9 @@ public class Bullet : MonoBehaviour {
 
     private void FixedUpdate() {
         transform.Translate(Velocity * Time.deltaTime * _moveDir);
+        if (transform.position.y < -6 || transform.position.y > 6) {
+            Destroy();
+        }
     }
 
     public void SetMoveDirection(Vector2 dir) {
@@ -38,14 +41,15 @@ public class Bullet : MonoBehaviour {
     }
 
     private void OnDisable() {
-        HitTargets = null;
+        HitTargets.Clear();
         CancelInvoke();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) { // player hit detection is done in player controller
         GameObject hitTarget = collision.gameObject;
 
-        if (hitTarget.CompareTag("Enemy") && Ownership == BulletOwnershipType.ENEMY ||
+        if (hitTarget.CompareTag("Enemy") && (Ownership == BulletOwnershipType.ENEMY || Ownership == BulletOwnershipType.ALLY)
+            ||
             hitTarget.CompareTag("Player") && (Ownership == BulletOwnershipType.PLAYER || Ownership == BulletOwnershipType.ALLY)) {
             // do nothing
         } else {
@@ -56,14 +60,14 @@ public class Bullet : MonoBehaviour {
             }
 
             if (hitTarget.CompareTag("Player")) {
-                Debug.Log("in here");
-                bool success = HitTargets.Add(GetComponent<PlayerOnHit>());
+                bool success = HitTargets.Add(hitTarget.GetComponent<PlayerOnHit>());
                 if (success) {
                     hitTarget.GetComponent<PlayerOnHit>().takeDamage(Damage);
                     Debug.Log(hitTarget.name + " took " + Damage + " damage!");
                 }
             } else if (hitTarget.CompareTag("Enemy")) {
-                bool success = HitTargets.Add(GetComponent<EnemyOnHit>());
+                Debug.Log(hitTarget.GetComponent<EnemyOnHit>());
+                bool success = HitTargets.Add(hitTarget.GetComponent<EnemyOnHit>());
                 if (success) {
                     hitTarget.GetComponent<EnemyOnHit>().takeDamage(Damage);
                     Debug.Log(hitTarget.name + " took " + Damage + " damage!");

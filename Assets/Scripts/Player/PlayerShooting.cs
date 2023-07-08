@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(PlayerStateManager))]
 public class PlayerShooting : MonoBehaviour
 {
-    bool _toggle = false;
+    [HideInInspector] public bool _toggle = false;
     float _cooldown = 1f;
 
     [Range(.01f,5f)]
@@ -34,7 +34,7 @@ public class PlayerShooting : MonoBehaviour
     }
 
     void onDoubleTap() {
-        Debug.Log("In here");
+        //Debug.Log("In here");
         _toggle = !_toggle;
     }
 
@@ -62,7 +62,6 @@ public class PlayerShooting : MonoBehaviour
     IEnumerator fire() {
         Debug.Log("Shot bullet");
         AudioManager.Instance.PlaySFX("Player Shoot Sound");
-        Debug.Log("in here2");
         Debug.Log(BulletPool.BulletPoolInstance);
         BulletInfo newBulletInfo = BulletPool.BulletPoolInstance.GetBullet(BulletType.NORMAL, BulletOwnershipType.PLAYER, 5f, 1);
         GameObject newBullet = newBulletInfo.Reference;

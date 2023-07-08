@@ -7,25 +7,33 @@ using UnityEngine.Events;
 public class EnemyOnHit : MonoBehaviour, IDamageable
 {
     public int MaxHealth = 5;
-    public int CurrentHealth;
+    int _currentHealth;
+    public int _mulchReward;
+
     [SerializeField] UnityEvent onDeath;
+    public UnityIntEvent giveMulch;
 
     Collider2D _hitbox;
 
     public void takeDamage(int damage) {
-        if (CurrentHealth == 0) { return; }
-        CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, MaxHealth);
+        if (isDead()) { return; }
+        _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, MaxHealth);
         StopAllCoroutines();
-        if (CurrentHealth == 0) {
+        if (isDead()) {
             // disable collider
             _hitbox.enabled = false;
             onDeath.Invoke();
+            giveMulch.Invoke(_mulchReward);
             AudioManager.Instance.PlaySFX("Enemy Death Sound");
             StartCoroutine(Flicker(3, .25f));
         } else {
             StartCoroutine(Flicker(1, .25f));
         }
         
+    }
+
+    public bool isDead() {
+        return _currentHealth == 0;
     }
 
     IEnumerator Flicker(int amountOfTimes, float flickerDelay) {
@@ -35,7 +43,7 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(flickerDelay / 2f);
             transform.Find("Sprite").GetComponent<SpriteRenderer>().color = Color.white;
         }
-        if (CurrentHealth == 0) {
+        if (isDead()) {
             transform.Find("Sprite").GetComponent<SpriteRenderer>().color = Color.clear;
             gameObject.SetActive(false);
         }
@@ -45,7 +53,7 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     void Start() {
         _hitbox = GetComponent<Collider2D>();
-        CurrentHealth = MaxHealth;
+        _currentHealth = MaxHealth;
     }
 
     // Update is called once per frame

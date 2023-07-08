@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 
@@ -109,7 +108,6 @@ public class BulletPool : MonoBehaviour {
         expandPool(desiredPoolEntry, objToClone, desiredPool.Count^2 );
         // now try find again
         if (desiredPool.Count > 0) {
-            Debug.Log("in here");
             for (int i = 0; i < desiredPool.Count; i++) {
                 if (bulletType == desiredPool[i].Type && bulletOwnership == desiredPool[i].Ownership && !desiredPool[i].Reference.activeInHierarchy) {
                     return activateBullet(desiredPool[i]);

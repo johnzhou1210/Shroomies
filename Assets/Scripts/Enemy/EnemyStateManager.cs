@@ -16,6 +16,9 @@ public class EnemyStateManager : MonoBehaviour
 
     private void Update() {
         CurrentState.UpdateState(this);
+        if (transform.position.y < -6f) {
+            gameObject.SetActive(false);
+        }
     }
 
     public void SwitchState(EnemyBaseState state) {
@@ -24,6 +27,7 @@ public class EnemyStateManager : MonoBehaviour
     }
 
     public void OnDeath() {
+
         SwitchState(DeadState);
     }
 

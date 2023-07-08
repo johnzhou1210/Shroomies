@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
-[System.Serializable]
-public class UnityIntEvent : UnityEvent<int> { }
-
 public class EnemyShooting : MonoBehaviour {
     [Range(.01f, 5f)]
     public float _fireRate = .25f;
@@ -34,8 +31,12 @@ public class EnemyShooting : MonoBehaviour {
         while (_stateManager.CurrentState != _stateManager.DeadState) {
             Debug.Log("in loop. current state is " + _stateManager.CurrentState);
             yield return new WaitForSeconds(_fireRate / 2f);
-            _animator.speed = Mathf.Clamp(1 / _fireRate, 1f, 16f);
-            _animator.Play("FlowerShoot");
+
+            if (transform.position.y <= 5.5f) {
+                _animator.speed = Mathf.Clamp(1 / _fireRate, 1f, 16f);
+                _animator.Play("FlowerShoot");
+            }
+ 
             yield return new WaitForSeconds(_fireRate / 2f);
 
         }
@@ -53,7 +54,7 @@ public class EnemyShooting : MonoBehaviour {
 
     IEnumerator fire() {
         Debug.Log("Shot enemy bullet");
-        AudioManager.Instance.PlaySFX("Enemy Shoot Sound");
+        AudioManager.Instance.PlayShootingSFX("Enemy Shoot Sound");
         Debug.Log(BulletPool.BulletPoolInstance);
         BulletInfo newBulletInfo = BulletPool.BulletPoolInstance.GetBullet(BulletType.NORMAL, BulletOwnershipType.ENEMY, 5f, 1);
         GameObject newBullet = newBulletInfo.Reference;

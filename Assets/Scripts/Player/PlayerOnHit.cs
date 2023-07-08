@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class Unity2FloatEvent : UnityEvent<float, float> { }
-
 
 public class PlayerOnHit : MonoBehaviour, IDamageable
 {

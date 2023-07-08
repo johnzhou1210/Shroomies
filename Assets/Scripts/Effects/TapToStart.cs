@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class TapToStart : MonoBehaviour {
     [SerializeField] TextMeshProUGUI _textMesh;
@@ -15,4 +16,6 @@ public class TapToStart : MonoBehaviour {
     void Update() {
         _textMesh.color = new Color(1,1,1, Mathf.Cos(Time.fixedTime * blinkSpeed) + .8f + opacityModifier);
     }
+
+    
 }
