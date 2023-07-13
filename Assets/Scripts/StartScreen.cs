@@ -11,7 +11,7 @@ public class StartScreen : MonoBehaviour, IPointerDownHandler {
     }
 
     private void Start() {
-        Application.targetFrameRate = 256;
+        Application.targetFrameRate = 128;
     }
 
 }

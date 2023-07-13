@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 
     Vector3 _worldPos;
 
-    [Header("Player Bounds")] public float XMin, XMax, YMin, YMax;
+    public float XMin, XMax, YMin, YMax;
 
     Rigidbody2D _rigidBody; // _playerPrefab's rigidbody2D component.
 

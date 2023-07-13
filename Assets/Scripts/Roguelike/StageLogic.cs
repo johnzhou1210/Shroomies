@@ -79,7 +79,7 @@ public class StageLogic : MonoBehaviour {
                 currNumClustersElapsed++;
             }
             
-            yield return new WaitForSeconds(_interstageDelay);
+            //yield return new WaitForSeconds(_interstageDelay);
             // wait until all enemies are dead first
             yield return new WaitUntil(() => GameObject.FindWithTag("EnemyContainer").transform.childCount == 0);
             _tapHandler.enabled = false;

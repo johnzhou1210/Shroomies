@@ -9,21 +9,24 @@ public class Bullet : MonoBehaviour {
 
     public BulletType Type;
     public BulletOwnershipType Ownership;
-
-    public int Damage = 1;
-    readonly float _removeTime = 9f;
     public HashSet<IDamageable> HitTargets;
     public GameObject ExplosionPrefab;
+    public int Damage = 1;
+    readonly float _removeTime = 9f;
+
+    Vector2 _lastFramePos = Vector2.zero;
 
     bool _debounce = false;
 
     private void OnEnable() {
         Invoke("Destroy", _removeTime);
+        _lastFramePos = transform.position;
         HitTargets = new HashSet<IDamageable>();
     }
 
     private void FixedUpdate() {
         transform.Translate(Velocity * Time.deltaTime * _moveDir);
+        _lastFramePos = transform.position;
         if (transform.position.y < -6 || transform.position.y > 6) {
             Destroy();
         }

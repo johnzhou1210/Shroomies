@@ -15,7 +15,10 @@ public enum BulletOwnershipType {
     ENEMY
 }
 
-public struct BulletPoolEntry {
+public class BulletPoolEntry {
+    public BulletPoolEntry() {
+        // blank
+    }
     public BulletPoolEntry(BulletType type) {
         Pool = new List<BulletInfo>();
         WhatKindOfBullets = type;
@@ -27,7 +30,7 @@ public struct BulletPoolEntry {
     public BulletType WhatKindOfBullets;
 }
 
-public struct BulletInfo {
+public class BulletInfo {
     public BulletInfo(int eyedee, BulletType typ, BulletOwnershipType ownshp, GameObject refrnce) {
         Id = eyedee; Type = typ; Ownership = ownshp; Reference = refrnce;
     }

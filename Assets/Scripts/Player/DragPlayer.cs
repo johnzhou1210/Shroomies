@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 public class DragPlayer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
     public Vector3Event updatePlayerPosition;
-    Vector2 _lastDragPos;
+    Vector2 _lastDragPos = Vector2.zero;
 
     private void Start() {
         addPhysics2DRaycaster();

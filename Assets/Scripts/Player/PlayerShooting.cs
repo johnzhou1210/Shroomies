@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+
 [RequireComponent(typeof(PlayerStateManager))]
 public class PlayerShooting : MonoBehaviour
 {
@@ -15,13 +17,16 @@ public class PlayerShooting : MonoBehaviour
     public GameObject bullet;
 
     Animator _animator;
-    PlayerStateManager _currentState;
+    PlayerStateManager _stateManager;
+    [SerializeField] List<BarrelConfiguration> _barrelConfigurations;
+    BarrelConfiguration _currentBarrelConfiguration;
 
     private void Start() {
         PlayerTapHandler.Instance.OnSingleTap += onSingleTap;
         PlayerTapHandler.Instance.OnDoubleTap += onDoubleTap;
         _animator = GetComponent<Animator>();
-        _currentState = GetComponent<PlayerStateManager>();
+        _stateManager = GetComponent<PlayerStateManager>();
+        _currentBarrelConfiguration = _barrelConfigurations[2];
     }
 
     private void OnDisable() {
@@ -40,7 +45,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Update() {
         _cooldown = Mathf.Clamp(_cooldown - Time.deltaTime, 0, _fireRate);
-        if (_toggle && _cooldown <= 0f) {
+        if (_toggle && _cooldown <= 0f && _stateManager.CurrentState == _stateManager.AliveState) {
             // shoot bullet
             StartCoroutine(fireAnim());
             // reset cooldown
@@ -60,15 +65,14 @@ public class PlayerShooting : MonoBehaviour
     }
 
     IEnumerator fire() {
+        // shoot bullets depending on current barrel configuration.
+        _currentBarrelConfiguration.Fire();
         Debug.Log("Shot bullet");
-        AudioManager.Instance.PlaySFX("Player Shoot Sound");
-        Debug.Log(BulletPool.BulletPoolInstance);
-        BulletInfo newBulletInfo = BulletPool.BulletPoolInstance.GetBullet(BulletType.NORMAL, BulletOwnershipType.PLAYER, 5f, 1);
-        GameObject newBullet = newBulletInfo.Reference;
-        newBullet.transform.position = transform.position;
-        newBullet.transform.rotation = Quaternion.identity;
-        //GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity, GameObject.FindWithTag("PlayArea").transform.Find("Bullet Pool").transform);
-        newBullet.GetComponent<Bullet>().SetMoveDirection(Vector2.up);
+       
+
+        
+
+      
         yield return null;
     }
 
