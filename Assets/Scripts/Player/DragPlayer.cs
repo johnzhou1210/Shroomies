@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class DragPlayer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
     public Vector3Event updatePlayerPosition;
+    Vector2 _lastDragPos;
 
     private void Start() {
         addPhysics2DRaycaster();
@@ -25,13 +26,18 @@ public class DragPlayer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
     void IDragHandler.OnDrag(PointerEventData eventData) {
         //Debug.Log("Dragging " + eventData.position);
-        Vector3 plrPos = Camera.main.ScreenToWorldPoint(eventData.position);
-        plrPos.z = 0;
-        updatePlayerPosition.Invoke(plrPos);
+        Vector2 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);
+        Vector2 fingerDownPos = Camera.main.ScreenToWorldPoint(eventData.pressPosition);
+        _lastDragPos = _lastDragPos == Vector2.zero ? fingerDownPos : _lastDragPos;
+        Vector2 posDelta = (dragPos - _lastDragPos);
+        Debug.Log(posDelta);
+        updatePlayerPosition.Invoke(posDelta);
+        _lastDragPos = dragPos;
     }
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData) {
         Debug.Log("End drag");
+        _lastDragPos = Vector2.zero;
     }
 
 }

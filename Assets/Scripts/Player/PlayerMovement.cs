@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour {
         transform.position += movementVector;
     }
 
-    public void UpdateDragPos(Vector3 newPos) {
-        transform.position = newPos;
+    public void UpdateDragPos(Vector3 posDelta) {
+        transform.position += posDelta;
     }
 
 }
