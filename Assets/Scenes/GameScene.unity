@@ -886,7 +886,7 @@ MonoBehaviour:
   cueStageBanner:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7450389902338679807}
+      - m_Target: {fileID: 6449184234597803807}
         m_TargetAssemblyTypeName: StageBanner, Assembly-CSharp
         m_MethodName: OnBannerCue
         m_Mode: 0
@@ -2753,7 +2753,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2968,7 +2968,7 @@ GameObject:
   - component: {fileID: 2456049421818863414}
   - component: {fileID: 2918625734221705845}
   - component: {fileID: 1504756754933121645}
-  - component: {fileID: 7450389902338679807}
+  - component: {fileID: 6449184234597803807}
   m_Layer: 5
   m_Name: StageBanner
   m_TagString: Untagged
@@ -2976,7 +2976,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7450389902338679807
+--- !u!114 &6449184234597803807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2988,6 +2988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530150e6f5b8ef64a9149c2e7997d355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 1504756754933121645}
   _textComponent: {fileID: 4442873955210082771}
 --- !u!1001 &8275721869407795930
 PrefabInstance:

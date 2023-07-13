@@ -5,12 +5,8 @@ using TMPro;
 
 public class StageBanner : MonoBehaviour
 {
-    Animator _animator;
+    [SerializeField] Animator _animator;
     [SerializeField] TextMeshProUGUI _textComponent;
-
-    private void Start() {
-        _animator = GetComponent<Animator>();
-    }
 
     public void OnBannerCue(string newText) {
         _textComponent.text = newText;
