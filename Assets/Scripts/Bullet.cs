@@ -12,8 +12,6 @@ public class Bullet : MonoBehaviour {
 
     public int Damage = 1;
     readonly float _removeTime = 9f;
-    public bool Bounce = false;
-    public bool Pierce = false;
     public HashSet<IDamageable> HitTargets;
     public GameObject ExplosionPrefab;
 

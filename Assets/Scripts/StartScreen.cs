@@ -10,4 +10,8 @@ public class StartScreen : MonoBehaviour, IPointerDownHandler {
         SceneManager.LoadScene(1);
     }
 
+    private void Start() {
+        Application.targetFrameRate = 256;
+    }
+
 }
