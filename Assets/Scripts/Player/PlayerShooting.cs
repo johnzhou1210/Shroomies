@@ -11,10 +11,13 @@ public class PlayerShooting : MonoBehaviour
     [HideInInspector] public bool _toggle = false;
     float _cooldown = 1f;
 
-    [Range(.01f,5f)]
-    public float _fireRate = .25f;
+    [Range(.01f, 5f)] public float FireRate = .25f;
+    [Range(0, 8f)] public float BulletVelocity = 5f;
+    [Range(0, 64)] public int AttackPower = 1;
 
     public GameObject bullet;
+    [SerializeField] BulletType _currentBulletType;
+
 
     Animator _animator;
     PlayerStateManager _stateManager;
@@ -26,7 +29,7 @@ public class PlayerShooting : MonoBehaviour
         PlayerTapHandler.Instance.OnDoubleTap += onDoubleTap;
         _animator = GetComponent<Animator>();
         _stateManager = GetComponent<PlayerStateManager>();
-        _currentBarrelConfiguration = _barrelConfigurations[2];
+        _currentBarrelConfiguration = _barrelConfigurations[3];
     }
 
     private void OnDisable() {
@@ -44,18 +47,18 @@ public class PlayerShooting : MonoBehaviour
     }
 
     private void Update() {
-        _cooldown = Mathf.Clamp(_cooldown - Time.deltaTime, 0, _fireRate);
+        _cooldown = Mathf.Clamp(_cooldown - Time.deltaTime, 0, FireRate);
         if (_toggle && _cooldown <= 0f && _stateManager.CurrentState == _stateManager.AliveState) {
             // shoot bullet
             StartCoroutine(fireAnim());
             // reset cooldown
-            _cooldown = _fireRate;
+            _cooldown = FireRate;
         }
     }
 
     IEnumerator fireAnim() {
         // play animation
-        _animator.speed = 1 / _fireRate;
+        _animator.speed = 1 / FireRate;
         _animator.Play("PlayerShoot");
         yield return null;
     }
@@ -66,7 +69,7 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator fire() {
         // shoot bullets depending on current barrel configuration.
-        _currentBarrelConfiguration.Fire();
+        _currentBarrelConfiguration.Fire(_currentBulletType, BulletOwnershipType.PLAYER, BulletVelocity, AttackPower);
         Debug.Log("Shot bullet");
        
 

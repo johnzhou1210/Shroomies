@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class StartScreen : MonoBehaviour, IPointerDownHandler {
     public void OnPointerDown(PointerEventData eventData) {
+        Application.targetFrameRate = 100;
         SceneManager.LoadScene(1);
     }
 
     private void Start() {
-        Application.targetFrameRate = 128;
+        Application.targetFrameRate = 30;
     }
 
 }

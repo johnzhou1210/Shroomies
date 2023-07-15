@@ -13,7 +13,7 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
     public void takeDamage(int damage) {
         CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, MaxHealth);
         AudioManager.Instance.PlaySFX("Player Damage Sound");
-        _shakeCam.Invoke(.015f, .1f);
+        _shakeCam.Invoke(.03f, .1f);
     }
 
     // Start is called before the first frame update

@@ -5,13 +5,16 @@ using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class EnemyShooting : MonoBehaviour {
-    [Range(.01f, 5f)]
-    public float _fireRate = .25f;
+    
+    [Range(.01f, 5f)] public float FireRate = .25f;
+    [Range(0, 8f)] public float BulletVelocity = 5f;
+    [Range(0, 64)] public int AttackPower = 1;
 
     public GameObject bullet;
 
     Animator _animator;
     EnemyStateManager _stateManager;
+    [SerializeField] BarrelConfiguration _barrelConfiguration;
 
     private void Start() {
         _animator = GetComponent<Animator>();
@@ -30,14 +33,14 @@ public class EnemyShooting : MonoBehaviour {
         // Flower will just loop basic bullet attack every 3-4 seconds
         while (_stateManager.CurrentState != _stateManager.DeadState) {
             Debug.Log("in loop. current state is " + _stateManager.CurrentState);
-            yield return new WaitForSeconds(_fireRate / 2f);
+            yield return new WaitForSeconds(FireRate / 2f);
 
             if (transform.position.y <= 5.5f) {
-                _animator.speed = Mathf.Clamp(1 / _fireRate, 1f, 16f);
+                _animator.speed = Mathf.Clamp(1 / FireRate, 1f, 16f);
                 _animator.Play("FlowerShoot");
             }
  
-            yield return new WaitForSeconds(_fireRate / 2f);
+            yield return new WaitForSeconds(FireRate / 2f);
 
         }
         Debug.Log(" out of loop ");
@@ -53,15 +56,9 @@ public class EnemyShooting : MonoBehaviour {
     }
 
     IEnumerator fire() {
+        // shoot bullets depending on current barrel configuration.
+        _barrelConfiguration.Fire(BulletType.NORMAL, BulletOwnershipType.ENEMY, BulletVelocity, AttackPower);
         Debug.Log("Shot enemy bullet");
-        AudioManager.Instance.PlayShootingSFX("Enemy Shoot Sound");
-        Debug.Log(BulletPool.BulletPoolInstance);
-        BulletInfo newBulletInfo = BulletPool.BulletPoolInstance.GetBullet(BulletType.NORMAL, BulletOwnershipType.ENEMY, 5f, 1);
-        GameObject newBullet = newBulletInfo.Reference;
-        newBullet.transform.position = transform.position;
-        newBullet.transform.rotation = Quaternion.identity;
-        //GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity, GameObject.FindWithTag("PlayArea").transform.Find("Bullet Pool").transform);
-        newBullet.GetComponent<Bullet>().SetMoveDirection(Vector2.down);
         yield return null;
     }
 }

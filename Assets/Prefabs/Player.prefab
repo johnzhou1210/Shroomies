@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6069887583115179238}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5873588813084419698}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2402953485498339190}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1919549010215620333}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 7830261906736312921}
   - component: {fileID: 6790670755102139078}
   - component: {fileID: 6753808552065843880}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -190,14 +190,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2932793301420325840}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -207,8 +207,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!58 &4715656214499364019
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 183
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -238,7 +238,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.01, y: -0.05}
@@ -257,8 +257,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toggle: 0
-  _fireRate: 0.5
+  FireRate: 0.25
+  BulletVelocity: 5
+  AttackPower: 1
   bullet: {fileID: 4305114188465493893, guid: 335feb82d9d57134d88eb174b6ae3637, type: 3}
+  _currentBulletType: 0
   _barrelConfigurations:
   - {fileID: 4160406694858748625}
   - {fileID: 698564912755790524}
@@ -346,7 +349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6802002614347142051}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2240365871181272361}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Rightmost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4301242277197572797}
   - component: {fileID: 4160406694858748625}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: BarrelLv0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7868494942509986137}
   - component: {fileID: 698564912755790524}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: BarrelLv1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2719735417645411517}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: BarrelLv3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +538,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1065705705772306772}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8743598986680364985}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,7 +600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4663181366326736300}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +631,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8982854484241531502}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Leftmost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,7 +662,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5031415950330033982}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -690,7 +693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3440044906028938127}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: BarrelConfigs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -726,7 +729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1987021374213421842}
   - component: {fileID: 158062126905483281}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1832428668623196236}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: BarrelLv2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
