@@ -217,7 +217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &125849838
 Transform:
   m_ObjectHideFlags: 0
@@ -903,26 +903,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  openUpgrades:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpgradeScreen, Assembly-CSharp
-        m_MethodName: onShow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _stageBeginWaitDelay: 1
   _interstageDelay: 15
   _numStagesPerWorldIncludingBoss: 4
   _upgradeFrame: {fileID: 4616672574126157272, guid: ca89c2fe1b691ea4399361c016e6c9b0, type: 3}
   _uiCanvas: {fileID: 527809549}
+  _playerDragArea: {fileID: 125849837}
   _tapHandler: {fileID: 772510584}
   WorldNumber: 1
   StageNumber: 1
@@ -1281,7 +1267,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!114 &1165474437 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 698564912755790524, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}

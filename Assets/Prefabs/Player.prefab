@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toggle: 0
-  FireRate: 0.25
+  FireRate: 0.5
   BulletVelocity: 5
   AttackPower: 1
   bullet: {fileID: 4305114188465493893, guid: 335feb82d9d57134d88eb174b6ae3637, type: 3}

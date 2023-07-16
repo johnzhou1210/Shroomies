@@ -10,12 +10,11 @@ public class StageLogic : MonoBehaviour {
 
     [SerializeField] UnityStringEvent cueStageBanner;
     [SerializeField] UnityIntEvent updateMulch;
-    [SerializeField] UnityEvent openUpgrades;
 
     [SerializeField] float _stageBeginWaitDelay;
     [SerializeField] float _interstageDelay;
     [SerializeField] int _numStagesPerWorldIncludingBoss;
-    [SerializeField] GameObject _upgradeFrame, _uiCanvas;
+    [SerializeField] GameObject _upgradeFrame, _uiCanvas, _playerDragArea;
 
     [SerializeField] PlayerTapHandler _tapHandler;
 
@@ -49,7 +48,7 @@ public class StageLogic : MonoBehaviour {
              * 3-3: difficulty of (3*2)+3 = 9
              */
 
-            _tapHandler.enabled = true;
+            setPlayerControls(true);
             GameObject.FindWithTag("Player").GetComponent<PlayerShooting>()._toggle = true;
 
             AudioManager.Instance.PlayMusic("Shroomies Next Spread");
@@ -82,7 +81,7 @@ public class StageLogic : MonoBehaviour {
             //yield return new WaitForSeconds(_interstageDelay);
             // wait until all enemies are dead first
             yield return new WaitUntil(() => GameObject.FindWithTag("EnemyContainer").transform.childCount == 0);
-            _tapHandler.enabled = false;
+            setPlayerControls(false);
             GameObject.FindWithTag("Player").GetComponent<PlayerShooting>()._toggle = false;
             AudioManager.Instance.PlayMusic("Where To Infect");
             if (StageNumber < _numStagesPerWorldIncludingBoss) {
@@ -112,5 +111,16 @@ public class StageLogic : MonoBehaviour {
         AudioManager.Instance.PlaySFX("Player Get Mulch");
         updateMulch.Invoke(accumulatedMulch); 
     }
+
+    public void setPlayerDrag(bool newVal) {
+        _playerDragArea.SetActive(newVal);
+    }
+
+    public void setPlayerControls(bool newVal) {
+        setPlayerDrag(newVal);
+        _tapHandler.enabled = newVal;
+    }
+
+  
 
 }
