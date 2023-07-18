@@ -163,7 +163,7 @@ Transform:
   - {fileID: 1987021374213421842}
   - {fileID: 3440044906028938127}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8934650272900455183
 MonoBehaviour:
@@ -178,10 +178,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 0
-  XMin: -2.7
-  XMax: 2.7
-  YMin: -4.7
-  YMax: 4.9
+  XMin: -2.38
+  XMax: 2.38
+  YMin: -4.61
+  YMax: 4.61
 --- !u!50 &1538716476841018906
 Rigidbody2D:
   serializedVersion: 4
@@ -194,9 +194,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -257,14 +257,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toggle: 0
-  FireRate: 0.5
+  FireRate: 0.69
   BulletVelocity: 5
   AttackPower: 1
-  bullet: {fileID: 4305114188465493893, guid: 335feb82d9d57134d88eb174b6ae3637, type: 3}
-  _currentBulletType: 0
+  CritRate: 15
+  PierceCount: 32
+  BulletsBounce: 1
+  ExtraBulletUpgradeLevel: 3
+  _currentBulletType: 3
   _barrelConfigurations:
   - {fileID: 4160406694858748625}
   - {fileID: 698564912755790524}
+  - {fileID: 4510480800516083467}
+  - {fileID: 5459501046464175415}
 --- !u!114 &7220596568435754424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2719735417645411517}
+  - component: {fileID: 5459501046464175415}
   m_Layer: 8
   m_Name: BarrelLv3
   m_TagString: Untagged
@@ -529,6 +535,18 @@ Transform:
   m_Father: {fileID: 3440044906028938127}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5459501046464175415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382497409520261906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae220bb00963596438c319c87f4f082c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5658018153147190834
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,6 +830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1832428668623196236}
+  - component: {fileID: 4510480800516083467}
   m_Layer: 8
   m_Name: BarrelLv2
   m_TagString: Untagged
@@ -837,3 +856,15 @@ Transform:
   m_Father: {fileID: 3440044906028938127}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4510480800516083467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8542382565751178956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae220bb00963596438c319c87f4f082c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 6954877933969015221}
   - component: {fileID: 3297915420291259174}
   - component: {fileID: 898684409996141027}
+  - component: {fileID: 2577369366352536160}
   m_Layer: 10
   m_Name: Flower
   m_TagString: Enemy
@@ -244,7 +245,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 55
@@ -279,7 +280,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000000
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -292,7 +293,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!95 &5043039757489132429
 Animator:
@@ -328,9 +329,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireRate: 1.13
-  BulletVelocity: 5
+  BulletVelocity: 2.97
   AttackPower: 1
-  bullet: {fileID: 4305114188465493893, guid: 5f67c0936f32ff94eafd57dd9ff2af11, type: 3}
+  BulletsBounce: 1
+  ObstaclePierceCount: 0
+  _currentBulletType: 0
   _barrelConfiguration: {fileID: 7212329881097344703}
 --- !u!114 &3297915420291259174
 MonoBehaviour:
@@ -412,6 +415,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2577369366352536160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8999955857191075688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dec7ec00fd85a49a5dd12089c4f2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidBody: {fileID: 6110618950394025672}
 --- !u!1 &9195773681355430244
 GameObject:
   m_ObjectHideFlags: 0

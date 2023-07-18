@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 919d8024d4257634f80fb947787c6eb2, type: 3}
-  m_Name: PlayerDamageSound
+  m_Name: BulletBounceSound
   m_EditorClassIdentifier: 
-  Name: Player Damage Sound
-  AudioClip: {fileID: 8300000, guid: c7a1431f984106f459ed287da7944ae8, type: 3}
+  Name: Bullet Bounce Sound
+  AudioClip: {fileID: 8300000, guid: 6c9cb03e6e3cf434fb8cb77478db8979, type: 3}
   Loop: 0
-  Volume: 0.819
+  Volume: 0.143
   Pitch: 1
   Cooldown: 0.001
-  LastTimePlayed: 54.14
+  LastTimePlayed: 222.68

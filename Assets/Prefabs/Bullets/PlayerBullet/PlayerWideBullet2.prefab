@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2026258451032736755}
   - component: {fileID: 7443703293665180681}
   - component: {fileID: -6347954244632682985}
-  - component: {fileID: 88467929154985668}
+  - component: {fileID: 2584375659436708548}
   m_Layer: 7
-  m_Name: PlayerBullet
+  m_Name: PlayerWideBullet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4305114188465493893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.8742166, y: 1.8742166, z: 1.8742166}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,11 +48,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Velocity: 10
-  reflect: 1
-  Type: 0
-  Ownership: 0
-  ExplosionPrefab: {fileID: 5903540695073766936, guid: 2ae963d9384bc574e939de7427dc0796, type: 3}
+  CritRate: 0
+  Reflect: 1
   Damage: 1
+  PierceLimit: 1
+  Type: 2
+  Ownership: 0
+  _explosionPrefab: {fileID: 5903540695073766936, guid: 2ae963d9384bc574e939de7427dc0796, type: 3}
+  _critEffect: {fileID: 5903540695073766936, guid: bf6e3d22bbc2def4c8d46b7bd019bc56, type: 3}
   _rigidBody: {fileID: -6347954244632682985}
 --- !u!212 &7443703293665180681
 SpriteRenderer:
@@ -95,7 +98,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 8e39c80ef5e0c254fb8262699ace61ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4976ff5586d454b45b22b9e556b4de4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,7 +121,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -133,8 +136,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &88467929154985668
-CircleCollider2D:
+--- !u!70 &2584375659436708548
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -165,6 +168,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.06
+  m_Offset: {x: -0.00015580017, y: -0.00017888869}
+  m_Size: {x: 0.22258064, y: 0.111871675}
+  m_Direction: 1

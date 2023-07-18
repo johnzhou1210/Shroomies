@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8822455795393340707}
-  - {fileID: 701615414857470539}
+  - {fileID: 5855456451238452575}
   - {fileID: 2882706439866244315}
   m_Father: {fileID: 0}
   m_RootOrder: 18
@@ -51,7 +51,7 @@ MonoBehaviour:
   SpawnPosition: {x: -1.339, y: 7.485, z: 0}
   MovementSpeed: 0.5
   NextClusterMinDelay: 4
-  NextClusterMaxDelay: 7
+  NextClusterMaxDelay: 8
 --- !u!114 &4381120072190618892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d05265b4205abd640a12b58eb92c2319, type: 3}
---- !u!4 &701615414857470539 stripped
+--- !u!4 &5855456451238452575 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6412669704360611605, guid: d05265b4205abd640a12b58eb92c2319, type: 3}
   m_PrefabInstance: {fileID: 701615414857470538}

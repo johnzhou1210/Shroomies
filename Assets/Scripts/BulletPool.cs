@@ -6,7 +6,10 @@ using UnityEngine;
 
 
 public enum BulletType {
-    NORMAL
+    NORMAL,
+    WIDE1,
+    WIDE2,
+    WIDE3,
 }
 
 public enum BulletOwnershipType {
@@ -77,11 +80,16 @@ public class BulletPool : MonoBehaviour {
         }
     }
 
-    public BulletInfo GetBullet(BulletType bulletType, BulletOwnershipType bulletOwnership, float bulletVelocity, int bulletDamage) {
+    public BulletInfo GetBullet(BulletType bulletType, BulletOwnershipType bulletOwnership, BulletDamageInfo dmgInfo) {
         BulletInfo activateBullet(BulletInfo bulletInfo) {
             bulletInfo.Reference.SetActive(true);
-            setVelocity(bulletInfo.Reference.GetComponent<Bullet>(), bulletVelocity);
-            setDamage(bulletInfo.Reference.GetComponent<Bullet>(), bulletDamage);
+            Bullet bulletComponent = bulletInfo.Reference.GetComponent<Bullet>();
+            bulletComponent.SetVelocity(dmgInfo.Velocity);
+            bulletComponent.SetDamage(dmgInfo.Damage);
+            bulletComponent.SetCritRate(dmgInfo.CritRate);
+            bulletComponent.SetPierceCount(dmgInfo.PierceCount);
+            bulletComponent.SetBounce(dmgInfo.Bounce);
+           
             return bulletInfo;
         }
         BulletPoolEntry findDesiredPool(BulletType type) {
@@ -125,12 +133,6 @@ public class BulletPool : MonoBehaviour {
    
 
 
-    void setVelocity(Bullet bullet, float velocity) {
-        bullet.Velocity = velocity;
-    }
-
-    void setDamage(Bullet bullet, int damage) {
-        bullet.Damage = damage;
-    }
+    
 
 }

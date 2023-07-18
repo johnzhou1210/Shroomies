@@ -14,8 +14,12 @@ public class PlayerShooting : MonoBehaviour
     [Range(.01f, 5f)] public float FireRate = .25f;
     [Range(0, 8f)] public float BulletVelocity = 5f;
     [Range(0, 64)] public int AttackPower = 1;
+    [Range(0, 100f)] public float CritRate = 5;
+    [Range(0, 32f)] public int PierceCount = 0;
+    public bool BulletsBounce = false;
 
-    public GameObject bullet;
+    public int ExtraBulletUpgradeLevel = 0;
+
     [SerializeField] BulletType _currentBulletType;
 
 
@@ -29,7 +33,7 @@ public class PlayerShooting : MonoBehaviour
         PlayerTapHandler.Instance.OnDoubleTap += onDoubleTap;
         _animator = GetComponent<Animator>();
         _stateManager = GetComponent<PlayerStateManager>();
-        _currentBarrelConfiguration = _barrelConfigurations[3];
+        _currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
     }
 
     private void OnDisable() {
@@ -54,6 +58,10 @@ public class PlayerShooting : MonoBehaviour
             // reset cooldown
             _cooldown = FireRate;
         }
+        if (_currentBarrelConfiguration != _barrelConfigurations[ExtraBulletUpgradeLevel]) {
+            _currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
+        }
+        
     }
 
     IEnumerator fireAnim() {
@@ -69,7 +77,8 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator fire() {
         // shoot bullets depending on current barrel configuration.
-        _currentBarrelConfiguration.Fire(_currentBulletType, BulletOwnershipType.PLAYER, BulletVelocity, AttackPower);
+        BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, CritRate, PierceCount, BulletsBounce);
+        _currentBarrelConfiguration.Fire(_currentBulletType, BulletOwnershipType.PLAYER, dmgInfo);
         Debug.Log("Shot bullet");
        
 

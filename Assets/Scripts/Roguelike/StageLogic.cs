@@ -50,6 +50,8 @@ public class StageLogic : MonoBehaviour {
 
             setPlayerControls(true);
             GameObject.FindWithTag("Player").GetComponent<PlayerShooting>()._toggle = true;
+            GameObject.FindWithTag("Player").GetComponent<PlayerShooting>().ExtraBulletUpgradeLevel = StageNumber - 1;
+
 
             AudioManager.Instance.PlayMusic("Shroomies Next Spread");
             cueStageBanner.Invoke(WorldNumber + "-" + StageNumber);

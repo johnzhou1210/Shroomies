@@ -8,7 +8,7 @@ TagManager:
   - BulletPool
   - Enemy
   - EnemyContainer
-  - UpgradeFrame
+  - Obstacle
   layers:
   - Default
   - TransparentFX

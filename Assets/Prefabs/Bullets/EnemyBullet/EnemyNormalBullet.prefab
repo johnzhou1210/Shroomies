@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6568927270704322053}
   - component: {fileID: -1406939029126384641}
   m_Layer: 9
-  m_Name: EnemyBullet
+  m_Name: EnemyNormalBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4305114188465493893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.16630898, y: -3.304721, z: 0}
-  m_LocalScale: {x: 1.8742166, y: 1.8742166, z: 1.8742166}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,11 +48,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Velocity: 10
-  reflect: 1
+  CritRate: 0
+  Reflect: 1
+  Damage: 1
+  PierceLimit: 1
   Type: 0
   Ownership: 2
-  ExplosionPrefab: {fileID: 5903540695073766936, guid: 2ae963d9384bc574e939de7427dc0796, type: 3}
-  Damage: 1
+  _explosionPrefab: {fileID: 5903540695073766936, guid: 2ae963d9384bc574e939de7427dc0796, type: 3}
+  _critEffect: {fileID: 5903540695073766936, guid: bf6e3d22bbc2def4c8d46b7bd019bc56, type: 3}
   _rigidBody: {fileID: 6568927270704322053}
 --- !u!212 &7443703293665180681
 SpriteRenderer:
@@ -118,7 +121,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1000000
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0

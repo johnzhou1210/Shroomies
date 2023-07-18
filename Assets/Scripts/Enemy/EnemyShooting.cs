@@ -6,11 +6,13 @@ using UnityEngine.UIElements;
 
 public class EnemyShooting : MonoBehaviour {
     
-    [Range(.01f, 5f)] [SerializeField]  float FireRate = .25f;
-    [Range(0, 8f)] [SerializeField] float BulletVelocity = 5f;
-    [Range(0, 64)] [SerializeField] int AttackPower = 1;
+    [Range(.01f, 5f)] public float FireRate = .25f;
+    [Range(0, 8f)] public float BulletVelocity = 5f;
+    [Range(0, 64)] public int AttackPower = 1;
+    public bool BulletsBounce = false;
+    public int ObstaclePierceCount = 0;
 
-    public GameObject bullet;
+    [SerializeField] BulletType _currentBulletType;
 
     Animator _animator;
     EnemyStateManager _stateManager;
@@ -57,7 +59,8 @@ public class EnemyShooting : MonoBehaviour {
 
     IEnumerator fire() {
         // shoot bullets depending on current barrel configuration.
-        _barrelConfiguration.Fire(BulletType.NORMAL, BulletOwnershipType.ENEMY, BulletVelocity, AttackPower);
+        BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, 0, ObstaclePierceCount, BulletsBounce);
+        _barrelConfiguration.Fire(_currentBulletType, BulletOwnershipType.ENEMY, dmgInfo);
         Debug.Log("Shot enemy bullet");
         yield return null;
     }
