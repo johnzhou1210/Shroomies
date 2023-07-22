@@ -104,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1446104689, guid: 983e0971cb625314f9f6e6689446b059, type: 3}
+  m_Sprite: {fileID: 77169756, guid: 43f9e79ae49cd2942b193de1bb558995, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c656f70339094f2408feb0e62f20e452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 1.13
+  FireRate: 1.85
   BulletVelocity: 2.97
   AttackPower: 1
   BulletsBounce: 1
@@ -359,8 +359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683f9dd7dfd0aab46a9deb6c7d471561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 5
-  _mulchReward: 4
+  MaxHealth: 10
+  _mulchReward: 3
   onDeath:
     m_PersistentCalls:
       m_Calls:

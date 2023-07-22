@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - EnemyContainer
   - Obstacle
+  - UpgradeFrame
+  - UpgradeManager
   layers:
   - Default
   - TransparentFX

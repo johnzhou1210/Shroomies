@@ -77,7 +77,7 @@ public class Bullet : MonoBehaviour {
                 bool success = HitTargets.Add(onHit);
                 if (success) {
                     // deal damage, account for crit rate.
-                    if (Random.Range(0f, 100f) <= _critRate) {
+                    if (Random.Range(0f, 1f) <= _critRate) {
                         _damage *= 2;
                         Instantiate(_critEffect, collision.transform.position, Quaternion.identity);
                         AudioManager.Instance.PlaySFX("Critical Hit Sound");

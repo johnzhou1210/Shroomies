@@ -852,7 +852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727775184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0448032, y: 0.7464142, z: 0.0214344}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1329,7 +1329,7 @@ Camera:
   far clip plane: 1000
   field of view: 82.4
   orthographic: 1
-  orthographic size: 5.015725
+  orthographic size: 5.010791
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1728,7 +1728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -18.299988, y: 10.799988}
+  m_AnchoredPosition: {x: -18.299988, y: 10.800049}
   m_SizeDelta: {x: 196.89758, y: 20.03247}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1447853546
@@ -1969,6 +1969,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1577105285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1577105287}
+  - component: {fileID: 1577105286}
+  m_Layer: 0
+  m_Name: Upgrade Manager
+  m_TagString: UpgradeManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1577105286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577105285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3491d99dc5fe8b46a5f60cadd0b5e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upgrades:
+  - {fileID: 11400000, guid: c3b246ab524c1014785586acc42d37b7, type: 2}
+  - {fileID: 11400000, guid: 79a348dfc0d446747914bed68c67eab6, type: 2}
+  - {fileID: 11400000, guid: 7b40c7fe388cfd046a6117b9e5e4ab8a, type: 2}
+  - {fileID: 11400000, guid: d74b4b36e96fa8b44b215486f6734f6f, type: 2}
+  - {fileID: 11400000, guid: eb9fc3da496d0fd43b217b0d9f15d111, type: 2}
+  - {fileID: 11400000, guid: 4be60b83b7962a04f982928ebd66bffd, type: 2}
+  - {fileID: 11400000, guid: fda5ba2c482092c449612bf8f8c3afda, type: 2}
+  - {fileID: 11400000, guid: 9d86c3ffd7eb0ad42b808e904e97549d, type: 2}
+  - {fileID: 11400000, guid: 770dae2e7f1deaa4c87d79469e72d3ad, type: 2}
+  - {fileID: 11400000, guid: 2d42698c860172d44814ef94c8dfcfc8, type: 2}
+  - {fileID: 11400000, guid: 6d1dad92aabd91043af1cdeb0c638178, type: 2}
+  - {fileID: 11400000, guid: 285de67179acddd48b9e08cda67841dd, type: 2}
+  - {fileID: 11400000, guid: 54b92ad65534b9344b7d0b019a7e8923, type: 2}
+  - {fileID: 11400000, guid: cd124438a72ed1a4c92704b915b8bf19, type: 2}
+  - {fileID: 11400000, guid: 82beb3f14a4c2fa4e8b8630f9c6a049b, type: 2}
+  - {fileID: 11400000, guid: 399683cd152b7c54d8ec8a8fda97f3cf, type: 2}
+  - {fileID: 11400000, guid: 42544121af1fc0e4388c27a7da14d40e, type: 2}
+  - {fileID: 11400000, guid: ae20c818d9531f540905f330e498e851, type: 2}
+  - {fileID: 11400000, guid: 4ce20a98eef407049b4bbcad52901211, type: 2}
+  AvailableUpgrades: []
+  ActiveUpgrades: []
+  _rateOfFireLevel1: 0.15
+  _rateOfFireLevel2: 0.3
+  _rateOfFireLevel3: 0.6
+  _firePowerLevel1: 0.2
+  _firePowerLevel2: 0.4
+  _firePowerLevel3: 1
+  _criticalRateLevel1: 0.1
+  _criticalRateLevel2: 0.3
+  _criticalRateLevel3: 0.8
+  _piercingShotLevel1: 1
+  _piercingShotLevel2: 3
+  _piercingShotLevel3: 64
+--- !u!4 &1577105287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577105285}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1631631504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,8 +2204,6 @@ MonoBehaviour:
   - {fileID: 4305114188465493893, guid: 47354dfad428adc4c8b552d217e47cbd, type: 3}
   - {fileID: 4305114188465493893, guid: b3278aa0aa79aed4e82ee31134a401ef, type: 3}
   - {fileID: 4305114188465493893, guid: 2aa6c7352f40db4469c985918937f979, type: 3}
-  - {fileID: 4305114188465493893, guid: cf70e66329ba1a54492457ea7f68e5cf, type: 3}
-  - {fileID: 4305114188465493893, guid: 5dcaa9ff403c9a145966a44d22a1f548, type: 3}
 --- !u!1 &1840912977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2701,12 +2777,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134425863}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 283.10413, y: 540.41626, z: 10.230431}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &1229496116703836385
 CanvasRenderer:
@@ -3044,27 +3120,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: CritRate
-      value: 15
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: FireRate
-      value: 0.69
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
+      propertyPath: AttackPower
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: PierceCount
-      value: 32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: BulletsBounce
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: _currentBulletType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: ExtraBulletUpgradeLevel
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: _barrelConfigurations.Array.size

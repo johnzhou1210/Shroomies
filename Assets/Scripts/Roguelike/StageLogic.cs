@@ -50,7 +50,7 @@ public class StageLogic : MonoBehaviour {
 
             setPlayerControls(true);
             GameObject.FindWithTag("Player").GetComponent<PlayerShooting>()._toggle = true;
-            GameObject.FindWithTag("Player").GetComponent<PlayerShooting>().ExtraBulletUpgradeLevel = StageNumber - 1;
+            //GameObject.FindWithTag("Player").GetComponent<PlayerShooting>().ExtraBulletUpgradeLevel = StageNumber - 1; // for testing only.
 
 
             AudioManager.Instance.PlayMusic("Shroomies Next Spread");

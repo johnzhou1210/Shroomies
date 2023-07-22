@@ -10,14 +10,16 @@ public class PlayerShooting : MonoBehaviour
 {
     [HideInInspector] public bool _toggle = false;
     float _cooldown = 1f;
+    [SerializeField] float _baseFireRate = .5f, _baseCritRate = .05f;
+    [SerializeField] int _baseAttackPower = 3, _basePierceCount = 0;
 
-    [Range(.01f, 5f)] public float FireRate = .25f;
+
+    [Range(.01f, 5f)] public float FireRate = .5f;
     [Range(0, 8f)] public float BulletVelocity = 5f;
-    [Range(0, 64)] public int AttackPower = 1;
-    [Range(0, 100f)] public float CritRate = 5;
+    [Range(0, 64)] public int AttackPower = 3;
+    [Range(0, 1f)] public float CritRate = .05f;
     [Range(0, 32f)] public int PierceCount = 0;
     public bool BulletsBounce = false;
-
     public int ExtraBulletUpgradeLevel = 0;
 
     [SerializeField] BulletType _currentBulletType;
@@ -80,14 +82,23 @@ public class PlayerShooting : MonoBehaviour
         BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, CritRate, PierceCount, BulletsBounce);
         _currentBarrelConfiguration.Fire(_currentBulletType, BulletOwnershipType.PLAYER, dmgInfo);
         Debug.Log("Shot bullet");
-       
-
-        
-
-      
         yield return null;
     }
 
+    public void RateOfFireUpgrade(float reduction) {
+        FireRate = _baseFireRate * (1 - reduction);
+    }
 
+    public void FirePowerUpgrade(float increase) {
+        AttackPower = (int)Mathf.Ceil(_baseAttackPower * (1 + increase));
+    }
+
+    public void CritUpgrade(float newPercent) {
+        CritRate = _baseCritRate + newPercent;
+    }
+
+    public void PierceUpgrade(int newNumber) {
+        PierceCount = _basePierceCount + newNumber;
+    }
 
 }
