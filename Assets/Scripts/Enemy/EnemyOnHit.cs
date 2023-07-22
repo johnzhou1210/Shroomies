@@ -53,11 +53,10 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     void Start() {
         _hitbox = GetComponent<Collider2D>();
-        _currentHealth = MaxHealth;
+        setCurrHealthToMaxHealth();
     }
 
-    // Update is called once per frame
-    void Update() {
-
+    public void setCurrHealthToMaxHealth() {
+        _currentHealth = MaxHealth;
     }
 }

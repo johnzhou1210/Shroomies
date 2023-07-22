@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour {
         //transform.Translate(Velocity * Time.deltaTime * _moveDir);
         //_lastFramePos = transform.position;
         _lastVelocity = _rigidBody.velocity;
-        if (transform.position.y < -6 || transform.position.y > 5.2f) {
+        if (transform.position.y < -6 || transform.position.y > 5.4f) {
             Destroy();
         }
     }

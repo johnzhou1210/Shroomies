@@ -66,13 +66,18 @@ public class StageLogic : MonoBehaviour {
                 ClusterCollection chosenCollection = Array.Find(_clusterCollections, c => c.WorldNumber == WorldNumber && c.StageNumber == StageNumber);
                 // randomly choose which cluster to spawn from this collection
                 GameObject chosenClusterPrefabToSpawn = Instantiate(chosenCollection.Clusters[UnityEngine.Random.Range(0, chosenCollection.Clusters.Length)], GameObject.FindWithTag("EnemyContainer").transform);
-                
+                // scale cluster speed depending on difficulty
+                chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed *= (1 + (difficulty / 10f) - .15f);
+                Debug.Log("speed set to " + chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed + " by multiplying by " + (1 + (difficulty / 10f) -.15f) + " where difficulty = " + difficulty);
+
                 foreach (Transform child in chosenClusterPrefabToSpawn.transform) {
                     // attach needed event connections:
                     // 1) Reward mulch event
                     if (child.CompareTag("Enemy")) {
                         EnemyOnHit enemyOnHit = child.GetComponent<EnemyOnHit>();
                         enemyOnHit.giveMulch.AddListener(increaseMulch);
+                        enemyOnHit.MaxHealth = (int)(enemyOnHit.MaxHealth * (Mathf.Pow(1.1f, 1.2f * difficulty) - .4f));
+                        enemyOnHit.setCurrHealthToMaxHealth();
                     }
                 }
                 ClusterSettings currClusterSettings = chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>();
