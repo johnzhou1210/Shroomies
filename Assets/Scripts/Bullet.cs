@@ -102,10 +102,7 @@ public class Bullet : MonoBehaviour {
                
             } else if (hitTarget.CompareTag("Obstacle")) {
                 // hit obstacle
-            }
-
-
-            if (_reflect && !hitTarget.CompareTag("Player") && !hitTarget.CompareTag("Enemy")) {
+            } else if (_reflect && !hitTarget.CompareTag("Player") && !hitTarget.CompareTag("Enemy")) {
                 // bounce off contact point
                 ContactPoint2D contact = collision.contacts[0];
                 // reflect our old velocity off the contact point's normal vector
@@ -118,9 +115,8 @@ public class Bullet : MonoBehaviour {
                 // play bounce sound
                 AudioManager.Instance.PlayShootingSFX("Bullet Bounce Sound");
             } else {
-
-                // do nothing?
-
+                // disintegrate bullet
+                Destroy();
 
             }
         }

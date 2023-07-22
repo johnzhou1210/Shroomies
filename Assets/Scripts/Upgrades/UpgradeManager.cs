@@ -70,8 +70,11 @@ public class UpgradeManager : MonoBehaviour {
 
     void applyUpgrade(Upgrade upgrade) {
         // trim string part
-        string left = upgrade.name.Substring(0, upgrade.name.Length - 1);
-        int right = int.Parse(upgrade.name.Substring(upgrade.name.Length - 1));
+        
+        int right;
+        bool hasNumber = int.TryParse(upgrade.name.Substring(upgrade.name.Length - 1), out right);
+        string left = hasNumber ? upgrade.name.Substring(0, upgrade.name.Length - 1) : upgrade.name;
+
         Debug.Log("Left is " + left + ", Right is " + right);
         switch (left) {
             /* Critical Hit Upgrades */
