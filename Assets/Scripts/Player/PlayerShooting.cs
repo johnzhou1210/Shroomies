@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -97,8 +98,33 @@ public class PlayerShooting : MonoBehaviour
         CritRate = _baseCritRate + newPercent;
     }
 
-    public void PierceUpgrade(int newNumber) {
+    public void PierceUpgrade(Int32 newNumber) {
+        Debug.Log("recieved " + newNumber);
         PierceCount = _basePierceCount + newNumber;
+    }
+
+    public void ExtraShotUpgrade(Int32 newNumber) {
+        Debug.Log("recieved " + newNumber);
+        ExtraBulletUpgradeLevel = newNumber;
+    }
+
+    public void WideShotUpgrade(Int32 newNumber) {
+        Debug.Log("recieved " + newNumber);
+        switch (newNumber) {
+            case 0:
+                _currentBulletType = BulletType.NORMAL; break;
+            case 1:
+                _currentBulletType = BulletType.WIDE1; break;
+            case 2:
+                _currentBulletType = BulletType.WIDE2; break;
+            case 3:
+                _currentBulletType = BulletType.WIDE3; break;
+        }
+    }
+
+    public void RicochetUpgrade(Boolean val) {
+        Debug.Log("recieved " + val);
+        BulletsBounce = val;
     }
 
 }

@@ -2,16 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
-public class UpgradeManager : MonoBehaviour
-{
+public class UpgradeManager : MonoBehaviour {
+
     [Header("All Possible Upgrades")]
     [SerializeField] List<Upgrade> _upgrades;
 
     [Header("Debug")]
     public List<Upgrade> AvailableUpgrades;
     public List<Upgrade> ActiveUpgrades;
+    
     [Space][Space]
+
+    [SerializeField] UnityFloatEvent _critUpgrade, _firePowerUpgrade, _rateOfFireUpgrade;
+    [SerializeField] UnityIntEvent _extraShotUpgrade, _piercingShotUpgrade, _wideShotUpgrade;
+    [SerializeField] UnityBoolEvent _ricochetUpgrade;
+
+    [Space][Space]
+    
     [Header("Rate of Fire Upgrades (Enter percent of reduction as decimal)")]
     [SerializeField] float _rateOfFireLevel1; [SerializeField] float _rateOfFireLevel2; [SerializeField] float _rateOfFireLevel3;
     [Header("Fire Power Upgrades (Enter percent increase as decimal)")]
@@ -49,11 +58,62 @@ public class UpgradeManager : MonoBehaviour
                 AvailableUpgrades.Add(_upgrades.Find(upg => upg.name.Equals(left + ((currUpgradeLevel + 1).ToString()))));
             }
 
+            // apply upgrade
+            applyUpgrade(upgrade);
+
         } else {
             // upgrade could not be found!
             Debug.LogError("The upgrade " + upgrade.UpgradeName + " could not be found!");
-            
+
         }
     }
+
+    void applyUpgrade(Upgrade upgrade) {
+        // trim string part
+        string left = upgrade.name.Substring(0, upgrade.name.Length - 1);
+        int right = int.Parse(upgrade.name.Substring(upgrade.name.Length - 1));
+        Debug.Log("Left is " + left + ", Right is " + right);
+        switch (left) {
+            /* Critical Hit Upgrades */
+            case "Critical":
+                Debug.Log("upgraded critical");
+                switch (right) { case 1: _critUpgrade.Invoke(_criticalRateLevel1); break; case 2: _critUpgrade.Invoke(_criticalRateLevel2); break; case 3: _critUpgrade.Invoke(_criticalRateLevel3); break; }
+                break;
+            /* Fire Power Upgrades */
+            case "FirePower":
+                Debug.Log("upgraded firepower");
+                switch (right) { case 1: _firePowerUpgrade.Invoke(_firePowerLevel1); break; case 2: _firePowerUpgrade.Invoke(_firePowerLevel2); break; case 3: _firePowerUpgrade.Invoke(_firePowerLevel3); break; }
+                break;
+            /* Rate of Fire Upgrades */
+            case "RateOfFire":
+                Debug.Log("upgraded rateoffire");
+                switch (right) { case 1: _rateOfFireUpgrade.Invoke(_rateOfFireLevel1); break; case 2: _rateOfFireUpgrade.Invoke(_rateOfFireLevel2); break; case 3: _rateOfFireUpgrade.Invoke(_rateOfFireLevel3); break; }
+                break;
+            /* Piercing Shot Upgrades */
+            case "PiercingShot":
+                Debug.Log("upgraded piercingshot");
+                switch (right) { case 1: _piercingShotUpgrade.Invoke(_piercingShotLevel1); break; case 2: _piercingShotUpgrade.Invoke(_piercingShotLevel2); break; case 3: _piercingShotUpgrade.Invoke(_piercingShotLevel3); break; }
+                break;
+
+
+            /* Extra Shot Upgrades */
+            case "ExtraShot":
+                Debug.Log("upgraded extrashot");
+                _extraShotUpgrade.Invoke(right); break;
+            /* Wide Shot Upgrades */
+            case "WideShot":
+                Debug.Log("upgraded wideshot");
+                _wideShotUpgrade.Invoke(right); break;
+
+
+            /* Ricochet Upgrade */
+            case "Ricochet":
+                Debug.Log("upgraded ricoceht");
+                _ricochetUpgrade.Invoke(true); break;
+
+
+        }
+    }
+
 
 }

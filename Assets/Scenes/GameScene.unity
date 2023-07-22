@@ -876,6 +876,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 318a1b4c741a06e4d82d090269d5fc10, type: 2}
   - {fileID: 11400000, guid: fc4523ada7e239e43b759c15422f663f, type: 2}
   - {fileID: 11400000, guid: 8ed90b4377f4aa448aa1e1b2d4a15035, type: 2}
+  - {fileID: 11400000, guid: 99d72458a2dd80c43b50658e4955e19b, type: 2}
+  - {fileID: 11400000, guid: c58e07e2fc188cc4da1848a90909051a, type: 2}
+  - {fileID: 11400000, guid: 6a540243f43170042b100e86b7287ccd, type: 2}
+  - {fileID: 11400000, guid: 658407dc97ae66548924d11b06c2023c, type: 2}
+  - {fileID: 11400000, guid: 9b61ac55fece8944ea3a801420036b67, type: 2}
+  - {fileID: 11400000, guid: a7f3b717793143645b22e56cbc1e6954, type: 2}
+  - {fileID: 11400000, guid: 9b838e234a745694d9f00e0240158e6a, type: 2}
+  - {fileID: 11400000, guid: 7a02f257fcc44bb498f4745d3f002f78, type: 2}
+  - {fileID: 11400000, guid: 647374ce3f3dd5b45bd3ec0f3d4058b3, type: 2}
+  - {fileID: 11400000, guid: 03cef2d8867927142a4ec664a73b8bc0, type: 2}
+  - {fileID: 11400000, guid: 8ecabb2d297f9c242baeb2694bbfdfa3, type: 2}
+  - {fileID: 11400000, guid: 93d1b0eb2996bc04881d9b26a13e69bd, type: 2}
   cueStageBanner:
     m_PersistentCalls:
       m_Calls:
@@ -908,7 +920,7 @@ MonoBehaviour:
         m_CallState: 2
   _stageBeginWaitDelay: 1
   _interstageDelay: 15
-  _numStagesPerWorldIncludingBoss: 5
+  _numStagesPerWorldIncludingBoss: 17
   _upgradeFrame: {fileID: 4616672574126157272, guid: ca89c2fe1b691ea4399361c016e6c9b0, type: 3}
   _uiCanvas: {fileID: 527809549}
   _playerDragArea: {fileID: 125849837}
@@ -1105,6 +1117,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4845a087c1795664d9b6cabe85ec03a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &805294922 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
+  m_PrefabInstance: {fileID: 8275721869407795930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7c161498cb30c449c56b7339e56159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &894162508
@@ -1329,7 +1352,7 @@ Camera:
   far clip plane: 1000
   field of view: 82.4
   orthographic: 1
-  orthographic size: 5.010791
+  orthographic size: 5.0128717
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2020,6 +2043,111 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4ce20a98eef407049b4bbcad52901211, type: 2}
   AvailableUpgrades: []
   ActiveUpgrades: []
+  _critUpgrade:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805294922}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: CritUpgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _firePowerUpgrade:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805294922}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: FirePowerUpgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _rateOfFireUpgrade:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805294922}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: RateOfFireUpgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _extraShotUpgrade:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805294922}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: ExtraShotUpgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _piercingShotUpgrade:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805294922}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: PierceUpgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _wideShotUpgrade:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805294922}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: WideShotUpgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _ricochetUpgrade:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805294922}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: RicochetUpgrade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _rateOfFireLevel1: 0.15
   _rateOfFireLevel2: 0.3
   _rateOfFireLevel3: 0.6

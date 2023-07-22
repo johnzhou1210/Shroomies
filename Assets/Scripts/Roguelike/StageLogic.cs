@@ -76,7 +76,9 @@ public class StageLogic : MonoBehaviour {
                     }
                 }
                 ClusterSettings currClusterSettings = chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>();
-                yield return new WaitForSeconds(UnityEngine.Random.Range(currClusterSettings.NextClusterMinDelay, currClusterSettings.NextClusterMaxDelay));
+                // spawn clusters more aggressively at higher difficulties.
+                float minWait = currClusterSettings.NextClusterMinDelay / ( Mathf.Pow(1.1f, 1.2f*difficulty) - .4f), maxWait = currClusterSettings.NextClusterMaxDelay / (Mathf.Pow(1.1f, 1.2f * difficulty) - .4f);
+                yield return new WaitForSeconds(UnityEngine.Random.Range(minWait, maxWait));
                 currNumClustersElapsed++;
             }
             
