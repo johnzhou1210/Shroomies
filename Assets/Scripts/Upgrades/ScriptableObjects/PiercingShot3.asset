@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: bfceaa8cf19788945be9a8e561166775, type: 3}
   UpgradeName: Penetration III
-  UpgradeDescription: Bullets can now pierce infinitely many targets.
+  UpgradeDescription: Bullets can now pierce <color="red">infinitely many</color>
+    targets.
   Starter: 0
+  UpgradesThatWillBeUnlocked: []

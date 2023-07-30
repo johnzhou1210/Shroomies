@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: FirePower2
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 5ec914026bad24c4696b53ad85e09d25, type: 3}
-  UpgradeName: Lethal Spores II
-  UpgradeDescription: Increased bullet damage by 40%.
+  UpgradeName: Overwhelming Strength II
+  UpgradeDescription: Increases bullet damage by <color="red">40%</color>.
   Starter: 0
+  UpgradesThatWillBeUnlocked:
+  - {fileID: 11400000, guid: 54b92ad65534b9344b7d0b019a7e8923, type: 2}

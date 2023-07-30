@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 4afa3a76caddeca43bc741678bfad83e, type: 3}
   UpgradeName: Critical Hit III
-  UpgradeDescription: Increases base critical hit chance by 80%.
+  UpgradeDescription: Increases base critical hit chance by <color="red"80%</color>.
   Starter: 0
+  UpgradesThatWillBeUnlocked: []

@@ -11,6 +11,7 @@ TagManager:
   - Obstacle
   - UpgradeFrame
   - UpgradeManager
+  - Roguelike Manager
   layers:
   - Default
   - TransparentFX

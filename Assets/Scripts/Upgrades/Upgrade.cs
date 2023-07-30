@@ -8,5 +8,6 @@ public class Upgrade : ScriptableObject
     public Sprite Image;
     public string UpgradeName, UpgradeDescription;
     public bool Starter = true;
+    public Upgrade[] UpgradesThatWillBeUnlocked;
 
 }

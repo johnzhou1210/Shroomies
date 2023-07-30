@@ -11,7 +11,7 @@ public class PlayerShooting : MonoBehaviour
 {
     [HideInInspector] public bool _toggle = false;
     float _cooldown = 1f;
-    [SerializeField] float _baseFireRate = .5f, _baseCritRate = .05f;
+    [SerializeField] float _baseFireRate = .5f, _baseCritRate = .05f, _baseBulletVelocity = 8f;
     [SerializeField] int _baseAttackPower = 3, _basePierceCount = 0;
 
 
@@ -23,7 +23,7 @@ public class PlayerShooting : MonoBehaviour
     public bool BulletsBounce = false;
     public int ExtraBulletUpgradeLevel = 0;
 
-    [SerializeField] BulletType _currentBulletType;
+    public BulletType CurrentBulletType;
 
 
     Animator _animator;
@@ -37,6 +37,12 @@ public class PlayerShooting : MonoBehaviour
         _animator = GetComponent<Animator>();
         _stateManager = GetComponent<PlayerStateManager>();
         _currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
+        FireRate = _baseFireRate;
+        PierceCount = _basePierceCount;
+        BulletVelocity = _baseBulletVelocity;
+        AttackPower = _baseAttackPower;
+        CritRate = _baseCritRate;
+
     }
 
     private void OnDisable() {
@@ -81,7 +87,7 @@ public class PlayerShooting : MonoBehaviour
     IEnumerator fire() {
         // shoot bullets depending on current barrel configuration.
         BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, CritRate, PierceCount, BulletsBounce);
-        _currentBarrelConfiguration.Fire(_currentBulletType, BulletOwnershipType.PLAYER, dmgInfo);
+        _currentBarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.PLAYER, dmgInfo);
         Debug.Log("Shot bullet");
         yield return null;
     }
@@ -112,13 +118,13 @@ public class PlayerShooting : MonoBehaviour
         Debug.Log("recieved " + newNumber);
         switch (newNumber) {
             case 0:
-                _currentBulletType = BulletType.NORMAL; break;
+                CurrentBulletType = BulletType.NORMAL; break;
             case 1:
-                _currentBulletType = BulletType.WIDE1; break;
+                CurrentBulletType = BulletType.WIDE1; break;
             case 2:
-                _currentBulletType = BulletType.WIDE2; break;
+                CurrentBulletType = BulletType.WIDE2; break;
             case 3:
-                _currentBulletType = BulletType.WIDE3; break;
+                CurrentBulletType = BulletType.WIDE3; break;
         }
     }
 

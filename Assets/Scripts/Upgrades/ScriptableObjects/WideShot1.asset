@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 6820b29de9ac17c41bff41a76733de3f, type: 3}
   UpgradeName: Sweeping Shot I
-  UpgradeDescription: Increases shot width moderately.
+  UpgradeDescription: Increases shot width <color="red">moderately</color>.
   Starter: 1
+  UpgradesThatWillBeUnlocked:
+  - {fileID: 11400000, guid: ae20c818d9531f540905f330e498e851, type: 2}

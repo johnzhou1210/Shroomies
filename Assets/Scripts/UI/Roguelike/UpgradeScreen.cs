@@ -10,7 +10,7 @@ public class UpgradeScreen : MonoBehaviour
     Animator _animator;
     bool _selected = false;
     GameObject SelectedButton = null;
-    [SerializeField] GameObject _title, _buttons, _desc;
+    [SerializeField] GameObject _title, _buttons, _desc, _upgradeName, _upgradeBack, _shroomItUp;
     [SerializeField] GameObject _contents;
     public bool Upgrading = false;
 
@@ -28,10 +28,14 @@ public class UpgradeScreen : MonoBehaviour
 
 
     public void onClick(GameObject buttonObj) {
+        _upgradeBack.SetActive(true);
         if  (_selected && SelectedButton == buttonObj) {
             // hide description and title
             setDescription("");
             setTitle("");
+            setUpgradeName("");
+            setShroomItUpVisibility(false);
+            _upgradeBack.SetActive(false);
             foreach (Transform child in _buttons.transform) {
                 child.gameObject.GetComponent<Button>().enabled = false;
                 if (child.gameObject != buttonObj) {
@@ -41,6 +45,10 @@ public class UpgradeScreen : MonoBehaviour
                 }
             }
             // confirm selection
+            // check if shroom it up is selected. if so, charge mulch.
+            if (_shroomItUp.GetComponent<ShroomItUp>().CheckBoxSelected) {
+                GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().decreaseMulch(_shroomItUp.GetComponent<ShroomItUp>().ShroomItUpCost);
+            }
             // play confirm animation on buttonObj
             AudioManager.Instance.PlaySFX("Player Get Upgrade");
             buttonObj.GetComponent<Animator>().Play("UpgradeButtonConfirmed");
@@ -58,7 +66,9 @@ public class UpgradeScreen : MonoBehaviour
             SelectedButton = buttonObj;
             _selected = true;
             setTitle("Tap again to confirm.");
-            setDescription( buttonObj.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.UpgradeDescription);
+            setUpgradeName(buttonObj.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.UpgradeName);
+            setDescription(buttonObj.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.UpgradeDescription);
+            setShroomItUpVisibility(true);
             // play selected animation on selectedButton
             buttonObj.GetComponent<Animator>().Play("UpgradeButtonSelect");
 
@@ -71,6 +81,14 @@ public class UpgradeScreen : MonoBehaviour
 
     void setTitle(string title) {
         _title.GetComponent<TextMeshProUGUI>().text = title;
+    }
+
+    void setUpgradeName(string name) {
+        _upgradeName.GetComponent<TextMeshProUGUI>().text = name;
+    }
+
+    void setShroomItUpVisibility(bool val) {
+        _shroomItUp.SetActive(val);
     }
 
     public void showContents() {
@@ -90,8 +108,10 @@ public class UpgradeScreen : MonoBehaviour
 
     public void onShow() {
         Debug.Log("onshow called");
-        setDescription("");
+        setDescription("Tap on an upgrade to view its description.");
         setTitle("Choose an upgrade!");
+        setShroomItUpVisibility(false);
+        
         GetComponent<Animator>().Play("UpgradeFrameFadeIn");
 
         StartCoroutine(GenerateOptions());

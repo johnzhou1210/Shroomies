@@ -9,6 +9,7 @@ using UnityEngine.Events;
 [System.Serializable]  public class Unity2FloatEvent : UnityEvent<float, float> { }
 [System.Serializable]  public class UnityIntEvent : UnityEvent<int> { }
 [System.Serializable] public class UnityUpgradeEvent : UnityEvent<Upgrade> { }
+[System.Serializable] public class UnityBulletTypeEvent : UnityEvent<BulletType> { }
 
 public class ParameterizedUnityEvents : MonoBehaviour
 {

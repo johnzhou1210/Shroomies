@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: RateOfFire2
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 9d95687369ae81d44b10bd4e2f2b44e0, type: 3}
-  UpgradeName: Mushine Shroom II
-  UpgradeDescription: Attack interval reduced by 30%.
+  UpgradeName: Rapid Fire II
+  UpgradeDescription: Attack interval reduced by <color="red">30%</color>.
   Starter: 0
+  UpgradesThatWillBeUnlocked:
+  - {fileID: 11400000, guid: 42544121af1fc0e4388c27a7da14d40e, type: 2}

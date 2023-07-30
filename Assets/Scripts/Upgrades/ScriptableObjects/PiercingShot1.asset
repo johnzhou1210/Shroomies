@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: bfceaa8cf19788945be9a8e561166775, type: 3}
   UpgradeName: Penetration I
-  UpgradeDescription: Increased base bullet penetration by 1.
+  UpgradeDescription: Increases base bullet penetration by <color="red">1</color>.
   Starter: 1
+  UpgradesThatWillBeUnlocked:
+  - {fileID: 11400000, guid: cd124438a72ed1a4c92704b915b8bf19, type: 2}

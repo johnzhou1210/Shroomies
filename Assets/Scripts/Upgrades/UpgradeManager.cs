@@ -19,6 +19,8 @@ public class UpgradeManager : MonoBehaviour {
     [SerializeField] UnityIntEvent _extraShotUpgrade, _piercingShotUpgrade, _wideShotUpgrade;
     [SerializeField] UnityBoolEvent _ricochetUpgrade;
 
+    [SerializeField] UnityBulletTypeEvent _bulletTypeEvent;
+
     [Space][Space]
     
     [Header("Rate of Fire Upgrades (Enter percent of reduction as decimal)")]
@@ -29,6 +31,8 @@ public class UpgradeManager : MonoBehaviour {
     [SerializeField] float _criticalRateLevel1; [SerializeField] float _criticalRateLevel2; [SerializeField] float _criticalRateLevel3;
     [Header("Piercing Shot Upgrades (Enter number of targets to pierce)")]
     [SerializeField] int _piercingShotLevel1; [SerializeField] int _piercingShotLevel2; [SerializeField] int _piercingShotLevel3;
+
+    
 
     private void Start() {
         AvailableUpgrades = new List<Upgrade>();
@@ -45,22 +49,14 @@ public class UpgradeManager : MonoBehaviour {
         if (ActiveUpgrades.Find(upg => upg.UpgradeName.Equals(upgrade.UpgradeName)) == null) {
             ActiveUpgrades.Add(upgrade);
             AvailableUpgrades.Remove(upgrade);
-            // special case for bouncing bullets to be added to pool: Player got the SpreadShot2 upgrade.
-            if (upgrade.UpgradeName.Equals("Spread Shot II")) {
-                AvailableUpgrades.Add(_upgrades.Find(upg => upg.UpgradeName.Equals("Ricochet")));
+            // dynamically add upgrades to pool that will be unlocked
+            foreach (Upgrade newEntry in upgrade.UpgradesThatWillBeUnlocked) {
+                if (AvailableUpgrades.Find(upg => upg.UpgradeName == newEntry.UpgradeName) == null) {
+                    AvailableUpgrades.Add(newEntry);
+                }
             }
-
-            // note that it's the name, not the upgrade name.
-            if (upgrade.name.Contains("1") || upgrade.name.Contains("2")) {
-                // trim string part
-                string left = upgrade.name.Substring(0, upgrade.name.Length - 1);
-                int currUpgradeLevel = int.Parse(upgrade.name.Substring(upgrade.name.Length - 1));
-                AvailableUpgrades.Add(_upgrades.Find(upg => upg.name.Equals(left + ((currUpgradeLevel + 1).ToString()))));
-            }
-
             // apply upgrade
             applyUpgrade(upgrade);
-
         } else {
             // upgrade could not be found!
             Debug.LogError("The upgrade " + upgrade.UpgradeName + " could not be found!");
@@ -102,11 +98,15 @@ public class UpgradeManager : MonoBehaviour {
             /* Extra Shot Upgrades */
             case "ExtraShot":
                 Debug.Log("upgraded extrashot");
-                _extraShotUpgrade.Invoke(right); break;
+                _extraShotUpgrade.Invoke(right);
+                _bulletTypeEvent.Invoke(GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerShooting>().CurrentBulletType);
+                break;
             /* Wide Shot Upgrades */
             case "WideShot":
                 Debug.Log("upgraded wideshot");
-                _wideShotUpgrade.Invoke(right); break;
+                _wideShotUpgrade.Invoke(right);
+                _bulletTypeEvent.Invoke(GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerShooting>().CurrentBulletType);
+                break;
 
 
             /* Ricochet Upgrade */

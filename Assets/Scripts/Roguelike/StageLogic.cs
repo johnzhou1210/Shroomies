@@ -9,19 +9,20 @@ public class StageLogic : MonoBehaviour {
     [SerializeField] ClusterCollection[] _clusterCollections;
 
     [SerializeField] UnityStringEvent cueStageBanner;
-    [SerializeField] UnityIntEvent updateMulch;
+    [SerializeField] UnityIntEvent updateMulch, shroomieUpdateCost;
 
     [SerializeField] float _stageBeginWaitDelay;
     [SerializeField] float _interstageDelay;
     [SerializeField] int _numStagesPerWorldIncludingBoss;
-    [SerializeField] GameObject _upgradeFrame, _uiCanvas, _playerDragArea;
+    [SerializeField] GameObject _upgradeFrame, _uiCanvas, _playerDragArea, _buyShroomieButton;
 
     [SerializeField] PlayerTapHandler _tapHandler;
 
     public int WorldNumber = 1;
     public int StageNumber = 1;
 
-    int accumulatedMulch = 0;
+    public int AccumulatedMulch = 0;
+    public int ShroomieBaseCost = 500;
 
     IEnumerator BeginRoguelikeRun() {
         WorldNumber = 1; StageNumber = 1;
@@ -48,19 +49,23 @@ public class StageLogic : MonoBehaviour {
              * 3-3: difficulty of (3*2)+3 = 9
              */
 
+            int difficulty = (WorldNumber * 2) + StageNumber;
+
             setPlayerControls(true);
             GameObject.FindWithTag("Player").GetComponent<PlayerShooting>()._toggle = true;
             //GameObject.FindWithTag("Player").GetComponent<PlayerShooting>().ExtraBulletUpgradeLevel = StageNumber - 1; // for testing only.
-
 
             AudioManager.Instance.PlayMusic("Shroomies Next Spread");
             cueStageBanner.Invoke(WorldNumber + "-" + StageNumber);
             yield return new WaitForSeconds(_stageBeginWaitDelay);
 
-            int difficulty = (WorldNumber * 2) + StageNumber;
+            // allow player to buy shroomies
+            _buyShroomieButton.SetActive(true);
+            _buyShroomieButton.GetComponent<Animator>().Play("ShroomieButtonFadeIn");
+            shroomieUpdateCost.Invoke((int)((1 + (difficulty / 10f)) * ShroomieBaseCost) - 150); // cost scales on difficulty.
+
             int numClustersToSpawn = (int)Mathf.Ceil(UnityEngine.Random.Range(2 * Mathf.Pow(difficulty, 1.1f), 2 * Mathf.Pow(difficulty, 1.1f) + 2));
             int currNumClustersElapsed = 0;
-
             while (currNumClustersElapsed < numClustersToSpawn) {
                 // choose which collection to use to spawn with
                 ClusterCollection chosenCollection = Array.Find(_clusterCollections, c => c.WorldNumber == WorldNumber && c.StageNumber == StageNumber);
@@ -68,7 +73,7 @@ public class StageLogic : MonoBehaviour {
                 GameObject chosenClusterPrefabToSpawn = Instantiate(chosenCollection.Clusters[UnityEngine.Random.Range(0, chosenCollection.Clusters.Length)], GameObject.FindWithTag("EnemyContainer").transform);
                 // scale cluster speed depending on difficulty
                 chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed *= (1 + (difficulty / 10f) - .15f);
-                Debug.Log("speed set to " + chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed + " by multiplying by " + (1 + (difficulty / 10f) -.15f) + " where difficulty = " + difficulty);
+                Debug.Log("speed set to " + chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed + " by multiplying by " + (1 + (difficulty / 10f) - .15f) + " where difficulty = " + difficulty);
 
                 foreach (Transform child in chosenClusterPrefabToSpawn.transform) {
                     // attach needed event connections:
@@ -82,26 +87,28 @@ public class StageLogic : MonoBehaviour {
                 }
                 ClusterSettings currClusterSettings = chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>();
                 // spawn clusters more aggressively at higher difficulties.
-                float minWait = currClusterSettings.NextClusterMinDelay / ( Mathf.Pow(1.1f, 1.2f*difficulty) - .4f), maxWait = currClusterSettings.NextClusterMaxDelay / (Mathf.Pow(1.1f, 1.2f * difficulty) - .4f);
+                float minWait = currClusterSettings.NextClusterMinDelay / (Mathf.Pow(1.1f, 1.2f * difficulty) - .4f), maxWait = currClusterSettings.NextClusterMaxDelay / (Mathf.Pow(1.1f, 1.2f * difficulty) - .4f);
                 yield return new WaitForSeconds(UnityEngine.Random.Range(minWait, maxWait));
                 currNumClustersElapsed++;
             }
-            
+
             //yield return new WaitForSeconds(_interstageDelay);
             // wait until all enemies are dead first
             yield return new WaitUntil(() => GameObject.FindWithTag("EnemyContainer").transform.childCount == 0);
             setPlayerControls(false);
+            _buyShroomieButton.GetComponent<Animator>().Play("ShroomieButtonFadeOut");
             GameObject.FindWithTag("Player").GetComponent<PlayerShooting>()._toggle = false;
             AudioManager.Instance.PlayMusic("Where To Infect");
             if (StageNumber < _numStagesPerWorldIncludingBoss) {
                 // open up normal upgrades
                 GameObject upgradeFrame = Instantiate(_upgradeFrame, _uiCanvas.transform);
+                upgradeFrame.transform.SetAsFirstSibling();
                 yield return new WaitUntil(() => upgradeFrame.activeInHierarchy == false);
                 GameObject.Destroy(upgradeFrame);
             } else {
                 // open up special shop
             }
-            
+
             StageNumber++;
 
         }
@@ -116,9 +123,14 @@ public class StageLogic : MonoBehaviour {
 
     public void increaseMulch(int amount) {
         //Debug.Log("in here " + amount);
-        accumulatedMulch += amount;
+        AccumulatedMulch += amount;
         AudioManager.Instance.PlaySFX("Player Get Mulch");
-        updateMulch.Invoke(accumulatedMulch); 
+        updateMulch.Invoke(AccumulatedMulch);
+    }
+
+    public void decreaseMulch(int amount) {
+        AccumulatedMulch -= amount;
+        updateMulch.Invoke(AccumulatedMulch);
     }
 
     public void setPlayerDrag(bool newVal) {
@@ -130,6 +142,7 @@ public class StageLogic : MonoBehaviour {
         _tapHandler.enabled = newVal;
     }
 
-  
+
+
 
 }

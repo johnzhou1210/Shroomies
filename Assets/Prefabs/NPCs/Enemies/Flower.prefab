@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 10
-  _mulchReward: 3
+  _mulchReward: 10
   onDeath:
     m_PersistentCalls:
       m_Calls:

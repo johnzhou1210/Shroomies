@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ExtraShot3
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 3384480785b085148a971312edbb9dcf, type: 3}
-  UpgradeName: Spread Shot III
-  UpgradeDescription: Player now shoots 5 bullets per shot.
+  UpgradeName: Quintuple Shot
+  UpgradeDescription: Player now shoots <color="red">5</color> bullets per shot.
   Starter: 0
+  UpgradesThatWillBeUnlocked: []
