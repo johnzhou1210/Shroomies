@@ -16,8 +16,6 @@ public class StageLogic : MonoBehaviour {
     [SerializeField] int _numStagesPerWorldIncludingBoss;
     [SerializeField] GameObject _upgradeFrame, _uiCanvas, _playerDragArea, _buyShroomieButton;
 
-    [SerializeField] PlayerTapHandler _tapHandler;
-
     public int WorldNumber = 1;
     public int StageNumber = 1;
 
@@ -52,7 +50,7 @@ public class StageLogic : MonoBehaviour {
             int difficulty = (WorldNumber * 2) + StageNumber;
 
             setPlayerControls(true);
-            toggleShooting(true);
+            //toggleShooting(true);
             //GameObject.FindWithTag("Player").GetComponent<PlayerShooting>().ExtraBulletUpgradeLevel = StageNumber - 1; // for testing only.
 
             AudioManager.Instance.PlayMusic("Shroomies Next Spread");
@@ -81,7 +79,7 @@ public class StageLogic : MonoBehaviour {
                     if (child.CompareTag("Enemy")) {
                         EnemyOnHit enemyOnHit = child.GetComponent<EnemyOnHit>();
                         enemyOnHit.giveMulch.AddListener(increaseMulch);
-                        enemyOnHit.MaxHealth = (int)(enemyOnHit.MaxHealth * (Mathf.Pow(1.1f, 1.2f * difficulty) - .4f));
+                        enemyOnHit.MaxHealth = (int)(enemyOnHit.MaxHealth * (Mathf.Pow(1.01f, 1.02f * difficulty) - .4f));
                         enemyOnHit.setCurrHealthToMaxHealth();
                     }
                 }
@@ -139,7 +137,6 @@ public class StageLogic : MonoBehaviour {
 
     public void setPlayerControls(bool newVal) {
         setPlayerDrag(newVal);
-        _tapHandler.enabled = newVal;
     }
 
     public void onPlayerDeath() {
@@ -153,7 +150,7 @@ public class StageLogic : MonoBehaviour {
     }
 
     void toggleShooting(bool val) {
-        GameObject.FindWithTag("Player").GetComponent<PlayerShooting>()._toggle = val;
+        GameObject.FindWithTag("Player").GetComponent<PlayerShooting>().Toggle = val;
         GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomiesUpgradeController>().Toggle = val;
     }
 

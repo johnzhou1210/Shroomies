@@ -3,12 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PlayerStateManager))]
 public class PlayerShooting : MonoBehaviour {
-    [HideInInspector] public bool _toggle = false;
+    public bool Toggle = false;
     float _cooldown = 1f;
     [SerializeField] float _baseFireRate = .5f, _baseCritRate = .05f, _baseBulletVelocity = 8f;
     [SerializeField] int _baseAttackPower = 3, _basePierceCount = 0;
@@ -33,8 +32,7 @@ public class PlayerShooting : MonoBehaviour {
 
     private void Start() {
         ShroomiesController = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomiesUpgradeController>();
-        PlayerTapHandler.Instance.OnSingleTap += onSingleTap;
-        PlayerTapHandler.Instance.OnDoubleTap += onDoubleTap;
+
         _animator = GetComponent<Animator>();
         _stateManager = GetComponent<PlayerStateManager>();
         _currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
@@ -44,6 +42,8 @@ public class PlayerShooting : MonoBehaviour {
         AttackPower = _baseAttackPower;
         CritRate = _baseCritRate;
 
+        ShroomiesController.AttackPower = AttackPower / 5;
+
     }
 
     private void OnDisable() {
@@ -51,18 +51,10 @@ public class PlayerShooting : MonoBehaviour {
         // also deactivate all bullets in pool?
     }
 
-    void onSingleTap() {
-
-    }
-
-    void onDoubleTap() {
-        //Debug.Log("In here");
-        _toggle = !_toggle;
-    }
 
     private void Update() {
         _cooldown = Mathf.Clamp(_cooldown - Time.deltaTime, 0, FireRate);
-        if (_toggle && _cooldown <= 0f && _stateManager.CurrentState == _stateManager.AliveState) {
+        if (Toggle && _cooldown <= 0f && _stateManager.CurrentState == _stateManager.AliveState) {
             // shoot bullet
             StartCoroutine(fireAnim());
             // reset cooldown
@@ -96,7 +88,7 @@ public class PlayerShooting : MonoBehaviour {
     public void RateOfFireUpgrade(float reduction, bool shroomItUp) {
         FireRate = _baseFireRate * (1 - reduction);
         if (shroomItUp) {
-            ShroomiesController.FireRate = FireRate * 2;
+            ShroomiesController.FireRate = FireRate * 4;
         }
 
     }
@@ -105,7 +97,7 @@ public class PlayerShooting : MonoBehaviour {
         AttackPower = (int)Mathf.Ceil(_baseAttackPower * (1 + increase));
         if (shroomItUp) {
 
-            ShroomiesController.AttackPower = AttackPower / 7;
+            ShroomiesController.AttackPower = AttackPower / 4;
         }
     }
 
@@ -127,17 +119,18 @@ public class PlayerShooting : MonoBehaviour {
     public void ExtraShotUpgrade(Int32 newNumber, bool shroomItUp) {
         Debug.Log("recieved " + newNumber);
         ExtraBulletUpgradeLevel = newNumber;
-        float divFactor = 1;
+        float multFactor = 1;
         switch (newNumber) {
-            case 0: divFactor = 1f; break;
-            case 1: divFactor = 2f; break;
-            case 2: divFactor = 3f; break;
-            case 3: divFactor = 5f; break;
+            case 0: multFactor = 1f; break;
+            case 1: multFactor =  (1f / 1.75f); break;
+            case 2: multFactor = (1f / 1.75f); break;
+            case 3: multFactor = (1f / 1.75f); break;
         }
-        AttackPower = (int)Mathf.Ceil(AttackPower / divFactor);
+        AttackPower = (int)Mathf.Ceil(AttackPower * multFactor);
         if (shroomItUp) {
             ShroomiesController.ExtraBulletUpgradeLevel = ExtraBulletUpgradeLevel;
-            ShroomiesController.AttackPower = (int)Mathf.Ceil(ShroomiesController.AttackPower / divFactor);
+            Debug.Log(AttackPower + " divided by 4");
+            ShroomiesController.AttackPower = AttackPower / 4;
         }
     }
 

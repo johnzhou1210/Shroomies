@@ -57,73 +57,73 @@ public class Bullet : MonoBehaviour {
 
 
     void OnCollisionEnter2D(Collision2D collision) {
-        GameObject hitTarget = collision.gameObject;
-        if (hitTarget.gameObject.CompareTag("Enemy")) {
-            hitTarget.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        }
-
-        if (hitTarget.CompareTag("Enemy") && (Ownership == BulletOwnershipType.ENEMY || Ownership == BulletOwnershipType.ALLY)
-            ||
-            hitTarget.CompareTag("Player") && (Ownership == BulletOwnershipType.PLAYER || Ownership == BulletOwnershipType.ALLY)) {
-            // do nothing
-        } else {
-            if (_debounce == false) {
-                // play hit sound
-                _debounce = true;
+        if (transform.position.y < 5.1f) {
+            GameObject hitTarget = collision.gameObject;
+            if (hitTarget.gameObject.CompareTag("Enemy")) {
+                hitTarget.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
-
-            if (hitTarget.CompareTag("Player") || hitTarget.CompareTag("Enemy")) {
-                IDamageable onHit = hitTarget.CompareTag("Player") ? hitTarget.gameObject.GetComponent<PlayerOnHit>() : hitTarget.GetComponent<EnemyOnHit>();
-                bool success = HitTargets.Add(onHit);
-                if (success) {
-                    // deal damage, account for crit rate.
-                    if (Random.Range(0f, 1f) <= _critRate) {
-                        _damage *= 2;
-                        Instantiate(_critEffect, collision.transform.position, Quaternion.identity);
-                        AudioManager.Instance.PlaySFX("Critical Hit Sound");
-                        // do camera shake
-                        Camera.main.GetComponent<CameraShaker>().Shake(.0225f, .1f);
-                    }
-                    onHit.takeDamage(_damage);
-                    Debug.Log(hitTarget.name + " got hit");
-                }
-                Debug.Log(hitTarget.name + " took " + _damage + " damage!");
-
-                
-
-                if (_pierceLimit <= 0 || _pierceCounter >= _pierceLimit) {
-                    Destroy();
-                } else {
-                    Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-                    _pierceCounter++;
-                    // ignore collisions with this target from now on
-                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
-                }
-               
-            } else if (hitTarget.CompareTag("Obstacle")) {
-                // hit obstacle
-            } else if (_reflect && !hitTarget.CompareTag("Player") && !hitTarget.CompareTag("Enemy")) {
-                // bounce off contact point
-                ContactPoint2D contact = collision.contacts[0];
-                // reflect our old velocity off the contact point's normal vector
-                Vector2 reflectedVelocity = Vector3.Reflect(_lastVelocity, contact.normal);
-                // assign the reflected velocity back to the rigidbody
-                _rigidBody.velocity = reflectedVelocity;
-                // rotate the object by the same ammount we changed its velocity
-                Quaternion rotation = Quaternion.FromToRotation(_lastVelocity, reflectedVelocity);
-                transform.rotation = rotation * transform.rotation;
-                // play bounce sound
-                AudioManager.Instance.PlayShootingSFX("Bullet Bounce Sound");
+            if (hitTarget.CompareTag("Enemy") && (Ownership == BulletOwnershipType.ENEMY || Ownership == BulletOwnershipType.ALLY)
+                ||
+                hitTarget.CompareTag("Player") && (Ownership == BulletOwnershipType.PLAYER || Ownership == BulletOwnershipType.ALLY)) {
+                // do nothing
             } else {
-                // disintegrate bullet
-                Destroy();
+                if (_debounce == false) {
+                    // play hit sound
+                    _debounce = true;
+                }
 
+                if (hitTarget.CompareTag("Player") || hitTarget.CompareTag("Enemy")) {
+                    IDamageable onHit = hitTarget.CompareTag("Player") ? hitTarget.gameObject.GetComponent<PlayerOnHit>() : hitTarget.GetComponent<EnemyOnHit>();
+                    bool success = HitTargets.Add(onHit);
+                    if (success) {
+                        // deal damage, account for crit rate.
+                        if (Random.Range(0f, 1f) <= _critRate) {
+                            _damage *= 2;
+                            Instantiate(_critEffect, collision.transform.position, Quaternion.identity);
+                            AudioManager.Instance.PlaySFX("Critical Hit Sound");
+                            // do camera shake
+                            Camera.main.GetComponent<CameraShaker>().Shake(.0225f, .1f);
+                        }
+                        onHit.takeDamage(_damage);
+                        Debug.Log(hitTarget.name + " got hit");
+                    }
+                    Debug.Log(hitTarget.name + " took " + _damage + " damage!");
+
+
+
+                    if (_pierceLimit <= 0 || _pierceCounter >= _pierceLimit) {
+                        Destroy();
+                    } else {
+                        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+                        _pierceCounter++;
+                        // ignore collisions with this target from now on
+                        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
+                    }
+
+                } else if (hitTarget.CompareTag("Obstacle")) {
+                    // hit obstacle
+                } else if (_reflect && !hitTarget.CompareTag("Player") && !hitTarget.CompareTag("Enemy")) {
+                    // bounce off contact point
+                    ContactPoint2D contact = collision.contacts[0];
+                    // reflect our old velocity off the contact point's normal vector
+                    Vector2 reflectedVelocity = Vector3.Reflect(_lastVelocity, contact.normal);
+                    // assign the reflected velocity back to the rigidbody
+                    _rigidBody.velocity = reflectedVelocity;
+                    // rotate the object by the same ammount we changed its velocity
+                    Quaternion rotation = Quaternion.FromToRotation(_lastVelocity, reflectedVelocity);
+                    transform.rotation = rotation * transform.rotation;
+                    // play bounce sound
+                    AudioManager.Instance.PlayShootingSFX("Bullet Bounce Sound");
+                } else {
+                    // disintegrate bullet
+                    Destroy();
+
+                }
             }
+        } else {
+            // ignore collisions with this target from now on
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
         }
-
-
-
-
     }
 
 

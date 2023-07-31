@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Critical Hit Sound
   AudioClip: {fileID: 8300000, guid: 021486b451994ea4cae0dc18b40455ec, type: 3}
   Loop: 0
-  Volume: 0.28
+  Volume: 0.16
   Pitch: 1
   Cooldown: 0.001
-  LastTimePlayed: 86.32
+  LastTimePlayed: 287

@@ -22,28 +22,48 @@ public class DoubleShotBarrelWidthSpacing : MonoBehaviour
         Debug.Log(_leftBarrel); Debug.Log(_rightBarrel);
         // determine if current shroomie is a player or a shroomie
         GameObject prefab = transform.parent.parent.gameObject;
-        float scaleFactor = .075f;
         if (prefab.CompareTag("Shroomie")) {
-            scaleFactor *= 2.15f;
+            switch (bulletType) {
+                case BulletType.NORMAL:
+                    _leftBarrel.localPosition = new Vector3(-.15f, 0, 0);
+                    _rightBarrel.localPosition = new Vector3(.15f, 0, 0);
+                    break;
+                case BulletType.WIDE1:
+                    _leftBarrel.localPosition = new Vector3(-.15f, 0, 0);
+                    _rightBarrel.localPosition = new Vector3(.15f, 0, 0);
+                    break;
+                case BulletType.WIDE2:
+                    _leftBarrel.localPosition = new Vector3(-.22f, 0, 0);
+                    _rightBarrel.localPosition = new Vector3(.22f, 0, 0);
+                    break;
+                case BulletType.WIDE3:
+                    _leftBarrel.localPosition = new Vector3(-.29f, 0, 0);
+                    _rightBarrel.localPosition = new Vector3(.29f, 0, 0);
+                    break;
+            }
+        } else {
+            switch (bulletType) {
+                case BulletType.NORMAL:
+                    _leftBarrel.localPosition = new Vector3(-.075f, 0, 0);
+                    _rightBarrel.localPosition = new Vector3(.075f, 0, 0);
+                    break;
+                case BulletType.WIDE1:
+                    _leftBarrel.localPosition = new Vector3(-.075f, 0, 0);
+                    _rightBarrel.localPosition = new Vector3(.075f, 0, 0);
+                    break;
+                case BulletType.WIDE2:
+                    _leftBarrel.localPosition = new Vector3(-.15f, 0, 0);
+                    _rightBarrel.localPosition = new Vector3(.15f, 0, 0);
+                    break;
+                case BulletType.WIDE3:
+                    _leftBarrel.localPosition = new Vector3(-.225f, 0, 0);
+                    _rightBarrel.localPosition = new Vector3(.225f, 0, 0);
+                    break;
+            }
         }
-        switch (bulletType) {
-            case BulletType.NORMAL:
-                _leftBarrel.localPosition = new Vector3(-scaleFactor, 0, 0);
-                _rightBarrel.localPosition = new Vector3(scaleFactor, 0, 0);
-                break;
-            case BulletType.WIDE1:
-                _leftBarrel.localPosition = new Vector3(-scaleFactor, 0, 0);
-                _rightBarrel.localPosition = new Vector3(scaleFactor, 0, 0);
-                break;
-            case BulletType.WIDE2:
-                _leftBarrel.localPosition = new Vector3(-2 * scaleFactor, 0, 0);
-                _rightBarrel.localPosition = new Vector3(2 * scaleFactor, 0, 0);
-                break;
-            case BulletType.WIDE3:
-                _leftBarrel.localPosition = new Vector3(-3 * scaleFactor, 0, 0);
-                _rightBarrel.localPosition = new Vector3(3 * scaleFactor, 0, 0);
-                break;
-        }
+
+
+        
         
     }
 }

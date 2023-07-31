@@ -47,11 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7342b0f1e35f8d64a8874fad8d7df75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocity: 10
-  CritRate: 0
-  Reflect: 1
-  Damage: 1
-  PierceLimit: 1
   Type: 0
   Ownership: 0
   _explosionPrefab: {fileID: 5903540695073766936, guid: 2ae963d9384bc574e939de7427dc0796, type: 3}
@@ -121,7 +116,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0

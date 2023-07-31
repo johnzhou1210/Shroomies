@@ -22,12 +22,10 @@ public class ShroomiesUpgradeController : MonoBehaviour
     public UnityEvent RequestShroomiesUpgradeUpdate;
 
     private void OnEnable() {
-        Toggle = GameObject.FindWithTag("Player").GetComponent<PlayerShooting>()._toggle;
+        Toggle = GameObject.FindWithTag("Player").GetComponent<PlayerShooting>().Toggle;
     }
 
     private void Start() {
-        PlayerTapHandler.Instance.OnSingleTap += onSingleTap;
-        PlayerTapHandler.Instance.OnDoubleTap += onDoubleTap;
     }
 
     void onSingleTap() {

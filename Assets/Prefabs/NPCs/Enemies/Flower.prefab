@@ -242,7 +242,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 8999955857191075688}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c0827b6ec4e7496419f2e919f98649f0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 1024
@@ -328,10 +328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c656f70339094f2408feb0e62f20e452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 1.85
-  BulletVelocity: 2.97
+  FireRate: 2
+  BulletVelocity: 3
   AttackPower: 1
-  BulletsBounce: 1
+  BulletsBounce: 0
   ObstaclePierceCount: 0
   _currentBulletType: 0
   _barrelConfiguration: {fileID: 7212329881097344703}
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683f9dd7dfd0aab46a9deb6c7d471561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 140
+  MaxHealth: 120
   _mulchReward: 10
   onDeath:
     m_PersistentCalls:

@@ -25,9 +25,9 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             onDeath.Invoke();
             giveMulch.Invoke(_mulchReward);
             AudioManager.Instance.PlaySFX("Enemy Death Sound");
-            StartCoroutine(Flicker(3, .25f));
+            StartCoroutine(Flicker(3, .24f));
         } else {
-            StartCoroutine(Flicker(1, .25f));
+            StartCoroutine(Flicker(1, .12f));
         }
         
     }
