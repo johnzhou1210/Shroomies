@@ -14,7 +14,7 @@ public class UpgradeScreen : MonoBehaviour
     [SerializeField] GameObject _contents;
     public bool Upgrading = false;
 
-    public UnityUpgradeEvent onPlayerUpgrade;
+    public UnityUpgradeBoolEvent onPlayerUpgrade;
 
 
     private void OnEnable() {
@@ -26,6 +26,14 @@ public class UpgradeScreen : MonoBehaviour
         onPlayerUpgrade.AddListener(GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().OnUpgrade); 
     }
 
+    public void ShowShroomiesDescription(bool val) {
+        if (val) {
+            setDescription(SelectedButton.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.ShroomItUpDescription);
+        } else {
+            setDescription(SelectedButton.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.UpgradeDescription);
+        }
+        
+    }
 
     public void onClick(GameObject buttonObj) {
         _upgradeBack.SetActive(true);
@@ -54,7 +62,7 @@ public class UpgradeScreen : MonoBehaviour
             buttonObj.GetComponent<Animator>().Play("UpgradeButtonConfirmed");
             GetComponent<Animator>().Play("UpgradeFrameFadeOut");
             // fire player upgrade event
-            onPlayerUpgrade.Invoke(buttonObj.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade);
+            onPlayerUpgrade.Invoke(buttonObj.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade, _shroomItUp.GetComponent<ShroomItUp>().CheckBoxSelected);
 
             SelectedButton = null;
         } else {
@@ -64,10 +72,12 @@ public class UpgradeScreen : MonoBehaviour
             }
             // choose selection
             SelectedButton = buttonObj;
+            // update description depending on whether checkbox is checked.
+            ShowShroomiesDescription(_shroomItUp.GetComponent<ShroomItUp>().CheckBoxSelected);
             _selected = true;
             setTitle("Tap again to confirm.");
             setUpgradeName(buttonObj.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.UpgradeName);
-            setDescription(buttonObj.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.UpgradeDescription);
+            //setDescription(buttonObj.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.UpgradeDescription);
             setShroomItUpVisibility(true);
             // play selected animation on selectedButton
             buttonObj.GetComponent<Animator>().Play("UpgradeButtonSelect");

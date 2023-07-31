@@ -15,6 +15,7 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 3384480785b085148a971312edbb9dcf, type: 3}
   UpgradeName: Triple Shot
   UpgradeDescription: Player now shoots <color="red">3</color> bullets per shot.
+  ShroomItUpDescription: <color="red">Same effect</color> is applied to Shroomies.
   Starter: 0
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: 6d1dad92aabd91043af1cdeb0c638178, type: 2}

@@ -259,9 +259,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2273672081721156826}
   - component: {fileID: 2092685625479184330}
+  - component: {fileID: 1702996903809359654}
   m_Layer: 8
   m_Name: Shroomie
-  m_TagString: Untagged
+  m_TagString: Shroomie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,7 +282,7 @@ Transform:
   - {fileID: 1405508185264982069}
   - {fileID: 2574935805979654409}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2092685625479184330
 Animator:
@@ -304,6 +305,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1702996903809359654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552111602614107038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adceaf81dd6bf3b45b73bd194ba34355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toggle: 1
+  _barrelConfigurations:
+  - {fileID: 4939033562159584481}
+  - {fileID: 2998963782747751867}
+  - {fileID: 7667464956768115524}
+  - {fileID: 4092978034706864052}
 --- !u!1 &3800709620398495096
 GameObject:
   m_ObjectHideFlags: 0

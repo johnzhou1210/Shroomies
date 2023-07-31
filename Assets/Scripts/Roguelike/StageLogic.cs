@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
-
+using UnityEngine.SceneManagement;
 
 public class StageLogic : MonoBehaviour {
     [SerializeField] ClusterCollection[] _clusterCollections;
@@ -52,7 +52,7 @@ public class StageLogic : MonoBehaviour {
             int difficulty = (WorldNumber * 2) + StageNumber;
 
             setPlayerControls(true);
-            GameObject.FindWithTag("Player").GetComponent<PlayerShooting>()._toggle = true;
+            toggleShooting(true);
             //GameObject.FindWithTag("Player").GetComponent<PlayerShooting>().ExtraBulletUpgradeLevel = StageNumber - 1; // for testing only.
 
             AudioManager.Instance.PlayMusic("Shroomies Next Spread");
@@ -97,7 +97,7 @@ public class StageLogic : MonoBehaviour {
             yield return new WaitUntil(() => GameObject.FindWithTag("EnemyContainer").transform.childCount == 0);
             setPlayerControls(false);
             _buyShroomieButton.GetComponent<Animator>().Play("ShroomieButtonFadeOut");
-            GameObject.FindWithTag("Player").GetComponent<PlayerShooting>()._toggle = false;
+            toggleShooting(false);
             AudioManager.Instance.PlayMusic("Where To Infect");
             if (StageNumber < _numStagesPerWorldIncludingBoss) {
                 // open up normal upgrades
@@ -142,7 +142,20 @@ public class StageLogic : MonoBehaviour {
         _tapHandler.enabled = newVal;
     }
 
+    public void onPlayerDeath() {
+        setPlayerControls(false);
+        _buyShroomieButton.SetActive(false);
+        Invoke("restartGame", 13f);
+    }
 
+    void restartGame() {
+        SceneManager.LoadScene(0);
+    }
+
+    void toggleShooting(bool val) {
+        GameObject.FindWithTag("Player").GetComponent<PlayerShooting>()._toggle = val;
+        GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomiesUpgradeController>().Toggle = val;
+    }
 
 
 }

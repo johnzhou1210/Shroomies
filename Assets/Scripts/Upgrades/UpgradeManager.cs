@@ -12,14 +12,15 @@ public class UpgradeManager : MonoBehaviour {
     [Header("Debug")]
     public List<Upgrade> AvailableUpgrades;
     public List<Upgrade> ActiveUpgrades;
-    
+    public List<Upgrade> ShroomItUpUpgrades;
+
     [Space][Space]
 
-    [SerializeField] UnityFloatEvent _critUpgrade, _firePowerUpgrade, _rateOfFireUpgrade;
-    [SerializeField] UnityIntEvent _extraShotUpgrade, _piercingShotUpgrade, _wideShotUpgrade;
-    [SerializeField] UnityBoolEvent _ricochetUpgrade;
+    [SerializeField] UnityFloatBoolEvent _critUpgrade, _firePowerUpgrade, _rateOfFireUpgrade;
+    [SerializeField] UnityIntBoolEvent _extraShotUpgrade, _piercingShotUpgrade, _wideShotUpgrade;
+    [SerializeField] Unity2BoolEvent _ricochetUpgrade;
 
-    [SerializeField] UnityBulletTypeEvent _bulletTypeEvent;
+    public UnityBulletTypeEvent BulletTypeEvent;
 
     [Space][Space]
     
@@ -41,13 +42,16 @@ public class UpgradeManager : MonoBehaviour {
                 AvailableUpgrades.Add(upgrade);
             }
         }
-
         ActiveUpgrades = new List<Upgrade>();
+        ShroomItUpUpgrades = new List<Upgrade>();
     }
 
-    public void OnUpgrade(Upgrade upgrade) {
+    public void OnUpgrade(Upgrade upgrade, bool shroomItUp) {
         if (ActiveUpgrades.Find(upg => upg.UpgradeName.Equals(upgrade.UpgradeName)) == null) {
             ActiveUpgrades.Add(upgrade);
+            if (shroomItUp) {
+                ShroomItUpUpgrades.Add(upgrade);
+            }
             AvailableUpgrades.Remove(upgrade);
             // dynamically add upgrades to pool that will be unlocked
             foreach (Upgrade newEntry in upgrade.UpgradesThatWillBeUnlocked) {
@@ -56,7 +60,12 @@ public class UpgradeManager : MonoBehaviour {
                 }
             }
             // apply upgrade
-            applyUpgrade(upgrade);
+            applyUpgrade(upgrade, shroomItUp);
+            // send event to upgrade shroomies
+            if (shroomItUp) {
+                Debug.Log("Invoking shroomie upgrade update");
+                GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomiesUpgradeController>().RequestShroomiesUpgradeUpdate.Invoke();
+            }
         } else {
             // upgrade could not be found!
             Debug.LogError("The upgrade " + upgrade.UpgradeName + " could not be found!");
@@ -64,7 +73,7 @@ public class UpgradeManager : MonoBehaviour {
         }
     }
 
-    void applyUpgrade(Upgrade upgrade) {
+    void applyUpgrade(Upgrade upgrade, bool shroomItUp) {
         // trim string part
         
         int right;
@@ -76,43 +85,43 @@ public class UpgradeManager : MonoBehaviour {
             /* Critical Hit Upgrades */
             case "Critical":
                 Debug.Log("upgraded critical");
-                switch (right) { case 1: _critUpgrade.Invoke(_criticalRateLevel1); break; case 2: _critUpgrade.Invoke(_criticalRateLevel2); break; case 3: _critUpgrade.Invoke(_criticalRateLevel3); break; }
+                switch (right) { case 1: _critUpgrade.Invoke(_criticalRateLevel1, shroomItUp); break; case 2: _critUpgrade.Invoke(_criticalRateLevel2, shroomItUp); break; case 3: _critUpgrade.Invoke(_criticalRateLevel3, shroomItUp); break; }
                 break;
             /* Fire Power Upgrades */
             case "FirePower":
                 Debug.Log("upgraded firepower");
-                switch (right) { case 1: _firePowerUpgrade.Invoke(_firePowerLevel1); break; case 2: _firePowerUpgrade.Invoke(_firePowerLevel2); break; case 3: _firePowerUpgrade.Invoke(_firePowerLevel3); break; }
+                switch (right) { case 1: _firePowerUpgrade.Invoke(_firePowerLevel1, shroomItUp); break; case 2: _firePowerUpgrade.Invoke(_firePowerLevel2, shroomItUp); break; case 3: _firePowerUpgrade.Invoke(_firePowerLevel3, shroomItUp); break; }
                 break;
             /* Rate of Fire Upgrades */
             case "RateOfFire":
                 Debug.Log("upgraded rateoffire");
-                switch (right) { case 1: _rateOfFireUpgrade.Invoke(_rateOfFireLevel1); break; case 2: _rateOfFireUpgrade.Invoke(_rateOfFireLevel2); break; case 3: _rateOfFireUpgrade.Invoke(_rateOfFireLevel3); break; }
+                switch (right) { case 1: _rateOfFireUpgrade.Invoke(_rateOfFireLevel1, shroomItUp); break; case 2: _rateOfFireUpgrade.Invoke(_rateOfFireLevel2, shroomItUp); break; case 3: _rateOfFireUpgrade.Invoke(_rateOfFireLevel3, shroomItUp); break; }
                 break;
             /* Piercing Shot Upgrades */
             case "PiercingShot":
                 Debug.Log("upgraded piercingshot");
-                switch (right) { case 1: _piercingShotUpgrade.Invoke(_piercingShotLevel1); break; case 2: _piercingShotUpgrade.Invoke(_piercingShotLevel2); break; case 3: _piercingShotUpgrade.Invoke(_piercingShotLevel3); break; }
+                switch (right) { case 1: _piercingShotUpgrade.Invoke(_piercingShotLevel1, shroomItUp); break; case 2: _piercingShotUpgrade.Invoke(_piercingShotLevel2, shroomItUp); break; case 3: _piercingShotUpgrade.Invoke(_piercingShotLevel3, shroomItUp); break; }
                 break;
 
 
             /* Extra Shot Upgrades */
             case "ExtraShot":
                 Debug.Log("upgraded extrashot");
-                _extraShotUpgrade.Invoke(right);
-                _bulletTypeEvent.Invoke(GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerShooting>().CurrentBulletType);
+                _extraShotUpgrade.Invoke(right, shroomItUp);
+                BulletTypeEvent.Invoke(GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerShooting>().CurrentBulletType);
                 break;
             /* Wide Shot Upgrades */
             case "WideShot":
                 Debug.Log("upgraded wideshot");
-                _wideShotUpgrade.Invoke(right);
-                _bulletTypeEvent.Invoke(GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerShooting>().CurrentBulletType);
+                _wideShotUpgrade.Invoke(right, shroomItUp);
+                BulletTypeEvent.Invoke(GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerShooting>().CurrentBulletType);
                 break;
 
 
             /* Ricochet Upgrade */
             case "Ricochet":
-                Debug.Log("upgraded ricoceht");
-                _ricochetUpgrade.Invoke(true); break;
+                Debug.Log("upgraded ricochet");
+                _ricochetUpgrade.Invoke(true, shroomItUp); break;
 
 
         }

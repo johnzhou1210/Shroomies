@@ -12,6 +12,8 @@ TagManager:
   - UpgradeFrame
   - UpgradeManager
   - Roguelike Manager
+  - Shroomie Formation
+  - Shroomie
   layers:
   - Default
   - TransparentFX

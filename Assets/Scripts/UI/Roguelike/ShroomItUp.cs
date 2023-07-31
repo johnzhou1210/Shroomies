@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ShroomItUp : MonoBehaviour
 {
-    [SerializeField] GameObject _checkBox;
+    [SerializeField] GameObject _checkBox, _costField;
+    [SerializeField] UnityBoolEvent _updateUpgradeDescriptionToShroomies;
     public int ShroomItUpCost = 500;
     public bool CheckBoxSelected = false;
 
@@ -17,6 +19,7 @@ public class ShroomItUp : MonoBehaviour
             _checkBox.transform.Find("X").GetComponent<TextMeshProUGUI>().text = "";
             AudioManager.Instance.PlaySFX("UI Select Sound");
             StartCoroutine(SelectAnim());
+            _updateUpgradeDescriptionToShroomies.Invoke(false);
         }
         else
         {
@@ -26,6 +29,7 @@ public class ShroomItUp : MonoBehaviour
                 _checkBox.transform.Find("X").GetComponent<TextMeshProUGUI>().text = "X";
                 AudioManager.Instance.PlaySFX("UI Select Sound");
                 StartCoroutine(SelectAnim());
+                _updateUpgradeDescriptionToShroomies.Invoke(true);
             }
             else
             {
@@ -40,6 +44,7 @@ public class ShroomItUp : MonoBehaviour
             CheckBoxSelected = false;
             _checkBox.transform.Find("X").GetComponent<TextMeshProUGUI>().text = "";
         }
+        _costField.GetComponent<TextMeshProUGUI>().text = "Shroom it up?\n\n<color=\"red\">(-" + ShroomItUpCost.ToString() + ")</color>";
     }
 
     IEnumerator SelectAnim() {

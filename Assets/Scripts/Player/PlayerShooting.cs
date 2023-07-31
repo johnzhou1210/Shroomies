@@ -7,8 +7,7 @@ using UnityEngine.Events;
 
 
 [RequireComponent(typeof(PlayerStateManager))]
-public class PlayerShooting : MonoBehaviour
-{
+public class PlayerShooting : MonoBehaviour {
     [HideInInspector] public bool _toggle = false;
     float _cooldown = 1f;
     [SerializeField] float _baseFireRate = .5f, _baseCritRate = .05f, _baseBulletVelocity = 8f;
@@ -24,6 +23,7 @@ public class PlayerShooting : MonoBehaviour
     public int ExtraBulletUpgradeLevel = 0;
 
     public BulletType CurrentBulletType;
+    public ShroomiesUpgradeController ShroomiesController;
 
 
     Animator _animator;
@@ -32,6 +32,7 @@ public class PlayerShooting : MonoBehaviour
     BarrelConfiguration _currentBarrelConfiguration;
 
     private void Start() {
+        ShroomiesController = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomiesUpgradeController>();
         PlayerTapHandler.Instance.OnSingleTap += onSingleTap;
         PlayerTapHandler.Instance.OnDoubleTap += onDoubleTap;
         _animator = GetComponent<Animator>();
@@ -70,7 +71,7 @@ public class PlayerShooting : MonoBehaviour
         if (_currentBarrelConfiguration != _barrelConfigurations[ExtraBulletUpgradeLevel]) {
             _currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
         }
-        
+
     }
 
     IEnumerator fireAnim() {
@@ -92,29 +93,55 @@ public class PlayerShooting : MonoBehaviour
         yield return null;
     }
 
-    public void RateOfFireUpgrade(float reduction) {
+    public void RateOfFireUpgrade(float reduction, bool shroomItUp) {
         FireRate = _baseFireRate * (1 - reduction);
+        if (shroomItUp) {
+            ShroomiesController.FireRate = FireRate * 2;
+        }
+
     }
 
-    public void FirePowerUpgrade(float increase) {
+    public void FirePowerUpgrade(float increase, bool shroomItUp) {
         AttackPower = (int)Mathf.Ceil(_baseAttackPower * (1 + increase));
+        if (shroomItUp) {
+
+            ShroomiesController.AttackPower = AttackPower / 7;
+        }
     }
 
-    public void CritUpgrade(float newPercent) {
+    public void CritUpgrade(float newPercent, bool shroomItUp) {
         CritRate = _baseCritRate + newPercent;
+        if (shroomItUp) {
+            ShroomiesController.CritRate = CritRate;
+        }
     }
 
-    public void PierceUpgrade(Int32 newNumber) {
+    public void PierceUpgrade(Int32 newNumber, bool shroomItUp) {
         Debug.Log("recieved " + newNumber);
         PierceCount = _basePierceCount + newNumber;
+        if (shroomItUp) {
+            ShroomiesController.PierceCount = PierceCount;
+        }
     }
 
-    public void ExtraShotUpgrade(Int32 newNumber) {
+    public void ExtraShotUpgrade(Int32 newNumber, bool shroomItUp) {
         Debug.Log("recieved " + newNumber);
         ExtraBulletUpgradeLevel = newNumber;
+        float divFactor = 1;
+        switch (newNumber) {
+            case 0: divFactor = 1f; break;
+            case 1: divFactor = 2f; break;
+            case 2: divFactor = 3f; break;
+            case 3: divFactor = 5f; break;
+        }
+        AttackPower = (int)Mathf.Ceil(AttackPower / divFactor);
+        if (shroomItUp) {
+            ShroomiesController.ExtraBulletUpgradeLevel = ExtraBulletUpgradeLevel;
+            ShroomiesController.AttackPower = (int)Mathf.Ceil(ShroomiesController.AttackPower / divFactor);
+        }
     }
 
-    public void WideShotUpgrade(Int32 newNumber) {
+    public void WideShotUpgrade(Int32 newNumber, bool shroomItUp) {
         Debug.Log("recieved " + newNumber);
         switch (newNumber) {
             case 0:
@@ -126,11 +153,15 @@ public class PlayerShooting : MonoBehaviour
             case 3:
                 CurrentBulletType = BulletType.WIDE3; break;
         }
+        if (shroomItUp) {
+            ShroomiesController.CurrentBulletType = CurrentBulletType;
+        }
     }
 
-    public void RicochetUpgrade(Boolean val) {
+    public void RicochetUpgrade(Boolean val, bool shroomItUp) {
         Debug.Log("recieved " + val);
         BulletsBounce = val;
+        ShroomiesController.BulletsBounce = BulletsBounce;
     }
 
 }

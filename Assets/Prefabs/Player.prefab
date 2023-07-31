@@ -137,9 +137,9 @@ GameObject:
   - component: {fileID: 1538716476841018906}
   - component: {fileID: 4715656214499364019}
   - component: {fileID: 346198759166424087}
+  - component: {fileID: 6790670755102139078}
   - component: {fileID: 7220596568435754424}
   - component: {fileID: 7830261906736312921}
-  - component: {fileID: 6790670755102139078}
   - component: {fileID: 6753808552065843880}
   m_Layer: 8
   m_Name: Player
@@ -163,7 +163,7 @@ Transform:
   - {fileID: 1987021374213421842}
   - {fileID: 3440044906028938127}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8934650272900455183
 MonoBehaviour:
@@ -259,22 +259,80 @@ MonoBehaviour:
   _toggle: 0
   _baseFireRate: 0.5
   _baseCritRate: 0.05
-  _baseBulletVelocity: 8
-  _baseAttackPower: 3
+  _baseBulletVelocity: 6
+  _baseAttackPower: 35
   _basePierceCount: 0
   FireRate: 0.5
   BulletVelocity: 5
-  AttackPower: 3
+  AttackPower: 35
   CritRate: 0.05
   PierceCount: 0
   BulletsBounce: 0
   ExtraBulletUpgradeLevel: 0
   CurrentBulletType: 0
+  ShroomiesController: {fileID: 0}
   _barrelConfigurations:
   - {fileID: 4160406694858748625}
   - {fileID: 698564912755790524}
   - {fileID: 4510480800516083467}
   - {fileID: 5459501046464175415}
+--- !u!114 &6790670755102139078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932793301420325840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c0d7feea9a33f4db7094109b35cea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shakeCam:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CameraShaker, Assembly-CSharp
+        m_MethodName: Shake
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _explosionPrefab: {fileID: 5903540695073766936, guid: bf6e3d22bbc2def4c8d46b7bd019bc56, type: 3}
+  _damageDelay: 1
+  _onPlayerDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: StageLogic, Assembly-CSharp
+        m_MethodName: onPlayerDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7220596568435754424}
+        m_TargetAssemblyTypeName: PlayerStateManager, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CurrentShroomies: 0
 --- !u!114 &7220596568435754424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,35 +366,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6790670755102139078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2932793301420325840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c0d7feea9a33f4db7094109b35cea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shakeCam:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraShaker, Assembly-CSharp
-        m_MethodName: Shake
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  MaxHealth: 5
-  CurrentHealth: 0
 --- !u!114 &6753808552065843880
 MonoBehaviour:
   m_ObjectHideFlags: 0

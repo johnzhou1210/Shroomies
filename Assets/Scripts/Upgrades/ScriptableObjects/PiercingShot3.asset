@@ -16,5 +16,6 @@ MonoBehaviour:
   UpgradeName: Penetration III
   UpgradeDescription: Bullets can now pierce <color="red">infinitely many</color>
     targets.
+  ShroomItUpDescription: <color="red">Same effect</color> is applied to Shroomies.
   Starter: 0
   UpgradesThatWillBeUnlocked: []

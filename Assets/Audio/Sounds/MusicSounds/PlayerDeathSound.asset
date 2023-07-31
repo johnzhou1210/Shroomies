@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 919d8024d4257634f80fb947787c6eb2, type: 3}
-  m_Name: DenySound
+  m_Name: PlayerDeathSound
   m_EditorClassIdentifier: 
-  Name: Deny Sound
-  AudioClip: {fileID: 8300000, guid: 94bb1ea4d1add1749b921589c32a143d, type: 3}
+  Name: Player Death Sound
+  AudioClip: {fileID: 8300000, guid: a9e8de8d38512e342bd8c8bcdef87117, type: 3}
   Loop: 0
-  Volume: 0.97
+  Volume: 0.658
   Pitch: 1
   Cooldown: 0.001
   LastTimePlayed: 20.164131

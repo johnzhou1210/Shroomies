@@ -24,4 +24,8 @@ public class PlayerStateManager : MonoBehaviour
         state.EnterState(this);
     }
 
+    public void OnDeath() {
+        SwitchState(DeadState);
+    }
+
 }

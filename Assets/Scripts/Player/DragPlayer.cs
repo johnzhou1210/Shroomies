@@ -30,7 +30,7 @@ public class DragPlayer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         Vector2 fingerDownPos = Camera.main.ScreenToWorldPoint(eventData.pressPosition);
         _lastDragPos = _lastDragPos == Vector2.zero ? fingerDownPos : _lastDragPos;
         Vector2 posDelta = (dragPos - _lastDragPos);
-        Debug.Log(posDelta);
+        //Debug.Log(posDelta);
         updatePlayerPosition.Invoke(posDelta);
         _lastDragPos = dragPos;
     }

@@ -70,7 +70,7 @@ public class BulletPool : MonoBehaviour {
 
     void expandPool(BulletPoolEntry desiredPool, GameObject pooledBullet, int bulletsToCreate) {
         // first get the number of these pooled bullets in the pool
-        Debug.Log("attempting to create " + bulletsToCreate + " bullets!");
+        //Debug.Log("attempting to create " + bulletsToCreate + " bullets!");
         for (int i = 0; i < bulletsToCreate; i++) {
             GameObject clone = Instantiate(pooledBullet, GameObject.FindWithTag("BulletPool").transform);
             Bullet currPooledBullet = clone.GetComponent<Bullet>();

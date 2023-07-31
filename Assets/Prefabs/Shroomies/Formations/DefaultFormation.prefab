@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5497654495851158024}
   - component: {fileID: 7913454589825946194}
+  - component: {fileID: 6974639270871476100}
   m_Layer: 0
   m_Name: DefaultFormation
-  m_TagString: Untagged
+  m_TagString: Shroomie Formation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,18 +45,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cdaa99429103d499ca5dcf0b24e96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _formationData:
-  - SpawnPosition: {x: 0, y: -4.6}
-    order: 1
-  - SpawnPosition: {x: -0.75, y: 0}
-    order: 2
-  - SpawnPosition: {x: 0.75, y: 0}
-    order: 3
-  - SpawnPosition: {x: -1.5, y: 0}
-    order: 4
-  - SpawnPosition: {x: 1.5, y: 0}
-    order: 5
-  - SpawnPosition: {x: -2.25, y: 0}
-    order: 6
-  - SpawnPosition: {x: 2.25, y: 0}
-    order: 7
+  FormationData: {fileID: 11400000, guid: f12e2a48d31d0db4abae02398e720eca, type: 2}
+  _shroomiePrefab: {fileID: 2552111602614107038, guid: c19f9fd706979ab46951edd71093c495, type: 3}
+  ShroomieObjects: []
+--- !u!114 &6974639270871476100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7320080936159250217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7d946dcbf832524cb2eefcd69782a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireRate: 0.5
+  BulletVelocity: 5
+  AttackPower: 3
+  CritRate: 0.05
+  PierceCount: 0
+  BulletsBounce: 0
+  ExtraBulletUpgradeLevel: 0
+  CurrentBulletType: 0

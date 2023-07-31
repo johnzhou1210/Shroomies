@@ -15,6 +15,7 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 4afa3a76caddeca43bc741678bfad83e, type: 3}
   UpgradeName: Critical Hit I
   UpgradeDescription: Increases base critical hit chance by <color="red">10%</color>.
+  ShroomItUpDescription: <color="red">Same effect</color> is applied to Shroomies.
   Starter: 1
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: 9d86c3ffd7eb0ad42b808e904e97549d, type: 2}

@@ -15,6 +15,7 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 5ec914026bad24c4696b53ad85e09d25, type: 3}
   UpgradeName: Overwhelming Strength I
   UpgradeDescription: Increases damage dealt by <color="red">20%</color>.
+  ShroomItUpDescription: <color="red">Same effect</color> is applied to Shroomies.
   Starter: 1
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: 285de67179acddd48b9e08cda67841dd, type: 2}
