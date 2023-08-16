@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371226749f0ae0e4fbeb9adcd8a3e864, type: 3}
   m_Name: Critical2
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 4afa3a76caddeca43bc741678bfad83e, type: 3}
+  Image: {fileID: 21300000, guid: 6f03ecf382246844c840f39c5fb93847, type: 3}
   UpgradeName: Critical Hit II
-  UpgradeDescription: Increases base critical hit chance by <color="red">30%</color>.
-  ShroomItUpDescription: <color="red">Same effect</color> is applied to Shroomies.
+  UpgradeDescription: <color="red">Good Chance</color> for Player to Critically hit
+  ShroomItUpDescription: <color="red">Good Chance</color> for Player <color="red">and
+    Shroomies</color> to Critically hit
   Starter: 0
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: 770dae2e7f1deaa4c87d79469e72d3ad, type: 2}

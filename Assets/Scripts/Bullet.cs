@@ -62,7 +62,7 @@ public class Bullet : MonoBehaviour {
             if (hitTarget.gameObject.CompareTag("Enemy")) {
                 hitTarget.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
-            if (hitTarget.CompareTag("Enemy") && (Ownership == BulletOwnershipType.ENEMY || Ownership == BulletOwnershipType.ALLY)
+            if (hitTarget.CompareTag("Enemy") && (Ownership == BulletOwnershipType.ENEMY)
                 ||
                 hitTarget.CompareTag("Player") && (Ownership == BulletOwnershipType.PLAYER || Ownership == BulletOwnershipType.ALLY)) {
                 // do nothing

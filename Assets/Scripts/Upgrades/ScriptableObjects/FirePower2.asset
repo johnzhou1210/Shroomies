@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371226749f0ae0e4fbeb9adcd8a3e864, type: 3}
   m_Name: FirePower2
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 5ec914026bad24c4696b53ad85e09d25, type: 3}
+  Image: {fileID: 21300000, guid: 402d212ad24d85c4380e2a0cd3768a79, type: 3}
   UpgradeName: Overwhelming Strength II
-  UpgradeDescription: Increases bullet damage by <color="red">40%</color>.
-  ShroomItUpDescription: <color="red">Same effect</color> is applied to Shroomies.
+  UpgradeDescription: <color="red">Greatly increases</color> Fire Power of Player's
+    shot
+  ShroomItUpDescription: <color="red">Greatly increases</color> Fire Power of Player's
+    <color="red">and Shroomie's</color> shot
   Starter: 0
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: 54b92ad65534b9344b7d0b019a7e8923, type: 2}

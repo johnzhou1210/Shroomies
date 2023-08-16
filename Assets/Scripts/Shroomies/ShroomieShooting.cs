@@ -40,8 +40,15 @@ public class ShroomieShooting : MonoBehaviour {
             AttackPower = source.AttackPower;
             CritRate = source.CritRate;
             ExtraBulletUpgradeLevel = source.ExtraBulletUpgradeLevel;
-            CurrentBulletType = source.CurrentBulletType; 
             BulletsBounce = source.BulletsBounce;
+
+            switch(source.CurrentBulletType) {
+                case BulletType.NORMAL: CurrentBulletType = BulletType.NORMAL_S; break;
+                case BulletType.WIDE1: CurrentBulletType = BulletType.WIDE1_S; break;
+                case BulletType.WIDE2: CurrentBulletType = BulletType.WIDE2_S; break;
+                case BulletType.WIDE3: CurrentBulletType = BulletType.WIDE3_S; break;
+            }
+            
         }
     }
 

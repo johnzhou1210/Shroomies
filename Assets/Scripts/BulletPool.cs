@@ -10,12 +10,16 @@ public enum BulletType {
     WIDE1,
     WIDE2,
     WIDE3,
+    NORMAL_S,
+    WIDE1_S,
+    WIDE2_S,
+    WIDE3_S,
 }
 
 public enum BulletOwnershipType {
     PLAYER,
     ALLY,
-    ENEMY
+    ENEMY,
 }
 
 public class BulletPoolEntry {
@@ -89,7 +93,6 @@ public class BulletPool : MonoBehaviour {
             bulletComponent.SetCritRate(dmgInfo.CritRate);
             bulletComponent.SetPierceCount(dmgInfo.PierceCount);
             bulletComponent.SetBounce(dmgInfo.Bounce);
-           
             return bulletInfo;
         }
         BulletPoolEntry findDesiredPool(BulletType type) {

@@ -51,7 +51,7 @@ MonoBehaviour:
   SpawnPosition: {x: -1.339, y: 7.485, z: 0}
   MovementSpeed: 0.5
   NextClusterMinDelay: 4
-  NextClusterMaxDelay: 8
+  NextClusterMaxDelay: 7
 --- !u!114 &2582632423252534406
 MonoBehaviour:
   m_ObjectHideFlags: 0

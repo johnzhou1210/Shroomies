@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: 1-16
   m_EditorClassIdentifier: 
   Clusters:
-  - {fileID: 4026475017765101523, guid: de656f00f0b2f2d41a8988091caf69f2, type: 3}
+  - {fileID: 9124084750106793660, guid: 0ed0e7bc52e473b4dab749796c512afa, type: 3}
   - {fileID: 2960212192547262288, guid: fda1976f6d6a62b40b96a4dd5710c478, type: 3}
   - {fileID: 6304321893812405142, guid: 433d7b0c38dfb2d4e9aff270c506795b, type: 3}
-  - {fileID: 1775739169752590128, guid: 5ba82e3afb550d54eb09585e6c98daf8, type: 3}
   WorldNumber: 1
   StageNumber: 16

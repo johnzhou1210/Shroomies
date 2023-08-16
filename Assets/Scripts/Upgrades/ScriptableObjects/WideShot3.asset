@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371226749f0ae0e4fbeb9adcd8a3e864, type: 3}
   m_Name: WideShot3
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 6820b29de9ac17c41bff41a76733de3f, type: 3}
+  Image: {fileID: 21300000, guid: 1aa3d0f6d2f39b54498c0dc90a602e26, type: 3}
   UpgradeName: Sweeping Shot III
-  UpgradeDescription: Increases shot width <color="red">drastically</color>.
-  ShroomItUpDescription: <color="red">Same effect</color> is applied to Shroomies.
+  UpgradeDescription: <color="red">Drastically increases</color> Width of Player's
+    shot
+  ShroomItUpDescription: <color="red">Drastically increases</color> Width of Player's
+    <color="red">and Shroomie's</color> shot
   Starter: 0
   UpgradesThatWillBeUnlocked: []

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Player Shoot Sound
   AudioClip: {fileID: 8300000, guid: c43e112384c28b74195dc21af539081e, type: 3}
   Loop: 0
-  Volume: 0.16
+  Volume: 0.338
   Pitch: 1
   Cooldown: 0.001
-  LastTimePlayed: 0
+  LastTimePlayed: 695.4217

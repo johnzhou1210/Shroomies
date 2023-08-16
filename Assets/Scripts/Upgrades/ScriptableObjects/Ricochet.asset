@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371226749f0ae0e4fbeb9adcd8a3e864, type: 3}
   m_Name: Ricochet
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 3519b4b1d508d374daced304907e9ec1, type: 3}
+  Image: {fileID: 21300000, guid: ed3db55572890624895a30985dd55090, type: 3}
   UpgradeName: Ricochet
-  UpgradeDescription: Bullets can now <color="red">bounce off walls</color>.
-  ShroomItUpDescription: <color="red">Same effect</color> is applied to Shroomies.
+  UpgradeDescription: Player's shots now <color="red">bounce off side walls</color>
+  ShroomItUpDescription: Player's <color="red">and Shroomies's</color> shots now
+    <color="red">bounce off side walls</color>
   Starter: 0
   UpgradesThatWillBeUnlocked: []

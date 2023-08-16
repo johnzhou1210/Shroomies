@@ -12,15 +12,15 @@ public class EnemyShooting : MonoBehaviour {
     public bool BulletsBounce = false;
     public int ObstaclePierceCount = 0;
 
-    [SerializeField] BulletType _currentBulletType;
+    public BulletType CurrentBulletType;
 
-    Animator _animator;
-    EnemyStateManager _stateManager;
-    [SerializeField] BarrelConfiguration _barrelConfiguration;
+    public Animator Animator;
+    public EnemyStateManager StateManager;
+    public BarrelConfiguration BarrelConfiguration;
 
     private void Start() {
-        _animator = GetComponent<Animator>();
-        _stateManager = GetComponent<EnemyStateManager>(); 
+        Animator = GetComponent<Animator>();
+        StateManager = GetComponent<EnemyStateManager>(); 
         ExecuteAI();
     }
 
@@ -29,17 +29,18 @@ public class EnemyShooting : MonoBehaviour {
     }
 
     IEnumerator monsterBehavior() {
+
         // Should the game require the player to defeat all the enemies in a wave to progress?
         // basic flower: stationary. Attack
 
         // Flower will just loop basic bullet attack every 3-4 seconds
-        while (_stateManager.CurrentState != _stateManager.DeadState) {
-            Debug.Log("in loop. current state is " + _stateManager.CurrentState);
+        while (StateManager.CurrentState != StateManager.DeadState) {
+            Debug.Log("in loop. current state is " + StateManager.CurrentState);
             yield return new WaitForSeconds(FireRate / 2f);
 
             if (transform.position.y <= 5.5f) {
-                _animator.speed = Mathf.Clamp(1 / FireRate, 1f, 16f);
-                _animator.Play("FlowerShoot");
+                Animator.speed = Mathf.Clamp(1 / FireRate, 1f, 16f);
+                Animator.Play("FlowerShoot");
             }
  
             yield return new WaitForSeconds(FireRate / 2f);
@@ -50,7 +51,7 @@ public class EnemyShooting : MonoBehaviour {
     }
 
     public void OnDeath() {
-        _animator.Play("Dead");
+        Animator.Play("Dead");
     }
 
     public void Fire() {
@@ -60,7 +61,7 @@ public class EnemyShooting : MonoBehaviour {
     IEnumerator fire() {
         // shoot bullets depending on current barrel configuration.
         BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, 0, ObstaclePierceCount, BulletsBounce);
-        _barrelConfiguration.Fire(_currentBulletType, BulletOwnershipType.ENEMY, dmgInfo);
+        BarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.ENEMY, dmgInfo);
         Debug.Log("Shot enemy bullet");
         yield return null;
     }

@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371226749f0ae0e4fbeb9adcd8a3e864, type: 3}
   m_Name: RateOfFire2
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 9d95687369ae81d44b10bd4e2f2b44e0, type: 3}
+  Image: {fileID: 21300000, guid: eb28b95ea0d29a944848ae2968f9eb9c, type: 3}
   UpgradeName: Rapid Fire II
-  UpgradeDescription: Attack interval reduced by <color="red">30%</color>.
-  ShroomItUpDescription: <color="red">Same effect</color> is applied to Shroomies.
+  UpgradeDescription: <color="red">Greatly increases</color> Fire Rate of Player's
+    shot
+  ShroomItUpDescription: <color="red">Greatly increases</color> Fire Rate of Player's
+    <color="red">and Shroomie's</color> shot
   Starter: 0
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: 42544121af1fc0e4388c27a7da14d40e, type: 2}
