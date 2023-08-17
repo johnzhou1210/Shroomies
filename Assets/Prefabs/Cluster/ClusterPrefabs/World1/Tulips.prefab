@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4018600910109369135}
   - component: {fileID: 2673405809907082891}
   m_Layer: 0
-  m_Name: StraightLine
+  m_Name: Tulips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

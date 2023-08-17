@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
-public class TulipShooting : EnemyShooting {
+public class PetuniaShooting : EnemyShooting {
 
     private void Start() {
         Animator = GetComponent<Animator>();
@@ -21,9 +21,9 @@ public class TulipShooting : EnemyShooting {
             Debug.Log("in loop. current state is " + StateManager.CurrentState);
             yield return new WaitForSeconds(FireRate / 2f);
 
-            if (transform.position.y <= StartShootY) {
+            if (transform.position.y <=StartShootY) {
                 Animator.speed = Mathf.Clamp(1 / FireRate, 1f, 16f);
-                Animator.Play("TulipShoot");
+                Animator.Play("PetuniaShoot");
             }
  
             yield return new WaitForSeconds(FireRate / 2f);

@@ -76,7 +76,7 @@ public class ShroomieShooting : MonoBehaviour {
     IEnumerator fireAnim() {
         // play animation
         _animator.speed = 1 / FireRate;
-        _animator.Play("PlayerShoot");
+        _animator.Play("ShroomieShoot");
         yield return null;
     }
 

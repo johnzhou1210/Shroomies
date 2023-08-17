@@ -328,6 +328,7 @@ MonoBehaviour:
   FireRate: 2
   BulletVelocity: 2.5
   AttackPower: 1
+  StartShootY: 6
   BulletsBounce: 0
   ObstaclePierceCount: 0
   CurrentBulletType: 0
