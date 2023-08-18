@@ -25,20 +25,20 @@ public class DoubleShotBarrelWidthSpacing : MonoBehaviour
         if (prefab.CompareTag("Shroomie")) {
             switch (bulletType) {
                 case BulletType.NORMAL:
-                    _leftBarrel.localPosition = new Vector3(-.15f, 0, 0);
-                    _rightBarrel.localPosition = new Vector3(.15f, 0, 0);
+                    _leftBarrel.localPosition = new Vector3(-.1f, 0, 0);
+                    _rightBarrel.localPosition = new Vector3(.1f, 0, 0);
                     break;
                 case BulletType.WIDE1:
+                    _leftBarrel.localPosition = new Vector3(-.1f, 0, 0);
+                    _rightBarrel.localPosition = new Vector3(.1f, 0, 0);
+                    break;
+                case BulletType.WIDE2:
                     _leftBarrel.localPosition = new Vector3(-.15f, 0, 0);
                     _rightBarrel.localPosition = new Vector3(.15f, 0, 0);
                     break;
-                case BulletType.WIDE2:
+                case BulletType.WIDE3:
                     _leftBarrel.localPosition = new Vector3(-.22f, 0, 0);
                     _rightBarrel.localPosition = new Vector3(.22f, 0, 0);
-                    break;
-                case BulletType.WIDE3:
-                    _leftBarrel.localPosition = new Vector3(-.29f, 0, 0);
-                    _rightBarrel.localPosition = new Vector3(.29f, 0, 0);
                     break;
             }
         } else {

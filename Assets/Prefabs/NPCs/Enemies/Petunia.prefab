@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 280
-  _mulchReward: 25
+  _mulchReward: 20
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -304,19 +304,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-        m_MethodName: StopAllCoroutines
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8986948701542347864}
         m_TargetAssemblyTypeName: EnemyShooting, Assembly-CSharp
         m_MethodName: OnDeath
         m_Mode: 1
@@ -407,10 +395,12 @@ MonoBehaviour:
   FireRate: 3.33
   BulletVelocity: 2.22
   AttackPower: 1
-  StartShootY: 6
+  StartShootY: 7
   BulletsBounce: 0
   ObstaclePierceCount: 0
   CurrentBulletType: 1
   Animator: {fileID: 5678910839467403377}
   StateManager: {fileID: 4479650827182798106}
-  BarrelConfiguration: {fileID: 2695094390191753430}
+  CurrentBarrelConfiguration: {fileID: 0}
+  BarrelConfigurations:
+  - {fileID: 2695094390191753430}

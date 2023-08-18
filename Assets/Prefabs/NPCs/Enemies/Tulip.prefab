@@ -232,7 +232,7 @@ Transform:
   - {fileID: 3208214825014428055}
   - {fileID: 3167643636626315240}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &5641089694833990411
 CircleCollider2D:
@@ -328,13 +328,15 @@ MonoBehaviour:
   FireRate: 2
   BulletVelocity: 2.5
   AttackPower: 1
-  StartShootY: 6
+  StartShootY: 7
   BulletsBounce: 0
   ObstaclePierceCount: 0
   CurrentBulletType: 0
-  Animator: {fileID: 0}
+  Animator: {fileID: 9163105117589807722}
   StateManager: {fileID: 4479650827182798106}
-  BarrelConfiguration: {fileID: 2695094390191753430}
+  CurrentBarrelConfiguration: {fileID: 0}
+  BarrelConfigurations:
+  - {fileID: 2695094390191753430}
 --- !u!95 &9163105117589807722
 Animator:
   serializedVersion: 5
@@ -381,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 200
-  _mulchReward: 20
+  _mulchReward: 25
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -397,40 +399,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-        m_MethodName: StopAllCoroutines
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+  giveMulch:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3371121880171774365}
         m_TargetAssemblyTypeName: EnemyShooting, Assembly-CSharp
         m_MethodName: OnDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  giveMulch:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

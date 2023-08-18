@@ -17,11 +17,17 @@ public class EnemyShooting : MonoBehaviour {
 
     public Animator Animator;
     public EnemyStateManager StateManager;
-    public BarrelConfiguration BarrelConfiguration;
+    public BarrelConfiguration CurrentBarrelConfiguration;
+    public BarrelConfiguration[] BarrelConfigurations;
 
     private void Start() {
         Animator = GetComponent<Animator>();
-        StateManager = GetComponent<EnemyStateManager>(); 
+        StateManager = GetComponent<EnemyStateManager>();
+        if (BarrelConfigurations.Length > 0) {
+            CurrentBarrelConfiguration = BarrelConfigurations[0];
+        } else {
+            Debug.LogError(transform.name + " does not have any set barrel configuration!");
+        }
         ExecuteAI();
     }
 
@@ -53,6 +59,7 @@ public class EnemyShooting : MonoBehaviour {
 
     public void OnDeath() {
         Animator.Play("Dead");
+        StopAllCoroutines();
     }
 
     public void Fire() {
@@ -62,7 +69,7 @@ public class EnemyShooting : MonoBehaviour {
     IEnumerator fire() {
         // shoot bullets depending on current barrel configuration.
         BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, 0, ObstaclePierceCount, BulletsBounce);
-        BarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.ENEMY, dmgInfo);
+        CurrentBarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.ENEMY, dmgInfo);
         Debug.Log("Shot enemy bullet");
         yield return null;
     }

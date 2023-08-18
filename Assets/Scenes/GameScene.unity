@@ -903,7 +903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clusterCollections:
-  - {fileID: 11400000, guid: e18e1adf477f0d547aa413b72ed53c30, type: 2}
+  - {fileID: 11400000, guid: fc192833346cb3f49a649fd98b61c5f7, type: 2}
   - {fileID: 11400000, guid: 318a1b4c741a06e4d82d090269d5fc10, type: 2}
   - {fileID: 11400000, guid: fc4523ada7e239e43b759c15422f663f, type: 2}
   - {fileID: 11400000, guid: 8ed90b4377f4aa448aa1e1b2d4a15035, type: 2}
@@ -1378,7 +1378,7 @@ Camera:
   far clip plane: 1000
   field of view: 82.4
   orthographic: 1
-  orthographic size: 5.0089903
+  orthographic size: 5.0120645
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2485,7 +2485,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1840912982
 MonoBehaviour:
@@ -3430,7 +3430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 605274454852026316, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 605274454852026316, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: m_LocalPosition.x

@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Default Formation
   m_EditorClassIdentifier: 
   Data:
-  - SpawnPosition: {x: 0, y: -4.6}
+  - SpawnPosition: {x: 0, y: -4.45}
     order: 1
-  - SpawnPosition: {x: -0.75, y: -4.6}
+  - SpawnPosition: {x: -0.75, y: -4.45}
     order: 2
-  - SpawnPosition: {x: 0.75, y: -4.6}
+  - SpawnPosition: {x: 0.75, y: -4.45}
     order: 3
-  - SpawnPosition: {x: -1.5, y: -4.6}
+  - SpawnPosition: {x: -1.5, y: -4.45}
     order: 4
-  - SpawnPosition: {x: 1.5, y: -4.6}
+  - SpawnPosition: {x: 1.5, y: -4.45}
     order: 5
-  - SpawnPosition: {x: -2.25, y: -4.6}
+  - SpawnPosition: {x: -2.25, y: -4.45}
     order: 6
-  - SpawnPosition: {x: 2.25, y: -4.6}
+  - SpawnPosition: {x: 2.25, y: -4.45}
     order: 7
