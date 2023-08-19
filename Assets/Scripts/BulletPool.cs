@@ -14,6 +14,7 @@ public enum BulletType {
     WIDE1_S,
     WIDE2_S,
     WIDE3_S,
+    DANDELION
 }
 
 public enum BulletOwnershipType {

@@ -78,8 +78,8 @@ public class StageLogic : MonoBehaviour {
                     // 1) Reward mulch event
                     if (child.CompareTag("Enemy")) {
                         EnemyOnHit enemyOnHit = child.GetComponent<EnemyOnHit>();
-                        enemyOnHit.giveMulch.AddListener(increaseMulch);
-                        enemyOnHit.MaxHealth = (int)(enemyOnHit.MaxHealth * (Mathf.Pow(1.01f, 1.02f * difficulty) - .4f));
+                        enemyOnHit.GiveMulch.AddListener(increaseMulch);
+                        enemyOnHit.MaxHealth = (int) Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.01f, 1.02f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f));
                         enemyOnHit.setCurrHealthToMaxHealth();
                     }
                 }
