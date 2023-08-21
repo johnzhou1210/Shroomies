@@ -16,6 +16,7 @@ public enum BulletType {
     WIDE3_S,
     DANDELION,
     ROSETHORN,
+    SUNFLOWER,
 }
 
 public enum BulletOwnershipType {

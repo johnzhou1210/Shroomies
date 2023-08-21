@@ -226,12 +226,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -564979575, guid: f8e3159cd917ea84b8cb9cbd41d52777, type: 3}
+  m_Sprite: {fileID: -1042253118, guid: dac1513fbbc287943be1b95ced98f50f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.56, y: 0.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -691,7 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be27c121133f6a4888289cc1769b5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 1.54
+  FireRate: 3.06
   BulletVelocity: 3.5
   AttackPower: 1
   StartShootY: 5.5
