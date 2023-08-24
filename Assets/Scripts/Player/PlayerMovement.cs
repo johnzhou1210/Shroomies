@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void UpdateDragPos(Vector3 posDelta) {
-        transform.position += posDelta;
+        transform.Translate(posDelta);
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, XMin, XMax), Mathf.Clamp(transform.position.y, YMin, YMax));
     }
 
