@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dac1513fbbc287943be1b95ced98f50f
+guid: f4e0a8a564c465d488e9c8aecdc98406
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 112.5
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -133,7 +133,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Windows Store Apps
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -146,11 +146,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -162,7 +162,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rose_fire_0
+      name: rose_idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -176,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 252d92317dc312a4fbb9231ac64889ff
-      internalID: -1042253118
+      spriteID: d27bb810b4645ac4783e6fe4118a8208
+      internalID: -614823704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rose_fire_1
+      name: rose_idle_1
       rect:
         serializedVersion: 2
         x: 56
@@ -197,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 188a6d4f3dfe8ec4faed5bcba1d9cb8f
-      internalID: 764585807
+      spriteID: 4f685f6d48be8414e80dc90d25c3c079
+      internalID: -1234663612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rose_fire_2
+      name: rose_idle_2
       rect:
         serializedVersion: 2
         x: 112
@@ -218,113 +218,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1aea7d99574b3444b55fcc5d04623b2
-      internalID: 1393280831
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rose_fire_3
-      rect:
-        serializedVersion: 2
-        x: 168
-        y: 0
-        width: 56
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e1915eab0689d64b8e33d6343e24848
-      internalID: -21747553
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rose_fire_4
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 56
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da07ccb4e3048874d91cbf84a6a77547
-      internalID: -2010490508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rose_fire_5
-      rect:
-        serializedVersion: 2
-        x: 280
-        y: 0
-        width: 56
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f2684ecd1879d4040bc13ac376a83ccd
-      internalID: 1371553957
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rose_fire_6
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 0
-        width: 56
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e250ee6131b3f404eb21fc61df7f1e7e
-      internalID: 851873742
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rose_fire_7
-      rect:
-        serializedVersion: 2
-        x: 392
-        y: 0
-        width: 56
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: edcfe0f2961833446b18abfe3cbd20ac
-      internalID: -486617070
+      spriteID: c0d7d2a1a8bfda044954715bf6c4a395
+      internalID: -2081755795
       vertices: []
       indices: 
       edges: []
@@ -340,14 +235,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      rose_fire_0: -1042253118
-      rose_fire_1: 764585807
-      rose_fire_2: 1393280831
-      rose_fire_3: -21747553
-      rose_fire_4: -2010490508
-      rose_fire_5: 1371553957
-      rose_fire_6: 851873742
-      rose_fire_7: -486617070
+      rose_idle_0: -614823704
+      rose_idle_1: -1234663612
+      rose_idle_2: -2081755795
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

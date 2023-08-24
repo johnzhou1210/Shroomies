@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27719be0bc20e8049bdfbb577f0ad4be
+guid: d8e07554c53e9184bb47bbb19a466359
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -133,6 +133,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -149,7 +162,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dandelion_0
+      name: magnolia_idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -163,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a17516c4fde87534f900da6b3c99039c
-      internalID: 934253437
+      spriteID: af9a56538f5281b4b99c80bfb96c08ee
+      internalID: 1541350046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dandelion_1
+      name: magnolia_idle_1
       rect:
         serializedVersion: 2
         x: 48
@@ -184,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d78e42c91a8620419bcd04fc8e9e869
-      internalID: 2056848361
+      spriteID: c780e434454524945b7131da205472ab
+      internalID: 1518489003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dandelion_2
+      name: magnolia_idle_2
       rect:
         serializedVersion: 2
         x: 96
@@ -205,14 +218,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a79fb57dca266a64f8a7b52f44b75fa1
-      internalID: -993498063
+      spriteID: d682857c58707cb4e87e940eef185b82
+      internalID: 2070385556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dandelion_3
+      name: magnolia_idle_3
       rect:
         serializedVersion: 2
         x: 144
@@ -226,134 +239,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a9f59755f8c7d347b75f567af2ed5e7
-      internalID: 1686650846
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dandelion_4
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fdd36bdcbeda4dc4a9bb797873eeef29
-      internalID: 2022817389
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dandelion_5
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 28dcdcef586a136478a10e6585f4226e
-      internalID: 740521180
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dandelion_6
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7f19d8672bae5c04e93601a23aa343cd
-      internalID: -824489188
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dandelion_7
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e43ea40231a8c0848bf68ae71b1ab110
-      internalID: -1073689100
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dandelion_8
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ca3a5499c9458e41a1d4970d3548847
-      internalID: 1039984865
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dandelion_9
-      rect:
-        serializedVersion: 2
-        x: 432
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3bf4008374f252f4eb5de3f39c54fa44
-      internalID: -1230538081
+      spriteID: 511f0c2826562b54dbef17a97a9b80c6
+      internalID: 1487356869
       vertices: []
       indices: 
       edges: []
@@ -369,16 +256,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dandelion_0: 934253437
-      dandelion_1: 2056848361
-      dandelion_2: -993498063
-      dandelion_3: 1686650846
-      dandelion_4: 2022817389
-      dandelion_5: 740521180
-      dandelion_6: -824489188
-      dandelion_7: -1073689100
-      dandelion_8: 1039984865
-      dandelion_9: -1230538081
+      magnolia_idle_0: 1541350046
+      magnolia_idle_1: 1518489003
+      magnolia_idle_2: 2070385556
+      magnolia_idle_3: 1487356869
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
