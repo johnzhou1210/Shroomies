@@ -12,6 +12,9 @@ public class DragPlayer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
     private void Start() {
         addPhysics2DRaycaster();
+#if !UNITY_ANDROID && !UNITY_IOS
+    gameObject.SetActive(false);
+#endif
     }
 
     void addPhysics2DRaycaster() {

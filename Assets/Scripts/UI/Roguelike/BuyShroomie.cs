@@ -15,6 +15,7 @@ public class BuyShroomie : MonoBehaviour
     }
 
     public void OnClick() {
+        Debug.Log("clicked button");
         if (shroomieCost > 0) {
             bool enoughMulch = _roguelikeManager.AccumulatedMulch >= shroomieCost;
             int currNumShroomies = GameObject.FindWithTag("Player").GetComponent<PlayerOnHit>().CurrentShroomies;
@@ -33,6 +34,14 @@ public class BuyShroomie : MonoBehaviour
 
             
         }
+    }
+
+    public void OnButtonDown() {
+        _priceText.GetComponent<TextMeshProUGUI>().enabled = false;
+    }
+
+    public void OnButtonUp() {
+        _priceText.GetComponent<TextMeshProUGUI>().enabled = true;
     }
 
     public void OnChangePrice(int newPrice) {

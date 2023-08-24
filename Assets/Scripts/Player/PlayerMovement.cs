@@ -30,7 +30,8 @@ public class PlayerMovement : MonoBehaviour {
 
             Vector3 movementVector = new Vector3(horizontalAxis, verticalAxis, 0);
             movementVector = movementVector.normalized * _moveSpeed * Time.deltaTime;
-            transform.position += movementVector;
+            transform.Translate(movementVector);
+            transform.position = new Vector2(Mathf.Clamp(transform.position.x, XMin, XMax), Mathf.Clamp(transform.position.y, YMin, YMax));
         }
 
         
