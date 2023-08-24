@@ -24,7 +24,7 @@ public class DaisyShooting : EnemyShooting {
     IEnumerator monsterBehavior() {
         Animator.speed = Mathf.Clamp(1 / FireRate, 1f, 16f);
         while (StateManager.CurrentState != StateManager.DeadState) {
-            Debug.Log("in loop. current state is " + StateManager.CurrentState);
+            //Debug.Log("in loop. current state is " + StateManager.CurrentState);
             yield return new WaitForSeconds(FireRate / 2f);
             if (transform.position.y <= StartShootY) {
                 CurrentBarrelConfiguration = BarrelConfigurations[0];

@@ -9,7 +9,8 @@ public class EnemyStabilizer : MonoBehaviour
     private void Update() {
         _rigidBody.velocity = Vector2.zero;
         _rigidBody.totalForce = Vector2.zero;
-        _rigidBody.totalTorque = 0;
+        _rigidBody.totalTorque = 0f;
+        _rigidBody.angularVelocity = 0f;
     }
 
 }

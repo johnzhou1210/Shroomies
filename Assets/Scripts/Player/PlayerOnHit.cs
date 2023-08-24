@@ -11,17 +11,18 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
     [SerializeField] float _damageDelay = 1f;
     [SerializeField] UnityEvent _onPlayerDeath;
     public int CurrentShroomies = 0;
-    bool dead = false, debounce = false;
+    bool debounce = false;
+    public bool Dead = false;
     
 
     public void takeDamage(int damage) {
         ShroomieFormation formation = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomieFormation>();
-        if (debounce == false && !dead) {
+        if (debounce == false && !Dead) {
             debounce = true;
             AudioManager.Instance.PlaySFX("Player Damage Sound");
             _shakeCam.Invoke(.08f, .1f);
             if (CurrentShroomies - damage < 0) { // killing blow
-                dead = true;
+                Dead = true;
                 AudioManager.Instance.StopAllMusic();
                 AudioManager.Instance.PlayMusic("Player Death Sound");
                 _onPlayerDeath.Invoke();

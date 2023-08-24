@@ -162,7 +162,7 @@ Transform:
   - {fileID: 1987021374213421842}
   - {fileID: 3440044906028938127}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8934650272900455183
 MonoBehaviour:
@@ -176,11 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4845a087c1795664d9b6cabe85ec03a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 0
+  _moveSpeed: 5
   XMin: -2.38
   XMax: 2.38
   YMin: -4.61
   YMax: 4.61
+  CanMove: 1
+  _plrOnHit: {fileID: 6790670755102139078}
 --- !u!50 &1538716476841018906
 Rigidbody2D:
   serializedVersion: 4
@@ -193,7 +195,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -256,17 +258,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Toggle: 0
-  _baseFireRate: 0.4
+  _baseFireRate: 0.5
   _baseCritRate: 0.05
   _baseBulletVelocity: 6
-  _baseAttackPower: 16
+  _baseAttackPower: 32
   _basePierceCount: 0
   FireRate: 0.5
   BulletVelocity: 5
   AttackPower: 35
   CritRate: 0.05
-  PierceCount: 0
-  BulletsBounce: 0
+  PierceCount: 8
+  BulletsBounce: 1
   ExtraBulletUpgradeLevel: 0
   CurrentBulletType: 0
   ShroomiesController: {fileID: 0}
@@ -332,6 +334,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   CurrentShroomies: 0
+  Dead: 0
 --- !u!114 &7220596568435754424
 MonoBehaviour:
   m_ObjectHideFlags: 0

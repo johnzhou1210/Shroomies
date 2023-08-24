@@ -13,7 +13,7 @@ public class ClusterMovement : MonoBehaviour {
     private void FixedUpdate() {
         if (_settings != null) {
             transform.Translate(_settings.MovementSpeed * Time.fixedDeltaTime * Vector3.down);
-            if (!hasAliveEnemies()) {
+            if (!hasAliveEnemies() || (onlyBrambleRemains() && transform.position.y < -6f)) {
                 Destroy(gameObject);
             }
         }
@@ -27,5 +27,15 @@ public class ClusterMovement : MonoBehaviour {
         }
         return false;
     }
+
+    bool onlyBrambleRemains() {
+        foreach (Transform child in transform) {
+            if (!child.CompareTag("Obstacle")) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
 
 }

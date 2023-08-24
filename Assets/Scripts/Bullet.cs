@@ -57,10 +57,28 @@ public class Bullet : MonoBehaviour {
 
 
     void OnCollisionEnter2D(Collision2D collision) {
+
+
+        void bounce() {
+            ContactPoint2D contact = collision.contacts[0];
+            // reflect our old velocity off the contact point's normal vector
+            Vector2 reflectedVelocity = Vector3.Reflect(_lastVelocity, contact.normal);
+            // assign the reflected velocity back to the rigidbody
+            _rigidBody.velocity = reflectedVelocity;
+            // rotate the object by the same ammount we changed its velocity
+            Quaternion rotation = Quaternion.FromToRotation(_lastVelocity, reflectedVelocity);
+            transform.rotation = rotation * transform.rotation;
+            // play bounce sound
+            AudioManager.Instance.PlayShootingSFX("Bullet Bounce Sound");
+        }
+
+      
+
         if (transform.position.y < 5.1f) {
             GameObject hitTarget = collision.gameObject;
-            if (hitTarget.gameObject.CompareTag("Enemy")) {
+            if (hitTarget.CompareTag("Enemy") || hitTarget.CompareTag("Obstacle")) {
                 hitTarget.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                hitTarget.GetComponent<Rigidbody2D>().angularVelocity = 0;
             }
             if (hitTarget.CompareTag("Enemy") && (Ownership == BulletOwnershipType.ENEMY)
                 ||
@@ -98,22 +116,28 @@ public class Bullet : MonoBehaviour {
                         _pierceCounter++;
                         // ignore collisions with this target from now on
                         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
+                        _rigidBody.velocity = _lastVelocity;
                     }
 
                 } else if (hitTarget.CompareTag("Obstacle")) {
                     // hit obstacle
+                    Debug.Log("hit obstacle");
+                    if (_pierceLimit > 0 && _pierceCounter < _pierceLimit) { // pierce check
+                        Debug.Log("pierced obstacle");
+                        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+                        _pierceCounter++;
+                        // ignore collisions with this target from now on
+                        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
+                        _rigidBody.velocity = _lastVelocity;
+                    } else if (_reflect) { // bounce check
+                        bounce();
+                    } else {
+                        Destroy();
+                    }
+
                 } else if (_reflect && !hitTarget.CompareTag("Player") && !hitTarget.CompareTag("Enemy")) {
                     // bounce off contact point
-                    ContactPoint2D contact = collision.contacts[0];
-                    // reflect our old velocity off the contact point's normal vector
-                    Vector2 reflectedVelocity = Vector3.Reflect(_lastVelocity, contact.normal);
-                    // assign the reflected velocity back to the rigidbody
-                    _rigidBody.velocity = reflectedVelocity;
-                    // rotate the object by the same ammount we changed its velocity
-                    Quaternion rotation = Quaternion.FromToRotation(_lastVelocity, reflectedVelocity);
-                    transform.rotation = rotation * transform.rotation;
-                    // play bounce sound
-                    AudioManager.Instance.PlayShootingSFX("Bullet Bounce Sound");
+                    bounce();
                 } else {
                     // disintegrate bullet
                     Destroy();
@@ -123,6 +147,7 @@ public class Bullet : MonoBehaviour {
         } else {
             // ignore collisions with this target from now on
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
+            _rigidBody.velocity = _lastVelocity;
         }
     }
 
