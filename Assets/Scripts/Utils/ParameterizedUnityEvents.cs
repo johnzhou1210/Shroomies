@@ -16,6 +16,7 @@ using UnityEngine.Events;
 [System.Serializable] public class UnityUpgradeBoolEvent : UnityEvent<Upgrade, bool> { }
 [System.Serializable] public class UnityBulletTypeEvent : UnityEvent<BulletType> { }
 [System.Serializable] public class UnityBulletTypeBoolEvent : UnityEvent<BulletType, bool> { }
+[System.Serializable] public class UnityVector3Event : UnityEvent<Vector3> { }
 
 public class ParameterizedUnityEvents : MonoBehaviour
 {

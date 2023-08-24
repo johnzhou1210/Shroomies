@@ -220,9 +220,9 @@ GameObject:
   m_Component:
   - component: {fileID: 125849838}
   - component: {fileID: 125849840}
-  - component: {fileID: 125849839}
   - component: {fileID: 125849841}
   - component: {fileID: 125849842}
+  - component: {fileID: 125849843}
   m_Layer: 6
   m_Name: DragArea
   m_TagString: Untagged
@@ -245,42 +245,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &125849839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125849837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7f25d362ccd06a4abc62590cc13d1b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  updatePlayerPosition:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 805294917}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: UpdateDragPos
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _dragSpeed: 0.1
-  _deadzoneRadius: 0.2
-  _startPoint: {fileID: 2711065437798555851, guid: 7297a347eb708e643b947b105f7664a3, type: 3}
-  _endPoint: {fileID: 4576518923102567594, guid: c5aec6c482f546948b848c9b76160f57, type: 3}
-  _player: {fileID: 544979967}
-  XMin: -2.38
-  XMax: 2.38
-  YMin: -4.61
-  YMax: 4.61
 --- !u!61 &125849840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -347,6 +311,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerShooting: {fileID: 805294922}
+--- !u!114 &125849843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125849837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6c8fba92f3a6941b6e4d5c71af171c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updatePlayerPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805294917}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: UpdateDragPos
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _maxDragSpeed: 0.1
 --- !u!1 &255884696
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,11 +646,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &544979967 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2932793301420325840, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
-  m_PrefabInstance: {fileID: 8275721869407795930}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &556663100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,7 +1140,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
   m_PrefabInstance: {fileID: 8275721869407795930}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544979967}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4845a087c1795664d9b6cabe85ec03a5, type: 3}
@@ -1164,7 +1151,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
   m_PrefabInstance: {fileID: 8275721869407795930}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544979967}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c7c161498cb30c449c56b7339e56159, type: 3}
@@ -1175,7 +1162,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6790670755102139078, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
   m_PrefabInstance: {fileID: 8275721869407795930}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544979967}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5c0d7feea9a33f4db7094109b35cea8, type: 3}
