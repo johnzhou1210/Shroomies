@@ -10,6 +10,7 @@ public class StageLogic : MonoBehaviour {
 
     [SerializeField] UnityStringEvent cueStageBanner;
     [SerializeField] UnityIntEvent updateMulch, shroomieUpdateCost;
+    [SerializeField] UnityBoolEvent _invokeCelebrate;
 
     [SerializeField] float _stageBeginWaitDelay;
     [SerializeField] float _interstageDelay;
@@ -79,7 +80,7 @@ public class StageLogic : MonoBehaviour {
                     if (child.CompareTag("Enemy")) {
                         EnemyOnHit enemyOnHit = child.GetComponent<EnemyOnHit>();
                         enemyOnHit.GiveMulch.AddListener(increaseMulch);
-                        enemyOnHit.MaxHealth = (int) Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.01f, 1.02f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f));
+                        enemyOnHit.MaxHealth = (int) Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.01f, 1.01f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f));
                         enemyOnHit.setCurrHealthToMaxHealth();
                     }
                 }
@@ -96,6 +97,11 @@ public class StageLogic : MonoBehaviour {
             setPlayerControls(false);
             _buyShroomieButton.GetComponent<Animator>().Play("ShroomieButtonFadeOut");
             toggleShooting(false);
+            // play shroomies celebration
+            AudioManager.Instance.StopAllMusic(true);
+            yield return new WaitForSeconds(.5f);
+            Celebrate(true);
+            yield return new WaitForSeconds(1f);
             AudioManager.Instance.PlayMusic("Where To Infect");
             if (StageNumber < _numStagesPerWorldIncludingBoss) {
                 // open up normal upgrades
@@ -107,12 +113,23 @@ public class StageLogic : MonoBehaviour {
                 // open up special shop
             }
 
+            // end shroomies celebration
+            Celebrate(false);
+            
+
             StageNumber++;
 
         }
 
 
         yield return null;
+    }
+
+    public void Celebrate(bool val) {
+        _invokeCelebrate.Invoke(val);
+        if (val) {
+            AudioManager.Instance.PlaySFX("Player Clear Wave");
+        }
     }
 
     private void Start() {
@@ -137,6 +154,7 @@ public class StageLogic : MonoBehaviour {
 
     public void setPlayerControls(bool newVal) {
         setPlayerDrag(newVal);
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().CanMove = newVal;
     }
 
     public void onPlayerDeath() {

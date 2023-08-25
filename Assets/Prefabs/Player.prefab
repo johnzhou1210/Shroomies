@@ -162,7 +162,7 @@ Transform:
   - {fileID: 1987021374213421842}
   - {fileID: 3440044906028938127}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8934650272900455183
 MonoBehaviour:
@@ -846,7 +846,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 1099295856, guid: c9d1bac02afb0ec4c9a58acf87979155, type: 3}
+  m_Sprite: {fileID: 783123325, guid: 5862602dba209a54a9af60cf6e16a9ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -23,7 +23,7 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
             _shakeCam.Invoke(.08f, .1f);
             if (CurrentShroomies - damage < 0) { // killing blow
                 Dead = true;
-                AudioManager.Instance.StopAllMusic();
+                AudioManager.Instance.StopAllMusic(false);
                 AudioManager.Instance.PlayMusic("Player Death Sound");
                 _onPlayerDeath.Invoke();
             } else {
@@ -54,6 +54,8 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
 
     IEnumerator DestroyShroomie(GameObject obj) {
         Instantiate(_explosionPrefab, obj.transform.position, Quaternion.identity);
+        obj.GetComponent<Animator>().Play("ShroomieDeath");
+        yield return new WaitForSeconds(.35f);
         obj.SetActive(false);
         yield return null;
     }

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShroomieShooting : MonoBehaviour {
-    
-    float _cooldown = 1f;
+
+    [SerializeField] ShroomiesUpgradeController _controller;
 
     float FireRate = .5f;
     float BulletVelocity = 5f;
@@ -60,20 +60,13 @@ public class ShroomieShooting : MonoBehaviour {
     
 
     private void Update() {
-        _cooldown = Mathf.Clamp(_cooldown - Time.deltaTime, 0, FireRate);
-        if (transform.parent.GetComponent<ShroomiesUpgradeController>().Toggle && _cooldown <= 0f) {
-            // shoot bullet
-            StartCoroutine(fireAnim());
-            // reset cooldown
-            _cooldown = FireRate;
-        }
         if (_currentBarrelConfiguration != _barrelConfigurations[ExtraBulletUpgradeLevel]) {
             _currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
         }
 
     }
 
-    IEnumerator fireAnim() {
+    public IEnumerator FireAnim() {
         // play animation
         _animator.speed = 1 / FireRate;
         _animator.Play("ShroomieShoot");

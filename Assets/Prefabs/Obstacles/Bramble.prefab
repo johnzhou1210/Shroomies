@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 774433603194880789}
   - component: {fileID: 5954912760573567051}
   - component: {fileID: 8083967500124192423}
+  - component: {fileID: 3149305717287673208}
   m_Layer: 11
   m_Name: Bramble
   m_TagString: Obstacle
@@ -172,3 +173,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.8, y: 0.14003575}
   m_EdgeRadius: 0
+--- !u!95 &3149305717287673208
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265869883905717513}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7494356c0484c7941b9d001d1fc46c1d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

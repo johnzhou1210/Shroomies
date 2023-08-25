@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void FixedUpdate() {
 
-        if (!_plrOnHit.Dead) {
+        if (!_plrOnHit.Dead && CanMove) {
             _worldPos = transform.position;
             float verticalAxis = Input.GetAxisRaw("Vertical");
             float horizontalAxis = Input.GetAxisRaw("Horizontal");

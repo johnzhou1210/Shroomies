@@ -26,6 +26,9 @@ public class AudioManager : MonoBehaviour {
                 yield return new WaitForSeconds(.1f);
             }
         }
+        if (music == null) {
+            yield break;
+        }
         MusicSource.clip = music.AudioClip;
         MusicSource.loop = music.Loop;
         MusicSource.volume = music.Volume;
@@ -82,8 +85,13 @@ public class AudioManager : MonoBehaviour {
 
     }
 
-    public void StopAllMusic() {
-        MusicSource.Stop();
+    public void StopAllMusic(bool smooth) {
+        if (!smooth) {
+            MusicSource.Stop();
+        } else {
+            StartCoroutine(MusicTransition(null));
+        }
+        
     }
 
 }
