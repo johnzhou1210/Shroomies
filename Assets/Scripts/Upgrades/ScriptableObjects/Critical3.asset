@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371226749f0ae0e4fbeb9adcd8a3e864, type: 3}
   m_Name: Critical3
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 6f03ecf382246844c840f39c5fb93847, type: 3}
+  Image: {fileID: 21300000, guid: 685b512392f99cd458606eb2516dfe2f, type: 3}
   UpgradeName: Critical Hit III
   UpgradeDescription: <color="red">Great Chance</color> for Player to Critically
     hit

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Shroomies Next Spread
   AudioClip: {fileID: 8300000, guid: 0e4c9eb36a96d5b409fe8da3663c59de, type: 3}
   Loop: 1
-  Volume: 0.5
+  Volume: 0.75
   Pitch: 1
   Cooldown: 0.01
   LastTimePlayed: 0

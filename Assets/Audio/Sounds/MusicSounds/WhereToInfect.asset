@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Where To Infect
   AudioClip: {fileID: 8300000, guid: 30d0a006b23d61c4a90557357a78c0f9, type: 3}
   Loop: 1
-  Volume: 0.5
+  Volume: 0.75
   Pitch: 1
   Cooldown: 0.01
   LastTimePlayed: 0

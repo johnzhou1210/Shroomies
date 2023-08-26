@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371226749f0ae0e4fbeb9adcd8a3e864, type: 3}
   m_Name: PiercingShot2
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 21233a5473a32ba4c98ba119ba7b7fc1, type: 3}
+  Image: {fileID: 21300000, guid: c3f20f8f33269d744a38559d67fc888e, type: 3}
   UpgradeName: Penetration II
   UpgradeDescription: Player's shots Pierce <color="red">3</color> enemies
   ShroomItUpDescription: Player's <color="red">and Shroomie's</color> shots Pierce

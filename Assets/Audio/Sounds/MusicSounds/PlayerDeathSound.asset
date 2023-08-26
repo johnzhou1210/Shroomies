@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Player Death Sound
   AudioClip: {fileID: 8300000, guid: a9e8de8d38512e342bd8c8bcdef87117, type: 3}
   Loop: 0
-  Volume: 0.658
+  Volume: 0.75
   Pitch: 1
   Cooldown: 0.001
-  LastTimePlayed: 20.164131
+  LastTimePlayed: 0

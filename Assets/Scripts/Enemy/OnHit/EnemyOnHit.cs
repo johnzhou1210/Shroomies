@@ -36,15 +36,23 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
         return CurrentHealth == 0;
     }
 
+    void setColorOfAllEnabledSprites(Color color) {
+        foreach (Transform child in transform) {
+            if (child.gameObject.activeInHierarchy && child.TryGetComponent(out SpriteRenderer rend)) {
+                rend.color = color;
+            }
+        }
+    }
+
     IEnumerator Flicker(int amountOfTimes, float flickerDelay) {
         for (int i = 0; i < amountOfTimes; i++) {
             yield return new WaitForSeconds(flickerDelay / 2f);
-            transform.Find("Sprite").GetComponent<SpriteRenderer>().color = Color.clear;
+            setColorOfAllEnabledSprites(Color.clear);
             yield return new WaitForSeconds(flickerDelay / 2f);
-            transform.Find("Sprite").GetComponent<SpriteRenderer>().color = Color.white;
+            setColorOfAllEnabledSprites(Color.white);
         }
         if (isDead()) {
-            transform.Find("Sprite").GetComponent<SpriteRenderer>().color = Color.clear;
+            setColorOfAllEnabledSprites(Color.clear);
             gameObject.SetActive(false);
         }
         yield return null;

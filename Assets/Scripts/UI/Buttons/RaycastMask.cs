@@ -70,7 +70,7 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter {
         // destroy component if texture import settings are wrong
         try {
             return _sprite.texture.GetPixel(x, y).a > 0;
-        } catch (UnityException e) {
+        } catch (UnityException) {
             Debug.LogError("Mask texture not readable, set your sprite to Texture Type 'Advanced' and check 'Read/Write Enabled'");
             Destroy(this);
             return false;

@@ -5,7 +5,6 @@ using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class EnemyShooting : MonoBehaviour {
-    
     [Range(.01f, 16f)] public float FireRate = .25f;
     [Range(0, 8f)] public float BulletVelocity = 5f;
     [Range(0, 64)] public int AttackPower = 1;

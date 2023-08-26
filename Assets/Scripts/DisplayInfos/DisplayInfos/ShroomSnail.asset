@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce3a5e484b3b7643b415a94fdfcb161, type: 3}
+  m_Name: ShroomSnail
+  m_EditorClassIdentifier: 
+  DisplayName: SHROOM SNAIL
+  DisplayImage: {fileID: -1399495558, guid: 724d892ed2b54b14d838eaabdeb91976, type: 3}
+  Aesthetic: {r: 0.14117648, g: 0.18039216, b: 0.16470589, a: 1}

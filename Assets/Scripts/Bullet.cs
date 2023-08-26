@@ -72,18 +72,18 @@ public class Bullet : MonoBehaviour {
             AudioManager.Instance.PlayShootingSFX("Bullet Bounce Sound");
         }
 
-      
+
 
         if (transform.position.y < 5.1f) {
             GameObject hitTarget = collision.gameObject;
-            if (hitTarget.CompareTag("Enemy") || hitTarget.CompareTag("Obstacle")) {
-                hitTarget.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                hitTarget.GetComponent<Rigidbody2D>().angularVelocity = 0;
-            }
-            if (hitTarget.CompareTag("Enemy") && (Ownership == BulletOwnershipType.ENEMY)
-                ||
-                hitTarget.CompareTag("Player") && (Ownership == BulletOwnershipType.PLAYER || Ownership == BulletOwnershipType.ALLY)) {
-                // do nothing
+
+
+            if (((hitTarget.CompareTag("Enemy") && Ownership == BulletOwnershipType.ENEMY) || (hitTarget.CompareTag("Player") && Ownership == BulletOwnershipType.PLAYER))
+
+                ) {
+                if (hitTarget.layer == 11) {
+                    Destroy();
+                }
             } else {
                 if (_debounce == false) {
                     // play hit sound
@@ -91,7 +91,18 @@ public class Bullet : MonoBehaviour {
                 }
 
                 if (hitTarget.CompareTag("Player") || hitTarget.CompareTag("Enemy")) {
-                    IDamageable onHit = hitTarget.CompareTag("Player") ? hitTarget.gameObject.GetComponent<PlayerOnHit>() : hitTarget.GetComponent<EnemyOnHit>();
+                    IDamageable onHit;
+                    if (hitTarget.CompareTag("Player")) {
+                        onHit = hitTarget.gameObject.GetComponent<PlayerOnHit>();
+                    } else {
+                        bool hasComponent = (hitTarget.TryGetComponent(out EnemyOnHit eoh));
+                        if (hasComponent) {
+                            onHit = eoh;
+                        } else {
+                            // must be in parent or else error
+                            onHit = hitTarget.transform.parent.gameObject.GetComponent<EnemyOnHit>();
+                        }
+                    }
                     bool success = HitTargets.Add(onHit);
                     if (success) {
                         // deal damage, account for crit rate.

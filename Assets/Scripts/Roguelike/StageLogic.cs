@@ -4,17 +4,19 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class StageLogic : MonoBehaviour {
     [SerializeField] ClusterCollection[] _clusterCollections;
 
     [SerializeField] UnityStringEvent cueStageBanner;
+    [SerializeField] UnityEntityDisplayInfoEvent _cueBossBanner;
     [SerializeField] UnityIntEvent updateMulch, shroomieUpdateCost;
     [SerializeField] UnityBoolEvent _invokeCelebrate;
 
     [SerializeField] float _stageBeginWaitDelay;
     [SerializeField] float _interstageDelay;
-    [SerializeField] int _numStagesPerWorldIncludingBoss;
+    [SerializeField] int _numStagesPerWorldIncludingBoss, _bossStage = 5;
     [SerializeField] GameObject _upgradeFrame, _uiCanvas, _playerDragArea, _buyShroomieButton;
 
     public int WorldNumber = 1;
@@ -47,51 +49,63 @@ public class StageLogic : MonoBehaviour {
              *  - Spawns 24 clusters -> 23 to 25 clusters
              * 3-3: difficulty of (3*2)+3 = 9
              */
-
+            setPlayerControls(false);
             int difficulty = (WorldNumber * 2) + StageNumber;
 
-            setPlayerControls(true);
-            //toggleShooting(true);
-            //GameObject.FindWithTag("Player").GetComponent<PlayerShooting>().ExtraBulletUpgradeLevel = StageNumber - 1; // for testing only.
-
-            AudioManager.Instance.PlayMusic("Shroomies Next Spread");
-            cueStageBanner.Invoke(WorldNumber + "-" + StageNumber);
+            
+            if (StageNumber != _bossStage) { AudioManager.Instance.PlayMusic("Shroomies Next Spread"); }
+            cueStageBanner.Invoke(StageNumber == _bossStage ? "<color=\"red\">"+ WorldNumber + "-" + StageNumber + "</color>" : WorldNumber + "-" + StageNumber);
             yield return new WaitForSeconds(_stageBeginWaitDelay);
 
-            // allow player to buy shroomies
-            _buyShroomieButton.SetActive(true);
-            _buyShroomieButton.GetComponent<Animator>().Play("ShroomieButtonFadeIn");
-            shroomieUpdateCost.Invoke((int)((1 + (difficulty / 10f)) * ShroomieBaseCost) - 150); // cost scales on difficulty.
+           
 
-            int numClustersToSpawn = (int)Mathf.Ceil(UnityEngine.Random.Range(2 * Mathf.Pow(difficulty, 1.1f), 2 * Mathf.Pow(difficulty, 1.1f) + 2));
-            int currNumClustersElapsed = 0;
-            while (currNumClustersElapsed < numClustersToSpawn) {
-                // choose which collection to use to spawn with
-                ClusterCollection chosenCollection = Array.Find(_clusterCollections, c => c.WorldNumber == WorldNumber && c.StageNumber == StageNumber);
-                // randomly choose which cluster to spawn from this collection
-                GameObject chosenClusterPrefabToSpawn = Instantiate(chosenCollection.Clusters[UnityEngine.Random.Range(0, chosenCollection.Clusters.Length)], GameObject.FindWithTag("EnemyContainer").transform);
-                // scale cluster speed depending on difficulty
-                chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed *= (1 + (difficulty / 10f) - .15f);
-                Debug.Log("speed set to " + chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed + " by multiplying by " + (1 + (difficulty / 10f) - .15f) + " where difficulty = " + difficulty);
+            // choose which collection to use to spawn with
+            ClusterCollection chosenCollection = Array.Find(_clusterCollections, c => c.WorldNumber == WorldNumber && c.StageNumber == StageNumber);
 
-                foreach (Transform child in chosenClusterPrefabToSpawn.transform) {
-                    // attach needed event connections:
-                    // 1) Reward mulch event
-                    if (child.CompareTag("Enemy")) {
-                        EnemyOnHit enemyOnHit = child.GetComponent<EnemyOnHit>();
-                        enemyOnHit.GiveMulch.AddListener(increaseMulch);
-                        enemyOnHit.MaxHealth = (int) Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.01f, 1.01f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f));
-                        enemyOnHit.setCurrHealthToMaxHealth();
+            // If not boss stage, spawn clusters immediately. Otherwise, spawn boss.
+            if (StageNumber != _bossStage) {
+                setPlayerControls(true);
+                // allow player to buy shroomies
+                loadShroomieButton(difficulty);
+
+                int numClustersToSpawn = (int)Mathf.Ceil(UnityEngine.Random.Range(2 * Mathf.Pow(difficulty, 1.1f), 2 * Mathf.Pow(difficulty, 1.1f) + 2));
+                int currNumClustersElapsed = 0;
+                while (currNumClustersElapsed < numClustersToSpawn) {
+                    
+                    // randomly choose which cluster to spawn from this collection
+                    GameObject chosenClusterPrefabToSpawn = Instantiate(chosenCollection.Clusters[UnityEngine.Random.Range(0, chosenCollection.Clusters.Length)], GameObject.FindWithTag("EnemyContainer").transform);
+                    // scale cluster speed depending on difficulty
+                    chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed *= (1 + (difficulty / 10f) - .15f);
+                    Debug.Log("speed set to " + chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed + " by multiplying by " + (1 + (difficulty / 10f) - .15f) + " where difficulty = " + difficulty);
+
+                    foreach (Transform child in chosenClusterPrefabToSpawn.transform) {
+                        addEnemyListeners(child, difficulty);
                     }
+                    ClusterSettings currClusterSettings = chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>();
+                    // spawn clusters more aggressively at higher difficulties.
+                    float minWait = currClusterSettings.NextClusterMinDelay / (Mathf.Pow(1.1f, 1.2f * difficulty) - .4f), maxWait = currClusterSettings.NextClusterMaxDelay / (Mathf.Pow(1.1f, 1.2f * difficulty) - .4f);
+                    yield return new WaitForSeconds(UnityEngine.Random.Range(minWait, maxWait));
+                    currNumClustersElapsed++;
                 }
-                ClusterSettings currClusterSettings = chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>();
-                // spawn clusters more aggressively at higher difficulties.
-                float minWait = currClusterSettings.NextClusterMinDelay / (Mathf.Pow(1.1f, 1.2f * difficulty) - .4f), maxWait = currClusterSettings.NextClusterMaxDelay / (Mathf.Pow(1.1f, 1.2f * difficulty) - .4f);
-                yield return new WaitForSeconds(UnityEngine.Random.Range(minWait, maxWait));
-                currNumClustersElapsed++;
-            }
+            } else {
+                AudioManager.Instance.StopAllMusic(true);
+                // This is a boss stage. Spawn the boss!
+                GameObject bossClusterPrefab = Instantiate(chosenCollection.Clusters[0], GameObject.FindWithTag("EnemyContainer").transform);
+                addEnemyListeners(bossClusterPrefab.transform, difficulty);
+                yield return new WaitForSeconds(3f);
+                // cue boss banner
+                _cueBossBanner.Invoke(bossClusterPrefab.transform.GetChild(0).GetComponent<DisplayData>().DisplayInfo);
+                AudioManager.Instance.PlayMusic("It's Getting Harder");
+                yield return new WaitForSeconds(5f);
+                setPlayerControls(true);
+                // allow player to buy shroomies
+                loadShroomieButton(difficulty);
 
-            //yield return new WaitForSeconds(_interstageDelay);
+            }
+            
+
+
+
             // wait until all enemies are dead first
             yield return new WaitUntil(() => GameObject.FindWithTag("EnemyContainer").transform.childCount == 0);
             setPlayerControls(false);
@@ -132,8 +146,25 @@ public class StageLogic : MonoBehaviour {
         }
     }
 
+    void addEnemyListeners(Transform trans, float difficulty) {
+        // attach needed event connections for when enemies spawn in:
+        // 1) Reward mulch event
+        if (trans.CompareTag("Enemy")) {
+            EnemyOnHit enemyOnHit = trans.GetComponent<EnemyOnHit>();
+            enemyOnHit.GiveMulch.AddListener(increaseMulch);
+            enemyOnHit.MaxHealth = (int)Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.01f, 1.01f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f));
+            enemyOnHit.setCurrHealthToMaxHealth();
+        }
+    }
+
     private void Start() {
         StartCoroutine(BeginRoguelikeRun());
+    }
+
+    void loadShroomieButton(float difficulty) {
+        _buyShroomieButton.SetActive(true);
+        _buyShroomieButton.GetComponent<Animator>().Play("ShroomieButtonFadeIn");
+        shroomieUpdateCost.Invoke((int)((1 + (difficulty / 10f)) * ShroomieBaseCost) - 150); // cost scales on difficulty.
     }
 
     public void increaseMulch(int amount) {
