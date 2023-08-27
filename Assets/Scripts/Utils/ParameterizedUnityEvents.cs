@@ -13,6 +13,7 @@ using UnityEngine.UI;
 [System.Serializable] public class UnityFloatBoolEvent : UnityEvent<float,bool> { }
 [System.Serializable]  public class Unity2FloatEvent : UnityEvent<float, float> { }
 [System.Serializable]  public class UnityIntEvent : UnityEvent<int> { }
+[System.Serializable] public class Unity2IntEvent : UnityEvent<int, int> { }
 [System.Serializable] public class UnityIntBoolEvent : UnityEvent<int, bool> { }
 [System.Serializable] public class UnityUpgradeEvent : UnityEvent<Upgrade> { }
 [System.Serializable] public class UnityUpgradeBoolEvent : UnityEvent<Upgrade, bool> { }

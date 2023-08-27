@@ -27,15 +27,15 @@ public class DandelionOnHit : EnemyOnHit, IDamageable
     IEnumerator Flicker(int amountOfTimes, float flickerDelay) {
         for (int i = 0; i < amountOfTimes; i++) {
             yield return new WaitForSeconds(flickerDelay / 2f);
-            transform.Find("Sprite").GetComponent<SpriteRenderer>().color = Color.clear;
+            SetColorOfAllEnabledSprites(Color.clear);
             yield return new WaitForSeconds(flickerDelay / 2f);
-            transform.Find("Sprite").GetComponent<SpriteRenderer>().color = Color.white;
+            SetColorOfAllEnabledSprites(Color.white);
         } 
         yield return null;
     }
 
     public void HideDeadBody() {
-        transform.Find("Sprite").GetComponent<SpriteRenderer>().color = Color.clear;
+        SetColorOfAllEnabledSprites(Color.clear);
         gameObject.SetActive(false);
     }
 

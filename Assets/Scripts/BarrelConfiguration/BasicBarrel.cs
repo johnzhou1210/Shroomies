@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class BulletDamageInfo {
     public float Velocity, CritRate;
-    public int Damage, PierceCount;
+    public int Damage, PierceCount, BulletClearLimit;
     public bool Bounce;
 
-    public BulletDamageInfo(float vel, int dam, float crit, int pier, bool bounc) {
+    public BulletDamageInfo(float vel, int dam, float crit, int pier, bool bounc, int bulClrLmt) {
         Velocity = vel;
         Damage = dam;
         CritRate = crit;
         PierceCount = pier;
         Bounce = bounc;
+        BulletClearLimit = bulClrLmt;
     }
 
 }
@@ -20,10 +21,6 @@ public class BulletDamageInfo {
 public class BasicBarrel : BarrelConfiguration
 {
     public override void Fire(BulletType bulletType, BulletOwnershipType ownership, BulletDamageInfo dmgInfo) {
-
-
-        AudioManager.Instance.PlaySFX( (ownership == BulletOwnershipType.PLAYER || ownership == BulletOwnershipType.ALLY) ? "Player Shoot Sound" : "Enemy Shoot Sound");
-        
         foreach (Transform child in transform) {
             if (child != null) {
                 BulletInfo newBulletInfo = BulletPool.BulletPoolInstance.GetBullet(bulletType, ownership, dmgInfo);

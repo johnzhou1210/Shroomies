@@ -21,6 +21,7 @@ public class PetuniaShooting : EnemyShooting {
         StartCoroutine(monsterBehavior());
     }
 
+
     IEnumerator monsterBehavior() {
         while (StateManager.CurrentState != StateManager.DeadState) {
             Debug.Log("in loop. current state is " + StateManager.CurrentState);

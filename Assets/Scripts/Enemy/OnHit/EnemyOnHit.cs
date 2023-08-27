@@ -11,7 +11,7 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     public int MulchReward;
 
     public UnityEvent OnDeath;
-    public UnityIntEvent GiveMulch;
+    [HideInInspector] public UnityIntEvent GiveMulch;
 
     public Collider2D Hitbox;
 
@@ -36,7 +36,7 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
         return CurrentHealth == 0;
     }
 
-    void setColorOfAllEnabledSprites(Color color) {
+    public void SetColorOfAllEnabledSprites(Color color) {
         foreach (Transform child in transform) {
             if (child.gameObject.activeInHierarchy && child.TryGetComponent(out SpriteRenderer rend)) {
                 rend.color = color;
@@ -47,12 +47,12 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     IEnumerator Flicker(int amountOfTimes, float flickerDelay) {
         for (int i = 0; i < amountOfTimes; i++) {
             yield return new WaitForSeconds(flickerDelay / 2f);
-            setColorOfAllEnabledSprites(Color.clear);
+            SetColorOfAllEnabledSprites(Color.clear);
             yield return new WaitForSeconds(flickerDelay / 2f);
-            setColorOfAllEnabledSprites(Color.white);
+            SetColorOfAllEnabledSprites(Color.white);
         }
         if (isDead()) {
-            setColorOfAllEnabledSprites(Color.clear);
+            SetColorOfAllEnabledSprites(Color.clear);
             gameObject.SetActive(false);
         }
         yield return null;

@@ -11,7 +11,7 @@ public class ShroomieShooting : MonoBehaviour {
     float BulletVelocity = 5f;
     int AttackPower = 3;
     float CritRate = .05f;
-    int PierceCount = 0;
+    int PierceCount = 0, BulletClearLimit = 0;
     bool BulletsBounce = false;
     int ExtraBulletUpgradeLevel = 0;
 
@@ -41,6 +41,7 @@ public class ShroomieShooting : MonoBehaviour {
             CritRate = source.CritRate;
             ExtraBulletUpgradeLevel = source.ExtraBulletUpgradeLevel;
             BulletsBounce = source.BulletsBounce;
+            BulletClearLimit = source.BulletClearLimit;
 
             switch(source.CurrentBulletType) {
                 case BulletType.NORMAL: CurrentBulletType = BulletType.NORMAL_S; break;
@@ -79,7 +80,7 @@ public class ShroomieShooting : MonoBehaviour {
 
     IEnumerator fire() {
         // shoot bullets depending on current barrel configuration.
-        BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, CritRate, PierceCount, BulletsBounce);
+        BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, CritRate, PierceCount, BulletsBounce, BulletClearLimit);
         _currentBarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.PLAYER, dmgInfo);
         Debug.Log("Shot bullet");
         yield return null;

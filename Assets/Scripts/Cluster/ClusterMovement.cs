@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(ClusterSettings))]
 public class ClusterMovement : MonoBehaviour {
     ClusterSettings _settings;
+    [SerializeField] bool _moveCluster = true;
 
     private void Start() {
         _settings = GetComponent<ClusterSettings>();
@@ -12,7 +13,9 @@ public class ClusterMovement : MonoBehaviour {
 
     private void FixedUpdate() {
         if (_settings != null) {
-            transform.Translate(_settings.MovementSpeed * Time.fixedDeltaTime * Vector3.down);
+            if (_moveCluster) {
+                transform.Translate(_settings.MovementSpeed * Time.fixedDeltaTime * Vector3.down);
+            }
             if (!hasAliveEnemies() || (onlyBrambleRemains() && transform.position.y < -6f)) {
                 Destroy(gameObject);
             }

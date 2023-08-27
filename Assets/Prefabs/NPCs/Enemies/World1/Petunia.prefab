@@ -364,6 +364,7 @@ MonoBehaviour:
   StartShootY: 7
   BulletsBounce: 0
   ObstaclePierceCount: 0
+  BulletClearLimit: 2
   CurrentBulletType: 1
   Animator: {fileID: 5678910839467403377}
   StateManager: {fileID: 4479650827182798106}

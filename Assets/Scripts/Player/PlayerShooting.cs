@@ -17,7 +17,7 @@ public class PlayerShooting : MonoBehaviour {
     [Range(0, 8f)] public float BulletVelocity = 5f;
     [Range(0, 64)] public int AttackPower = 3;
     [Range(0, 1f)] public float CritRate = .05f;
-    [Range(0, 32f)] public int PierceCount = 0;
+    [Range(0, 32f)] public int PierceCount = 0, BulletClearLimit = 0;
     public bool BulletsBounce = false;
     public int ExtraBulletUpgradeLevel = 0;
 
@@ -79,7 +79,7 @@ public class PlayerShooting : MonoBehaviour {
 
     IEnumerator fire() {
         // shoot bullets depending on current barrel configuration.
-        BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, CritRate, PierceCount, BulletsBounce);
+        BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, CritRate, PierceCount, BulletsBounce, BulletClearLimit);
         _currentBarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.PLAYER, dmgInfo);
         Debug.Log("Shot bullet");
         yield return null;

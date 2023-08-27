@@ -10,14 +10,14 @@ public class Bullet : MonoBehaviour {
     Vector2 _moveDir;
     float _velocity = 10f, _critRate = 0;
     bool _reflect = true;
-    int _damage = 1, _pierceLimit = 32;
+    int _damage = 1, _pierceLimit = 32, _bulletClearLimit = 0;
     public BulletType Type;
     public BulletOwnershipType Ownership;
     public HashSet<IDamageable> HitTargets;
     [SerializeField] GameObject _explosionPrefab, _critEffect;
 
     readonly float _removeTime = 9f;
-    int _pierceCounter = 0;
+    int _pierceCounter = 0, _bulletClearCounter = 0;
 
     [SerializeField] Rigidbody2D _rigidBody;
 
@@ -29,6 +29,7 @@ public class Bullet : MonoBehaviour {
         Invoke("Destroy", _removeTime);
         HitTargets = new HashSet<IDamageable>();
         _pierceCounter = 0;
+        _bulletClearCounter = 0;
     }
 
     private void FixedUpdate() {
@@ -56,7 +57,18 @@ public class Bullet : MonoBehaviour {
     }
 
 
+    bool gameObjectIsABullet(GameObject go) {
+        return (go.layer == 7 || go.layer == 9);
+    }
+    bool bulletCanClearBullets(Bullet b) {
+        return b._bulletClearLimit > 0 &&
+               b._bulletClearCounter < b._bulletClearLimit;
+    }
+
+
     void OnCollisionEnter2D(Collision2D collision) {
+        GameObject hitTarget = collision.gameObject;
+
 
 
         void bounce() {
@@ -72,16 +84,21 @@ public class Bullet : MonoBehaviour {
             AudioManager.Instance.PlayShootingSFX("Bullet Bounce Sound");
         }
 
+        void ignoreCollisionsWithTarget() {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
+        }
+        void keepBulletGoingAfterCollision() {
+            _rigidBody.velocity = _lastVelocity;
+        }
 
 
         if (transform.position.y < 5.1f) {
-            GameObject hitTarget = collision.gameObject;
 
 
             if (((hitTarget.CompareTag("Enemy") && Ownership == BulletOwnershipType.ENEMY) || (hitTarget.CompareTag("Player") && Ownership == BulletOwnershipType.PLAYER))
-
-                ) {
+                  ) {
                 if (hitTarget.layer == 11) {
+                    Debug.Log("call 1 " + transform.name + " collision enter with " + hitTarget.name);
                     Destroy();
                 }
             } else {
@@ -89,7 +106,7 @@ public class Bullet : MonoBehaviour {
                     // play hit sound
                     _debounce = true;
                 }
-
+                //Debug.Log(transform.name + " collision enter with " + hitTarget.name);
                 if (hitTarget.CompareTag("Player") || hitTarget.CompareTag("Enemy")) {
                     IDamageable onHit;
                     if (hitTarget.CompareTag("Player")) {
@@ -118,16 +135,15 @@ public class Bullet : MonoBehaviour {
                     }
                     Debug.Log(hitTarget.name + " took " + _damage + " damage!");
 
-
-
                     if (_pierceLimit <= 0 || _pierceCounter >= _pierceLimit) {
+                        Debug.Log("call 2 " + transform.name + " collision enter with " + hitTarget.name);
                         Destroy();
                     } else {
                         Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
                         _pierceCounter++;
                         // ignore collisions with this target from now on
-                        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
-                        _rigidBody.velocity = _lastVelocity;
+                        ignoreCollisionsWithTarget();
+                        keepBulletGoingAfterCollision();
                     }
 
                 } else if (hitTarget.CompareTag("Obstacle")) {
@@ -138,11 +154,12 @@ public class Bullet : MonoBehaviour {
                         Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
                         _pierceCounter++;
                         // ignore collisions with this target from now on
-                        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
-                        _rigidBody.velocity = _lastVelocity;
+                        ignoreCollisionsWithTarget();
+                        keepBulletGoingAfterCollision();
                     } else if (_reflect) { // bounce check
                         bounce();
                     } else {
+                        Debug.Log("call 3 " + transform.name + " collision enter with " + hitTarget.name);
                         Destroy();
                     }
 
@@ -150,15 +167,35 @@ public class Bullet : MonoBehaviour {
                     // bounce off contact point
                     bounce();
                 } else {
-                    // disintegrate bullet
-                    Destroy();
+                    // if this is a clearing bullet
+                    if (bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget)) { 
+                        //&& !bulletCanClearBullets(hitTarget.GetComponent<Bullet>())) {
+                        // destroy other bullet
+                        hitTarget.gameObject.GetComponent<Bullet>().Destroy();
+                        keepBulletGoingAfterCollision();
+                        _bulletClearCounter++;
+                        if (_bulletClearCounter >= _bulletClearLimit) {
+                            Debug.Log("call 4 " + transform.name + " collision enter with " + hitTarget.name);
+                            Destroy();
+                        }
+                    } else {
+                        if (!bulletCanClearBullets(this) || gameObjectIsABullet(hitTarget)) {
+                            // just "pierce" it
+                            // ignore collisions with this target from now on
+                            ignoreCollisionsWithTarget();
+                            keepBulletGoingAfterCollision();
+                        } else {
+                            Debug.Log("call 5 " + transform.name + " collision enter with " + hitTarget.name);
+                            Destroy();
+                        }
 
+                    }
                 }
             }
         } else {
             // ignore collisions with this target from now on
-            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider, true);
-            _rigidBody.velocity = _lastVelocity;
+            ignoreCollisionsWithTarget();
+            keepBulletGoingAfterCollision();
         }
     }
 
@@ -181,6 +218,10 @@ public class Bullet : MonoBehaviour {
 
     public void SetBounce(bool bounce) {
         _reflect = bounce;
+    }
+
+    public void SetBulletClearLimit(int limit) {
+        _bulletClearLimit = limit;
     }
 
 

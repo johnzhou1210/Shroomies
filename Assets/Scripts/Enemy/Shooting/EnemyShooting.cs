@@ -10,7 +10,7 @@ public class EnemyShooting : MonoBehaviour {
     [Range(0, 64)] public int AttackPower = 1;
     public float StartShootY = 5.5f;
     public bool BulletsBounce = false;
-    public int ObstaclePierceCount = 0;
+    public int ObstaclePierceCount = 0, BulletClearLimit = 0;
 
     public BulletType CurrentBulletType;
 
@@ -56,8 +56,11 @@ public class EnemyShooting : MonoBehaviour {
         yield return null;
     }
 
+    public void DefaultShootSound() {
+        AudioManager.Instance.PlaySFX("Enemy Shoot Sound");
+    }
+
     public void OnDeath() {
-        Animator.Play("Dead");
         StopAllCoroutines();
     }
 
@@ -67,7 +70,7 @@ public class EnemyShooting : MonoBehaviour {
 
     IEnumerator fire() {
         // shoot bullets depending on current barrel configuration.
-        BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, 0, ObstaclePierceCount, BulletsBounce);
+        BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, 0, ObstaclePierceCount, BulletsBounce, BulletClearLimit);
         CurrentBarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.ENEMY, dmgInfo);
         Debug.Log("Shot enemy bullet");
         yield return null;

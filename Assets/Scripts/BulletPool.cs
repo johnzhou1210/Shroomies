@@ -6,17 +6,12 @@ using UnityEngine;
 
 
 public enum BulletType {
-    NORMAL,
-    WIDE1,
-    WIDE2,
-    WIDE3,
-    NORMAL_S,
-    WIDE1_S,
-    WIDE2_S,
-    WIDE3_S,
-    DANDELION,
-    ROSETHORN,
-    SUNFLOWER,
+    NORMAL = 0, NORMAL_S = 4,
+    WIDE1 = 1, WIDE2 = 2, WIDE3 = 3, WIDE1_S = 5, WIDE2_S = 6, WIDE3_S = 7,
+    DANDELION = 8,
+    ROSETHORN = 9,
+    SUNFLOWER = 10,
+    SNAIL_BOSS_WIDE = 11, SNAIL_BOSS_BELCH = 12
 }
 
 public enum BulletOwnershipType {
@@ -96,6 +91,7 @@ public class BulletPool : MonoBehaviour {
             bulletComponent.SetCritRate(dmgInfo.CritRate);
             bulletComponent.SetPierceCount(dmgInfo.PierceCount);
             bulletComponent.SetBounce(dmgInfo.Bounce);
+            bulletComponent.SetBulletClearLimit(dmgInfo.BulletClearLimit);
             return bulletInfo;
         }
         BulletPoolEntry findDesiredPool(BulletType type) {

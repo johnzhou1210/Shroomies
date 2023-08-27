@@ -14,7 +14,7 @@ public class ShroomiesUpgradeController : MonoBehaviour
     [Range(0, 8f)] public float BulletVelocity = 5f;
     [Range(0, 64)] public int AttackPower = 3;
     [Range(0, 1f)] public float CritRate = .05f;
-    [Range(0, 32f)] public int PierceCount = 0;
+    [Range(0, 32f)] public int PierceCount = 0, BulletClearLimit = 0;
 
     public float Cooldown = 0f;
 
