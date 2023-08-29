@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Snail Boss Death
   AudioClip: {fileID: 8300000, guid: 3228a9d84139c4742ba7fded148a1155, type: 3}
   Loop: 0
-  Volume: 1.912
+  Volume: 2
   Pitch: 1
   Cooldown: 0.001
-  LastTimePlayed: 0
+  LastTimePlayed: 106.659996

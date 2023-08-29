@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour {
     float _velocity = 10f, _critRate = 0;
     bool _reflect = true;
     int _damage = 1, _pierceLimit = 32, _bulletClearLimit = 0;
+    public Transform Shooter;
     public BulletType Type;
     public BulletOwnershipType Ownership;
     public HashSet<IDamageable> HitTargets;
@@ -168,9 +169,10 @@ public class Bullet : MonoBehaviour {
                     bounce();
                 } else {
                     // if this is a clearing bullet
-                    if (bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget)) { 
+                    if (bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget) && Shooter != hitTarget.GetComponent<Bullet>().Shooter) { 
                         //&& !bulletCanClearBullets(hitTarget.GetComponent<Bullet>())) {
                         // destroy other bullet
+                 
                         hitTarget.gameObject.GetComponent<Bullet>().Destroy();
                         keepBulletGoingAfterCollision();
                         _bulletClearCounter++;
@@ -182,6 +184,7 @@ public class Bullet : MonoBehaviour {
                         if (!bulletCanClearBullets(this) || gameObjectIsABullet(hitTarget)) {
                             // just "pierce" it
                             // ignore collisions with this target from now on
+                            Debug.Log("ignoring collisions involving " + transform.name + " with " + hitTarget.name);
                             ignoreCollisionsWithTarget();
                             keepBulletGoingAfterCollision();
                         } else {
@@ -222,6 +225,10 @@ public class Bullet : MonoBehaviour {
 
     public void SetBulletClearLimit(int limit) {
         _bulletClearLimit = limit;
+    }
+
+    public void SetShooter(Transform shooter) {
+        Shooter = shooter;
     }
 
 

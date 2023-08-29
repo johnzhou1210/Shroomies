@@ -21,7 +21,9 @@ MonoBehaviour:
   - {fileID: 6304321893812405142, guid: 433d7b0c38dfb2d4e9aff270c506795b, type: 3}
   - {fileID: 3709045081295527823, guid: 6ca8ffbfd2dfe1d43b8ff9b42697def8, type: 3}
   - {fileID: 7524174586127225531, guid: 15e5337bbcc6284479c459544b75b9b6, type: 3}
-  - {fileID: 3228092347605497743, guid: 81ff8470c176e1d429b48fc1cec3230e, type: 3}
   - {fileID: 9124084750106793660, guid: 0ed0e7bc52e473b4dab749796c512afa, type: 3}
+  - {fileID: 3228092347605497743, guid: 81ff8470c176e1d429b48fc1cec3230e, type: 3}
+  - {fileID: 4283035302306517697, guid: b8e5b99f1b1321d42ae3561f94a0a098, type: 3}
+  - {fileID: 4283035302306517697, guid: c7c61ae6d547fd34fac137ceaf216a45, type: 3}
   WorldNumber: 1
   StageNumber: 3

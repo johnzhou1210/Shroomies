@@ -6,6 +6,7 @@ public class BulletDamageInfo {
     public float Velocity, CritRate;
     public int Damage, PierceCount, BulletClearLimit;
     public bool Bounce;
+    public Transform Shooter;
 
     public BulletDamageInfo(float vel, int dam, float crit, int pier, bool bounc, int bulClrLmt) {
         Velocity = vel;
@@ -16,6 +17,10 @@ public class BulletDamageInfo {
         BulletClearLimit = bulClrLmt;
     }
 
+    public void SetShooter(Transform shooter) {
+        Shooter = shooter;
+    }
+
 }
 
 public class BasicBarrel : BarrelConfiguration
@@ -23,6 +28,7 @@ public class BasicBarrel : BarrelConfiguration
     public override void Fire(BulletType bulletType, BulletOwnershipType ownership, BulletDamageInfo dmgInfo) {
         foreach (Transform child in transform) {
             if (child != null) {
+                dmgInfo.Shooter = transform.parent;
                 BulletInfo newBulletInfo = BulletPool.BulletPoolInstance.GetBullet(bulletType, ownership, dmgInfo);
                 GameObject newBullet = newBulletInfo.Reference;
                 newBullet.transform.position = child.position;

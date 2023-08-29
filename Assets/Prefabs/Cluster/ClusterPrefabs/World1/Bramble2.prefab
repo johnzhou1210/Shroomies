@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPosition: {x: -4.8373737, y: 6, z: 0}
+  MinMovementSpeed: 0.5
+  MaxMovementSpeed: 0.6
   MovementSpeed: 0.5
   NextClusterMinDelay: 1
   NextClusterMaxDelay: 5
@@ -62,6 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4324035d594014698bd9ec2ca10b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveCluster: 1
 --- !u!1001 &2389371718861593090
 PrefabInstance:
   m_ObjectHideFlags: 0

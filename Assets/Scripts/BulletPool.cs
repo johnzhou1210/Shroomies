@@ -92,6 +92,7 @@ public class BulletPool : MonoBehaviour {
             bulletComponent.SetPierceCount(dmgInfo.PierceCount);
             bulletComponent.SetBounce(dmgInfo.Bounce);
             bulletComponent.SetBulletClearLimit(dmgInfo.BulletClearLimit);
+            bulletComponent.SetShooter(dmgInfo.Shooter);
             return bulletInfo;
         }
         BulletPoolEntry findDesiredPool(BulletType type) {

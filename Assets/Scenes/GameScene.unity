@@ -1538,7 +1538,7 @@ MonoBehaviour:
   _stageBeginWaitDelay: 0
   _interstageDelay: 15
   _numStagesPerWorldIncludingBoss: 17
-  _bossStage: 1
+  _bossStage: 5
   _upgradeFrame: {fileID: 4616672574126157272, guid: ca89c2fe1b691ea4399361c016e6c9b0, type: 3}
   _uiCanvas: {fileID: 527809549}
   _playerDragArea: {fileID: 125849837}
@@ -1547,8 +1547,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   WorldNumber: 1
-  StageNumber: 1
-  AccumulatedMulch: 9999
+  StageNumber: 5
+  AccumulatedMulch: 0
   ShroomieBaseCost: 150
   Difficulty: 0
 --- !u!1 &762940330

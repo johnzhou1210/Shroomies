@@ -7,14 +7,17 @@ public class ClusterMovement : MonoBehaviour {
     ClusterSettings _settings;
     [SerializeField] bool _moveCluster = true;
 
+    float _movementSpeed;
+
     private void Start() {
         _settings = GetComponent<ClusterSettings>();
+        _movementSpeed = Random.Range(_settings.MinMovementSpeed, _settings.MaxMovementSpeed);
     }
 
     private void FixedUpdate() {
         if (_settings != null) {
             if (_moveCluster) {
-                transform.Translate(_settings.MovementSpeed * Time.fixedDeltaTime * Vector3.down);
+                transform.Translate(_movementSpeed * Time.fixedDeltaTime * Vector3.down);
             }
             if (!hasAliveEnemies() || (onlyBrambleRemains() && transform.position.y < -6f)) {
                 Destroy(gameObject);

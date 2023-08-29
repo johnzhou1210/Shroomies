@@ -6,11 +6,16 @@ using UnityEngine;
 public class ClusterSettings : MonoBehaviour
 {
     public Vector3 SpawnPosition;
-    public float MovementSpeed;
+    public float MinMovementSpeed, MaxMovementSpeed;
+    [HideInInspector] public float MovementSpeed;
     public float NextClusterMinDelay = 3f, NextClusterMaxDelay = 7f;
 
     private void OnEnable() {
         SpawnPosition = transform.position;
+    }
+
+    private void Start() {
+        MovementSpeed = Random.Range(MinMovementSpeed, MaxMovementSpeed);
     }
 
     void Update() {

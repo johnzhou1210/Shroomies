@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 5937060744113767173}
   m_Layer: 11
   m_Name: Shell
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -952,7 +952,7 @@ MonoBehaviour:
   StartShootY: 5.5
   BulletsBounce: 0
   ObstaclePierceCount: 256
-  BulletClearLimit: 0
+  BulletClearLimit: 256
   CurrentBulletType: 0
   Animator: {fileID: 0}
   StateManager: {fileID: 4479650827182798106}
@@ -991,9 +991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0596a0c66407714d8b69619a7d7745f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 200
+  MaxHealth: 3333
   CurrentHealth: 0
-  MulchReward: 420
+  MulchReward: 540
   OnDeath:
     m_PersistentCalls:
       m_Calls:
