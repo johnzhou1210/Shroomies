@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPosition: {x: 0, y: 6, z: 0}
+  MinMovementSpeed: 0.5
+  MaxMovementSpeed: 0.6
   MovementSpeed: 0.5
   NextClusterMinDelay: 4
   NextClusterMaxDelay: 7
