@@ -304,7 +304,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6078385167065827571}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00dec7ec00fd85a49a5dd12089c4f2b2, type: 3}
   m_Name: 
@@ -343,6 +343,7 @@ MonoBehaviour:
   StartShootY: 7
   BulletsBounce: 0
   ObstaclePierceCount: 0
+  BulletClearLimit: 0
   CurrentBulletType: 1
   Animator: {fileID: 0}
   StateManager: {fileID: 4479650827182798106}

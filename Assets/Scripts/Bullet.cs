@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour {
     [SerializeField] Rigidbody2D _rigidBody;
 
     Vector2 _lastVelocity = Vector2.zero;
+    float _lastAngularVelocity = 0f;
 
     bool _debounce = false;
 
@@ -37,6 +38,7 @@ public class Bullet : MonoBehaviour {
         //transform.Translate(Velocity * Time.deltaTime * _moveDir);
         //_lastFramePos = transform.position;
         _lastVelocity = _rigidBody.velocity;
+        _lastAngularVelocity = _rigidBody.angularVelocity;
         if (transform.position.y < -6 || (Ownership == BulletOwnershipType.PLAYER && transform.position.y > 5.4f)) {
             Destroy();
         }
@@ -90,6 +92,11 @@ public class Bullet : MonoBehaviour {
         }
         void keepBulletGoingAfterCollision() {
             _rigidBody.velocity = _lastVelocity;
+            _rigidBody.angularVelocity = _lastAngularVelocity;
+        }
+
+        bool sameSource(GameObject hitTarget) {
+            return Shooter == hitTarget.GetComponent<Bullet>().Shooter;
         }
 
 
@@ -169,10 +176,8 @@ public class Bullet : MonoBehaviour {
                     bounce();
                 } else {
                     // if this is a clearing bullet
-                    if (bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget) && Shooter != hitTarget.GetComponent<Bullet>().Shooter) { 
-                        //&& !bulletCanClearBullets(hitTarget.GetComponent<Bullet>())) {
+                    if (bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget) && !sameSource(hitTarget)) { 
                         // destroy other bullet
-                 
                         hitTarget.gameObject.GetComponent<Bullet>().Destroy();
                         keepBulletGoingAfterCollision();
                         _bulletClearCounter++;

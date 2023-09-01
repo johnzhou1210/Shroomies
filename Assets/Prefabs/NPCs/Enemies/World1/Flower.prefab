@@ -301,6 +301,7 @@ MonoBehaviour:
   StartShootY: 7
   BulletsBounce: 0
   ObstaclePierceCount: 0
+  BulletClearLimit: 0
   CurrentBulletType: 0
   Animator: {fileID: 5043039757489132429}
   StateManager: {fileID: 3297915420291259174}
@@ -336,7 +337,31 @@ MonoBehaviour:
   MulchReward: 10
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3297915420291259174}
+        m_TargetAssemblyTypeName: EnemyStateManager, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6954877933969015221}
+        m_TargetAssemblyTypeName: EnemyShooting, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   GiveMulch:
     m_PersistentCalls:
       m_Calls: []
@@ -348,7 +373,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8999955857191075688}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00dec7ec00fd85a49a5dd12089c4f2b2, type: 3}
   m_Name: 
