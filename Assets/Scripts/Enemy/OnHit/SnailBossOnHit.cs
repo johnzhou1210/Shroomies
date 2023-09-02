@@ -73,6 +73,9 @@ public class SnailBossOnHit : EnemyOnHit, IDamageable
 
     // Start is called before the first frame update
     void Start() {
+        if (GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().StageNumber == 13) {
+            MulchReward = 1337;
+        }
         StartCoroutine(AttachHPBarListener());
         Debug.Log("currhealth is " + CurrentHealth + " and maxhealth is " + MaxHealth);
         Hitbox = GetComponent<Collider2D>();

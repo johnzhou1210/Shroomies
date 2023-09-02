@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class ShroomSnailAI : EnemyShooting {
-    bool _lowHealth = false;
+    bool _phase2 = false, _phase3 = false;
     [SerializeField] ClusterCollection _minionCollection, _minionCollection2;
     [SerializeField] float _minMinionSpawnTime = 4f, _maxMinionSpawnTime = 8f;
 
@@ -46,7 +46,7 @@ public class ShroomSnailAI : EnemyShooting {
         var collection = GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().StageNumber == 5 ? _minionCollection : _minionCollection2;
         while (StateManager.CurrentState != StateManager.DeadState) {
             float waitTime = UnityEngine.Random.Range(_minMinionSpawnTime, _maxMinionSpawnTime);
-            yield return new WaitForSeconds(waitTime / 2f);
+            yield return new WaitForSeconds(waitTime);
             GameObject chosenCluster = Instantiate(collection.Clusters[UnityEngine.Random.Range(0, collection.Clusters.Length)], GameObject.FindWithTag("EnemyContainer").transform);
             float difficulty = GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().Difficulty;
             // scale cluster speed depending on difficulty
@@ -54,26 +54,34 @@ public class ShroomSnailAI : EnemyShooting {
             Debug.Log("speed set to " + chosenCluster.GetComponent<ClusterSettings>().MovementSpeed + " by multiplying by " + (1 + (difficulty / 10f) - .15f) + " where difficulty = " + difficulty);
 
             foreach (Transform child in chosenCluster.transform) {
-                GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().AddEnemyListeners(child, difficulty);
+                GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().AddEnemyListeners(child, difficulty / 2);
             }
-            yield return new WaitForSeconds(waitTime / 2f);
+            yield return new WaitForSeconds(waitTime);
         }
                 
         yield return null;
     }
 
     private void Update() {
-        if (GetComponent<SnailBossOnHit>().CurrentHealth <= GetComponent<SnailBossOnHit>().MaxHealth / 2 && !_lowHealth) {
-            _lowHealth = true;
+        if (GetComponent<SnailBossOnHit>().CurrentHealth <= GetComponent<SnailBossOnHit>().MaxHealth*.67f && !_phase2 && !_phase3) {
+            _phase2 = true;
             AudioManager.Instance.PlaySFX("Snail Boss Phase 2");
             GetComponent<SnailBossOnHit>().StartCoroutine(GetComponent<SnailBossOnHit>().ExplosionEffect(32, 1.4f));
-            FireRate = 0f;
+            FireRate = 1f;
+            Animator.speed = .9f;
             // spawn minions every 4-8 seconds.
             StartCoroutine(MinionSpawn());
-            
-
-
+        } else if (GetComponent<SnailBossOnHit>().CurrentHealth <= GetComponent<SnailBossOnHit>().MaxHealth * .33f && !_phase3) {
+            _phase3 = true;
+            AudioManager.Instance.PlaySFX("Snail Boss Phase 2");
+            GetComponent<SnailBossOnHit>().StartCoroutine(GetComponent<SnailBossOnHit>().ExplosionEffect(50, 1.4f));
+            Animator.speed = 1f;
+            FireRate = 0f;
+        } else {
+            Animator.speed = .8f;
+            FireRate = 1f;
         }
+
     }
 
     IEnumerator monsterBehavior() {
@@ -134,28 +142,28 @@ public class ShroomSnailAI : EnemyShooting {
                     BulletVelocity = 4f;
                     CurrentBarrelConfiguration = BarrelConfigurations[1];
                     CurrentBulletType = BulletType.SNAIL_BOSS_WIDE;
-                    yield return new WaitForSeconds(.45f);
+                    yield return new WaitForSeconds(1f + FireRate / 2);
                     CurrentBarrelConfiguration = BarrelConfigurations[2];
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(1f + FireRate / 2);
                     CurrentBarrelConfiguration = BarrelConfigurations[1];
-                    yield return new WaitForSeconds(2.8f);
+                    yield return new WaitForSeconds(2.8f + FireRate);
                     break;
                 case SnailBossAction.NECK_ATTACK:
                     Animator.Play("SnailNeckAttack");
                     yield return new WaitForSeconds(.5f);
                     AudioManager.Instance.PlaySFX("Spring Sound");
-                    yield return new WaitForSeconds(3.5f);
+                    yield return new WaitForSeconds(3.5f + FireRate);
                     break;
                 case SnailBossAction.TRIPLE_SHOT:
                     Animator.Play("ShroomSnailTripleShot");
                     BulletVelocity = 5.5f;
                     CurrentBarrelConfiguration = BarrelConfigurations[0];
                     CurrentBulletType = BulletType.SNAIL_BOSS_BELCH;
-                    yield return new WaitForSeconds(.33f);
+                    yield return new WaitForSeconds(.25f + FireRate / 2);
                     CurrentBarrelConfiguration = BarrelConfigurations[3];
-                    yield return new WaitForSeconds(.45f);
+                    yield return new WaitForSeconds(.35f + FireRate / 2);
                     CurrentBarrelConfiguration = BarrelConfigurations[4];
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(1f + FireRate);
                     break;
                 case SnailBossAction.ROLLOUT:
                     Animator.Play("ShroomSnailRolloutPrepare");
@@ -166,13 +174,13 @@ public class ShroomSnailAI : EnemyShooting {
                     Animator.Play("ShroomSnailRollout" + chosenNum);
                     switch(chosenNum) {
                         case 1:
-                            yield return new WaitForSeconds(10.5f);
+                            yield return new WaitForSeconds(9.5f + FireRate);
                             break;
                         case 2:
-                            yield return new WaitForSeconds(11f);
+                            yield return new WaitForSeconds(10f + FireRate);
                             break;
                         case 3:
-                            yield return new WaitForSeconds(11.5f);
+                            yield return new WaitForSeconds(10.5f + FireRate);
                             break;
                     }
                     break;

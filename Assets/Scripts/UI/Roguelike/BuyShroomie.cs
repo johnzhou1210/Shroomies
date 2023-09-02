@@ -42,6 +42,7 @@ public class BuyShroomie : MonoBehaviour
         _priceText.GetComponent<TextMeshProUGUI>().enabled = false;
     }
 
+
     public void OnButtonUp() {
         _priceText.GetComponent<TextMeshProUGUI>().enabled = true;
     }

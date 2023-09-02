@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour {
     Vector2 _moveDir;
     float _velocity = 10f, _critRate = 0;
     bool _reflect = true;
-    int _damage = 1, _pierceLimit = 32, _bulletClearLimit = 0;
+    int _damage = 1, _pierceLimit = 0, _bulletClearLimit = 0;
     public Transform Shooter;
     public BulletType Type;
     public BulletOwnershipType Ownership;
@@ -64,8 +64,8 @@ public class Bullet : MonoBehaviour {
         return (go.layer == 7 || go.layer == 9);
     }
     bool bulletCanClearBullets(Bullet b) {
-        return b._bulletClearLimit > 0 &&
-               b._bulletClearCounter < b._bulletClearLimit;
+        return b._bulletClearLimit > 0;
+            
     }
 
 
@@ -171,12 +171,12 @@ public class Bullet : MonoBehaviour {
                         Destroy();
                     }
 
-                } else if (_reflect && !hitTarget.CompareTag("Player") && !hitTarget.CompareTag("Enemy")) {
+                } else if (_reflect && !hitTarget.CompareTag("Player") && !hitTarget.CompareTag("Enemy") && !gameObjectIsABullet(hitTarget)) {
                     // bounce off contact point
                     bounce();
                 } else {
                     // if this is a clearing bullet
-                    if (bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget) && !sameSource(hitTarget)) { 
+                    if (bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget) && !sameSource(hitTarget) && _rigidBody.mass > hitTarget.GetComponent<Rigidbody2D>().mass) { 
                         // destroy other bullet
                         hitTarget.gameObject.GetComponent<Bullet>().Destroy();
                         keepBulletGoingAfterCollision();

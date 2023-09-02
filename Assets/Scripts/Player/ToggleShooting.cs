@@ -25,7 +25,7 @@ public class ToggleShooting : MonoBehaviour {
     //}
 
 
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_2022_1_OR_NEWER
     void Update() {
         if (Input.GetButtonDown("Fire")) {
             _playerShooting.Toggle = true;
@@ -34,23 +34,23 @@ public class ToggleShooting : MonoBehaviour {
             _playerShooting.Toggle = false;
             _shroomieShooting.Toggle = false;
         }
-
-
-
     }
 #elif UNITY_ANDROID || UNITY_IOS
-
 void Update() {
-    if (Input.touchCount > 0) {
+        if (Input.touchCount > 0) {
             _playerShooting.Toggle = true;
             _shroomieShooting.Toggle = true;
         } else {
             _playerShooting.Toggle = false;
             _shroomieShooting.Toggle = false;
         }
-}
-
+    }
 #endif
+
+
+
+
+
 
 
 }

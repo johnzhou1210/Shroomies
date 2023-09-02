@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3167643636626315240
 Transform:
   m_ObjectHideFlags: 0
@@ -670,7 +670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8101622761802888133
 Transform:
   m_ObjectHideFlags: 0
@@ -717,7 +717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1993207219581258682
 Transform:
   m_ObjectHideFlags: 0
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a97a6cb30236941b7cc6db042dbc71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 1.5
+  FireRate: 2
   BulletVelocity: 5
   AttackPower: 1
   StartShootY: 5.5
@@ -964,7 +964,7 @@ MonoBehaviour:
   - {fileID: 414968911508692253}
   - {fileID: 8756499470089159880}
   _minionCollection: {fileID: 11400000, guid: c58e07e2fc188cc4da1848a90909051a, type: 2}
-  _minionCollection2: {fileID: 0}
+  _minionCollection2: {fileID: 11400000, guid: 532ec121ce691bb43b45f109ddb2b6e2, type: 2}
   _minMinionSpawnTime: 4
   _maxMinionSpawnTime: 8
 --- !u!114 &7301685808615635077
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0596a0c66407714d8b69619a7d7745f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 4000
+  MaxHealth: 4444
   CurrentHealth: 0
   MulchReward: 666
   OnDeath:

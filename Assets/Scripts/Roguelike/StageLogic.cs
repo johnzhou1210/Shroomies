@@ -19,7 +19,7 @@ public class StageLogic : MonoBehaviour {
     [SerializeField] float _stageBeginWaitDelay;
     [SerializeField] float _interstageDelay;
     [SerializeField] int _numStagesPerWorldIncludingBoss, _bossStage = 5, _bossStage2 = 13;
-    [SerializeField] GameObject _upgradeFrame, _uiCanvas, _playerDragArea, _buyShroomieButton, _gameOverEffect, _resultsScreen, _thankYouScreen;
+    [SerializeField] GameObject _upgradeFrame, _uiCanvas, _playerDragArea, _buyShroomieButton, _gameOverEffect, _resultsScreen, _thankYouScreen, _pauseMenu;
 
     public UnityBoolEvent InvokeEnableBossHPDisplay;
 
@@ -48,7 +48,7 @@ public class StageLogic : MonoBehaviour {
         StartCoroutine(CountClearTime());
 
         WorldNumber = 1; StageNumber = 1;
-        while (StageNumber < _numStagesPerWorldIncludingBoss) {
+        while (StageNumber <= _numStagesPerWorldIncludingBoss) {
             /*
              * 1) after boss:
              * ending screen 
@@ -199,7 +199,7 @@ public class StageLogic : MonoBehaviour {
         if (trans.CompareTag("Enemy")) {
             EnemyOnHit enemyOnHit = trans.GetComponent<EnemyOnHit>();
             enemyOnHit.GiveMulch.AddListener(OnEnemyKill);
-            enemyOnHit.MaxHealth = (int)Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.01f, 1.01f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f));
+            enemyOnHit.MaxHealth = (int)Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.03f, 1.06f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f));
             enemyOnHit.setCurrHealthToMaxHealth();
         }
     }
@@ -233,6 +233,7 @@ public class StageLogic : MonoBehaviour {
 
     public void setPlayerControls(bool newVal) {
         setPlayerDrag(newVal);
+        _pauseMenu.SetActive(newVal);
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().CanMove = newVal;
     }
 
@@ -279,7 +280,7 @@ public class StageLogic : MonoBehaviour {
             _invokeGameOver.Invoke(true);
             yield return new WaitForSeconds(.7f);
             StopCoroutine(yCor);
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(5f);
             StartCoroutine(ResultsScreen(false));
         }
 
@@ -302,24 +303,27 @@ public class StageLogic : MonoBehaviour {
             timeHeader = _resultsScreen.transform.Find("TimeElapsed");
         timeHeader.GetComponent<TextMeshProUGUI>().text = won ? "CLEAR TIME" : "TIME ELAPSED";
         yield return new WaitForSeconds(1f);
-        for (int i = 0; i < _clearTime; i++) {
+        for (int i = 0; i < _clearTime; i += (i + (_clearTime / 32) > _clearTime ? 1 : Mathf.Clamp(i / 32, 1, (i / 32) + 1))) {
             timeElapsedText.GetComponent<TextMeshProUGUI>().text = getTime(i);
             AudioManager.Instance.PlaySFX("Tick");
             yield return new WaitForSeconds(.01f);
         }
         yield return new WaitForSeconds(1f);
-        for (int i = 0; i < _enemiesKilled; i++) {
-            enemiesKilledText.GetComponent<TextMeshProUGUI>().text = i.ToString();
-            AudioManager.Instance.PlaySFX("Tick");
-            yield return new WaitForSeconds(.01f);
+        if (_enemiesKilled > 0) {
+            for (int i = 0; i <= _enemiesKilled; i += (i + (_enemiesKilled / 32) > _enemiesKilled ? 1 : Mathf.Clamp(i / 32, 1, (i / 32) + 1))) {
+                enemiesKilledText.GetComponent<TextMeshProUGUI>().text = i.ToString();
+                AudioManager.Instance.PlaySFX("Tick");
+                yield return new WaitForSeconds(.01f);
+            }
         }
         yield return new WaitForSeconds(1f);
-        for (int i = 0; i < _earnedMulch; i += (i + 5 > _earnedMulch ? 1 : 5)) {
-            mulchEarnedText.GetComponent<TextMeshProUGUI>().text = i.ToString();
-            AudioManager.Instance.PlaySFX("Tick");
-            yield return new WaitForSeconds(0f);
+        if (_earnedMulch > 0) {
+            for (int i = 0; i <= _earnedMulch; i += (i + (_earnedMulch / 32) > _earnedMulch ? 1 : Mathf.Clamp(i / 32, 1, (i / 32) + 1))) {
+                mulchEarnedText.GetComponent<TextMeshProUGUI>().text = i.ToString();
+                AudioManager.Instance.PlaySFX("Tick");
+                yield return new WaitForSeconds(0f);
+            }
         }
-
         yield return new WaitForSeconds(1f);
         UpgradeManager upgMgr = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
         for (int i = 0; i < upgMgr.ActiveUpgrades.Count; i++) {
@@ -329,15 +333,19 @@ public class StageLogic : MonoBehaviour {
             AudioManager.Instance.PlaySFX("Cinematic Hit");
             yield return new WaitForSeconds(.5f);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         restartText.GetComponent<TextMeshProUGUI>().text = won ? "TAP TO RETURN" : "TAP TO RESTART";
         restartText.GetComponent<ResultScreenContinue>().enabled = true;
+        restartText.GetComponent<ResultScreenContinue>().Won = won;
     }
 
     IEnumerator ThankYouScreen() {
         AudioManager.Instance.PlayMusic("House Fever");
         _thankYouScreen.SetActive(true);
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(5f);
+        _thankYouScreen.transform.Find("Prompt").GetComponent<TextMeshProUGUI>().text = "PRESS ANYWHERE TO CONTINUE";
+        yield return new WaitUntil(()=> Input.GetMouseButtonUp(0) || Input.touchCount > 0);
+        _thankYouScreen.transform.Find("Prompt").GetComponent<TextMeshProUGUI>().text = "";
         StartCoroutine(ResultsScreen(true));
         yield return null;
     }
