@@ -295,12 +295,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c656f70339094f2408feb0e62f20e452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 1.7
-  BulletVelocity: 3
+  FireRate: 3
+  BulletVelocity: 5
   AttackPower: 1
   StartShootY: 7
   BulletsBounce: 0
   ObstaclePierceCount: 0
+  BulletClearLimit: 0
   CurrentBulletType: 0
   Animator: {fileID: 5043039757489132429}
   StateManager: {fileID: 3297915420291259174}
@@ -331,7 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683f9dd7dfd0aab46a9deb6c7d471561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 110
+  MaxHealth: 35
   CurrentHealth: 0
   MulchReward: 10
   OnDeath:

@@ -331,6 +331,7 @@ MonoBehaviour:
   StartShootY: 7
   BulletsBounce: 0
   ObstaclePierceCount: 0
+  BulletClearLimit: 0
   CurrentBulletType: 0
   Animator: {fileID: 9163105117589807722}
   StateManager: {fileID: 4479650827182798106}
@@ -382,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683f9dd7dfd0aab46a9deb6c7d471561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 150
+  MaxHealth: 70
   CurrentHealth: 0
   MulchReward: 30
   OnDeath:
