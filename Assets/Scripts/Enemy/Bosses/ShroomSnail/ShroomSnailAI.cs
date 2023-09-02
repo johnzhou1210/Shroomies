@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class ShroomSnailAI : EnemyShooting {
     bool _lowHealth = false;
-    [SerializeField] ClusterCollection _minionCollection;
+    [SerializeField] ClusterCollection _minionCollection, _minionCollection2;
     [SerializeField] float _minMinionSpawnTime = 4f, _maxMinionSpawnTime = 8f;
 
     private void Start() {
@@ -43,10 +43,11 @@ public class ShroomSnailAI : EnemyShooting {
     }
 
     IEnumerator MinionSpawn() {
+        var collection = GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().StageNumber == 5 ? _minionCollection : _minionCollection2;
         while (StateManager.CurrentState != StateManager.DeadState) {
             float waitTime = UnityEngine.Random.Range(_minMinionSpawnTime, _maxMinionSpawnTime);
             yield return new WaitForSeconds(waitTime / 2f);
-            GameObject chosenCluster = Instantiate(_minionCollection.Clusters[UnityEngine.Random.Range(0, _minionCollection.Clusters.Length)], GameObject.FindWithTag("EnemyContainer").transform);
+            GameObject chosenCluster = Instantiate(collection.Clusters[UnityEngine.Random.Range(0, collection.Clusters.Length)], GameObject.FindWithTag("EnemyContainer").transform);
             float difficulty = GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().Difficulty;
             // scale cluster speed depending on difficulty
             chosenCluster.GetComponent<ClusterSettings>().MovementSpeed *= (1 + ( difficulty / 10f) - .15f);
@@ -130,7 +131,7 @@ public class ShroomSnailAI : EnemyShooting {
                     break;
                 case SnailBossAction.WIDE_SWEEP:
                     Animator.Play("ShroomSnailWideSweep");
-                    BulletVelocity = 4.8f;
+                    BulletVelocity = 4f;
                     CurrentBarrelConfiguration = BarrelConfigurations[1];
                     CurrentBulletType = BulletType.SNAIL_BOSS_WIDE;
                     yield return new WaitForSeconds(.45f);
@@ -143,11 +144,11 @@ public class ShroomSnailAI : EnemyShooting {
                     Animator.Play("SnailNeckAttack");
                     yield return new WaitForSeconds(.5f);
                     AudioManager.Instance.PlaySFX("Spring Sound");
-                    yield return new WaitForSeconds(5.5f);
+                    yield return new WaitForSeconds(3.5f);
                     break;
                 case SnailBossAction.TRIPLE_SHOT:
                     Animator.Play("ShroomSnailTripleShot");
-                    BulletVelocity = 6f;
+                    BulletVelocity = 5.5f;
                     CurrentBarrelConfiguration = BarrelConfigurations[0];
                     CurrentBulletType = BulletType.SNAIL_BOSS_BELCH;
                     yield return new WaitForSeconds(.33f);

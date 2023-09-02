@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801285b6956b968439313f07de42b045, type: 3}
+  m_Name: 1-6
+  m_EditorClassIdentifier: 
+  Clusters:
+  - {fileID: 5167414109863634337, guid: 62a439e5685ddb84dbe5206f8b54589d, type: 3}
+  - {fileID: 5167414109863634337, guid: 62a439e5685ddb84dbe5206f8b54589d, type: 3}
+  - {fileID: 5167414109863634337, guid: 62a439e5685ddb84dbe5206f8b54589d, type: 3}
+  - {fileID: 7524174586127225531, guid: 15e5337bbcc6284479c459544b75b9b6, type: 3}
+  - {fileID: 7524174586127225531, guid: 15e5337bbcc6284479c459544b75b9b6, type: 3}
+  - {fileID: 7524174586127225531, guid: 15e5337bbcc6284479c459544b75b9b6, type: 3}
+  WorldNumber: 1
+  StageNumber: 6

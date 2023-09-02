@@ -21,6 +21,10 @@ public class DandelionShooting : EnemyShooting {
         StartCoroutine(monsterBehavior());
     }
 
+    public void PoofSound() {
+        AudioManager.Instance.PlaySFX("Poof Sound");
+    }
+
     public void SelfDestruct() {
         Animator.Play("DandelionSelfDestruct");
     }

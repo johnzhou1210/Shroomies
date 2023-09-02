@@ -23,6 +23,8 @@ public class BuyShroomie : MonoBehaviour
             if (enoughMulch && currNumShroomies < formation.ShroomieObjects.Count) {
                 AudioManager.Instance.PlaySFX("UI Select Sound");
                 _roguelikeManager.decreaseMulch(shroomieCost);
+                // make future purchases more expensive
+                //OnChangePrice((int)(shroomieCost * 2f));
                 // add a shroomie
                 GameObject.FindWithTag("Player").GetComponent<PlayerOnHit>().CurrentShroomies++;
                 currNumShroomies = GameObject.FindWithTag("Player").GetComponent<PlayerOnHit>().CurrentShroomies;
@@ -46,7 +48,7 @@ public class BuyShroomie : MonoBehaviour
 
     public void OnChangePrice(int newPrice) {
         shroomieCost = newPrice;
-        _priceText.GetComponent<TextMeshProUGUI>().text = "-" + newPrice.ToString();
+        _priceText.GetComponent<TextMeshProUGUI>().text = "" + newPrice.ToString();
     }
 
     public void onFinishShroomieButtonHide() {

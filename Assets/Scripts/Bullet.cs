@@ -136,7 +136,7 @@ public class Bullet : MonoBehaviour {
                             Instantiate(_critEffect, collision.transform.position, Quaternion.identity);
                             AudioManager.Instance.PlaySFX("Critical Hit Sound");
                             // do camera shake
-                            Camera.main.GetComponent<CameraShaker>().Shake(.0225f, .1f);
+                            Camera.main.GetComponent<CameraShaker>().Shake(.02f, .1f);
                         }
                         onHit.takeDamage(_damage);
                         Debug.Log(hitTarget.name + " got hit");
