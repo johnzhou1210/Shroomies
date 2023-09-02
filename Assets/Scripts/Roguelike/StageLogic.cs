@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using System;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using UnityEngine.UI;
+using TMPro;
 
 public class StageLogic : MonoBehaviour {
     [SerializeField] ClusterCollection[] _clusterCollections;
@@ -12,12 +14,12 @@ public class StageLogic : MonoBehaviour {
     [SerializeField] UnityStringEvent cueStageBanner;
     [SerializeField] UnityEntityDisplayInfoEvent _cueBossBanner;
     [SerializeField] UnityIntEvent updateMulch, shroomieUpdateCost;
-    [SerializeField] UnityBoolEvent _invokeCelebrate;
+    [SerializeField] UnityBoolEvent _invokeCelebrate, _invokeGameOver;
 
     [SerializeField] float _stageBeginWaitDelay;
     [SerializeField] float _interstageDelay;
-    [SerializeField] int _numStagesPerWorldIncludingBoss, _bossStage = 5;
-    [SerializeField] GameObject _upgradeFrame, _uiCanvas, _playerDragArea, _buyShroomieButton;
+    [SerializeField] int _numStagesPerWorldIncludingBoss, _bossStage = 5, _bossStage2 = 13;
+    [SerializeField] GameObject _upgradeFrame, _uiCanvas, _playerDragArea, _buyShroomieButton, _gameOverEffect, _resultsScreen, _thankYouScreen;
 
     public UnityBoolEvent InvokeEnableBossHPDisplay;
 
@@ -29,45 +31,72 @@ public class StageLogic : MonoBehaviour {
 
     public float Difficulty = 0f;
 
+    bool _gameOver = false;
+    int _clearTime = 0, _enemiesKilled = 0, _earnedMulch = 0;
+
+    IEnumerator CountClearTime() {
+        while (!_gameOver) {
+            yield return new WaitForSeconds(1f);
+            _clearTime++;
+        }
+        yield return null;
+
+    }
+
     IEnumerator BeginRoguelikeRun() {
+
+        StartCoroutine(CountClearTime());
+
         WorldNumber = 1; StageNumber = 1;
         while (StageNumber < _numStagesPerWorldIncludingBoss) {
             /*
-             * 1-1: difficulty of (1*2)+1 = 3
-             *  - Spawns 8 clusters -> 7 to 9 clusters
-             * 1-2: difficulty of (1*2)+2 = 4
-             *  - Spawns 11 clusters -> 10 to 12 clusters
-             * 1-3: difficulty of (1*2)+3 = 5
-             *  - Boss stage
+             * 1) after boss:
+             * ending screen 
+             *  - thank you for playing
+             *  - results
              * 
-             * 2-1: difficulty of (2*2)+1 = 5
-             *  - Spawns 13 clusters -> 12 to 14 clusters
-             * 2-2: difficulty of (2*2)+2 = 6
-             *  - Spawns 16 clusters -> 15 to 17 clusters
-             * 2-3: difficulty of (2*2)+3 = 7
-             *  - Boss stage
+             * 2) Player on death
+             * play lightning effect on player y 
+             * player then falls to a point near the bottom of the screen
+             * game over text then pops in
+             * results then pop in
+             * then ask for continue
+             *  - black background fade transition back to game scene
              * 
-             * 3-1: difficulty of (3*2)+1 = 7
-             *  - Spawns 19 clusters -> 18 to 20 clusters
-             * 3-2: difficulty of (3*2)+2 = 8
-             *  - Spawns 24 clusters -> 23 to 25 clusters
-             * 3-3: difficulty of (3*2)+3 = 9
+             * ============================
+             * 
+             * 3) Scaling difficulty for longer playtime
+             * 
+             * 4) Don't forget shroomie button hotkey (hotkey = Q)
+             * 
+             * 
+             * 5) Pause screen (hotkey = P)
+             *  - PAUSE
+             *      2 options:
+             *      1) restart
+             *      2) resume
+             * 
+             * 6) Wide bullet sprite
+             * 
+             * 7) Critical bullet (backlog)
+             * 8) Formations (backlog)
+             * 
+             * 
              */
             setPlayerControls(false);
             Difficulty = (WorldNumber * 2) + StageNumber;
 
-            
-            if (StageNumber != _bossStage) { AudioManager.Instance.PlayMusic("Shroomies Next Spread"); }
-            cueStageBanner.Invoke(StageNumber == _bossStage ? "<color=\"red\">"+ WorldNumber + "-" + StageNumber + "</color>" : WorldNumber + "-" + StageNumber);
+            if (StageNumber != _bossStage && StageNumber !=_bossStage2) { AudioManager.Instance.PlayMusic("Shroomies Next Spread"); }
+            cueStageBanner.Invoke(StageNumber == _bossStage || StageNumber == _bossStage2 ? "<color=\"red\">" + WorldNumber + "-" + StageNumber + "</color>" : WorldNumber + "-" + StageNumber);
             yield return new WaitForSeconds(_stageBeginWaitDelay);
 
-           
+
 
             // choose which collection to use to spawn with
             ClusterCollection chosenCollection = Array.Find(_clusterCollections, c => c.WorldNumber == WorldNumber && c.StageNumber == StageNumber);
 
             // If not boss stage, spawn clusters immediately. Otherwise, spawn boss.
-            if (StageNumber != _bossStage) {
+            if (StageNumber != _bossStage && StageNumber != _bossStage2) {
                 setPlayerControls(true);
                 yield return new WaitForSeconds(1f);
                 // allow player to buy shroomies
@@ -75,8 +104,8 @@ public class StageLogic : MonoBehaviour {
 
                 int numClustersToSpawn = (int)Mathf.Ceil(UnityEngine.Random.Range(2 * Mathf.Pow(Difficulty, 1.1f), 2 * Mathf.Pow(Difficulty, 1.1f) + 2));
                 int currNumClustersElapsed = 0;
-                while (currNumClustersElapsed < numClustersToSpawn) {
-                    
+                while (currNumClustersElapsed < numClustersToSpawn && !_gameOver) {
+
                     // randomly choose which cluster to spawn from this collection
                     GameObject chosenClusterPrefabToSpawn = Instantiate(chosenCollection.Clusters[UnityEngine.Random.Range(0, chosenCollection.Clusters.Length)], GameObject.FindWithTag("EnemyContainer").transform);
                     // scale cluster speed depending on difficulty
@@ -110,16 +139,16 @@ public class StageLogic : MonoBehaviour {
                 loadShroomieButton(Difficulty);
 
             }
-            
-
-
 
             // wait until all enemies are dead first
             yield return new WaitUntil(() => GameObject.FindWithTag("EnemyContainer").transform.childCount == 0);
-            if (StageNumber == _bossStage) {
-                AudioManager.Instance.PlaySFX("Boss Defeat Sound");
-                yield return new WaitForSeconds(2f);
+            if (_gameOver) { // make sure it's not over because the player died
+                yield break;
+            }
+            if (StageNumber == _bossStage || StageNumber == _bossStage2) {
                 InvokeEnableBossHPDisplay.Invoke(false);
+                AudioManager.Instance.PlaySFX("Boss Defeat Sound");
+                yield return new WaitForSeconds(2f);  
             }
             setPlayerControls(false);
             _buyShroomieButton.GetComponent<Animator>().Play("ShroomieButtonFadeOut");
@@ -129,9 +158,14 @@ public class StageLogic : MonoBehaviour {
             yield return new WaitForSeconds(.5f);
             Celebrate(true);
             yield return new WaitForSeconds(1f);
-            AudioManager.Instance.PlayMusic("Where To Infect");
-            if (StageNumber < _numStagesPerWorldIncludingBoss) {
+            if (StageNumber == _numStagesPerWorldIncludingBoss) {
+                // go to thank you screen
+                _thankYouScreen.SetActive(true);
+                StartCoroutine(ThankYouScreen());
+                yield break;
+            } else if (StageNumber < _numStagesPerWorldIncludingBoss) {
                 // open up normal upgrades
+                AudioManager.Instance.PlayMusic("Where To Infect");
                 GameObject upgradeFrame = Instantiate(_upgradeFrame, _uiCanvas.transform);
                 upgradeFrame.transform.SetAsFirstSibling();
                 yield return new WaitUntil(() => upgradeFrame.activeInHierarchy == false);
@@ -142,7 +176,7 @@ public class StageLogic : MonoBehaviour {
 
             // end shroomies celebration
             Celebrate(false);
-            
+
 
             StageNumber++;
 
@@ -164,11 +198,12 @@ public class StageLogic : MonoBehaviour {
         // 1) Reward mulch event
         if (trans.CompareTag("Enemy")) {
             EnemyOnHit enemyOnHit = trans.GetComponent<EnemyOnHit>();
-            enemyOnHit.GiveMulch.AddListener(increaseMulch);
+            enemyOnHit.GiveMulch.AddListener(OnEnemyKill);
             enemyOnHit.MaxHealth = (int)Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.01f, 1.01f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f));
             enemyOnHit.setCurrHealthToMaxHealth();
         }
     }
+
 
     private void Start() {
         StartCoroutine(BeginRoguelikeRun());
@@ -177,12 +212,12 @@ public class StageLogic : MonoBehaviour {
     void loadShroomieButton(float difficulty) {
         _buyShroomieButton.SetActive(true);
         _buyShroomieButton.GetComponent<Animator>().Play("ShroomieButtonFadeIn");
-        shroomieUpdateCost.Invoke((int)((1 + (difficulty / 10f)) * ShroomieBaseCost) - 150); // cost scales on difficulty.
+        shroomieUpdateCost.Invoke((int)((1 + (difficulty / 3f)) * ShroomieBaseCost) - 150); // cost scales on difficulty.
     }
 
-    public void increaseMulch(int amount) {
-        //Debug.Log("in here " + amount);
+    public void OnEnemyKill(int amount) {
         AccumulatedMulch += amount;
+        _enemiesKilled++; _earnedMulch += amount;
         AudioManager.Instance.PlaySFX("Player Get Mulch");
         updateMulch.Invoke(AccumulatedMulch);
     }
@@ -202,10 +237,111 @@ public class StageLogic : MonoBehaviour {
     }
 
     public void onPlayerDeath() {
-        setPlayerControls(false);
         _buyShroomieButton.SetActive(false);
-        Invoke("restartGame", 8000f);
+        InvokeEnableBossHPDisplay.Invoke(false);
+        AudioManager.Instance.PlaySFX("Shing");
+        _gameOver = true;
+        StopCoroutine(BeginRoguelikeRun());
+        foreach (Transform child in GameObject.FindWithTag("EnemyContainer").transform) {
+            GameObject.Destroy(child.gameObject);
+        }
+        _gameOverEffect.SetActive(true);
+        Transform pulseEffect = _gameOverEffect.transform.Find("PulseEffect");
+        _gameOverEffect.transform.Find("PulseEffect").position = new Vector3(pulseEffect.position.x, GameObject.FindWithTag("Player").transform.position.y, pulseEffect.position.z);
+        setPlayerControls(false);
+
+        Transform player = GameObject.FindWithTag("Player").transform;
+
+        IEnumerator MovePlayerXUntilDesired(float increment, float stepDelay) {
+            while (Mathf.Abs(player.position.x) > increment) {
+                player.Translate(new Vector3(player.position.x < 0 ? increment : -increment, 0f, 0));
+                yield return new WaitForSeconds(stepDelay);
+            }
+            yield return null;
+        }
+        IEnumerator MovePlayerYUntilDesired(float increment, float stepDelay) {
+            while (Mathf.Abs(player.position.y) > -2f) {
+                player.Translate(new Vector3(0f, player.position.y < 0 ? increment * 3 : -increment, 0));
+                yield return new WaitForSeconds(stepDelay);
+            }
+            yield return null;
+        }
+        IEnumerator SplatPlayer(float increment, float stepDelay, IEnumerator yCor) {
+            yield return new WaitUntil(() => Mathf.Abs(player.position.y) <= .15f && Mathf.Abs(player.position.x) <= .15f);
+            yield return new WaitForSeconds(4.5f);
+            // splat the player!
+            while (player.position.y > -3.8f) {
+                player.Translate(new Vector3(0, -increment, 0f));
+                yield return new WaitForSeconds(stepDelay);
+            }
+            AudioManager.Instance.PlaySFX("Player Splat Sound");
+            player.GetComponent<Animator>().Play("PlayerDeathSplat");
+            _invokeGameOver.Invoke(true);
+            yield return new WaitForSeconds(.7f);
+            StopCoroutine(yCor);
+            yield return new WaitForSeconds(4f);
+            StartCoroutine(ResultsScreen(false));
+        }
+
+        // move player to desired area of screen.
+        IEnumerator xCor = MovePlayerXUntilDesired(.01f, .01f), yCor = MovePlayerYUntilDesired(.0075f, .01f);
+        StartCoroutine(xCor); StartCoroutine(yCor); StartCoroutine(SplatPlayer(.2f, .01f, yCor));
+        
     }
+
+    IEnumerator ResultsScreen(bool won) {
+        AudioManager.Instance.PlayMusic("Rising");
+        _invokeGameOver.Invoke(false);
+        AudioManager.Instance.PlaySFX("Cinematic Boom");
+        _resultsScreen.SetActive(true);
+        Transform timeElapsedText = _resultsScreen.transform.Find("TimeElapsed").transform.Find("Number"),
+            enemiesKilledText = _resultsScreen.transform.Find("KillCount").transform.Find("Number"),
+            mulchEarnedText = _resultsScreen.transform.Find("MulchEarned").transform.Find("Number"),
+            upgradesGrid = _resultsScreen.transform.Find("UpgradesGrid").transform,
+            restartText = _resultsScreen.transform.Find("Restart"),
+            timeHeader = _resultsScreen.transform.Find("TimeElapsed");
+        timeHeader.GetComponent<TextMeshProUGUI>().text = won ? "CLEAR TIME" : "TIME ELAPSED";
+        yield return new WaitForSeconds(1f);
+        for (int i = 0; i < _clearTime; i++) {
+            timeElapsedText.GetComponent<TextMeshProUGUI>().text = getTime(i);
+            AudioManager.Instance.PlaySFX("Tick");
+            yield return new WaitForSeconds(.01f);
+        }
+        yield return new WaitForSeconds(1f);
+        for (int i = 0; i < _enemiesKilled; i++) {
+            enemiesKilledText.GetComponent<TextMeshProUGUI>().text = i.ToString();
+            AudioManager.Instance.PlaySFX("Tick");
+            yield return new WaitForSeconds(.01f);
+        }
+        yield return new WaitForSeconds(1f);
+        for (int i = 0; i < _earnedMulch; i += (i + 5 > _earnedMulch ? 1 : 5)) {
+            mulchEarnedText.GetComponent<TextMeshProUGUI>().text = i.ToString();
+            AudioManager.Instance.PlaySFX("Tick");
+            yield return new WaitForSeconds(0f);
+        }
+
+        yield return new WaitForSeconds(1f);
+        UpgradeManager upgMgr = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
+        for (int i = 0; i < upgMgr.ActiveUpgrades.Count; i++) {
+            Transform currEntry = upgradesGrid.Find("Entry (" + i.ToString() + ")");
+            currEntry.GetComponent<Image>().color = Color.white;
+            currEntry.GetComponent<Image>().sprite = upgMgr.ActiveUpgrades[i].Image;
+            AudioManager.Instance.PlaySFX("Cinematic Hit");
+            yield return new WaitForSeconds(.5f);
+        }
+        yield return new WaitForSeconds(1f);
+        restartText.GetComponent<TextMeshProUGUI>().text = won ? "TAP TO RETURN" : "TAP TO RESTART";
+        restartText.GetComponent<ResultScreenContinue>().enabled = true;
+    }
+
+    IEnumerator ThankYouScreen() {
+        AudioManager.Instance.PlayMusic("House Fever");
+        _thankYouScreen.SetActive(true);
+        yield return new WaitForSeconds(8f);
+        StartCoroutine(ResultsScreen(true));
+        yield return null;
+    }
+
 
     void restartGame() {
         SceneManager.LoadScene(0);
@@ -215,6 +351,23 @@ public class StageLogic : MonoBehaviour {
         GameObject.FindWithTag("Player").GetComponent<PlayerShooting>().Toggle = val;
         GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomiesUpgradeController>().Toggle = val;
     }
+
+    string getTime(int seconds) {
+        int h = seconds / 3600;
+        int s = seconds % 3600;
+        int m = seconds / 60;
+        s = seconds % 60;
+        return normalizeToTwoDigits(h.ToString()) + ":" + normalizeToTwoDigits(m.ToString()) + ":" + normalizeToTwoDigits(s.ToString());
+    }
+
+    string normalizeToTwoDigits(string s) {
+        if (s.Length == 1) {
+            return "0" + s;
+        }
+        return s;
+    }
+
+
 
 
 }

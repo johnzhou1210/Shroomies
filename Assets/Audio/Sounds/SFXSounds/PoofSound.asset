@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919d8024d4257634f80fb947787c6eb2, type: 3}
+  m_Name: PoofSound
+  m_EditorClassIdentifier: 
+  Name: Poof Sound
+  AudioClip: {fileID: 8300000, guid: a7eb3be43242ee344beba8ffe1f9ec5a, type: 3}
+  Loop: 0
+  Volume: 0.633
+  Pitch: 1
+  Cooldown: 0.001
+  LastTimePlayed: 252.32756

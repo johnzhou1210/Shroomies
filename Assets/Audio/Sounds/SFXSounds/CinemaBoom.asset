@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dce3a5e484b3b7643b415a94fdfcb161, type: 3}
-  m_Name: ShroomSnail
+  m_Script: {fileID: 11500000, guid: 919d8024d4257634f80fb947787c6eb2, type: 3}
+  m_Name: CinemaBoom
   m_EditorClassIdentifier: 
-  DisplayName: SHROOM SNAIL
-  DisplayImage: {fileID: -1399495558, guid: 724d892ed2b54b14d838eaabdeb91976, type: 3}
-  Aesthetic: {r: 0.14117648, g: 0.18039216, b: 0.16470589, a: 1}
+  Name: Cinematic Boom
+  AudioClip: {fileID: 8300000, guid: 40146a5e6e1d43442aa7e4864c843dd4, type: 3}
+  Loop: 0
+  Volume: 0.8
+  Pitch: 1
+  Cooldown: 0.001
+  LastTimePlayed: 38.642715

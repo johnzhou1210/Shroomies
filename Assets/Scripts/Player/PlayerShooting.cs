@@ -79,6 +79,7 @@ public class PlayerShooting : MonoBehaviour {
 
     IEnumerator fire() {
         // shoot bullets depending on current barrel configuration.
+        AudioManager.Instance.PlaySFX("Player Shoot Sound");
         BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, CritRate, PierceCount, BulletsBounce, BulletClearLimit);
         _currentBarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.PLAYER, dmgInfo);
         Debug.Log("Shot bullet");

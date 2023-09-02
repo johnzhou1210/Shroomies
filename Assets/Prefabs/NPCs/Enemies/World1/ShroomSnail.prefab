@@ -872,7 +872,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6078385167065827571}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00dec7ec00fd85a49a5dd12089c4f2b2, type: 3}
   m_Name: 
@@ -952,7 +952,7 @@ MonoBehaviour:
   StartShootY: 5.5
   BulletsBounce: 0
   ObstaclePierceCount: 256
-  BulletClearLimit: 256
+  BulletClearLimit: 2147483647
   CurrentBulletType: 0
   Animator: {fileID: 0}
   StateManager: {fileID: 4479650827182798106}
@@ -964,6 +964,7 @@ MonoBehaviour:
   - {fileID: 414968911508692253}
   - {fileID: 8756499470089159880}
   _minionCollection: {fileID: 11400000, guid: c58e07e2fc188cc4da1848a90909051a, type: 2}
+  _minionCollection2: {fileID: 0}
   _minMinionSpawnTime: 4
   _maxMinionSpawnTime: 8
 --- !u!114 &7301685808615635077
@@ -991,9 +992,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0596a0c66407714d8b69619a7d7745f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 3333
+  MaxHealth: 4000
   CurrentHealth: 0
-  MulchReward: 540
+  MulchReward: 666
   OnDeath:
     m_PersistentCalls:
       m_Calls:

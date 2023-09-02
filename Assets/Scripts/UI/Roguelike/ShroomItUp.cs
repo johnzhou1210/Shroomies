@@ -12,6 +12,10 @@ public class ShroomItUp : MonoBehaviour
     public int ShroomItUpCost = 500;
     public bool CheckBoxSelected = false;
 
+    public void OnUpdateShroomItUpCost(int newVal) {
+        ShroomItUpCost = newVal;
+    }
+
     public void OnCheckboxClick() {
         
         if (CheckBoxSelected) {
@@ -44,6 +48,7 @@ public class ShroomItUp : MonoBehaviour
             CheckBoxSelected = false;
             _checkBox.transform.Find("X").GetComponent<TextMeshProUGUI>().text = "";
         }
+        ShroomItUpCost = (GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().StageNumber * 35) + 25;
         _costField.GetComponent<TextMeshProUGUI>().text = "Shroom it up?\n\n<color=\"red\">(-" + ShroomItUpCost.ToString() + ")</color>";
     }
 
