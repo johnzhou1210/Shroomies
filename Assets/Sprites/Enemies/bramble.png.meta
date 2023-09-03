@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -133,7 +133,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Windows Store Apps
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -146,11 +146,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -176,8 +176,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 067c97359beb0a240ba02420de9f272c
-      internalID: -1590306724
+      spriteID: 303d569b9763e964aa938e942b652c1a
+      internalID: -1583377586
       vertices: []
       indices: 
       edges: []
@@ -197,8 +197,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 912f2caec880a1042bf3879ca2d6cdbc
-      internalID: 1199858289
+      spriteID: 765bb6790667c0e4aa5d5dd5feb00f23
+      internalID: 1362550238
       vertices: []
       indices: 
       edges: []
@@ -218,8 +218,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6ab45918ebbc0a42a8ae7fbe9fddc7b
-      internalID: -1470914665
+      spriteID: 60fc2396f3d24d641b0c7ecf66467b22
+      internalID: -529653382
       vertices: []
       indices: 
       edges: []
@@ -235,9 +235,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bramble_0: -1590306724
-      bramble_1: 1199858289
-      bramble_2: -1470914665
+      bramble_0: -1583377586
+      bramble_1: 1362550238
+      bramble_2: -529653382
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

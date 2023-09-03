@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 7301685808615635077}
   - component: {fileID: 5064359560851857720}
   m_Layer: 10
-  m_Name: ShroomSnail
+  m_Name: ShroomSnail2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -965,8 +965,8 @@ MonoBehaviour:
   - {fileID: 8756499470089159880}
   _minionCollection: {fileID: 11400000, guid: c58e07e2fc188cc4da1848a90909051a, type: 2}
   _minionCollection2: {fileID: 11400000, guid: 532ec121ce691bb43b45f109ddb2b6e2, type: 2}
-  _minMinionSpawnTime: 4
-  _maxMinionSpawnTime: 8
+  _minMinionSpawnTime: 2
+  _maxMinionSpawnTime: 4
 --- !u!114 &7301685808615635077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -979,7 +979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8204e1a9a7eb1418b064f28f7d511e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayInfo: {fileID: 11400000, guid: fd89c1488d3e6dd42aac2a75ae25a197, type: 2}
+  DisplayInfo: {fileID: 11400000, guid: ba452c62c82eef04e8fd607e085b9dfb, type: 2}
 --- !u!114 &5064359560851857720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,9 +992,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0596a0c66407714d8b69619a7d7745f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 4444
+  MaxHealth: 32000
   CurrentHealth: 0
-  MulchReward: 666
+  MulchReward: 2023
   OnDeath:
     m_PersistentCalls:
       m_Calls:

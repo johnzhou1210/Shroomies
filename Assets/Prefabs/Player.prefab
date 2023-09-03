@@ -261,11 +261,11 @@ MonoBehaviour:
   _baseFireRate: 0.5
   _baseCritRate: 0.05
   _baseBulletVelocity: 6
-  _baseAttackPower: 32
+  _baseAttackPower: 30
   _basePierceCount: 0
   FireRate: 0.5
   BulletVelocity: 5
-  AttackPower: 35
+  AttackPower: 30
   CritRate: 0.05
   PierceCount: 0
   BulletClearLimit: 0

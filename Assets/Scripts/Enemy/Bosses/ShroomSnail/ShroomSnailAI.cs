@@ -54,7 +54,7 @@ public class ShroomSnailAI : EnemyShooting {
             Debug.Log("speed set to " + chosenCluster.GetComponent<ClusterSettings>().MovementSpeed + " by multiplying by " + (1 + (difficulty / 10f) - .15f) + " where difficulty = " + difficulty);
 
             foreach (Transform child in chosenCluster.transform) {
-                GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().AddEnemyListeners(child, difficulty / 2);
+                GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().AddEnemyListeners(child, GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().StageNumber == 5 ? difficulty / 2 : difficulty );
             }
             yield return new WaitForSeconds(waitTime);
         }

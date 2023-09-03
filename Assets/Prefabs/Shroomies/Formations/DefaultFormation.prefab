@@ -60,11 +60,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d946dcbf832524cb2eefcd69782a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 0.5
+  Toggle: 1
+  FireRate: 2
   BulletVelocity: 5
-  AttackPower: 3
+  AttackPower: 8
   CritRate: 0.05
   PierceCount: 0
+  BulletClearLimit: 0
+  Cooldown: 0
   BulletsBounce: 0
   ExtraBulletUpgradeLevel: 0
   CurrentBulletType: 0
+  RequestShroomiesUpgradeUpdate:
+    m_PersistentCalls:
+      m_Calls: []

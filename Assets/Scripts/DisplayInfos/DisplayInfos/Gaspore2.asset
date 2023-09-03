@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 919d8024d4257634f80fb947787c6eb2, type: 3}
-  m_Name: DenySound
+  m_Script: {fileID: 11500000, guid: dce3a5e484b3b7643b415a94fdfcb161, type: 3}
+  m_Name: Gaspore2
   m_EditorClassIdentifier: 
-  Name: Deny Sound
-  AudioClip: {fileID: 8300000, guid: 94bb1ea4d1add1749b921589c32a143d, type: 3}
-  Loop: 0
-  Volume: 1.3
-  Pitch: 1
-  Cooldown: 0.001
-  LastTimePlayed: 0
+  DisplayName: GASPORE (again)
+  DisplayImage: {fileID: -1399495558, guid: 724d892ed2b54b14d838eaabdeb91976, type: 3}
+  Aesthetic: {r: 0.14117648, g: 0.18039216, b: 0.16470589, a: 1}

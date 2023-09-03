@@ -102,7 +102,7 @@ public class StageLogic : MonoBehaviour {
                 // allow player to buy shroomies
                 loadShroomieButton(Difficulty);
 
-                int numClustersToSpawn = (int)Mathf.Ceil(UnityEngine.Random.Range(2 * Mathf.Pow(Difficulty, 1.1f), 2 * Mathf.Pow(Difficulty, 1.1f) + 2));
+                int numClustersToSpawn = (int)Mathf.Ceil(UnityEngine.Random.Range(2 * Mathf.Pow(Difficulty, 1.2f), 2 * Mathf.Pow(Difficulty, 1.2f) + 2));
                 int currNumClustersElapsed = 0;
                 while (currNumClustersElapsed < numClustersToSpawn && !_gameOver) {
 
@@ -212,7 +212,7 @@ public class StageLogic : MonoBehaviour {
     void loadShroomieButton(float difficulty) {
         _buyShroomieButton.SetActive(true);
         _buyShroomieButton.GetComponent<Animator>().Play("ShroomieButtonFadeIn");
-        shroomieUpdateCost.Invoke((int)((1 + (difficulty / 3f)) * ShroomieBaseCost) - 150); // cost scales on difficulty.
+        shroomieUpdateCost.Invoke((int)( Mathf.Pow((1 + (difficulty / 3f)) * ShroomieBaseCost, 1.035f) - 238)); // cost scales on difficulty.
     }
 
     public void OnEnemyKill(int amount) {
