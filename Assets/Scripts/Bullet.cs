@@ -1,16 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using Unity.VisualScripting;
-using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
     Vector2 _moveDir;
     float _velocity = 10f, _critRate = 0;
     bool _reflect = true;
-    int _damage = 1, _pierceLimit = 0, _bulletClearLimit = 0;
+    int _damage = 1, _pierceLimit = 0, _bulletClearLimit = 0, _bulletBounceLimit = 32;
     public Transform Shooter;
     public BulletType Type;
     public BulletOwnershipType Ownership;
@@ -18,7 +14,7 @@ public class Bullet : MonoBehaviour {
     [SerializeField] GameObject _explosionPrefab, _critEffect;
 
     readonly float _removeTime = 9f;
-    int _pierceCounter = 0, _bulletClearCounter = 0;
+    int _pierceCounter = 0, _bulletClearCounter = 0, _bulletBounceCounter = 0;
 
     [SerializeField] Rigidbody2D _rigidBody;
 
@@ -26,12 +22,16 @@ public class Bullet : MonoBehaviour {
     float _lastAngularVelocity = 0f;
 
     bool _debounce = false;
+    Collider2D _collider;
 
     private void OnEnable() {
         Invoke("Destroy", _removeTime);
         HitTargets = new HashSet<IDamageable>();
         _pierceCounter = 0;
         _bulletClearCounter = 0;
+        _bulletBounceCounter = 0;
+        _collider = GetComponent<Collider2D>();
+        _collider.isTrigger = true;
     }
 
     private void FixedUpdate() {
@@ -41,6 +41,9 @@ public class Bullet : MonoBehaviour {
         _lastAngularVelocity = _rigidBody.angularVelocity;
         if (transform.position.y < -6 || (Ownership == BulletOwnershipType.PLAYER && transform.position.y > 5.4f)) {
             Destroy();
+        }
+        if (_collider.isTrigger) {
+            _collider.isTrigger = false;
         }
     }
 
@@ -85,6 +88,10 @@ public class Bullet : MonoBehaviour {
             transform.rotation = rotation * transform.rotation;
             // play bounce sound
             AudioManager.Instance.PlayShootingSFX("Bullet Bounce Sound");
+            _bulletBounceCounter++;
+            if (_bulletBounceCounter >= _bulletBounceLimit) {
+                Destroy();
+            }
         }
 
         void ignoreCollisionsWithTarget() {

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 using UnityEngine.UI;
 using TMPro;
 
@@ -235,6 +234,7 @@ public class StageLogic : MonoBehaviour {
         setPlayerDrag(newVal);
         _pauseMenu.SetActive(newVal);
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().CanMove = newVal;
+        GameObject.FindWithTag("Player").GetComponent<PlayerOnHit>().Debounce = !newVal;
     }
 
     public void onPlayerDeath() {

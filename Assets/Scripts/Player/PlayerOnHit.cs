@@ -11,14 +11,13 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
     [SerializeField] float _damageDelay = 1f;
     [SerializeField] UnityEvent _onPlayerDeath;
     public int CurrentShroomies = 0;
-    bool debounce = false;
+    public bool Debounce = false;
     public bool Dead = false;
-    
 
     public void takeDamage(int damage) {
         ShroomieFormation formation = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomieFormation>();
-        if (debounce == false && !Dead) {
-            debounce = true;
+        if (Debounce == false && !Dead) {
+            Debounce = true;
             AudioManager.Instance.PlaySFX("Player Damage Sound");
             _shakeCam.Invoke(.06f, .1f);
             if (CurrentShroomies - damage < 0) { // killing blow
@@ -39,17 +38,11 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
             StartCoroutine(RefreshDebounce(_damageDelay));
         }
 
-       
-
-       
-
-        
-
     }
 
     IEnumerator RefreshDebounce(float duration) {
         yield return new WaitForSeconds(duration);
-        debounce = false;
+        Debounce = false;
     }
 
     IEnumerator DestroyShroomie(GameObject obj) {
@@ -60,15 +53,5 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
         yield return null;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-      
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 }

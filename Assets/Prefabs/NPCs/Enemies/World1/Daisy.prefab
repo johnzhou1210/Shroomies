@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireRate: 3
-  BulletVelocity: 6
+  BulletVelocity: 5.5
   AttackPower: 1
   StartShootY: 7
   BulletsBounce: 0

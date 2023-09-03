@@ -691,8 +691,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be27c121133f6a4888289cc1769b5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 3.06
-  BulletVelocity: 3.5
+  FireRate: 3.8
+  BulletVelocity: 3.25
   AttackPower: 1
   StartShootY: 5.5
   BulletsBounce: 0
