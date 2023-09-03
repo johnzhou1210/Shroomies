@@ -52,11 +52,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPosition: {x: -1.310397, y: 7.182689, z: 0}
-  MinMovementSpeed: 0.4
-  MaxMovementSpeed: 0.5
-  MovementSpeed: 0.4107971
-  NextClusterMinDelay: 2
-  NextClusterMaxDelay: 3
+  MinMovementSpeed: 0.8
+  MaxMovementSpeed: 1
+  MovementSpeed: 0.8698877
+  NextClusterMinDelay: 8
+  NextClusterMaxDelay: 9
 --- !u!114 &7030171853718620552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1019645346501628644, guid: 6c04a6fb376eb3f4bac53d6d7f446cb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.5499997
+      value: -4.7999997
       objectReference: {fileID: 0}
     - target: {fileID: 1019645346501628644, guid: 6c04a6fb376eb3f4bac53d6d7f446cb8, type: 3}
       propertyPath: m_LocalPosition.y

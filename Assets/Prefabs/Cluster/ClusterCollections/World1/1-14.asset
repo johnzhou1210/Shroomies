@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801285b6956b968439313f07de42b045, type: 3}
+  m_Name: 1-14
+  m_EditorClassIdentifier: 
+  Clusters:
+  - {fileID: 1726188004349556388, guid: f5a5b23d5e7c75142a549cdade997724, type: 3}
+  - {fileID: 8253926378943271320, guid: 05f2483cb5bb572428705a43cb579bfa, type: 3}
+  - {fileID: 6442071018244794022, guid: bf3b4306a90e31a46ac4dbdbe437658f, type: 3}
+  - {fileID: 8683497302080309611, guid: d9e0e092c5cc52f41b05a3fa344dc6a2, type: 3}
+  - {fileID: 2144715890151834006, guid: 5d884b73d0a6854489af4239fad64c8a, type: 3}
+  - {fileID: 5048658386709676459, guid: 396cb4aa6a01424428c0b5f4cc5c241f, type: 3}
+  - {fileID: 3234069508705457539, guid: c617428f1c7ed9b41961dfb10ea2aa98, type: 3}
+  - {fileID: 8179754310714199012, guid: 8dd67b633f89cca46bb062c9f9e54ba2, type: 3}
+  WorldNumber: 1
+  StageNumber: 13

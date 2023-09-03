@@ -59,9 +59,9 @@ MonoBehaviour:
   SpawnPosition: {x: -1.310397, y: 7.182689, z: 0}
   MinMovementSpeed: 0.8
   MaxMovementSpeed: 1
-  MovementSpeed: 0.93389416
-  NextClusterMinDelay: 10
-  NextClusterMaxDelay: 11
+  MovementSpeed: 0.9337529
+  NextClusterMinDelay: 8
+  NextClusterMaxDelay: 9
 --- !u!114 &5952462005645893344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1019645346501628644, guid: 6c04a6fb376eb3f4bac53d6d7f446cb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.700001
+      value: 7.33
       objectReference: {fileID: 0}
     - target: {fileID: 1019645346501628644, guid: 6c04a6fb376eb3f4bac53d6d7f446cb8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -687,7 +687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1019645346501628644, guid: 6c04a6fb376eb3f4bac53d6d7f446cb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7999997
+      value: -4.5499997
       objectReference: {fileID: 0}
     - target: {fileID: 1019645346501628644, guid: 6c04a6fb376eb3f4bac53d6d7f446cb8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -753,7 +753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1019645346501628644, guid: 6c04a6fb376eb3f4bac53d6d7f446cb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7999997
+      value: -4.5499997
       objectReference: {fileID: 0}
     - target: {fileID: 1019645346501628644, guid: 6c04a6fb376eb3f4bac53d6d7f446cb8, type: 3}
       propertyPath: m_LocalPosition.y

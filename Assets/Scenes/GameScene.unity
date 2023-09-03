@@ -2507,7 +2507,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -79.9, y: -35.7}
+  m_AnchoredPosition: {x: -79.900024, y: -35.69995}
   m_SizeDelta: {x: 292.46082, y: 39.248596}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &708360618
@@ -4392,7 +4392,7 @@ Camera:
   far clip plane: 1000
   field of view: 82.4
   orthographic: 1
-  orthographic size: 5.0114455
+  orthographic size: 5.01657
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8583,6 +8583,10 @@ PrefabInstance:
     - target: {fileID: 158062126905483281, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: m_SortingOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
+      propertyPath: Toggle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 605274454852026316, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: m_RootOrder
