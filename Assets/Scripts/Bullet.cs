@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour {
         //_lastFramePos = transform.position;
         _lastVelocity = _rigidBody.velocity;
         _lastAngularVelocity = _rigidBody.angularVelocity;
-        if (transform.position.y < -6 || (Ownership == BulletOwnershipType.PLAYER && transform.position.y > 5.4f)) {
+        if (transform.position.y < -5.5f || (Ownership == BulletOwnershipType.PLAYER && transform.position.y > 5f)) {
             Destroy();
         }
         if (_collider.isTrigger) {

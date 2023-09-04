@@ -71,19 +71,19 @@ public class ShroomSnailAI : EnemyShooting {
             _phase2 = true;
             AudioManager.Instance.PlaySFX("Snail Boss Phase 2");
             GetComponent<SnailBossOnHit>().StartCoroutine(GetComponent<SnailBossOnHit>().ExplosionEffect(32, 1.4f));
-            FireRate = 1f;
-            Animator.speed = .9f;
+            FireRate = .5f;
+            Animator.speed = 1.1f;
             // spawn minions every 4-8 seconds.
             StartCoroutine(MinionSpawn());
         } else if (GetComponent<SnailBossOnHit>().CurrentHealth <= GetComponent<SnailBossOnHit>().MaxHealth * .33f && !_phase3) {
             _phase3 = true;
             AudioManager.Instance.PlaySFX("Snail Boss Phase 2");
             GetComponent<SnailBossOnHit>().StartCoroutine(GetComponent<SnailBossOnHit>().ExplosionEffect(50, 1.4f));
-            Animator.speed = 1f;
+            Animator.speed = 1.2f;
             FireRate = 0f;
         } else {
-            Animator.speed = .8f;
-            FireRate = 1f;
+            Animator.speed = 1f;
+            FireRate = .9f;
         }
 
     }
@@ -146,28 +146,28 @@ public class ShroomSnailAI : EnemyShooting {
                     BulletVelocity = 4f;
                     CurrentBarrelConfiguration = BarrelConfigurations[1];
                     CurrentBulletType = BulletType.SNAIL_BOSS_WIDE;
-                    yield return new WaitForSeconds(1f + FireRate / 2);
+                    yield return new WaitForSeconds(1f);
                     CurrentBarrelConfiguration = BarrelConfigurations[2];
-                    yield return new WaitForSeconds(1f + FireRate / 2);
+                    yield return new WaitForSeconds(1f);
                     CurrentBarrelConfiguration = BarrelConfigurations[1];
-                    yield return new WaitForSeconds(2.8f + FireRate);
+                    yield return new WaitForSeconds(1.8f);
                     break;
                 case SnailBossAction.NECK_ATTACK:
                     Animator.Play("SnailNeckAttack");
                     yield return new WaitForSeconds(.5f);
                     AudioManager.Instance.PlaySFX("Spring Sound");
-                    yield return new WaitForSeconds(3.5f + FireRate);
+                    yield return new WaitForSeconds(2.5f);
                     break;
                 case SnailBossAction.TRIPLE_SHOT:
                     Animator.Play("ShroomSnailTripleShot");
                     BulletVelocity = 5.5f;
                     CurrentBarrelConfiguration = BarrelConfigurations[0];
                     CurrentBulletType = BulletType.SNAIL_BOSS_BELCH;
-                    yield return new WaitForSeconds(.25f + FireRate / 2);
+                    yield return new WaitForSeconds(.25f);
                     CurrentBarrelConfiguration = BarrelConfigurations[3];
-                    yield return new WaitForSeconds(.35f + FireRate / 2);
+                    yield return new WaitForSeconds(.35f);
                     CurrentBarrelConfiguration = BarrelConfigurations[4];
-                    yield return new WaitForSeconds(1f + FireRate);
+                    yield return new WaitForSeconds(.5f);
                     break;
                 case SnailBossAction.ROLLOUT:
                     Animator.Play("ShroomSnailRolloutPrepare");
@@ -178,13 +178,13 @@ public class ShroomSnailAI : EnemyShooting {
                     Animator.Play("ShroomSnailRollout" + chosenNum);
                     switch(chosenNum) {
                         case 1:
-                            yield return new WaitForSeconds(9.5f + FireRate);
+                            yield return new WaitForSeconds(7.5f);
                             break;
                         case 2:
-                            yield return new WaitForSeconds(10f + FireRate);
+                            yield return new WaitForSeconds(8f);
                             break;
                         case 3:
-                            yield return new WaitForSeconds(10.5f + FireRate);
+                            yield return new WaitForSeconds(8.5f);
                             break;
                     }
                     break;

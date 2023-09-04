@@ -48,7 +48,7 @@ public class ShroomItUp : MonoBehaviour
             CheckBoxSelected = false;
             _checkBox.transform.Find("X").GetComponent<TextMeshProUGUI>().text = "";
         }
-        ShroomItUpCost = (int)(Mathf.Pow(GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().StageNumber * 35, 1.04f) + 25);
+        ShroomItUpCost = (int)(Mathf.Pow(GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().StageNumber * 20, 1.5f) + 25);
         _costField.GetComponent<TextMeshProUGUI>().text = "Shroom it up?\n\n<color=\"red\">(-" + ShroomItUpCost.ToString() + ")</color>";
     }
 

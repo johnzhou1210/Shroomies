@@ -101,23 +101,21 @@ public class StageLogic : MonoBehaviour {
                 // allow player to buy shroomies
                 loadShroomieButton(Difficulty);
 
-                int numClustersToSpawn = (int)Mathf.Ceil(UnityEngine.Random.Range(2 * Mathf.Pow(Difficulty, 1.2f), 2 * Mathf.Pow(Difficulty, 1.2f) + 2));
+                int numClustersToSpawn = 10;
                 int currNumClustersElapsed = 0;
                 while (currNumClustersElapsed < numClustersToSpawn && !_gameOver) {
 
                     // randomly choose which cluster to spawn from this collection
                     GameObject chosenClusterPrefabToSpawn = Instantiate(chosenCollection.Clusters[UnityEngine.Random.Range(0, chosenCollection.Clusters.Length)], GameObject.FindWithTag("EnemyContainer").transform);
                     // scale cluster speed depending on difficulty
-                    chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed *= (1 + (Difficulty / 10f) - .15f);
-                    Debug.Log("speed set to " + chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed + " by multiplying by " + (1 + (Difficulty / 10f) - .15f) + " where difficulty = " + Difficulty);
+                    //chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed *= (1 + (Difficulty / 10f) - .15f);
+                    //Debug.Log("speed set to " + chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>().MovementSpeed + " by multiplying by " + (1 + (Difficulty / 10f) - .15f) + " where difficulty = " + Difficulty);
 
                     foreach (Transform child in chosenClusterPrefabToSpawn.transform) {
                         AddEnemyListeners(child, Difficulty);
                     }
-                    ClusterSettings currClusterSettings = chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>();
-                    // spawn clusters more aggressively at higher difficulties.
-                    float minWait = currClusterSettings.NextClusterMinDelay / (Mathf.Pow(1.1f, 1.2f * Difficulty) - .4f), maxWait = currClusterSettings.NextClusterMaxDelay / (Mathf.Pow(1.1f, 1.2f * Difficulty) - .4f);
-                    yield return new WaitForSeconds(UnityEngine.Random.Range(minWait, maxWait));
+                    ClusterSettings currClusterSettings = chosenClusterPrefabToSpawn.GetComponent<ClusterSettings>();   
+                    yield return new WaitForSeconds(UnityEngine.Random.Range(currClusterSettings.NextClusterMinDelay, currClusterSettings.NextClusterMaxDelay / (Mathf.Pow(1.1f, 1.2f * Difficulty) - .4f)));
                     currNumClustersElapsed++;
                 }
             } else {
@@ -198,7 +196,7 @@ public class StageLogic : MonoBehaviour {
         if (trans.CompareTag("Enemy")) {
             EnemyOnHit enemyOnHit = trans.GetComponent<EnemyOnHit>();
             enemyOnHit.GiveMulch.AddListener(OnEnemyKill);
-            enemyOnHit.MaxHealth = (int)Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.03f, 1.06f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f));
+            //enemyOnHit.MaxHealth = (int)Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.03f, 1.06f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f));
             enemyOnHit.setCurrHealthToMaxHealth();
         }
     }

@@ -242,9 +242,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01, y: -0.05}
+  m_Offset: {x: 0.00920267, y: -0.031967595}
   serializedVersion: 2
-  m_Radius: 0.0125
+  m_Radius: 0.029962886
 --- !u!114 &346198759166424087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,11 +261,11 @@ MonoBehaviour:
   _baseFireRate: 0.5
   _baseCritRate: 0.05
   _baseBulletVelocity: 6
-  _baseAttackPower: 30
+  _baseAttackPower: 35
   _basePierceCount: 0
   FireRate: 0.5
   BulletVelocity: 5
-  AttackPower: 30
+  AttackPower: 35
   CritRate: 0.05
   PierceCount: 0
   BulletClearLimit: 0
@@ -335,6 +335,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   CurrentShroomies: 0
+  Debounce: 0
   Dead: 0
 --- !u!114 &7220596568435754424
 MonoBehaviour:

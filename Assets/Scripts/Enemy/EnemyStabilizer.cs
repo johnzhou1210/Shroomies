@@ -7,10 +7,9 @@ public class EnemyStabilizer : MonoBehaviour
     [SerializeField] Rigidbody2D _rigidBody;
 
     private void Update() {
-        _rigidBody.velocity = Vector2.zero;
-        _rigidBody.totalForce = Vector2.zero;
-        _rigidBody.totalTorque = 0f;
-        _rigidBody.angularVelocity = 0f;
+        if (transform.position.y < -6f) {
+            GameObject.Destroy(gameObject);
+        }
     }
 
 }

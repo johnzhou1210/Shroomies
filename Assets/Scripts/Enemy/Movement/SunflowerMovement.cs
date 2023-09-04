@@ -6,12 +6,12 @@ public class SunflowerMovement : MonoBehaviour
 {
     public EnemyStateManager StateManager;
     [SerializeField] float _moveSpeed, _changeDirectionChance;
-
+    bool _changeDirectionDebounce = false;
 
     private void Start() {
         StateManager = GetComponent<EnemyStateManager>();
         if (Random.Range(0f,1f) <= .5f) {
-            changeDirection();
+            StartCoroutine(ChangeDirection());
         }
         StartCoroutine(randomDirectionChange());
     }
@@ -21,8 +21,8 @@ public class SunflowerMovement : MonoBehaviour
         if (StateManager.CurrentState == StateManager.AliveState) {
             transform.position = transform.position + Vector3.right * Time.deltaTime * _moveSpeed;
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, -2.2f, 2.2f) , transform.position.y, 0);
-            if (transform.position.x >= 2.2f || transform.position.x <= -2.2f) {
-                changeDirection();
+            if (transform.position.x >= 2.1f || transform.position.x <= -2.1f) {
+                StartCoroutine(ChangeDirection());
             }
         }
         
@@ -33,21 +33,26 @@ public class SunflowerMovement : MonoBehaviour
         while (StateManager.CurrentState == StateManager.AliveState) {
             yield return new WaitForSeconds(1f);
             if (Random.Range(0f,1f) <= _changeDirectionChance) {
-                changeDirection();   
+                StartCoroutine(ChangeDirection());   
             }
         }
     }
 
 
 
-    void changeDirection() {
+    IEnumerator ChangeDirection() {
+        if (_changeDirectionDebounce == false) {
+            _changeDirectionDebounce = true;
             _moveSpeed *= -1f;
             Debug.Log("Changed direction");
+            yield return new WaitForSeconds(1f);
+            _changeDirectionDebounce = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision == null) {
-            changeDirection();
+            StartCoroutine(ChangeDirection());
         }
     }
 

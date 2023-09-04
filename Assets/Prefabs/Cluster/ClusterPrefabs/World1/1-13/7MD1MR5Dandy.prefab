@@ -63,8 +63,8 @@ MonoBehaviour:
   MinMovementSpeed: 0.8
   MaxMovementSpeed: 1
   MovementSpeed: 0.51619625
-  NextClusterMinDelay: 10
-  NextClusterMaxDelay: 12
+  NextClusterMinDelay: 4
+  NextClusterMaxDelay: 7
 --- !u!114 &355497576819472363
 MonoBehaviour:
   m_ObjectHideFlags: 0
