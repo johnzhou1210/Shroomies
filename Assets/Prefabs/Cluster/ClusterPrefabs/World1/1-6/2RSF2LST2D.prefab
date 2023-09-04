@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268762770298142517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.310397, y: 7, z: 0}
+  m_LocalPosition: {x: -1.310397, y: 7.182689, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -78,6 +78,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4000492930239052363}
     m_Modifications:
+    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
+      propertyPath: MovementSpeed
+      value: 0.53907865
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
+      propertyPath: SpawnPosition.x
+      value: 0.889603
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
+      propertyPath: SpawnPosition.y
+      value: 5.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6519859901027429093, guid: 4a3545c78ef622c48899480da9198003, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -126,18 +138,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Daisy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
-      propertyPath: MovementSpeed
-      value: 0.53907865
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
-      propertyPath: SpawnPosition.x
-      value: 0.889603
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
-      propertyPath: SpawnPosition.y
-      value: 5.75
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -156,6 +156,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4000492930239052363}
     m_Modifications:
+    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
+      propertyPath: MovementSpeed
+      value: 0.54838645
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
+      propertyPath: SpawnPosition.x
+      value: 0.889603
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
+      propertyPath: SpawnPosition.y
+      value: 8.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6519859901027429093, guid: 4a3545c78ef622c48899480da9198003, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -203,18 +215,6 @@ PrefabInstance:
     - target: {fileID: 8999955857191075688, guid: 4a3545c78ef622c48899480da9198003, type: 3}
       propertyPath: m_Name
       value: Daisy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
-      propertyPath: MovementSpeed
-      value: 0.54838645
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
-      propertyPath: SpawnPosition.x
-      value: 0.889603
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641652675155278808, guid: ca0fce298290351458838fde39551e33, type: 3}
-      propertyPath: SpawnPosition.y
-      value: 8.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
