@@ -13,17 +13,13 @@ MonoBehaviour:
   m_Name: 1-4
   m_EditorClassIdentifier: 
   Clusters:
-  - {fileID: 4283035302306517697, guid: b8e5b99f1b1321d42ae3561f94a0a098, type: 3}
-  - {fileID: 4283035302306517697, guid: c7c61ae6d547fd34fac137ceaf216a45, type: 3}
-  - {fileID: 6882425569506832728, guid: 2172d309311468240b3a3cc7556e53e4, type: 3}
-  - {fileID: 5167414109863634337, guid: 62a439e5685ddb84dbe5206f8b54589d, type: 3}
-  - {fileID: 4283035302306517697, guid: b8e5b99f1b1321d42ae3561f94a0a098, type: 3}
-  - {fileID: 4283035302306517697, guid: c7c61ae6d547fd34fac137ceaf216a45, type: 3}
-  - {fileID: 3709045081295527823, guid: 6ca8ffbfd2dfe1d43b8ff9b42697def8, type: 3}
-  - {fileID: 7524174586127225531, guid: 15e5337bbcc6284479c459544b75b9b6, type: 3}
-  - {fileID: 3228092347605497743, guid: 81ff8470c176e1d429b48fc1cec3230e, type: 3}
-  - {fileID: 9124084750106793660, guid: 0ed0e7bc52e473b4dab749796c512afa, type: 3}
-  - {fileID: 7524174586127225531, guid: 15e5337bbcc6284479c459544b75b9b6, type: 3}
-  - {fileID: 3228092347605497743, guid: 81ff8470c176e1d429b48fc1cec3230e, type: 3}
+  - {fileID: 8253926378943271320, guid: 6628452450d3d3a4ea0bae70e9db06ec, type: 3}
+  - {fileID: 6442071018244794022, guid: 4f22c043f8710ed418544790faf89cda, type: 3}
+  - {fileID: 8683497302080309611, guid: 2c3ffd11baa86e642b3879a38edfd4c4, type: 3}
+  - {fileID: 1726188004349556388, guid: 2501b6521ea1cb74ca8e2ba7eaab4702, type: 3}
+  - {fileID: 2144715890151834006, guid: 7ecd09585b046ac41845cdefbff3bc37, type: 3}
+  - {fileID: 5048658386709676459, guid: e783c6fe8f25dce48b6bf978d1021edf, type: 3}
+  - {fileID: 3234069508705457539, guid: f44b6704f51eddc408c108dda9f86a7b, type: 3}
+  - {fileID: 8179754310714199012, guid: 9f3919ee72ed5df45bc2d66d4dd7934b, type: 3}
   WorldNumber: 1
   StageNumber: 4

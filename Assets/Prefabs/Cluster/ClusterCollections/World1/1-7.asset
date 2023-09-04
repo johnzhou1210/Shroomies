@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: 1-7
   m_EditorClassIdentifier: 
   Clusters:
-  - {fileID: 9124084750106793660, guid: 0ed0e7bc52e473b4dab749796c512afa, type: 3}
-  - {fileID: 6882425569506832728, guid: 2172d309311468240b3a3cc7556e53e4, type: 3}
-  - {fileID: 3709045081295527823, guid: 6ca8ffbfd2dfe1d43b8ff9b42697def8, type: 3}
-  - {fileID: 1232488083172375199, guid: 1dbeb15aff5286a44b34c69a54a9e790, type: 3}
-  - {fileID: 4283035302306517697, guid: b8e5b99f1b1321d42ae3561f94a0a098, type: 3}
-  - {fileID: 4283035302306517697, guid: af859867cbb86b24a8b4e802f833aab4, type: 3}
-  - {fileID: 4283035302306517697, guid: c7c61ae6d547fd34fac137ceaf216a45, type: 3}
+  - {fileID: 1137558220308282598, guid: fa447da6f4cdb9545bd195a877765804, type: 3}
+  - {fileID: 4308274435695307110, guid: 1fd04fe143f7a724092573583dd48666, type: 3}
+  - {fileID: 4252310790417833395, guid: 7cd7567948f466f42aab0673c971b33f, type: 3}
+  - {fileID: 6353902221248004155, guid: 82d199ec6dda3fc45908b353ae549a85, type: 3}
+  - {fileID: 74664976965380530, guid: eb036421803655a4b808826cd3b91c38, type: 3}
+  - {fileID: 6950511584641112860, guid: b2ee7e31a9c77e24d8b1caae759d2aae, type: 3}
   WorldNumber: 1
   StageNumber: 7
