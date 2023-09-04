@@ -21,6 +21,9 @@ public class SunflowerShooting : EnemyShooting {
         StartCoroutine(monsterBehavior());
     }
 
+    public void SunflowerLaugh() {
+        AudioManager.Instance.PlaySFX("Sunflower Laugh");
+    }
     IEnumerator monsterBehavior() {
         while (StateManager.CurrentState != StateManager.DeadState) {
             Debug.Log("in loop. current state is " + StateManager.CurrentState);

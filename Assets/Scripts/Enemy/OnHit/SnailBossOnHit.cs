@@ -15,6 +15,7 @@ public class SnailBossOnHit : EnemyOnHit, IDamageable
         InvokeHealthBarUpdate.Invoke(CurrentHealth, MaxHealth);
         StopAllCoroutines();
         if (isDead()) {
+            KillAllMinions();
             // disable collider
             Hitbox.enabled = false;
             OnDeath.Invoke();
@@ -47,6 +48,15 @@ public class SnailBossOnHit : EnemyOnHit, IDamageable
     }
 
 
+    public void KillAllMinions() {
+        foreach (Transform child in GameObject.FindWithTag("EnemyContainer").transform) {
+            if (child != null && child.CompareTag("Minion")) {
+                Instantiate(explosionPrefab, child.position, Quaternion.identity);
+                GameObject.Destroy(child.gameObject);
+            }
+        }
+    }
+
     public IEnumerator ExplosionEffect(int numTimes = 32, float radius = 1.4f) {
         float maxOffset = radius;
         float minOffset = -maxOffset;
@@ -55,6 +65,7 @@ public class SnailBossOnHit : EnemyOnHit, IDamageable
             GameObject explosion = Instantiate(explosionPrefab, transform.position + offsetVector , Quaternion.identity);
             explosion.transform.localScale *= Random.Range(2.8f, 4f);
             AudioManager.Instance.PlaySFX("Explosion Sound");
+            Camera.main.GetComponent<CameraShaker>().Shake(.025f, .05f);
             yield return new WaitForSeconds(.1f);
         }
         yield return null;

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Explosion Sound
   AudioClip: {fileID: 8300000, guid: f00ac24cf82566148965d4975ac194b2, type: 3}
   Loop: 0
-  Volume: 0.497
+  Volume: 0.3
   Pitch: 1
   Cooldown: 0.001
-  LastTimePlayed: 42.00873
+  LastTimePlayed: 43.171825

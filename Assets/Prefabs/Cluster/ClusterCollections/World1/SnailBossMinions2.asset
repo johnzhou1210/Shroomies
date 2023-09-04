@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: SnailBossMinions2
   m_EditorClassIdentifier: 
   Clusters:
-  - {fileID: 7524174586127225531, guid: 15e5337bbcc6284479c459544b75b9b6, type: 3}
-  - {fileID: 3228092347605497743, guid: 81ff8470c176e1d429b48fc1cec3230e, type: 3}
+  - {fileID: 7524174586127225531, guid: 6f6d8663f6db88946b79be488769f728, type: 3}
+  - {fileID: 7524174586127225531, guid: b937a5f896ec7284482798dd26d2fe12, type: 3}
+  - {fileID: 3228092347605497743, guid: 2d050e9b6b2d8d34c8ce49fa51a14536, type: 3}
+  - {fileID: 3228092347605497743, guid: 2cd223c4e39c90642a3dd0aad8261e66, type: 3}
   WorldNumber: 1
   StageNumber: 13

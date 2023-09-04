@@ -23,7 +23,6 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
             if (CurrentShroomies - damage < 0) { // killing blow
                 Dead = true;
                 AudioManager.Instance.StopAllMusic(false);
-                AudioManager.Instance.PlayMusic("Player Death Sound");
                 _onPlayerDeath.Invoke();
             } else {
                 // inactivate shroomies based on damage

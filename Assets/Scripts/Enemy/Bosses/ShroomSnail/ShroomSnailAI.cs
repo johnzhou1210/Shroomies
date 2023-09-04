@@ -6,7 +6,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
+
+
 public class ShroomSnailAI : EnemyShooting {
+    // when boss dies, kill all minions
+
     bool _phase2 = false, _phase3 = false;
     [SerializeField] ClusterCollection _minionCollection, _minionCollection2;
     [SerializeField] float _minMinionSpawnTime = 4f, _maxMinionSpawnTime = 8f;

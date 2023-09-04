@@ -23,7 +23,7 @@ public class StageLogic : MonoBehaviour {
     public UnityBoolEvent InvokeEnableBossHPDisplay;
 
     public int WorldNumber = 1;
-    public int StageNumber = 1;
+    public int StageNumber = 13;
 
     public int AccumulatedMulch = 0;
     public int ShroomieBaseCost = 500;
@@ -238,6 +238,7 @@ public class StageLogic : MonoBehaviour {
     }
 
     public void onPlayerDeath() {
+        GameObject.FindWithTag("Score").SetActive(false);
         _buyShroomieButton.SetActive(false);
         InvokeEnableBossHPDisplay.Invoke(false);
         AudioManager.Instance.PlaySFX("Shing");
@@ -250,16 +251,16 @@ public class StageLogic : MonoBehaviour {
         Transform pulseEffect = _gameOverEffect.transform.Find("PulseEffect");
         _gameOverEffect.transform.Find("PulseEffect").position = new Vector3(pulseEffect.position.x, GameObject.FindWithTag("Player").transform.position.y, pulseEffect.position.z);
         setPlayerControls(false);
-
         Transform player = GameObject.FindWithTag("Player").transform;
 
-        IEnumerator MovePlayerXUntilDesired(float increment, float stepDelay) {
-            while (Mathf.Abs(player.position.x) > increment) {
-                player.Translate(new Vector3(player.position.x < 0 ? increment : -increment, 0f, 0));
-                yield return new WaitForSeconds(stepDelay);
-            }
-            yield return null;
-        }
+        //IEnumerator MovePlayerXUntilDesired(float increment, float stepDelay) {
+        //    while (Mathf.Abs(player.position.x) > increment) {
+        //        player.Translate(new Vector3(player.position.x < 0 ? increment : -increment, 0f, 0));
+        //        yield return new WaitForSeconds(stepDelay);
+        //    }
+        //    yield return null;
+        //}
+
         IEnumerator MovePlayerYUntilDesired(float increment, float stepDelay) {
             while (Mathf.Abs(player.position.y) > -2f) {
                 player.Translate(new Vector3(0f, player.position.y < 0 ? increment * 3 : -increment, 0));
@@ -268,7 +269,7 @@ public class StageLogic : MonoBehaviour {
             yield return null;
         }
         IEnumerator SplatPlayer(float increment, float stepDelay, IEnumerator yCor) {
-            yield return new WaitUntil(() => Mathf.Abs(player.position.y) <= .15f && Mathf.Abs(player.position.x) <= .15f);
+            yield return new WaitUntil(() => Mathf.Abs(player.position.y) <= .15f);
             yield return new WaitForSeconds(4.5f);
             // splat the player!
             while (player.position.y > -3.8f) {
@@ -284,9 +285,19 @@ public class StageLogic : MonoBehaviour {
             StartCoroutine(ResultsScreen(false));
         }
 
-        // move player to desired area of screen.
-        IEnumerator xCor = MovePlayerXUntilDesired(.01f, .01f), yCor = MovePlayerYUntilDesired(.0075f, .01f);
-        StartCoroutine(xCor); StartCoroutine(yCor); StartCoroutine(SplatPlayer(.2f, .01f, yCor));
+        IEnumerator Fall() {
+            yield return new WaitForSeconds(1f);
+            AudioManager.Instance.PlayMusic("Player Death Sound");
+            // move player to desired area of screen.
+            //IEnumerator xCor = MovePlayerXUntilDesired(.01f, .01f);
+            IEnumerator yCor = MovePlayerYUntilDesired(.0075f, .01f);
+            //StartCoroutine(xCor);
+            StartCoroutine(yCor); StartCoroutine(SplatPlayer(.2f, .01f, yCor));
+            yield return null;
+        }
+        StartCoroutine(Fall());
+
+        
         
     }
 
@@ -340,6 +351,7 @@ public class StageLogic : MonoBehaviour {
     }
 
     IEnumerator ThankYouScreen() {
+        GameObject.FindWithTag("Score").SetActive(false);
         AudioManager.Instance.PlayMusic("House Fever");
         _thankYouScreen.SetActive(true);
         yield return new WaitForSeconds(5f);

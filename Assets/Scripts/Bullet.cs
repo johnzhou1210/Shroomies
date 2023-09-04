@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour {
     public BulletOwnershipType Ownership;
     public HashSet<IDamageable> HitTargets;
     [SerializeField] GameObject _explosionPrefab, _critEffect;
+    [SerializeField] Sprite _wideBulletUndamaged, _wideBulletDamaged;
 
     readonly float _removeTime = 9f;
     int _pierceCounter = 0, _bulletClearCounter = 0, _bulletBounceCounter = 0;
@@ -32,6 +33,9 @@ public class Bullet : MonoBehaviour {
         _bulletBounceCounter = 0;
         _collider = GetComponent<Collider2D>();
         _collider.isTrigger = true;
+        if (Type == BulletType.WIDE1 && Ownership == BulletOwnershipType.ENEMY) {
+            GetComponent<SpriteRenderer>().sprite = _wideBulletUndamaged;
+        }
     }
 
     private void FixedUpdate() {
@@ -75,8 +79,6 @@ public class Bullet : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision) {
         GameObject hitTarget = collision.gameObject;
 
-
-
         void bounce() {
             ContactPoint2D contact = collision.contacts[0];
             // reflect our old velocity off the contact point's normal vector
@@ -108,8 +110,6 @@ public class Bullet : MonoBehaviour {
 
 
         if (transform.position.y < 5.1f) {
-
-
             if (((hitTarget.CompareTag("Enemy") && Ownership == BulletOwnershipType.ENEMY) || (hitTarget.CompareTag("Player") && Ownership == BulletOwnershipType.PLAYER))
                   ) {
                 if (hitTarget.layer == 11) {
@@ -118,7 +118,6 @@ public class Bullet : MonoBehaviour {
                 }
             } else {
                 if (_debounce == false) {
-                    // play hit sound
                     _debounce = true;
                 }
                 //Debug.Log(transform.name + " collision enter with " + hitTarget.name);
@@ -185,6 +184,9 @@ public class Bullet : MonoBehaviour {
                     // if this is a clearing bullet
                     if (bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget) && !sameSource(hitTarget) && _rigidBody.mass > hitTarget.GetComponent<Rigidbody2D>().mass) { 
                         // destroy other bullet
+                        if (Type == BulletType.WIDE1 && Ownership == BulletOwnershipType.ENEMY) {
+                            GetComponent<SpriteRenderer>().sprite = _wideBulletDamaged;
+                        }
                         hitTarget.gameObject.GetComponent<Bullet>().Destroy();
                         keepBulletGoingAfterCollision();
                         _bulletClearCounter++;

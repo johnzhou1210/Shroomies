@@ -992,7 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0596a0c66407714d8b69619a7d7745f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 32000
+  MaxHealth: 44444
   CurrentHealth: 0
   MulchReward: 2023
   OnDeath:

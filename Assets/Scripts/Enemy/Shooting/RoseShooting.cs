@@ -21,6 +21,10 @@ public class RoseShooting : EnemyShooting {
         StartCoroutine(monsterBehavior());
     }
 
+    public void RoseFireSound() {
+        AudioManager.Instance.PlaySFX("Rose Fire");
+    }
+
     IEnumerator monsterBehavior() {
         while (StateManager.CurrentState != StateManager.DeadState) {
             Debug.Log("in loop. current state is " + StateManager.CurrentState);
