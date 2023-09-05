@@ -319,9 +319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683f9dd7dfd0aab46a9deb6c7d471561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 500
+  MaxHealth: 400
   CurrentHealth: 0
-  MulchReward: 65
+  MulchReward: 55
   OnDeath:
     m_PersistentCalls:
       m_Calls:

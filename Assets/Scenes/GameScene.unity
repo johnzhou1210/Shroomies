@@ -1074,7 +1074,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _maxDragSpeed: 0.25
+  _maxDragSpeed: 0.4
 --- !u!1 &142230604
 GameObject:
   m_ObjectHideFlags: 0
@@ -3243,7 +3243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -79.9, y: -35.7}
+  m_AnchoredPosition: {x: -79.900024, y: -35.69995}
   m_SizeDelta: {x: 292.46082, y: 39.248596}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &708360618
@@ -5273,7 +5273,7 @@ Camera:
   far clip plane: 1000
   field of view: 82.4
   orthographic: 1
-  orthographic size: 5.010335
+  orthographic size: 5.0133333
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7414,12 +7414,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _rateOfFireLevel1: 0.2
-  _rateOfFireLevel2: 0.4
-  _rateOfFireLevel3: 0.6
-  _firePowerLevel1: 0.2
-  _firePowerLevel2: 0.4
-  _firePowerLevel3: 0.6
+  _rateOfFireLevel1: 0.17
+  _rateOfFireLevel2: 0.33
+  _rateOfFireLevel3: 0.5
+  _firePowerLevel1: 0.17
+  _firePowerLevel2: 0.33
+  _firePowerLevel3: 0.5
   _criticalRateLevel1: 0.25
   _criticalRateLevel2: 0.5
   _criticalRateLevel3: 0.75
@@ -10343,14 +10343,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
-      propertyPath: AttackPower
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
-      propertyPath: _baseAttackPower
-      value: 35
-      objectReference: {fileID: 0}
     - target: {fileID: 605274454852026316, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -10407,6 +10399,10 @@ PrefabInstance:
       propertyPath: _onPlayerDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 727775186}
+    - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
+      propertyPath: _moveSpeed
+      value: 5.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

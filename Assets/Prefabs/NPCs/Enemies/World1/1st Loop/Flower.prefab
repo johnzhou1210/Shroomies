@@ -334,7 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 35
   CurrentHealth: 0
-  MulchReward: 10
+  MulchReward: 5
   OnDeath:
     m_PersistentCalls:
       m_Calls:

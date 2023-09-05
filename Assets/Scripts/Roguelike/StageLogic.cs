@@ -209,7 +209,7 @@ public class StageLogic : MonoBehaviour {
     void loadShroomieButton(float difficulty) {
         _buyShroomieButton.SetActive(true);
         _buyShroomieButton.GetComponent<Animator>().Play("ShroomieButtonFadeIn");
-        shroomieUpdateCost.Invoke((int)( Mathf.Pow((1 + (difficulty / 3f)) * ShroomieBaseCost, 1.035f) - 238)); // cost scales on difficulty.
+        shroomieUpdateCost.Invoke((int)(StageNumber * 100)); // cost scales on difficulty.
     }
 
     public void OnEnemyKill(int amount) {
