@@ -52,6 +52,8 @@ MonoBehaviour:
   Ownership: 2
   _explosionPrefab: {fileID: 5903540695073766936, guid: 2ae963d9384bc574e939de7427dc0796, type: 3}
   _critEffect: {fileID: 5903540695073766936, guid: bf6e3d22bbc2def4c8d46b7bd019bc56, type: 3}
+  _wideBulletUndamaged: {fileID: 0}
+  _wideBulletDamaged: {fileID: 0}
   _rigidBody: {fileID: 1116611458343136381}
 --- !u!212 &363227073319338237
 SpriteRenderer:
@@ -73,7 +75,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

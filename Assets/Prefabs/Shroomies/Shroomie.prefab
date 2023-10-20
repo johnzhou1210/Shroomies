@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adceaf81dd6bf3b45b73bd194ba34355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _controller: {fileID: 0}
   _barrelConfigurations:
   - {fileID: 4939033562159584481}
   - {fileID: 2998963782747751867}
@@ -546,7 +547,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
