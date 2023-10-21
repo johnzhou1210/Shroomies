@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class Palette
+[CreateAssetMenu]
+public class Palette : ScriptableObject
 {
-   public Color color1,color2,color3,color4;
+    public Color color1, color2, color3, color4;
+
 }

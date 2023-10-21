@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class ChangePalette : MonoBehaviour
 {
@@ -13,8 +9,14 @@ public class ChangePalette : MonoBehaviour
 
     [SerializeField]
     private List<Palette> palettes = new List<Palette>();
+    public static Palette holder;
 
     public int count = 0;
+
+    private void Awake()
+    {
+        ChangeColor(0);
+    }
 
     public void ChangeColor()
     {
@@ -26,6 +28,29 @@ public class ChangePalette : MonoBehaviour
         paletteShader.SetColor("_Color3", palettes[count].color3);
         paletteShader.SetColor("_Color4", palettes[count].color4);
 
+        holder = palettes[count];
+
+        EventBroker.CallPaletteChange(holder);
+        count++;
+    }
+
+    public void ChangeColor(int paletteSet)
+    {
+        count = paletteSet;
+
+        if (count > palettes.Count - 1)
+        {
+            count = 0;
+        }
+        paletteShader.SetColor("_Color1", palettes[count].color1);
+        paletteShader.SetColor("_Color2", palettes[count].color2);
+        paletteShader.SetColor("_Color3", palettes[count].color3);
+        paletteShader.SetColor("_Color4", palettes[count].color4);
+
+        holder = palettes[count];
+
+        EventBroker.CallPaletteChange(holder);
+        
         count++;
     }
 }

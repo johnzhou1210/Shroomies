@@ -17,6 +17,8 @@ TagManager:
   - BossHealthBar
   - Score
   - Minion
+  - Banner
+  - Text
   layers:
   - Default
   - TransparentFX
