@@ -19,6 +19,7 @@ TagManager:
   - Minion
   - Banner
   - Text
+  - Overlay
   layers:
   - Default
   - TransparentFX

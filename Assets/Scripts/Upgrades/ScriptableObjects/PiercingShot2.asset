@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: c3f20f8f33269d744a38559d67fc888e, type: 3}
   UpgradeName: Penetration II
-  UpgradeDescription: Player's shots Pierce <color="red">3</color> enemies
-  ShroomItUpDescription: Player's <color="red">and Shroomie's</color> shots Pierce
-    <color="red">3</color> enemies
+  UpgradeDescription: "Player\u2019s shots Pierces 3 enemies"
+  ShroomItUpDescription: Player's and Shroomie's shots Pierces 3 enemies
+  descriptionKeyWords:
+  - Pierces
+  - 3
+  shroomItUpKeyWords:
+  - and
+  - Pierces
+  - 3
   Starter: 0
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: 82beb3f14a4c2fa4e8b8630f9c6a049b, type: 2}

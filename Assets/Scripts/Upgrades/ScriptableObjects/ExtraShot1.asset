@@ -14,10 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 8cc52bcad120f3e4a8eb030d98e27e1e, type: 3}
   UpgradeName: Double Shot
-  UpgradeDescription: Player shoots <color="red">2</color> shots that are <color="red">parallel</color>
-    to each other
-  ShroomItUpDescription: Player <color="red">and Shroomies</color> shoot <color="red">2</color>
-    shots that are <color="red">parallel</color> to each other
+  UpgradeDescription: Player shoots 2 shots that are parallel to each other
+  ShroomItUpDescription: Player and Shroomies shoot 2 shots that are parallel to
+    each other
+  descriptionKeyWords:
+  - 2
+  - shots
+  shroomItUpKeyWords:
+  - and
+  - 2
+  - shots
   Starter: 1
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: 2d42698c860172d44814ef94c8dfcfc8, type: 2}

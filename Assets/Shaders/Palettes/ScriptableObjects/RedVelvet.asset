@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
   m_Name: RedVelvet
   m_EditorClassIdentifier: 
-  color1: {r: 0, g: 0, b: 0, a: 0}
-  color2: {r: 0, g: 0, b: 0, a: 0}
-  color3: {r: 0, g: 0, b: 0, a: 0}
-  color4: {r: 0, g: 0, b: 0, a: 0}
+  color1: {r: 1, g: 1, b: 0.93725497, a: 1}
+  color2: {r: 0.9058824, g: 0.50980395, b: 0.6117647, a: 1}
+  color3: {r: 0.5176471, g: 0.21960786, b: 0.2901961, a: 1}
+  color4: {r: 0.27058825, g: 0.1137255, b: 0.15294118, a: 1}

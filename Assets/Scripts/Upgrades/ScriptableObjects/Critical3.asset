@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 685b512392f99cd458606eb2516dfe2f, type: 3}
   UpgradeName: Critical Hit III
-  UpgradeDescription: <color="red">Great Chance</color> for Player to Critically
-    hit
-  ShroomItUpDescription: <color="red">Great Chance</color> for Player <color="red">and
-    Shroomies</color> to Critically hit
+  UpgradeDescription: Great Chance for Player to Critically hit
+  ShroomItUpDescription: Great Chance for Player and Shroomies to Critically hit
+  descriptionKeyWords:
+  - Great
+  - Chance
+  shroomItUpKeyWords:
+  - Great
+  - Chance
+  - and
   Starter: 0
   UpgradesThatWillBeUnlocked: []

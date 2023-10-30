@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
   m_Name: GoldenPuddle
   m_EditorClassIdentifier: 
-  color1: {r: 0, g: 0, b: 0, a: 0}
-  color2: {r: 0, g: 0, b: 0, a: 0}
-  color3: {r: 0, g: 0, b: 0, a: 0}
-  color4: {r: 0, g: 0, b: 0, a: 0}
+  color1: {r: 0.8117648, g: 0.69411767, b: 0.5254902, a: 1}
+  color2: {r: 0.43921572, g: 0.654902, b: 0.63529414, a: 1}
+  color3: {r: 0.28235295, g: 0.43529415, b: 0.4666667, a: 1}
+  color4: {r: 0.08627451, g: 0.16862746, b: 0.25882354, a: 1}

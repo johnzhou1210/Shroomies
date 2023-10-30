@@ -6,6 +6,7 @@ using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class StageLogic : MonoBehaviour {
     [SerializeField] ClusterCollection[] _clusterCollections;
@@ -86,7 +87,7 @@ public class StageLogic : MonoBehaviour {
             Difficulty = (WorldNumber * 2) + StageNumber;
 
             if (StageNumber != _bossStage && StageNumber !=_bossStage2) { AudioManager.Instance.PlayMusic("Shroomies Next Spread"); }
-            cueStageBanner.Invoke(StageNumber == _bossStage || StageNumber == _bossStage2 ? "<color=\"red\">" + WorldNumber + "-" + StageNumber + "</color>" : WorldNumber + "-" + StageNumber);
+            cueStageBanner.Invoke(StageNumber == _bossStage || StageNumber == _bossStage2 ? "<color=#" + ChangePalette.holder.color2.ToHexString() + ">" + WorldNumber + "-" + StageNumber + "</color>" : WorldNumber + "-" + StageNumber);
             yield return new WaitForSeconds(_stageBeginWaitDelay);
 
 

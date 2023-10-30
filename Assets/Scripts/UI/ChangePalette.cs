@@ -30,7 +30,7 @@ public class ChangePalette : MonoBehaviour
 
         holder = palettes[count];
 
-        EventBroker.CallPaletteChange(holder);
+        EventBroker.CallPaletteChange();
         count++;
     }
 
@@ -49,7 +49,7 @@ public class ChangePalette : MonoBehaviour
 
         holder = palettes[count];
 
-        EventBroker.CallPaletteChange(holder);
+        EventBroker.CallPaletteChange();
         
         count++;
     }

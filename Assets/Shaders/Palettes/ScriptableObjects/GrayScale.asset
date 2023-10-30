@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
   m_Name: GrayScale
   m_EditorClassIdentifier: 
-  color1: {r: 0, g: 0, b: 0, a: 0}
-  color2: {r: 0, g: 0, b: 0, a: 0}
-  color3: {r: 0, g: 0, b: 0, a: 0}
-  color4: {r: 0, g: 0, b: 0, a: 0}
+  color1: {r: 0.9490197, g: 0.9490197, b: 0.9490197, a: 1}
+  color2: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
+  color3: {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 1}
+  color4: {r: 0.20000002, g: 0.20000002, b: 0.20000002, a: 1}

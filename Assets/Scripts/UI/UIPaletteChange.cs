@@ -16,7 +16,7 @@ public class UIPaletteChange : MonoBehaviour
     {
         EventBroker.onPaletteChange += changeColor;
 
-        changeColor(ChangePalette.holder);
+        changeColor();
     }
 
     private void OnDisable()
@@ -24,31 +24,43 @@ public class UIPaletteChange : MonoBehaviour
         EventBroker.onPaletteChange -= changeColor;
     }
 
-    public void changeColor(Palette currentPalette)
+    public void changeColor()
     {
 
         if (gameObject.CompareTag("Banner"))
         {
             // gameObject.GetComponent<Image>().color = nColor + paletteColor;
             if (PaletteColor == 1)
-                gameObject.GetComponent<Image>().color = currentPalette.color1;
+                gameObject.GetComponent<Image>().color = ChangePalette.holder.color1;
             else if (PaletteColor == 2)
-                gameObject.GetComponent<Image>().color = currentPalette.color2;
+                gameObject.GetComponent<Image>().color = ChangePalette.holder.color2;
             else if (PaletteColor == 3)
-                gameObject.GetComponent<Image>().color = currentPalette.color3;
+                gameObject.GetComponent<Image>().color = ChangePalette.holder.color3;
             else if (PaletteColor == 4)
-                gameObject.GetComponent<Image>().color = currentPalette.color4;
+                gameObject.GetComponent<Image>().color = ChangePalette.holder.color4;
         }
         else if(gameObject.CompareTag("Text") || gameObject.CompareTag("Score"))
         {
             if (PaletteColor == 1)
-                gameObject.GetComponent<TMP_Text>().color = currentPalette.color1;
+                gameObject.GetComponent<TMP_Text>().color = ChangePalette.holder.color1;
             else if (PaletteColor == 2)
-                gameObject.GetComponent<TMP_Text>().color = currentPalette.color2;
+                gameObject.GetComponent<TMP_Text>().color = ChangePalette.holder.color2;
             else if (PaletteColor == 3)
-                gameObject.GetComponent<TMP_Text>().color = currentPalette.color3;
+                gameObject.GetComponent<TMP_Text>().color = ChangePalette.holder.color3;
             else if (PaletteColor == 4)
-                gameObject.GetComponent<TMP_Text>().color = currentPalette.color4;
+                gameObject.GetComponent<TMP_Text>().color = ChangePalette.holder.color4;
+        }
+
+        else if (gameObject.CompareTag("Overlay"))
+        {
+            if (PaletteColor == 1)
+                gameObject.GetComponent<SpriteRenderer>().color = ChangePalette.holder.color1;
+            else if (PaletteColor == 2)
+                gameObject.GetComponent<SpriteRenderer>().color = ChangePalette.holder.color2;
+            else if (PaletteColor == 3)
+                gameObject.GetComponent<SpriteRenderer>().color = ChangePalette.holder.color3;
+            else if (PaletteColor == 4)
+                gameObject.GetComponent<SpriteRenderer>().color = ChangePalette.holder.color4;
         }
     }
 }

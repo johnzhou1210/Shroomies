@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 496d85a3213b97a4a8a60efef9be202e, type: 3}
   UpgradeName: Sweeping Shot I
-  UpgradeDescription: <color="red">Increases</color> Width of Player's shot
-  ShroomItUpDescription: <color="red">Increases</color> Width of Player's <color="red">and
-    Shroomie's</color> shot
+  UpgradeDescription: Increases Width of Player's shot
+  ShroomItUpDescription: Increases Width of Player's and Shroomie's shot
+  descriptionKeyWords:
+  - Increases
+  shroomItUpKeyWords:
+  - Increases
+  - and
   Starter: 1
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: ae20c818d9531f540905f330e498e851, type: 2}

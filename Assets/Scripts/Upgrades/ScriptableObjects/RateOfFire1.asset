@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 81adb3f9ee1f828459719b31eceec1e6, type: 3}
   UpgradeName: Rapid Fire I
-  UpgradeDescription: <color="red">Increases</color> Fire Rate of Player's shot
-  ShroomItUpDescription: <color="red">Increases</color> Fire Rate of Player's <color="red">and
-    Shroomie's</color> shot
+  UpgradeDescription: Increases Fire Rate of Player's shot
+  ShroomItUpDescription: Increases Fire Rate of Player's and Shroomie's shot
+  descriptionKeyWords:
+  - Increases
+  shroomItUpKeyWords:
+  - Increases
+  - and
   Starter: 1
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: 399683cd152b7c54d8ec8a8fda97f3cf, type: 2}

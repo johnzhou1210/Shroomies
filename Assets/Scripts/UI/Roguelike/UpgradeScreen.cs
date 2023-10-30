@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Drawing;
+using Unity.VisualScripting;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class UpgradeScreen : MonoBehaviour
 {
@@ -28,9 +31,11 @@ public class UpgradeScreen : MonoBehaviour
 
     public void ShowShroomiesDescription(bool val) {
         if (val) {
-            setDescription(SelectedButton.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.ShroomItUpDescription);
+            setDescription(SelectedButton.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.ShroomItUpDescription, 
+                SelectedButton.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.shroomItUpKeyWords);
         } else {
-            setDescription(SelectedButton.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.UpgradeDescription);
+            setDescription(SelectedButton.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.UpgradeDescription, 
+                SelectedButton.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade.descriptionKeyWords);
         }
         
     }
@@ -87,6 +92,35 @@ public class UpgradeScreen : MonoBehaviour
 
     void setDescription(string description) {
         _desc.GetComponent<TextMeshProUGUI>().text = description;
+    }
+
+    void setDescription(string description, List<string> descriptionKeyWords)
+    {
+
+        string[] newWord = description.Split(' ');
+
+        string newDescription = "";
+
+       for(int i = 0; i < newWord.Length; i++)
+        {
+            foreach (string keyword in descriptionKeyWords)
+            {
+                if (newWord[i] == keyword)
+                {
+                    newWord[i] = ("<color=#" + ChangePalette.holder.color2.ToHexString() + ">" + keyword + "</color>");
+                }
+            }
+
+            if (i == newWord.Length - 1)
+            {
+                newDescription += newWord[i];
+            }
+            else{
+                newDescription += newWord[i] + " ";
+            }
+
+            _desc.GetComponent<TextMeshProUGUI>().text = newDescription;
+        }
     }
 
     void setTitle(string title) {

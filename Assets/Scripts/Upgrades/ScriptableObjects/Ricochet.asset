@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: ed3db55572890624895a30985dd55090, type: 3}
   UpgradeName: Ricochet
-  UpgradeDescription: Player's shots now <color="red">bounce off side walls</color>
-  ShroomItUpDescription: Player's <color="red">and Shroomies's</color> shots now
-    <color="red">bounce off side walls</color>
+  UpgradeDescription: "Player\u2019s shots now bounce off side walls"
+  ShroomItUpDescription: Player's and Shroomie's shots now bounce off side walls
+  descriptionKeyWords:
+  - now
+  - bounce
+  shroomItUpKeyWords:
+  - and
+  - now
+  - bounce
   Starter: 0
   UpgradesThatWillBeUnlocked: []

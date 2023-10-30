@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 42d7f7e139559564fb06cd611a083de7, type: 3}
   UpgradeName: Overwhelming Strength I
-  UpgradeDescription: <color="red">Increases</color> Fire Power of Player's shot
-  ShroomItUpDescription: <color="red">Increases</color> Fire Power of Player's <color="red">and
-    Shroomie's</color> shot
+  UpgradeDescription: Increases Fire Power of Player's shot
+  ShroomItUpDescription: Increases Fire Power of Player's and Shroomie's shot
+  descriptionKeyWords:
+  - Increases
+  shroomItUpKeyWords:
+  - Increases
+  - and
   Starter: 1
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: 285de67179acddd48b9e08cda67841dd, type: 2}

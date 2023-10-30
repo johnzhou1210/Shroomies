@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: b5cb14b01ddebde40a887094ee8a2e65, type: 3}
   UpgradeName: Triple Shot
-  UpgradeDescription: Player shoots <color="red">3</color> shots at a time
-  ShroomItUpDescription: Player <color="red">and Shroomies</color> shoot <color="red">3</color>
-    shots at a time
+  UpgradeDescription: Player shoots 3 shots at a time
+  ShroomItUpDescription: Player and Shroomies shoot 3 shots at a time
+  descriptionKeyWords:
+  - 3
+  - shots
+  shroomItUpKeyWords:
+  - and
+  - 3
+  - shots
   Starter: 0
   UpgradesThatWillBeUnlocked:
   - {fileID: 11400000, guid: 6d1dad92aabd91043af1cdeb0c638178, type: 2}

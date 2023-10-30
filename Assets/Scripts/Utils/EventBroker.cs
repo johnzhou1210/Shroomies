@@ -5,10 +5,10 @@ using System;
 
 public class EventBroker : MonoBehaviour
 {
-    public static event Action<Palette> onPaletteChange;
+    public static event Action onPaletteChange;
 
-    public static void CallPaletteChange(Palette currentPalette)
+    public static void CallPaletteChange()
     {
-        onPaletteChange?.Invoke(currentPalette);
+        onPaletteChange?.Invoke();
     }
 }

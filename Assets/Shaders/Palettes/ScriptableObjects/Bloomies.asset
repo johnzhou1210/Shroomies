@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
   m_Name: Bloomies
   m_EditorClassIdentifier: 
-  color1: {r: 0, g: 0, b: 0, a: 0}
-  color2: {r: 0, g: 0, b: 0, a: 0}
-  color3: {r: 0, g: 0, b: 0, a: 0}
-  color4: {r: 0, g: 0, b: 0, a: 0}
+  color1: {r: 1, g: 1, b: 1, a: 1}
+  color2: {r: 0, g: 0.07450981, b: 1, a: 1}
+  color3: {r: 0.2509804, g: 0.08235294, b: 0.10588236, a: 1}
+  color4: {r: 0, g: 0, b: 0, a: 1}

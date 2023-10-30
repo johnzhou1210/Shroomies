@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_text: 'Shroom it up?
 
 
-    <color="red">(-500)</color>'
+    (-500)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f379efeea06c4e4c853a8934a7dd267, type: 2}
   m_sharedMaterial: {fileID: 463012205761276194, guid: 3f379efeea06c4e4c853a8934a7dd267, type: 2}

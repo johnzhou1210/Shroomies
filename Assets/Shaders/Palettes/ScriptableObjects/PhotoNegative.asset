@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
   m_Name: PhotoNegative
   m_EditorClassIdentifier: 
-  color1: {r: 0, g: 0, b: 0, a: 0}
-  color2: {r: 0, g: 0, b: 0, a: 0}
-  color3: {r: 0, g: 0, b: 0, a: 0}
-  color4: {r: 0, g: 0, b: 0, a: 0}
+  color1: {r: 0.050980397, g: 0.050980397, b: 0.050980397, a: 1}
+  color2: {r: 1, g: 0, b: 0.6509804, a: 1}
+  color3: {r: 0.59607846, g: 0.85098046, b: 0.7254902, a: 1}
+  color4: {r: 1, g: 1, b: 1, a: 1}
