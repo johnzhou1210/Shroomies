@@ -14,7 +14,7 @@ public class TapToStart : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        _textMesh.color = new Color(1,1,1, Mathf.Cos(Time.fixedTime * blinkSpeed) + .8f + opacityModifier);
+        _textMesh.color = new Color(ChangePalette.holder.color1.r, ChangePalette.holder.color1.g, ChangePalette.holder.color1.b, Mathf.Cos(Time.fixedTime * blinkSpeed) + .8f + opacityModifier);
     }
 
     

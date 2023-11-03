@@ -1623,6 +1623,7 @@ GameObject:
   - component: {fileID: 5250115346184160831}
   - component: {fileID: 1720082215013274780}
   - component: {fileID: 2711612849581880878}
+  - component: {fileID: 658156712276829052}
   m_Layer: 5
   m_Name: UpgradeFrame
   m_TagString: UpgradeFrame
@@ -1733,6 +1734,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &658156712276829052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616672574126157272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PaletteColor: 3
 --- !u!1 &4671878431588101503
 GameObject:
   m_ObjectHideFlags: 0

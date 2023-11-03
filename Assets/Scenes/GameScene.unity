@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 36226879}
   m_Layer: 5
   m_Name: Entry (7)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -496,8 +496,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3d1fc8c70ec4aac4ebd513ca87b5978e, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 110014577}
   m_Layer: 5
   m_Name: Entry (2)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -763,8 +763,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6caa4b0393bada342a5ab406801ce68f, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1880,7 +1880,7 @@ GameObject:
   - component: {fileID: 269096952}
   m_Layer: 5
   m_Name: Entry (11)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1925,8 +1925,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4f86d137fdc951049ba9b33f65bb0f67, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2859,10 +2859,9 @@ GameObject:
   - component: {fileID: 458634194}
   - component: {fileID: 458634193}
   - component: {fileID: 458634196}
-  - component: {fileID: 458634197}
   m_Layer: 5
   m_Name: Restart
-  m_TagString: Text
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3012,19 +3011,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Won: 0
---- !u!114 &458634197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 458634191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PaletteColor: 1
 --- !u!1 &467219278
 GameObject:
   m_ObjectHideFlags: 0
@@ -3115,7 +3101,7 @@ GameObject:
   - component: {fileID: 481179704}
   m_Layer: 5
   m_Name: Entry (5)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3160,8 +3146,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: acb1982e6de95be44a759c74ee2e5fa0, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3700,7 +3686,7 @@ GameObject:
   - component: {fileID: 636157459}
   m_Layer: 5
   m_Name: Entry (10)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3745,8 +3731,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 402d212ad24d85c4380e2a0cd3768a79, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4613,7 +4599,7 @@ GameObject:
   - component: {fileID: 808897243}
   m_Layer: 5
   m_Name: Entry (4)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4658,8 +4644,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb28b95ea0d29a944848ae2968f9eb9c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4700,9 +4686,10 @@ GameObject:
   - component: {fileID: 855363365}
   - component: {fileID: 855363367}
   - component: {fileID: 855363366}
+  - component: {fileID: 855363368}
   m_Layer: 5
   m_Name: Entry (9)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4747,8 +4734,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 42d7f7e139559564fb06cd611a083de7, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4765,6 +4752,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855363364}
   m_CullTransparentMesh: 1
+--- !u!114 &855363368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855363364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PaletteColor: 4
 --- !u!1 &885720643
 GameObject:
   m_ObjectHideFlags: 0
@@ -6074,7 +6074,7 @@ GameObject:
   - component: {fileID: 1113447735}
   m_Layer: 5
   m_Name: Entry (8)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6119,8 +6119,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 685b512392f99cd458606eb2516dfe2f, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9031,9 +9031,10 @@ GameObject:
   - component: {fileID: 1567249022}
   - component: {fileID: 1567249024}
   - component: {fileID: 1567249023}
+  - component: {fileID: 1567249025}
   m_Layer: 5
   m_Name: BossHealthFrame
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9098,6 +9099,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567249021}
   m_CullTransparentMesh: 1
+--- !u!114 &1567249025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567249021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PaletteColor: 4
 --- !u!1 &1567640236
 GameObject:
   m_ObjectHideFlags: 0
@@ -10657,7 +10671,7 @@ GameObject:
   - component: {fileID: 1804355348}
   m_Layer: 5
   m_Name: Entry (1)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10702,8 +10716,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c3f20f8f33269d744a38559d67fc888e, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10823,7 +10837,7 @@ GameObject:
   - component: {fileID: 1835686088}
   m_Layer: 5
   m_Name: Entry (0)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10868,8 +10882,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 21233a5473a32ba4c98ba119ba7b7fc1, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -11176,7 +11190,7 @@ GameObject:
   - component: {fileID: 1883266043}
   m_Layer: 5
   m_Name: Entry (6)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11221,8 +11235,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6f03ecf382246844c840f39c5fb93847, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -11263,6 +11277,7 @@ GameObject:
   - component: {fileID: 1894058665}
   - component: {fileID: 1894058668}
   - component: {fileID: 1894058667}
+  - component: {fileID: 1894058669}
   m_Layer: 5
   m_Name: Contents
   m_TagString: Banner
@@ -11333,6 +11348,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894058664}
   m_CullTransparentMesh: 1
+--- !u!114 &1894058669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894058664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PaletteColor: 4
 --- !u!1 &1907719379
 GameObject:
   m_ObjectHideFlags: 0
@@ -11654,7 +11682,7 @@ GameObject:
   - component: {fileID: 1952695033}
   m_Layer: 5
   m_Name: Entry (3)
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11699,8 +11727,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 81adb3f9ee1f828459719b31eceec1e6, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
