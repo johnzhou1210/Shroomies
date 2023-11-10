@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PiercingShot3
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 6caa4b0393bada342a5ab406801ce68f, type: 3}
-  UpgradeName: Penetration III
+  UpgradeName: Pierce III
   UpgradeDescription: "Player\u2019s shots Pierces All enemies"
   ShroomItUpDescription: Player's and Shroomie's shots Pierces All enemies
   descriptionKeyWords:

@@ -611,9 +611,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683f9dd7dfd0aab46a9deb6c7d471561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 300
+  MaxHealth: 280
   CurrentHealth: 0
   MulchReward: 45
+  Animator: {fileID: 5678910839467403377}
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -691,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be27c121133f6a4888289cc1769b5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 3.8
+  FireRate: 4.5
   BulletVelocity: 3.25
   AttackPower: 1
   StartShootY: 5.5

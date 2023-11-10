@@ -386,6 +386,7 @@ MonoBehaviour:
   MaxHealth: 70
   CurrentHealth: 0
   MulchReward: 20
+  Animator: {fileID: 9163105117589807722}
   OnDeath:
     m_PersistentCalls:
       m_Calls:

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
-  m_Name: CreakScore
+  m_Name: Creakscore
   m_EditorClassIdentifier: 
   color1: {r: 0.87843144, g: 0.9725491, b: 0.81568635, a: 1}
   color2: {r: 0.5372549, g: 0.77647066, b: 0.43529415, a: 1}

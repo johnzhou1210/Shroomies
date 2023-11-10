@@ -238,20 +238,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.325
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.3333334
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 1.4083333
     functionName: DefaultShootSound
     data: 
@@ -260,20 +246,6 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.4166666
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.4916667
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.5
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -294,20 +266,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.6583333
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.6666666
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 1.7416667
     functionName: DefaultShootSound
     data: 
@@ -316,20 +274,6 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.75
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.825
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.8333334
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -350,20 +294,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.9916667
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 2.075
     functionName: DefaultShootSound
     data: 
@@ -372,20 +302,6 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 2.0833333
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2.1583333
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2.1666667
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -406,20 +322,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.325
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2.3333333
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 2.4083333
     functionName: DefaultShootSound
     data: 
@@ -428,20 +330,6 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 2.4166667
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2.4916666
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2.5
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -462,20 +350,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.6583333
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2.6666667
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 2.7416666
     functionName: DefaultShootSound
     data: 
@@ -484,20 +358,6 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 2.75
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2.825
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2.8333333
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -518,20 +378,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.9916666
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 3.075
     functionName: DefaultShootSound
     data: 
@@ -540,20 +386,6 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 3.0833333
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3.1583333
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3.1666667
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -574,20 +406,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 3.325
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3.3333333
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 3.4083333
     functionName: DefaultShootSound
     data: 
@@ -596,20 +414,6 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 3.4166667
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3.4916666
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3.5
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -630,20 +434,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 3.6583333
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3.6666667
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 3.7416666
     functionName: DefaultShootSound
     data: 
@@ -652,20 +442,6 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 3.75
-    functionName: Fire
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3.825
-    functionName: DefaultShootSound
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 3.8333333
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
