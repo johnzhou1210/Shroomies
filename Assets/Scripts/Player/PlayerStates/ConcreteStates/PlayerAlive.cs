@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAlive : PlayerBaseState {
     public override void EnterState(PlayerStateManager mgr) {
-        Debug.Log("Enter PlayerAlive state");
+        //Debug.Log("Enter PlayerAlive state");
     }
 
     public override void UpdateState(PlayerStateManager mgr) {

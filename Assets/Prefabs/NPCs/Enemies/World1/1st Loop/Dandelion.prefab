@@ -442,6 +442,7 @@ MonoBehaviour:
   AttackPower: 1
   StartShootY: 5.5
   BulletsBounce: 0
+  CanShootAfterDeath: 1
   ObstaclePierceCount: 0
   BulletClearLimit: 0
   CurrentBulletType: 8

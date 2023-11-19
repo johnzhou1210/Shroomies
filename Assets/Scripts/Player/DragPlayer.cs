@@ -24,7 +24,7 @@ public class DragPlayer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData) {
-        Debug.Log("Begin drag");
+        //Debug.Log("Begin drag");
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData) {
@@ -41,7 +41,7 @@ public class DragPlayer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     }
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData) {
-        Debug.Log("End drag");
+        //Debug.Log("End drag");
         _lastDragPos = Vector2.zero;
     }
 

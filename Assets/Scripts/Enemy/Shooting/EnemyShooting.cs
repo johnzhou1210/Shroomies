@@ -9,7 +9,7 @@ public class EnemyShooting : MonoBehaviour {
     [Range(0, 8f)] public float BulletVelocity = 5f;
     [Range(0, 64)] public int AttackPower = 1;
     public float StartShootY = 5.5f;
-    public bool BulletsBounce = false;
+    public bool BulletsBounce = false, CanShootAfterDeath = false;
     public int ObstaclePierceCount = 0, BulletClearLimit = 0;
 
     public BulletType CurrentBulletType;
@@ -65,7 +65,10 @@ public class EnemyShooting : MonoBehaviour {
     }
 
     public void Fire() {
-        StartCoroutine(fire());
+        if (StateManager.CurrentState != StateManager.DeadState || CanShootAfterDeath) {
+            StartCoroutine(fire());
+        }
+        Debug.Log("enemy is dead, fire cancelled!");
     }
 
     IEnumerator fire() {
