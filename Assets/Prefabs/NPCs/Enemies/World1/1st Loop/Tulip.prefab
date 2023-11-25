@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StateManager: {fileID: 4479650827182798106}
-  _moveSpeed: 1
+  _moveSpeed: 1.25
   _changeDirectionChance: 0.2
   _frequency: 2.37
   _amplitude: 1
@@ -326,9 +326,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireRate: 2
-  BulletVelocity: 2.5
+  BulletVelocity: 3.5
   AttackPower: 1
   StartShootY: 7
+  EndShootY: -3.5
   BulletsBounce: 0
   ObstaclePierceCount: 0
   BulletClearLimit: 0
@@ -384,6 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 70
+  alreadyCounted: 0
   CurrentHealth: 0
   MulchReward: 20
   OnDeath:

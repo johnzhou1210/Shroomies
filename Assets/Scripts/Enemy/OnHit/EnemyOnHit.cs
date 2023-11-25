@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class EnemyOnHit : MonoBehaviour, IDamageable
 {
     public int MaxHealth = 5;
+    public bool alreadyCounted = false;
     public int CurrentHealth;
     public int MulchReward;
 

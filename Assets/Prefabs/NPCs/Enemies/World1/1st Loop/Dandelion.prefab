@@ -438,9 +438,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireRate: 0.25
-  BulletVelocity: 5
+  BulletVelocity: 3
   AttackPower: 1
   StartShootY: 5.5
+  EndShootY: -3.5
   BulletsBounce: 0
   ObstaclePierceCount: 0
   BulletClearLimit: 0
@@ -463,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 1
+  alreadyCounted: 0
   CurrentHealth: 0
   MulchReward: 10
   OnDeath:

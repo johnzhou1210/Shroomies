@@ -102,7 +102,7 @@ public class StageLogic : MonoBehaviour {
                 // allow player to buy shroomies
                 loadShroomieButton(Difficulty);
 
-                int numClustersToSpawn = 10;
+                int numClustersToSpawn = 1;
                 int currNumClustersElapsed = 0;
                 while (currNumClustersElapsed < numClustersToSpawn && !_gameOver) {
 

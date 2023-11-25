@@ -26,13 +26,13 @@ public class DaisyShooting : EnemyShooting {
         while (StateManager.CurrentState != StateManager.DeadState) {
             //Debug.Log("in loop. current state is " + StateManager.CurrentState);
             yield return new WaitForSeconds(FireRate / 2f);
-            if (transform.position.y <= StartShootY) {
+            if (transform.position.y <= StartShootY && transform.position.y >= EndShootY) {
                 CurrentBarrelConfiguration = BarrelConfigurations[0];
                 Animator.Play("DaisyFireY");
             }
             
             yield return new WaitForSeconds(FireRate);
-            if (transform.position.y <= StartShootY) {
+            if (transform.position.y <= StartShootY && transform.position.y >= EndShootY) {
                 CurrentBarrelConfiguration = BarrelConfigurations[1];
                 Animator.Play("DaisyFireY2");
             }

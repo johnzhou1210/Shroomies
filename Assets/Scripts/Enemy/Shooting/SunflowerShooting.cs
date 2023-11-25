@@ -29,7 +29,7 @@ public class SunflowerShooting : EnemyShooting {
             Debug.Log("in loop. current state is " + StateManager.CurrentState);
             yield return new WaitForSeconds(FireRate / 2f);
 
-            if (transform.position.y <= StartShootY) {
+            if (transform.position.y <= StartShootY && transform.position.y >= EndShootY) {
                 Animator.speed = Mathf.Clamp(1 / FireRate, 1f, 16f);
                 Animator.Play("SunflowerFire");
             }

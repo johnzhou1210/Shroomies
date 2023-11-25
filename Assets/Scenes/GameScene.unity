@@ -4082,10 +4082,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clusterCollections:
-  - {fileID: 11400000, guid: fc192833346cb3f49a649fd98b61c5f7, type: 2}
-  - {fileID: 11400000, guid: 318a1b4c741a06e4d82d090269d5fc10, type: 2}
-  - {fileID: 11400000, guid: fc4523ada7e239e43b759c15422f663f, type: 2}
-  - {fileID: 11400000, guid: 8ed90b4377f4aa448aa1e1b2d4a15035, type: 2}
+  - {fileID: 11400000, guid: d6fe51ffc2a1e094b8591dcc1acef283, type: 2}
+  - {fileID: 11400000, guid: 1cf573b9b68f3ae4ea60e2ee5924e3fa, type: 2}
+  - {fileID: 11400000, guid: fc4f62ed503c1ef48a2212dfb1ddf072, type: 2}
+  - {fileID: 11400000, guid: 30f15c2a43516ec4b8d29e0fcc228b9d, type: 2}
   - {fileID: 11400000, guid: 99d72458a2dd80c43b50658e4955e19b, type: 2}
   - {fileID: 11400000, guid: c58e07e2fc188cc4da1848a90909051a, type: 2}
   - {fileID: 11400000, guid: 5772f59aac5c6c942a13ff324c6165fc, type: 2}
@@ -12848,7 +12848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4715656214499364019, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6790670755102139078, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: _shakeCam.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12858,6 +12858,10 @@ PrefabInstance:
       propertyPath: _onPlayerDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 727775186}
+    - target: {fileID: 8299392897518019744, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: _moveSpeed
       value: 5.5

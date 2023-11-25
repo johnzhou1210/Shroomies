@@ -7,12 +7,14 @@ public class TulipMovement : MonoBehaviour
     public EnemyStateManager StateManager;
     [SerializeField] float _moveSpeed, _changeDirectionChance, _frequency, _amplitude;
     float sinCenterY;
+    float yPosition;
     bool _changeDirectionDebounce = false;
 
 
     private void Start() {
         StateManager = GetComponent<EnemyStateManager>();
-        sinCenterY = transform.parent.transform.position.y;
+        sinCenterY = transform.position.y;//transform.parent.transform.position.y;
+        yPosition = transform.localPosition.y;
         if (Random.Range(0f,1f) <= .5f) {
             StartCoroutine(ChangeDirection());
         }
@@ -23,10 +25,10 @@ public class TulipMovement : MonoBehaviour
     private void FixedUpdate() {
         if (StateManager.CurrentState == StateManager.AliveState) {
             float sin;
-            sinCenterY = transform.parent.transform.position.y;
+            sinCenterY = transform.parent.transform.position.y + yPosition;
             transform.position = transform.position + Vector3.right * Time.deltaTime * _moveSpeed;
             sin = Mathf.Sin(transform.position.x * _frequency) * _amplitude;
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -2.2f, 2.2f) , sinCenterY + sin, 0);
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -2.2f, 2.2f) , (sinCenterY + sin), 0);
             if (transform.position.x >= 2.1f || transform.position.x <= -2.1f) {
                 StartCoroutine(ChangeDirection());
             }
