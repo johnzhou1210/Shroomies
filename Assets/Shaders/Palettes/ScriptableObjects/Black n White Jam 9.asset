@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
-  m_Name: ArizonaCan
+  m_Name: Black n White Jam 9
   m_EditorClassIdentifier: 
-  color1: {r: 0.9490196, g: 0.9490196, b: 0.9490196, a: 1}
-  color2: {r: 1, g: 0, b: 0.6509804, a: 1}
-  color3: {r: 0.59607846, g: 0.85098046, b: 0.7254902, a: 1}
-  color4: {r: 1, g: 0.5981132, b: 0.5981132, a: 1}
+  color1: {r: 1, g: 1, b: 1, a: 1}
+  color2: {r: 1, g: 1, b: 1, a: 1}
+  color3: {r: 0, g: 0, b: 0, a: 1}
+  color4: {r: 0, g: 0, b: 0, a: 1}

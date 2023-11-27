@@ -291,6 +291,7 @@ MonoBehaviour:
   alreadyCounted: 0
   CurrentHealth: 0
   MulchReward: 15
+  Animator: {fileID: 5678910839467403377}
   OnDeath:
     m_PersistentCalls:
       m_Calls:

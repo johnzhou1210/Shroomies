@@ -113,19 +113,22 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 3553441605098381060}
-    m_Position: {x: 250, y: -20, z: 0}
+    m_Position: {x: 260, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5549089556317672379}
     m_Position: {x: 510, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8863246505910731824}
-    m_Position: {x: 260, y: 80, z: 0}
+    m_Position: {x: 250, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4527700778154031352}
-    m_Position: {x: 500, y: -30, z: 0}
+    m_Position: {x: 510, y: -10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4923563867882306562}
     m_Position: {x: 260, y: -90, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 169743577189127594}
+    m_Position: {x: 250, y: -20, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -158,6 +161,32 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!1102 &169743577189127594
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DaisyDeath
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 3ca26b8ee24c7044fad6627f6621e4d6, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &3553441605098381060
 AnimatorState:
   serializedVersion: 6
@@ -204,7 +233,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: 3ca26b8ee24c7044fad6627f6621e4d6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

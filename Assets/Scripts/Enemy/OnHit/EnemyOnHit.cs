@@ -11,6 +11,8 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     public int CurrentHealth;
     public int MulchReward;
 
+    public Animator Animator;
+
     public UnityEvent OnDeath;
     [HideInInspector] public UnityIntEvent GiveMulch;
 
@@ -26,7 +28,8 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             OnDeath.Invoke();
             GiveMulch.Invoke(MulchReward);
             AudioManager.Instance.PlaySFX("Enemy Death Sound");
-            StartCoroutine(Flicker(3, .24f));
+            StartCoroutine(Flicker(0, .35f));
+            Animator.Play("Dead");
         } else {
             StartCoroutine(Flicker(1, .12f));
         }
@@ -53,6 +56,7 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             SetColorOfAllEnabledSprites(Color.white);
         }
         if (isDead()) {
+            yield return new WaitForSeconds(flickerDelay);
             SetColorOfAllEnabledSprites(Color.clear);
             gameObject.SetActive(false);
         }

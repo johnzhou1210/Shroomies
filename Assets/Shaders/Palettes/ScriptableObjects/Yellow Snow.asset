@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
-  m_Name: EnergyDrink
+  m_Name: Yellow Snow
   m_EditorClassIdentifier: 
-  color1: {r: 1, g: 0.882353, b: 1, a: 1}
-  color2: {r: 0.8352942, g: 0, b: 1, a: 1}
-  color3: {r: 0.24313727, g: 0.3137255, b: 0.34901962, a: 1}
-  color4: {r: 0.043137256, g: 0, b: 0.10588236, a: 1}
+  color1: {r: 1, g: 0.95686275, b: 0.8039216, a: 1}
+  color2: {r: 1, g: 0.73333335, b: 0, a: 1}
+  color3: {r: 0.42745098, g: 0.2509804, b: 0.06666667, a: 1}
+  color4: {r: 0.26666668, g: 0.09803922, b: 0.039215688, a: 1}

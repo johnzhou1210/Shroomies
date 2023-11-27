@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
-  m_Name: GrayScale
+  m_Name: Grayscale
   m_EditorClassIdentifier: 
   color1: {r: 0.9490197, g: 0.9490197, b: 0.9490197, a: 1}
   color2: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}

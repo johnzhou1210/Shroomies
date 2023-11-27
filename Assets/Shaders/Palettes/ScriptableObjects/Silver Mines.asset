@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
+  m_Name: Silver Mines
+  m_EditorClassIdentifier: 
+  color1: {r: 0.6745098, g: 0.6745098, b: 0.54509807, a: 1}
+  color2: {r: 0.87058824, g: 0.9411765, b: 0.90588236, a: 1}
+  color3: {r: 0.27058825, g: 0.33333334, b: 0.40784314, a: 1}
+  color4: {r: 0.11372549, g: 0.13725491, b: 0.12941177, a: 1}

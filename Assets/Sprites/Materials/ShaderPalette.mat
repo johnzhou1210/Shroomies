@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ShaderPalette
-  m_Shader: {fileID: -6465566751694194690, guid: 6989a2939ce932d4e886a4c27774b6f6, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -69,6 +69,10 @@ Material:
     - _Gradient_adjustment: 0.95
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 1, g: 0.9568626, b: 0.8039216, a: 0}
+    - _Color2: {r: 1, g: 0.7333333, b: 0, a: 0}
+    - _Color3: {r: 0.42745098, g: 0.25098038, b: 0.06666665, a: 0}
+    - _Color4: {r: 0.26666668, g: 0.09803919, b: 0.03921569, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

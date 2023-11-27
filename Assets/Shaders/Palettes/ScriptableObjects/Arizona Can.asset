@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
-  m_Name: RedVelvet
+  m_Name: Arizona Can
   m_EditorClassIdentifier: 
-  color1: {r: 1, g: 1, b: 0.93725497, a: 1}
-  color2: {r: 0.9058824, g: 0.50980395, b: 0.6117647, a: 1}
-  color3: {r: 0.5176471, g: 0.21960786, b: 0.2901961, a: 1}
-  color4: {r: 0.27058825, g: 0.1137255, b: 0.15294118, a: 1}
+  color1: {r: 1, g: 0.9851153, b: 0.6650944, a: 1}
+  color2: {r: 1, g: 1, b: 1, a: 1}
+  color3: {r: 0.51891243, g: 0.6509434, b: 0.607738, a: 1}
+  color4: {r: 0.990566, g: 0.6868548, b: 0.6868548, a: 1}
