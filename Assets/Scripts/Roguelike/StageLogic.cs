@@ -29,9 +29,9 @@ public class StageLogic : MonoBehaviour {
     public int AccumulatedMulch = 0;
     public int AccumulatedShroomies = 0;
     public int AccumulatedShroomItUps = 0;
-    public int ShroomieBaseCost = 500;
+    public int ShroomieBaseCost = 25;
 
-    public int previousShroomiesCost = 100;
+    public int previousShroomiesCost = 25;
 
     public float Difficulty = 0f;
 
@@ -217,7 +217,7 @@ public class StageLogic : MonoBehaviour {
         //shroomieUpdateCost.Invoke((int)(StageNumber * 100)); // cost scales on difficulty.
         if (AccumulatedShroomies <= 0)
         {
-            shroomieUpdateCost.Invoke((int)(Math.Max(100, (AccumulatedShroomies * 100) + (AccumulatedShroomies + 1) * 50)));
+            shroomieUpdateCost.Invoke((int)(Math.Max(ShroomieBaseCost, (AccumulatedShroomies * 100) + (AccumulatedShroomies + 1) * 50)));
         }
     }
 

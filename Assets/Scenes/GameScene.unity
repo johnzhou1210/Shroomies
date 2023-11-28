@@ -4229,7 +4229,7 @@ MonoBehaviour:
   AccumulatedMulch: 0
   AccumulatedShroomies: 0
   AccumulatedShroomItUps: 0
-  ShroomieBaseCost: 150
+  ShroomieBaseCost: 50
   previousShroomiesCost: 0
   Difficulty: 0
 --- !u!1 &740125961

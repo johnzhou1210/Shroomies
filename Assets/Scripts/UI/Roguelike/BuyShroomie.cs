@@ -13,6 +13,7 @@ public class BuyShroomie : MonoBehaviour
 
     private void Start() {
         _roguelikeManager = GameObject.FindWithTag("Roguelike Manager").gameObject.GetComponent<StageLogic>();
+        shroomieCost = _roguelikeManager.ShroomieBaseCost;
     }
 
     private void Update() {
@@ -22,6 +23,7 @@ public class BuyShroomie : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.Q)) {
             transform.parent.GetComponent<Image>().sprite = _pressedSprite;
         }
+        Debug.Log(shroomieCost);
     }
 
     public bool CloseEnough(float a, float b) {
@@ -40,7 +42,7 @@ public class BuyShroomie : MonoBehaviour
                     _roguelikeManager.decreaseMulch(shroomieCost);
                     // make future purchases more expensive
                     //OnChangePrice((int)(shroomieCost * 2f));
-                    OnChangePrice((int)(shroomieCost + ((_roguelikeManager.AccumulatedShroomies + 1) * 50)));
+                    OnChangePrice((int)(shroomieCost + ((_roguelikeManager.AccumulatedShroomies + 1) * 25)));
                     // add a shroomie
                     GameObject.FindWithTag("Player").GetComponent<PlayerOnHit>().CurrentShroomies++;
                     currNumShroomies = GameObject.FindWithTag("Player").GetComponent<PlayerOnHit>().CurrentShroomies;
