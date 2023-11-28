@@ -27,7 +27,11 @@ public class StageLogic : MonoBehaviour {
     public int StageNumber = 13;
 
     public int AccumulatedMulch = 0;
+    public int AccumulatedShroomies = 0;
+    public int AccumulatedShroomItUps = 0;
     public int ShroomieBaseCost = 500;
+
+    public int previousShroomiesCost = 100;
 
     public float Difficulty = 0f;
 
@@ -210,7 +214,11 @@ public class StageLogic : MonoBehaviour {
     void loadShroomieButton(float difficulty) {
         _buyShroomieButton.SetActive(true);
         _buyShroomieButton.GetComponent<Animator>().Play("ShroomieButtonFadeIn");
-        shroomieUpdateCost.Invoke((int)(StageNumber * 100)); // cost scales on difficulty.
+        //shroomieUpdateCost.Invoke((int)(StageNumber * 100)); // cost scales on difficulty.
+        if (AccumulatedShroomies <= 0)
+        {
+            shroomieUpdateCost.Invoke((int)(Math.Max(100, (AccumulatedShroomies * 100) + (AccumulatedShroomies + 1) * 50)));
+        }
     }
 
     public void OnEnemyKill(int amount) {
@@ -223,6 +231,19 @@ public class StageLogic : MonoBehaviour {
     public void decreaseMulch(int amount) {
         AccumulatedMulch -= amount;
         updateMulch.Invoke(AccumulatedMulch);
+    }
+
+    public void incrementAccumulatedShroomies()
+    {
+        //shroomieUpdateCost.Invoke((int)(previousShroomiesCost + (100 + (50 * Math.Max(0, AccumulatedShroomies - 1)))));
+        //previousShroomiesCost = (int)(previousShroomiesCost + (100 + (50 * Math.Max(0, AccumulatedShroomies - 1))));
+        //shroomieUpdateCost.Invoke((int)(Math.Max(100, (AccumulatedShroomies * 100) + (AccumulatedShroomies + 1) * 50)));
+        AccumulatedShroomies++;
+    }
+
+    public void incrementShroomItUps()
+    {
+        AccumulatedShroomItUps++;
     }
 
     public void setPlayerDrag(bool newVal) {

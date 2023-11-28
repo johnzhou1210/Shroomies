@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PaletteColor: 1
+  PaletteColor: 3
 --- !u!1 &36226875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2169,7 +2169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PaletteColor: 1
+  PaletteColor: 3
 --- !u!1 &385957002
 GameObject:
   m_ObjectHideFlags: 0
@@ -4227,7 +4227,10 @@ MonoBehaviour:
   WorldNumber: 1
   StageNumber: 5
   AccumulatedMulch: 0
+  AccumulatedShroomies: 0
+  AccumulatedShroomItUps: 0
   ShroomieBaseCost: 150
+  previousShroomiesCost: 0
   Difficulty: 0
 --- !u!1 &740125961
 GameObject:
@@ -5073,7 +5076,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -5410,7 +5413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PaletteColor: 1
+  PaletteColor: 3
 --- !u!1 &995627746
 GameObject:
   m_ObjectHideFlags: 0
@@ -6778,7 +6781,7 @@ Camera:
   far clip plane: 1000
   field of view: 82.4
   orthographic: 1
-  orthographic size: 5.013949
+  orthographic size: 5.0127053
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7426,7 +7429,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -7503,7 +7506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PaletteColor: 1
+  PaletteColor: 2
 --- !u!1 &1299222899
 GameObject:
   m_ObjectHideFlags: 0
@@ -8378,7 +8381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PaletteColor: 1
+  PaletteColor: 3
 --- !u!1 &1414531568
 GameObject:
   m_ObjectHideFlags: 0
@@ -10408,12 +10411,12 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -11358,7 +11361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.92156863}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12883,7 +12886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4715656214499364019, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6790670755102139078, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: _shakeCam.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12896,6 +12899,22 @@ PrefabInstance:
     - target: {fileID: 8299392897518019744, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
+      propertyPath: XMax
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
+      propertyPath: XMin
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
+      propertyPath: YMax
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
+      propertyPath: YMin
+      value: -4.6
       objectReference: {fileID: 0}
     - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: _moveSpeed

@@ -61,6 +61,7 @@ public class UpgradeScreen : MonoBehaviour
             // check if shroom it up is selected. if so, charge mulch.
             if (_shroomItUp.GetComponent<ShroomItUp>().CheckBoxSelected) {
                 GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().decreaseMulch(_shroomItUp.GetComponent<ShroomItUp>().ShroomItUpCost);
+                GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().incrementShroomItUps();
             }
             // play confirm animation on buttonObj
             AudioManager.Instance.PlaySFX("Player Get Upgrade");
