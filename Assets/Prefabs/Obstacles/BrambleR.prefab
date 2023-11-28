@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5954912760573567051}
   - component: {fileID: 8083967500124192423}
   - component: {fileID: 3149305717287673208}
+  - component: {fileID: 7732684784240812114}
   m_Layer: 11
   m_Name: BrambleR
   m_TagString: Obstacle
@@ -194,3 +195,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7732684784240812114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265869883905717513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92ebb53e7bb5a947a9ed111bc1d4618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _damageCooltime: 1
