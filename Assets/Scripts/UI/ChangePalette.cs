@@ -11,11 +11,11 @@ public class ChangePalette : MonoBehaviour
     private List<Palette> palettes = new List<Palette>();
     public static Palette holder;
 
-    public int count = 0;
+    public static int count = 0;
 
     private void Awake()
     {
-        ChangeColor(0);
+        ChangeColor(count);
     }
 
     public void ChangeColor()
