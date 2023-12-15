@@ -113,7 +113,7 @@ public class Bullet : MonoBehaviour {
             if (((hitTarget.CompareTag("Enemy") && Ownership == BulletOwnershipType.ENEMY) || (hitTarget.CompareTag("Player") && Ownership == BulletOwnershipType.PLAYER))
                   ) {
                 if (hitTarget.layer == 11) {
-                    Debug.Log("call 1 " + transform.name + " collision enter with " + hitTarget.name);
+                    //Debug.Log("call 1 " + transform.name + " collision enter with " + hitTarget.name);
                     Destroy();
                 }
             } else {
@@ -145,12 +145,12 @@ public class Bullet : MonoBehaviour {
                             Camera.main.GetComponent<CameraShaker>().Shake(.02f, .1f);
                         }
                         onHit.takeDamage(_damage);
-                        Debug.Log(hitTarget.name + " got hit");
+                        //Debug.Log(hitTarget.name + " got hit");
                     }
-                    Debug.Log(hitTarget.name + " took " + _damage + " damage!");
+                    //Debug.Log(hitTarget.name + " took " + _damage + " damage!");
 
                     if (_pierceLimit <= 0 || _pierceCounter >= _pierceLimit) {
-                        Debug.Log("call 2 " + transform.name + " collision enter with " + hitTarget.name);
+                        //Debug.Log("call 2 " + transform.name + " collision enter with " + hitTarget.name);
                         Destroy();
                     } else {
                         Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
@@ -162,9 +162,9 @@ public class Bullet : MonoBehaviour {
 
                 } else if (hitTarget.CompareTag("Obstacle")) {
                     // hit obstacle
-                    Debug.Log("hit obstacle");
+                    //Debug.Log("hit obstacle");
                     if (_pierceLimit > 0 && _pierceCounter < _pierceLimit) { // pierce check
-                        Debug.Log("pierced obstacle");
+                        //Debug.Log("pierced obstacle");
                         Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
                         _pierceCounter++;
                         // ignore collisions with this target from now on
@@ -173,7 +173,7 @@ public class Bullet : MonoBehaviour {
                     } else if (_reflect) { // bounce check
                         bounce();
                     } else {
-                        Debug.Log("call 3 " + transform.name + " collision enter with " + hitTarget.name);
+                        //Debug.Log("call 3 " + transform.name + " collision enter with " + hitTarget.name);
                         Destroy();
                     }
 
@@ -191,18 +191,18 @@ public class Bullet : MonoBehaviour {
                         keepBulletGoingAfterCollision();
                         _bulletClearCounter++;
                         if (_bulletClearCounter >= _bulletClearLimit) {
-                            Debug.Log("call 4 " + transform.name + " collision enter with " + hitTarget.name);
+                            //Debug.Log("call 4 " + transform.name + " collision enter with " + hitTarget.name);
                             Destroy();
                         }
                     } else {
                         if (!bulletCanClearBullets(this) || gameObjectIsABullet(hitTarget)) {
                             // just "pierce" it
                             // ignore collisions with this target from now on
-                            Debug.Log("ignoring collisions involving " + transform.name + " with " + hitTarget.name);
+                            //Debug.Log("ignoring collisions involving " + transform.name + " with " + hitTarget.name);
                             ignoreCollisionsWithTarget();
                             keepBulletGoingAfterCollision();
                         } else {
-                            Debug.Log("call 5 " + transform.name + " collision enter with " + hitTarget.name);
+                            //Debug.Log("call 5 " + transform.name + " collision enter with " + hitTarget.name);
                             Destroy();
                         }
 

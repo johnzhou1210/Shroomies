@@ -44,7 +44,7 @@ public class PetuniaMovement : MonoBehaviour
         if (_changeDirectionDebounce == false) {
             _changeDirectionDebounce = true;
             _moveSpeed *= -1f;
-            Debug.Log("Changed direction");
+            //Debug.Log("Changed direction");
             yield return new WaitForSeconds(1f);
             _changeDirectionDebounce = false;
         }

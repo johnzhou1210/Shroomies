@@ -9,48 +9,52 @@ public class ChangePalette : MonoBehaviour
 
     [SerializeField]
     private List<Palette> palettes = new List<Palette>();
+    public bool firstRun = true;
     public static Palette holder;
 
-    public static int count = 0;
+    private static int count = 0;
+
+    public static int Count { get => count; set => count = value; }
 
     private void Awake()
     {
-        ChangeColor(count);
+        ChangeColor(Count, firstRun);
     }
+
 
     public void ChangeColor()
-    {
-        if(count > palettes.Count - 1) {
-            count = 0;
-        }
-        paletteShader.SetColor("_Color1", palettes[count].color1);
-        paletteShader.SetColor("_Color2", palettes[count].color2);
-        paletteShader.SetColor("_Color3", palettes[count].color3);
-        paletteShader.SetColor("_Color4", palettes[count].color4);
+    {        
+        Count++;
 
-        holder = palettes[count];
+        if(Count > palettes.Count - 1) {
+            Count = 0;
+        }
+
+        paletteShader.SetColor("_Color1", palettes[Count].color1);
+        paletteShader.SetColor("_Color2", palettes[Count].color2);
+        paletteShader.SetColor("_Color3", palettes[Count].color3);
+        paletteShader.SetColor("_Color4", palettes[Count].color4);
+
+        holder = palettes[Count];
 
         EventBroker.CallPaletteChange();
-        count++;
     }
 
-    public void ChangeColor(int paletteSet)
+    public void ChangeColor(int paletteSet, bool firstTime)
     {
-        count = paletteSet;
+        Count = paletteSet;
 
-        if (count > palettes.Count - 1)
+        if (Count > palettes.Count - 1)
         {
-            count = 0;
+            Count = 0;
         }
-        paletteShader.SetColor("_Color1", palettes[count].color1);
-        paletteShader.SetColor("_Color2", palettes[count].color2);
-        paletteShader.SetColor("_Color3", palettes[count].color3);
-        paletteShader.SetColor("_Color4", palettes[count].color4);
+        paletteShader.SetColor("_Color1", palettes[Count].color1);
+        paletteShader.SetColor("_Color2", palettes[Count].color2);
+        paletteShader.SetColor("_Color3", palettes[Count].color3);
+        paletteShader.SetColor("_Color4", palettes[Count].color4);
 
-        holder = palettes[count];
+        holder = palettes[Count];
 
         EventBroker.CallPaletteChange();
-        
-        count++;
     }
 }

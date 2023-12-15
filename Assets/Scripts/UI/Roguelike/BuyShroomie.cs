@@ -8,8 +8,10 @@ public class BuyShroomie : MonoBehaviour
 {
     StageLogic _roguelikeManager;
     [SerializeField] GameObject _priceText;
-    [SerializeField] Sprite _pressedSprite, _defaultSprite;
+    [SerializeField] Sprite _pressedSprite, _defaultSprite, _buySprite;
     int shroomieCost = -1;
+    bool enoughMulch;
+    public float closeEnoughX, closeEnoughY;
 
     private void Start() {
         _roguelikeManager = GameObject.FindWithTag("Roguelike Manager").gameObject.GetComponent<StageLogic>();
@@ -17,23 +19,27 @@ public class BuyShroomie : MonoBehaviour
     }
 
     private void Update() {
+        enoughMulch = _roguelikeManager.AccumulatedMulch >= shroomieCost;
+
         if (Input.GetKeyUp(KeyCode.Q)) {
             OnClick();
-            transform.parent.GetComponent<Image>().sprite = _defaultSprite;
-        } else if (Input.GetKeyDown(KeyCode.Q)) {
+        } else if (Input.GetKey(KeyCode.Q)) {
             transform.parent.GetComponent<Image>().sprite = _pressedSprite;
+        } else if (enoughMulch) {
+            transform.parent.GetComponent<Image>().sprite = _buySprite;
         }
-        Debug.Log(shroomieCost);
+
     }
 
     public bool CloseEnough(float a, float b) {
+        Debug.Log(Mathf.Abs(a - b) < 10f);
         return Mathf.Abs(a - b) < 10f;
     }
 
     public void OnClick() {
-        if (CloseEnough(transform.parent.parent.GetComponent<RectTransform>().anchoredPosition.x, 50f) && CloseEnough(transform.parent.parent.GetComponent<RectTransform>().anchoredPosition.y, -50f)) {
+        if (CloseEnough(transform.parent.GetComponent<RectTransform>().anchoredPosition.x, closeEnoughX) && CloseEnough(transform.parent.GetComponent<RectTransform>().anchoredPosition.y, -closeEnoughY)) {
             if (shroomieCost > 0) {
-                bool enoughMulch = _roguelikeManager.AccumulatedMulch >= shroomieCost;
+                //bool enoughMulch = _roguelikeManager.AccumulatedMulch >= shroomieCost;
                 int currNumShroomies = GameObject.FindWithTag("Player").GetComponent<PlayerOnHit>().CurrentShroomies;
                 ShroomieFormation formation = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomieFormation>();
                 if (enoughMulch && currNumShroomies < formation.ShroomieObjects.Count) {
@@ -53,20 +59,25 @@ public class BuyShroomie : MonoBehaviour
                 }
             }
         }
+        transform.parent.GetComponent<Image>().sprite = _defaultSprite;
     }
 
     public void OnButtonDown() {
-        _priceText.GetComponent<TextMeshProUGUI>().enabled = false;
+        if (_priceText != null)
+            _priceText.GetComponent<TextMeshProUGUI>().enabled = false;
     }
 
 
     public void OnButtonUp() {
-        _priceText.GetComponent<TextMeshProUGUI>().enabled = true;
+        if (_priceText != null)
+            _priceText.GetComponent<TextMeshProUGUI>().enabled = true;
     }
 
     public void OnChangePrice(int newPrice) {
-        shroomieCost = newPrice;
-        _priceText.GetComponent<TextMeshProUGUI>().text = "" + newPrice.ToString();
+        if (_priceText != null) {
+            shroomieCost = newPrice;
+            _priceText.GetComponent<TextMeshProUGUI>().text = "" + newPrice.ToString();
+        }
     }
 
     public void onFinishShroomieButtonHide() {

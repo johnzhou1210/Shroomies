@@ -322,6 +322,7 @@ public class StageLogic : MonoBehaviour {
     }
 
     IEnumerator ResultsScreen(bool won) {
+        bool skipDeath = false;
         AudioManager.Instance.PlayMusic("Rising");
         _invokeGameOver.Invoke(false);
         AudioManager.Instance.PlaySFX("Cinematic Boom");
@@ -333,15 +334,15 @@ public class StageLogic : MonoBehaviour {
             restartText = _resultsScreen.transform.Find("Restart"),
             timeHeader = _resultsScreen.transform.Find("TimeElapsed");
         timeHeader.GetComponent<TextMeshProUGUI>().text = won ? "CLEAR TIME" : "TIME ELAPSED";
-        yield return new WaitForSeconds(1f);
-        for (int i = 0; i < _clearTime; i += (i + (_clearTime / 32) > _clearTime ? 1 : Mathf.Clamp(i / 32, 1, (i / 32) + 1))) {
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < _clearTime; i += (i + (_clearTime / 64) > _clearTime ? 1 : Mathf.Clamp(i / 64, 1, (i / 64) + 1))) {
             timeElapsedText.GetComponent<TextMeshProUGUI>().text = getTime(i);
             AudioManager.Instance.PlaySFX("Tick");
             yield return new WaitForSeconds(.01f);
         }
         yield return new WaitForSeconds(1f);
         if (_enemiesKilled > 0) {
-            for (int i = 0; i <= _enemiesKilled; i += (i + (_enemiesKilled / 32) > _enemiesKilled ? 1 : Mathf.Clamp(i / 32, 1, (i / 32) + 1))) {
+            for (int i = 0; i <= _enemiesKilled; i += (i + (_enemiesKilled / 64) > _enemiesKilled ? 1 : Mathf.Clamp(i / 64, 1, (i / 64) + 1))) {
                 enemiesKilledText.GetComponent<TextMeshProUGUI>().text = i.ToString();
                 AudioManager.Instance.PlaySFX("Tick");
                 yield return new WaitForSeconds(.01f);
@@ -349,7 +350,7 @@ public class StageLogic : MonoBehaviour {
         }
         yield return new WaitForSeconds(1f);
         if (_earnedMulch > 0) {
-            for (int i = 0; i <= _earnedMulch; i += (i + (_earnedMulch / 32) > _earnedMulch ? 1 : Mathf.Clamp(i / 32, 1, (i / 32) + 1))) {
+            for (int i = 0; i <= _earnedMulch; i += (i + (_earnedMulch / 64) > _earnedMulch ? 1 : Mathf.Clamp(i / 64, 1, (i / 64) + 1))) {
                 mulchEarnedText.GetComponent<TextMeshProUGUI>().text = i.ToString();
                 AudioManager.Instance.PlaySFX("Tick");
                 yield return new WaitForSeconds(0f);
@@ -364,7 +365,7 @@ public class StageLogic : MonoBehaviour {
             AudioManager.Instance.PlaySFX("Cinematic Hit");
             yield return new WaitForSeconds(.5f);
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         restartText.GetComponent<TextMeshProUGUI>().text = won ? "TAP TO RETURN" : "TAP TO RESTART";
         restartText.GetComponent<ResultScreenContinue>().enabled = true;
         restartText.GetComponent<ResultScreenContinue>().Won = won;
