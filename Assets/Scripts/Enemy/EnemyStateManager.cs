@@ -16,7 +16,7 @@ public class EnemyStateManager : MonoBehaviour
 
     private void Update() {
         CurrentState.UpdateState(this);
-        if (transform.position.y < -6f) {
+        if (transform.position.y < -5.25f) {
             gameObject.SetActive(false);
         }
     }

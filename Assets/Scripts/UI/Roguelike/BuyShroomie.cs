@@ -23,9 +23,11 @@ public class BuyShroomie : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Q)) {
             OnClick();
-        } else if (Input.GetKey(KeyCode.Q)) {
+        }
+        if (Input.GetKey(KeyCode.Q)) {
             transform.parent.GetComponent<Image>().sprite = _pressedSprite;
-        } else if (enoughMulch) {
+        }
+        if (enoughMulch && transform.parent.GetComponent<Image>().sprite != _pressedSprite) {
             transform.parent.GetComponent<Image>().sprite = _buySprite;
         }
 
