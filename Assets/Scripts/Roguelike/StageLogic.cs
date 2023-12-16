@@ -290,6 +290,7 @@ public class StageLogic : MonoBehaviour {
         }
         IEnumerator SplatPlayer(float increment, float stepDelay, IEnumerator yCor) {
             yield return new WaitUntil(() => Mathf.Abs(player.position.y) <= .15f);
+            //yield return new WaitForSeconds(4.5f); //4.5f
             yield return new WaitForSeconds(4.5f);
             // splat the player!
             while (player.position.y > -3.8f) {
@@ -310,9 +311,10 @@ public class StageLogic : MonoBehaviour {
             AudioManager.Instance.PlayMusic("Player Death Sound");
             // move player to desired area of screen.
             //IEnumerator xCor = MovePlayerXUntilDesired(.01f, .01f);
-            IEnumerator yCor = MovePlayerYUntilDesired(.0075f, .01f);
+            IEnumerator yCor = MovePlayerYUntilDesired(.0075f, .01f); //.0075f, 0.01f ori.
             //StartCoroutine(xCor);
-            StartCoroutine(yCor); StartCoroutine(SplatPlayer(.2f, .01f, yCor));
+            StartCoroutine(yCor); 
+            StartCoroutine(SplatPlayer(0.2f, .01f, yCor));
             yield return null;
         }
         StartCoroutine(Fall());
@@ -322,7 +324,6 @@ public class StageLogic : MonoBehaviour {
     }
 
     IEnumerator ResultsScreen(bool won) {
-        bool skipDeath = false;
         AudioManager.Instance.PlayMusic("Rising");
         _invokeGameOver.Invoke(false);
         AudioManager.Instance.PlaySFX("Cinematic Boom");
