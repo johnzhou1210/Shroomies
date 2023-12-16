@@ -950,6 +950,7 @@ MonoBehaviour:
   BulletVelocity: 5
   AttackPower: 1
   StartShootY: 5.5
+  EndShootY: -3
   BulletsBounce: 0
   ObstaclePierceCount: 256
   BulletClearLimit: 2147483647
@@ -993,8 +994,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 6666
+  alreadyCounted: 0
   CurrentHealth: 0
   MulchReward: 666
+  Animator: {fileID: 0}
   OnDeath:
     m_PersistentCalls:
       m_Calls:

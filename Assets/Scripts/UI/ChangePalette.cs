@@ -16,37 +16,11 @@ public class ChangePalette : MonoBehaviour
 
     public static int Count { get => count; set => count = value; }
 
-    private void Awake() {
-        holder = palettes[0];
-        Debug.Log("awake1");
-    }
-
-    private void OnEnable ()
+    private void Awake()
     {
-        Debug.Log("awake2");
         ChangeColor(Count, firstRun);
     }
 
-    public void ChangeColor(int paletteSet, bool firstTime) {
-        if (firstTime) {
-            Count = 0;
-            firstRun = false;
-        }
-
-        //Count = paletteSet;
-
-        //if (Count > palettes.Count - 1) {
-        //    Count = 0;
-        //}
-        paletteShader.SetColor("_Color1", palettes[Count].color1);
-        paletteShader.SetColor("_Color2", palettes[Count].color2);
-        paletteShader.SetColor("_Color3", palettes[Count].color3);
-        paletteShader.SetColor("_Color4", palettes[Count].color4);
-
-        holder = palettes[Count];
-
-        EventBroker.CallPaletteChange();
-    }
 
     public void ChangeColor()
     {        
@@ -66,5 +40,21 @@ public class ChangePalette : MonoBehaviour
         EventBroker.CallPaletteChange();
     }
 
-    
+    public void ChangeColor(int paletteSet, bool firstTime)
+    {
+        Count = paletteSet;
+
+        if (Count > palettes.Count - 1)
+        {
+            Count = 0;
+        }
+        paletteShader.SetColor("_Color1", palettes[Count].color1);
+        paletteShader.SetColor("_Color2", palettes[Count].color2);
+        paletteShader.SetColor("_Color3", palettes[Count].color3);
+        paletteShader.SetColor("_Color4", palettes[Count].color4);
+
+        holder = palettes[Count];
+
+        EventBroker.CallPaletteChange();
+    }
 }

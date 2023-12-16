@@ -29,6 +29,8 @@ public class BuyShroomie : MonoBehaviour
         }
         if (enoughMulch && transform.parent.GetComponent<Image>().sprite != _pressedSprite) {
             transform.parent.GetComponent<Image>().sprite = _buySprite;
+        } else if (transform.parent.GetComponent<Image>().sprite != _pressedSprite) {
+            transform.parent.GetComponent<Image>().sprite = _defaultSprite;
         }
 
     }
@@ -41,7 +43,6 @@ public class BuyShroomie : MonoBehaviour
     public void OnClick() {
         if (CloseEnough(transform.parent.GetComponent<RectTransform>().anchoredPosition.x, closeEnoughX) && CloseEnough(transform.parent.GetComponent<RectTransform>().anchoredPosition.y, -closeEnoughY)) {
             if (shroomieCost > 0) {
-                //bool enoughMulch = _roguelikeManager.AccumulatedMulch >= shroomieCost;
                 int currNumShroomies = GameObject.FindWithTag("Player").GetComponent<PlayerOnHit>().CurrentShroomies;
                 ShroomieFormation formation = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomieFormation>();
                 if (enoughMulch && currNumShroomies < formation.ShroomieObjects.Count) {

@@ -10,6 +10,7 @@ public class StartScreen : MonoBehaviour, IPointerDownHandler {
 
     public bool tutorial = true;
     public void OnPointerDown(PointerEventData eventData) {
+        GetComponent<AudioSource>().Play();
         if (tutorial) {
             tutorial = false;
             foreach(Transform child in gameObject.transform) {

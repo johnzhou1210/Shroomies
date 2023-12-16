@@ -329,7 +329,7 @@ MonoBehaviour:
   BulletVelocity: 3.5
   AttackPower: 1
   StartShootY: 7
-  EndShootY: -3.5
+  EndShootY: -3
   BulletsBounce: 0
   ObstaclePierceCount: 0
   BulletClearLimit: 0
