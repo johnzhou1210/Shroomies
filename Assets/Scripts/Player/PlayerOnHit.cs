@@ -19,7 +19,7 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
         if (Debounce == false && !Dead) {
             Debounce = true;
             AudioManager.Instance.PlaySFX("Player Damage Sound");
-            _shakeCam.Invoke(.06f, .1f);
+            _shakeCam.Invoke(.12f, .08f);
             if (CurrentShroomies - damage < 0) { // killing blow
                 Dead = true;
                 AudioManager.Instance.StopAllMusic(false);
