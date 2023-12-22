@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class StageLogic : MonoBehaviour {
     [SerializeField] ClusterCollection[] _clusterCollections;
@@ -36,6 +37,7 @@ public class StageLogic : MonoBehaviour {
     public float Difficulty = 0f;
 
     bool _gameOver = false;
+    bool accelerateSplat = false;
     int _clearTime = 0, _enemiesKilled = 0, _earnedMulch = 0;
 
     IEnumerator CountClearTime() {
@@ -48,53 +50,15 @@ public class StageLogic : MonoBehaviour {
     }
 
     IEnumerator BeginRoguelikeRun() {
-
         StartCoroutine(CountClearTime());
-
         WorldNumber = 1; StageNumber = 1;
         while (StageNumber <= _numStagesPerWorldIncludingBoss) {
-            /*
-             * 1) after boss:
-             * ending screen 
-             *  - thank you for playing
-             *  - results
-             * 
-             * 2) Player on death
-             * play lightning effect on player y 
-             * player then falls to a point near the bottom of the screen
-             * game over text then pops in
-             * results then pop in
-             * then ask for continue
-             *  - black background fade transition back to game scene
-             * 
-             * ============================
-             * 
-             * 3) Scaling difficulty for longer playtime
-             * 
-             * 4) Don't forget shroomie button hotkey (hotkey = Q)
-             * 
-             * 
-             * 5) Pause screen (hotkey = P)
-             *  - PAUSE
-             *      2 options:
-             *      1) restart
-             *      2) resume
-             * 
-             * 6) Wide bullet sprite
-             * 
-             * 7) Critical bullet (backlog)
-             * 8) Formations (backlog)
-             * 
-             * 
-             */
             setPlayerControls(false);
             Difficulty = (WorldNumber * 2) + StageNumber;
 
             if (StageNumber != _bossStage && StageNumber !=_bossStage2) { AudioManager.Instance.PlayMusic("Shroomies Next Spread"); }
             cueStageBanner.Invoke(StageNumber == _bossStage || StageNumber == _bossStage2 ? "<color=#" + ChangePalette.holder.color2.ToHexString() + ">" + WorldNumber + "-" + StageNumber + "</color>" : WorldNumber + "-" + StageNumber);
             yield return new WaitForSeconds(_stageBeginWaitDelay);
-
-
 
             // choose which collection to use to spawn with
             ClusterCollection chosenCollection = Array.Find(_clusterCollections, c => c.WorldNumber == WorldNumber && c.StageNumber == StageNumber);
@@ -178,15 +142,14 @@ public class StageLogic : MonoBehaviour {
 
             // end shroomies celebration
             Celebrate(false);
-
-
             StageNumber++;
 
         }
-
-
         yield return null;
     }
+
+
+ 
 
     public void Celebrate(bool val) {
         _invokeCelebrate.Invoke(val);
@@ -205,7 +168,6 @@ public class StageLogic : MonoBehaviour {
             enemyOnHit.setCurrHealthToMaxHealth();
         }
     }
-
 
     private void Start() {
         StartCoroutine(BeginRoguelikeRun());
@@ -273,14 +235,6 @@ public class StageLogic : MonoBehaviour {
         setPlayerControls(false);
         Transform player = GameObject.FindWithTag("Player").transform;
 
-        //IEnumerator MovePlayerXUntilDesired(float increment, float stepDelay) {
-        //    while (Mathf.Abs(player.position.x) > increment) {
-        //        player.Translate(new Vector3(player.position.x < 0 ? increment : -increment, 0f, 0));
-        //        yield return new WaitForSeconds(stepDelay);
-        //    }
-        //    yield return null;
-        //}
-
         IEnumerator MovePlayerYUntilDesired(float increment, float stepDelay) {
             while (Mathf.Abs(player.position.y) > -2f) {
                 player.Translate(new Vector3(0f, player.position.y < 0 ? increment * 3 : -increment, 0));
@@ -289,9 +243,23 @@ public class StageLogic : MonoBehaviour {
             yield return null;
         }
         IEnumerator SplatPlayer(float increment, float stepDelay, IEnumerator yCor) {
-            yield return new WaitUntil(() => Mathf.Abs(player.position.y) <= .15f);
-            //yield return new WaitForSeconds(4.5f); //4.5f
-            yield return new WaitForSeconds(4.5f);
+            bool skipped = false;
+            float lastTime = Time.time;
+            bool skipCondition() {
+                if (Input.GetButtonDown("Fire")) {
+                    skipped = true;
+                }
+                return Mathf.Abs(player.position.y) <= .15f || skipped;
+            }
+            bool skip2Condition() {
+                if (Input.GetButtonDown("Fire")) {
+                    skipped = true;
+                }
+                return skipped || Time.time - lastTime > 5f;
+            }
+            yield return new WaitUntil(skipCondition);
+            yield return new WaitUntil(skip2Condition);
+            lastTime = Time.time; // update time counter for finish splat skip
             // splat the player!
             while (player.position.y > -3.8f) {
                 player.Translate(new Vector3(0, -increment, 0f));
@@ -302,7 +270,7 @@ public class StageLogic : MonoBehaviour {
             _invokeGameOver.Invoke(true);
             yield return new WaitForSeconds(.7f);
             StopCoroutine(yCor);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitUntil(() => Input.GetButtonDown("Fire") || Time.time - lastTime > 5f);
             StartCoroutine(ResultsScreen(false));
         }
 
@@ -312,7 +280,6 @@ public class StageLogic : MonoBehaviour {
             // move player to desired area of screen.
             //IEnumerator xCor = MovePlayerXUntilDesired(.01f, .01f);
             IEnumerator yCor = MovePlayerYUntilDesired(.0075f, .01f); //.0075f, 0.01f ori.
-            //StartCoroutine(xCor);
             StartCoroutine(yCor); 
             StartCoroutine(SplatPlayer(0.2f, .01f, yCor));
             yield return null;
@@ -324,6 +291,7 @@ public class StageLogic : MonoBehaviour {
     }
 
     IEnumerator ResultsScreen(bool won) {
+        bool displayCoroutineFinished = false;
         AudioManager.Instance.PlayMusic("Rising");
         _invokeGameOver.Invoke(false);
         AudioManager.Instance.PlaySFX("Cinematic Boom");
@@ -335,41 +303,72 @@ public class StageLogic : MonoBehaviour {
             restartText = _resultsScreen.transform.Find("Restart"),
             timeHeader = _resultsScreen.transform.Find("TimeElapsed");
         timeHeader.GetComponent<TextMeshProUGUI>().text = won ? "CLEAR TIME" : "TIME ELAPSED";
-        yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < _clearTime; i += (i + (_clearTime / 64) > _clearTime ? 1 : Mathf.Clamp(i / 64, 1, (i / 64) + 1))) {
-            timeElapsedText.GetComponent<TextMeshProUGUI>().text = getTime(i);
-            AudioManager.Instance.PlaySFX("Tick");
-            yield return new WaitForSeconds(.01f);
-        }
-        yield return new WaitForSeconds(1f);
-        if (_enemiesKilled > 0) {
-            for (int i = 0; i <= _enemiesKilled; i += (i + (_enemiesKilled / 64) > _enemiesKilled ? 1 : Mathf.Clamp(i / 64, 1, (i / 64) + 1))) {
-                enemiesKilledText.GetComponent<TextMeshProUGUI>().text = i.ToString();
+
+        IEnumerator StatsDisplayCoroutine() {
+            yield return new WaitForSeconds(0.5f);
+            for (int i = 0; i < _clearTime; i += (i + (_clearTime / 64) > _clearTime ? 1 : Mathf.Clamp(i / 64, 1, (i / 64) + 1))) {
+                timeElapsedText.GetComponent<TextMeshProUGUI>().text = getTime(i);
                 AudioManager.Instance.PlaySFX("Tick");
                 yield return new WaitForSeconds(.01f);
             }
-        }
-        yield return new WaitForSeconds(1f);
-        if (_earnedMulch > 0) {
-            for (int i = 0; i <= _earnedMulch; i += (i + (_earnedMulch / 64) > _earnedMulch ? 1 : Mathf.Clamp(i / 64, 1, (i / 64) + 1))) {
-                mulchEarnedText.GetComponent<TextMeshProUGUI>().text = i.ToString();
-                AudioManager.Instance.PlaySFX("Tick");
-                yield return new WaitForSeconds(0f);
+            yield return new WaitForSeconds(1f);
+            if (_enemiesKilled > 0) {
+                for (int i = 0; i <= _enemiesKilled; i += (i + (_enemiesKilled / 64) > _enemiesKilled ? 1 : Mathf.Clamp(i / 64, 1, (i / 64) + 1))) {
+                    enemiesKilledText.GetComponent<TextMeshProUGUI>().text = i.ToString();
+                    AudioManager.Instance.PlaySFX("Tick");
+                    yield return new WaitForSeconds(.01f);
+                }
             }
+            yield return new WaitForSeconds(1f);
+            if (_earnedMulch > 0) {
+                for (int i = 0; i <= _earnedMulch; i += (i + (_earnedMulch / 64) > _earnedMulch ? 1 : Mathf.Clamp(i / 64, 1, (i / 64) + 1))) {
+                    mulchEarnedText.GetComponent<TextMeshProUGUI>().text = i.ToString();
+                    AudioManager.Instance.PlaySFX("Tick");
+                    yield return new WaitForSeconds(0f);
+                }
+            }
+            yield return new WaitForSeconds(1f);
+            UpgradeManager upgMgr = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
+            for (int i = 0; i < upgMgr.ActiveUpgrades.Count; i++) {
+                Transform currEntry = upgradesGrid.Find("Entry (" + i.ToString() + ")");
+                currEntry.GetComponent<Image>().color = Color.white;
+                currEntry.GetComponent<Image>().sprite = upgMgr.ActiveUpgrades[i].Image;
+                AudioManager.Instance.PlaySFX("Cinematic Hit");
+                yield return new WaitForSeconds(.5f);
+            }
+            displayCoroutineFinished = true;
         }
+
+        Coroutine statsDisplayCoroutine = StartCoroutine(StatsDisplayCoroutine());
+
         yield return new WaitForSeconds(1f);
-        UpgradeManager upgMgr = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
-        for (int i = 0; i < upgMgr.ActiveUpgrades.Count; i++) {
-            Transform currEntry = upgradesGrid.Find("Entry (" + i.ToString() + ")");
-            currEntry.GetComponent<Image>().color = Color.white;
-            currEntry.GetComponent<Image>().sprite = upgMgr.ActiveUpgrades[i].Image;
-            AudioManager.Instance.PlaySFX("Cinematic Hit");
-            yield return new WaitForSeconds(.5f);
+        yield return new WaitUntil(() => Input.GetButtonDown("Fire") || displayCoroutineFinished);
+        // stop display coroutine regardless if it is finishe or not
+        StopCoroutine(statsDisplayCoroutine);
+       
+        if (!displayCoroutineFinished) {
+            // display the right stats in case coroutine has not finished.
+            timeElapsedText.GetComponent<TextMeshProUGUI>().text = getTime(_clearTime);
+            enemiesKilledText.GetComponent<TextMeshProUGUI>().text = _enemiesKilled.ToString();
+            mulchEarnedText.GetComponent<TextMeshProUGUI>().text = _earnedMulch.ToString();
+            UpgradeManager upgMgr = GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>();
+            for (int i = 0; i < upgMgr.ActiveUpgrades.Count; i++) {
+                Transform currEntry = upgradesGrid.Find("Entry (" + i.ToString() + ")");
+                currEntry.GetComponent<Image>().color = Color.white;
+                currEntry.GetComponent<Image>().sprite = upgMgr.ActiveUpgrades[i].Image;
+
+            }
+            if (upgMgr.ActiveUpgrades.Count > 0) {
+                AudioManager.Instance.PlaySFX("Cinematic Hit");
+            }
+            displayCoroutineFinished = true;
         }
+
         yield return new WaitForSeconds(1f);
         restartText.GetComponent<TextMeshProUGUI>().text = won ? "TAP TO RETURN" : "TAP TO RESTART";
         restartText.GetComponent<ResultScreenContinue>().enabled = true;
         restartText.GetComponent<ResultScreenContinue>().Won = won;
+        yield return null;
     }
 
     IEnumerator ThankYouScreen() {
@@ -409,7 +408,5 @@ public class StageLogic : MonoBehaviour {
         return s;
     }
 
-
-
-
+    
 }
