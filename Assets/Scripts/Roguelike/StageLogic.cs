@@ -246,13 +246,13 @@ public class StageLogic : MonoBehaviour {
             bool skipped = false;
             float lastTime = Time.time;
             bool skipCondition() {
-                if (Input.GetButtonDown("Fire")) {
+                if (userClickedOrTappedScreen()) {
                     skipped = true;
                 }
                 return Mathf.Abs(player.position.y) <= .15f || skipped;
             }
             bool skip2Condition() {
-                if (Input.GetButtonDown("Fire")) {
+                if (userClickedOrTappedScreen()) {
                     skipped = true;
                 }
                 return skipped || Time.time - lastTime > 5f;
@@ -270,7 +270,7 @@ public class StageLogic : MonoBehaviour {
             _invokeGameOver.Invoke(true);
             yield return new WaitForSeconds(.7f);
             StopCoroutine(yCor);
-            yield return new WaitUntil(() => Input.GetButtonDown("Fire") || Time.time - lastTime > 5f);
+            yield return new WaitUntil(() => userClickedOrTappedScreen() || Time.time - lastTime > 5f);
             StartCoroutine(ResultsScreen(false));
         }
 
@@ -342,7 +342,7 @@ public class StageLogic : MonoBehaviour {
         Coroutine statsDisplayCoroutine = StartCoroutine(StatsDisplayCoroutine());
 
         yield return new WaitForSeconds(1f);
-        yield return new WaitUntil(() => Input.GetButtonDown("Fire") || displayCoroutineFinished);
+        yield return new WaitUntil(() => userClickedOrTappedScreen()|| displayCoroutineFinished);
         // stop display coroutine regardless if it is finishe or not
         StopCoroutine(statsDisplayCoroutine);
        
@@ -408,5 +408,8 @@ public class StageLogic : MonoBehaviour {
         return s;
     }
 
+    bool userClickedOrTappedScreen() {
+        return (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetButtonDown("Fire");
+    }
     
 }
