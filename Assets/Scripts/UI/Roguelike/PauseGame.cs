@@ -11,7 +11,14 @@ public class PauseGame : MonoBehaviour
     [SerializeField] GameObject _pauseMenu, _pauseButton;
     [SerializeField] Sprite _buttonPressed, _buttonNormal;
     [SerializeField] GameObject _dragArea;
-    
+
+    private PlayerInputActions playerInputActions;
+    public Button primaryButton;
+
+    private void Start() {
+        playerInputActions = InputManager.inputActions;
+    }
+
     public void OnClick() {
         AudioManager.Instance.PlaySFX("UI Select Sound");
     }
@@ -22,8 +29,11 @@ public class PauseGame : MonoBehaviour
         _pauseButton.SetActive(Time.timeScale == 0f ? false : true);
         if (Time.timeScale == 1f ) {
             _dragArea.SetActive(true);
+            InputManager.ToggleActionMap(InputManager.inputActions.Player);
         } else {
             _dragArea.SetActive(false);
+            InputManager.ToggleActionMap(InputManager.inputActions.UI);
+            primaryButton.Select();
         }
     }
 
@@ -41,11 +51,11 @@ public class PauseGame : MonoBehaviour
 
     private void Update() {
         if (_pauseButton.activeInHierarchy || (!_pauseButton.activeInHierarchy && Time.timeScale == 0f)) {
-            if (Input.GetKeyUp(KeyCode.P)) {
+            if (playerInputActions.Player.Pause.WasReleasedThisFrame() || playerInputActions.UI.Unpause.WasReleasedThisFrame()) {
                 OnClick();
                 _pauseButton.transform.Find("PauseImage").GetComponent<Image>().sprite = _buttonNormal;
                 TogglePause();
-            } else if (Input.GetKeyDown(KeyCode.P)) {
+            } else if (playerInputActions.Player.Pause.WasPressedThisFrame() || playerInputActions.UI.Unpause.WasPressedThisFrame()) {
                 _pauseButton.transform.Find("PauseImage").GetComponent<Image>().sprite = _buttonPressed;
             }
         }

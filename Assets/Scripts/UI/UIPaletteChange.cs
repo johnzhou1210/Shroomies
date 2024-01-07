@@ -4,6 +4,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Reflection;
+using Unity.VisualScripting;
+using UnityEngine.Events;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.EventSystems;
 
 public class UIPaletteChange : MonoBehaviour
 {
@@ -23,6 +27,7 @@ public class UIPaletteChange : MonoBehaviour
     {
         EventBroker.onPaletteChange -= changeColor;
     }
+
 
     public void changeColor()
     {

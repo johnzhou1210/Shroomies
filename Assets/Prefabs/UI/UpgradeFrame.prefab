@@ -723,12 +723,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 9181141819310303730}
+    m_SelectOnDown: {fileID: 9181141819310303730}
+    m_SelectOnLeft: {fileID: 6956172905651659782}
+    m_SelectOnRight: {fileID: 3090003968571731557}
   m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -813,7 +813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PaletteColor: 1
+  PaletteColor: 2
 --- !u!1 &2912486279835211096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,12 +1370,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 9181141819310303730}
+    m_SelectOnDown: {fileID: 9181141819310303730}
+    m_SelectOnLeft: {fileID: 3090003968571731557}
+    m_SelectOnRight: {fileID: 5180013705609504959}
   m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1709,7 +1709,9 @@ MonoBehaviour:
   _upgradeBack: {fileID: 164513826534068335}
   _shroomItUp: {fileID: 4019325454351326376}
   _contents: {fileID: 7926167812662510206}
+  selectedObject: {fileID: 0}
   Upgrading: 0
+  primaryButton: {fileID: 3090003968571731557}
   onPlayerUpgrade:
     m_PersistentCalls:
       m_Calls: []
@@ -1939,9 +1941,11 @@ GameObject:
   - component: {fileID: 5487578447267506802}
   - component: {fileID: 7465134622211337757}
   - component: {fileID: 9181141819310303730}
+  - component: {fileID: 6588661323179247252}
+  - component: {fileID: 1698684542641153294}
   m_Layer: 5
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: Banner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2018,10 +2022,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 3090003968571731557}
+    m_SelectOnDown: {fileID: 3090003968571731557}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -2061,6 +2065,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6588661323179247252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418452798291480946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c48332b922d8b94ea2627ff10a2738b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PaletteColor: 1
+--- !u!114 &1698684542641153294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418452798291480946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55c343320184384d824f33f7f8a31ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lines:
+  - {fileID: 4059612896012796058}
+  - {fileID: 6246432354488020295}
+  - {fileID: 8661303439042311256}
+  - {fileID: 2301376539814676238}
 --- !u!1 &5981759527024283291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,12 +2652,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 9181141819310303730}
+    m_SelectOnDown: {fileID: 9181141819310303730}
+    m_SelectOnLeft: {fileID: 5180013705609504959}
+    m_SelectOnRight: {fileID: 6956172905651659782}
   m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}

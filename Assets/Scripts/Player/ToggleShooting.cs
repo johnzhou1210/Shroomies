@@ -5,10 +5,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ToggleShooting : MonoBehaviour {
+    private PlayerInputActions playerInputActions;
+
     [SerializeField] PlayerShooting _playerShooting;
     ShroomiesUpgradeController _shroomieShooting;
 
     private void Start() {
+        playerInputActions = InputManager.inputActions;
         _shroomieShooting = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomiesUpgradeController>();
     }
 
@@ -27,10 +30,10 @@ public class ToggleShooting : MonoBehaviour {
 
 #if UNITY_EDITOR || UNITY_2022_1_OR_NEWER
     void Update() {
-        if (Input.GetButtonDown("Fire")) {
+        if (playerInputActions.Player.Fire.WasPressedThisFrame()) {
             _playerShooting.Toggle = true;
             _shroomieShooting.Toggle = true;
-        } else if (Input.GetButtonUp("Fire")) {
+        } else if (playerInputActions.Player.Fire.WasReleasedThisFrame()) {
             _playerShooting.Toggle = false;
             _shroomieShooting.Toggle = false;
         }

@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour {
+
+    private PlayerInputActions playerInputActions;
     [SerializeField] float _moveSpeed;
 
     Vector3 _worldPos;
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Start() {
         _rigidBody = GetComponent<Rigidbody2D>();
+        playerInputActions = InputManager.inputActions;
         
     }
 
@@ -25,10 +28,12 @@ public class PlayerMovement : MonoBehaviour {
 
         if (!_plrOnHit.Dead && CanMove) {
             _worldPos = transform.position;
-            float verticalAxis = Input.GetAxisRaw("Vertical");
-            float horizontalAxis = Input.GetAxisRaw("Horizontal");
+            //float verticalAxis = Input.GetAxisRaw("Vertical");
+            //float horizontalAxis = Input.GetAxisRaw("Horizontal");
 
-            Vector3 movementVector = new Vector3(horizontalAxis, verticalAxis, 0);
+            Vector2 inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
+
+            Vector3 movementVector = new Vector3(inputVector.x, inputVector.y, 0);
             movementVector = movementVector.normalized * _moveSpeed * Time.deltaTime;
             transform.Translate(movementVector);
             transform.position = new Vector2(Mathf.Clamp(transform.position.x, XMin, XMax), Mathf.Clamp(transform.position.y, YMin, YMax));

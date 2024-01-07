@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class BuyShroomie : MonoBehaviour
 {
+    private PlayerInputActions playerInputActions;
     StageLogic _roguelikeManager;
     [SerializeField] GameObject _priceText;
     [SerializeField] Sprite _pressedSprite, _defaultSprite, _buySprite;
@@ -14,6 +15,7 @@ public class BuyShroomie : MonoBehaviour
     public float closeEnoughX, closeEnoughY;
 
     private void Start() {
+        playerInputActions = InputManager.inputActions;
         _roguelikeManager = GameObject.FindWithTag("Roguelike Manager").gameObject.GetComponent<StageLogic>();
         shroomieCost = _roguelikeManager.ShroomieBaseCost;
     }
@@ -21,10 +23,10 @@ public class BuyShroomie : MonoBehaviour
     private void Update() {
         enoughMulch = _roguelikeManager.AccumulatedMulch >= shroomieCost;
 
-        if (Input.GetKeyUp(KeyCode.Q)) {
+        if (playerInputActions.Player.Shroomies.WasReleasedThisFrame()) {
             OnClick();
         }
-        if (Input.GetKey(KeyCode.Q)) {
+        if (playerInputActions.Player.Shroomies.WasPressedThisFrame()) {
             transform.parent.GetComponent<Image>().sprite = _pressedSprite;
         }
         if (enoughMulch && transform.parent.GetComponent<Image>().sprite != _pressedSprite) {

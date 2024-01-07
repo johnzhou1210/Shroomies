@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using System.Drawing;
 using Unity.VisualScripting;
 using Unity.Collections.LowLevel.Unsafe;
+using UnityEngine.EventSystems;
 
 public class UpgradeScreen : MonoBehaviour
 {
@@ -14,19 +15,26 @@ public class UpgradeScreen : MonoBehaviour
     bool _selected = false;
     GameObject SelectedButton = null;
     [SerializeField] GameObject _title, _buttons, _desc, _upgradeName, _upgradeBack, _shroomItUp;
-    [SerializeField] GameObject _contents;
+    [SerializeField] GameObject _contents, selectedObject;
     public bool Upgrading = false;
+    public Button primaryButton;
 
     public UnityUpgradeBoolEvent onPlayerUpgrade;
 
 
     private void OnEnable() {
         _animator = GetComponent<Animator>();
+        primaryButton.Select();
         onShow();
     }
 
     private void Start() {
-        onPlayerUpgrade.AddListener(GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().OnUpgrade); 
+        onPlayerUpgrade.AddListener(GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().OnUpgrade);
+    }
+
+    private void Update() {
+            StartCoroutine(NewSelection());
+            Debug.Log(selectedObject.name);
     }
 
     public void ShowShroomiesDescription(bool val) {
@@ -149,6 +157,7 @@ public class UpgradeScreen : MonoBehaviour
         _contents.SetActive(false);
         _selected = false; SelectedButton = null;
         gameObject.SetActive(false);
+        InputManager.ToggleActionMap(InputManager.inputActions.Player);
     }
 
     public void onShow() {
@@ -159,6 +168,7 @@ public class UpgradeScreen : MonoBehaviour
         
         GetComponent<Animator>().Play("UpgradeFrameFadeIn");
 
+        InputManager.ToggleActionMap(InputManager.inputActions.UI);
         StartCoroutine(GenerateOptions());
 
     }
@@ -175,6 +185,23 @@ public class UpgradeScreen : MonoBehaviour
             child.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade = randomUpgrade;
 
         }
+        yield return null;
+    }
+
+    IEnumerator NewSelection() {
+        while (selectedObject != EventSystem.current.currentSelectedGameObject) {
+            selectedObject = EventSystem.current.currentSelectedGameObject;
+            EventSystem.current.currentSelectedGameObject.GetComponent<UIPaletteChange>().PaletteColor = 2;
+            foreach (Transform child in _buttons.transform ) {
+                if(child.name != EventSystem.current.currentSelectedGameObject.name){
+                    Debug.Log(child.name + EventSystem.current.currentSelectedGameObject.name);
+                    child.GetComponent<UIPaletteChange>().PaletteColor = 1;
+                }
+            }
+            EventBroker.CallPaletteChange();
+            yield return null;
+        }
+        EventBroker.CallPaletteChange();
         yield return null;
     }
 

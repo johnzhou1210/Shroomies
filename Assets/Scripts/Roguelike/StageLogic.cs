@@ -220,6 +220,7 @@ public class StageLogic : MonoBehaviour {
     }
 
     public void onPlayerDeath() {
+        InputManager.ToggleActionMap(InputManager.inputActions.UI);
         GameObject.FindWithTag("Score").SetActive(false);
         _buyShroomieButton.SetActive(false);
         InvokeEnableBossHPDisplay.Invoke(false);
@@ -377,7 +378,7 @@ public class StageLogic : MonoBehaviour {
         _thankYouScreen.SetActive(true);
         yield return new WaitForSeconds(5f);
         _thankYouScreen.transform.Find("Prompt").GetComponent<TextMeshProUGUI>().text = "PRESS ANYWHERE TO CONTINUE";
-        yield return new WaitUntil(()=> Input.GetMouseButtonUp(0) || Input.touchCount > 0);
+        yield return new WaitUntil(()=> InputManager.inputActions.UI.Enter.WasPressedThisFrame() || Input.touchCount > 0);
         _thankYouScreen.transform.Find("Prompt").GetComponent<TextMeshProUGUI>().text = "";
         StartCoroutine(ResultsScreen(true));
         yield return null;
@@ -409,7 +410,7 @@ public class StageLogic : MonoBehaviour {
     }
 
     bool userClickedOrTappedScreen() {
-        return (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetButtonDown("Fire");
+        return (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || InputManager.inputActions.UI.Enter.WasPressedThisFrame();
     }
     
 }

@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PlayerStateManager))]
 public class PlayerShooting : MonoBehaviour {
+    private PlayerInputActions playerInputActions;
+
     public bool Toggle = false;
     float _cooldown = 1f;
     [SerializeField] float _baseFireRate = .5f, _baseCritRate = .05f, _baseBulletVelocity = 8f;
@@ -29,6 +31,10 @@ public class PlayerShooting : MonoBehaviour {
     PlayerStateManager _stateManager;
     [SerializeField] List<BarrelConfiguration> _barrelConfigurations;
     BarrelConfiguration _currentBarrelConfiguration;
+
+    private void Awake() {
+        playerInputActions = InputManager.inputActions;
+    }
 
     private void Start() {
         ShroomiesController = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomiesUpgradeController>();
