@@ -468,6 +468,9 @@ MonoBehaviour:
   CurrentHealth: 0
   MulchReward: 10
   Animator: {fileID: 0}
+  ps: {fileID: 7289316772650338732, guid: 8f3c9a49a3e3f004b8abde9ee2f2122c, type: 3}
+  ParticlesDeath: 0
+  ParticlesAmount: 1
   OnDeath:
     m_PersistentCalls:
       m_Calls:

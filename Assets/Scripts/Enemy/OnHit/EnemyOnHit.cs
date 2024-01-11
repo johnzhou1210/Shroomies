@@ -12,6 +12,11 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     public int MulchReward;
 
     public Animator Animator;
+    //public GameObject enemyParticleExplosion;
+    public ParticleSystem ps;
+    public int ParticlesDeath = 0;
+    public int ParticlesAmount = 1;
+    //public int ParticlesColor = 0;
 
     public UnityEvent OnDeath;
     [HideInInspector] public UnityIntEvent GiveMulch;
@@ -30,6 +35,18 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             AudioManager.Instance.PlaySFX("Enemy Death Sound");
             StartCoroutine(Flicker(0, .35f));
             Animator.Play("Dead");
+
+            //particle call here
+            ParticleSystem.TextureSheetAnimationModule psTSA = ps.textureSheetAnimation;
+            psTSA.rowIndex = ParticlesDeath;
+
+            ParticleSystem.MainModule psMAIN = ps.main;
+            psMAIN.startColor = ChangePalette.holder.color1;
+            psMAIN.maxParticles = ParticlesAmount;
+            Instantiate(ps,transform.position,Quaternion.identity);
+
+            Camera.main.GetComponent<CameraShaker>().Shake(.01f, .1f);
+
         } else {
             StartCoroutine(Flicker(1, .12f));
         }
@@ -51,7 +68,8 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     IEnumerator Flicker(int amountOfTimes, float flickerDelay) {
         for (int i = 0; i < amountOfTimes; i++) {
             yield return new WaitForSeconds(flickerDelay / 2f);
-            SetColorOfAllEnabledSprites(Color.clear);
+            //SetColorOfAllEnabledSprites(Color.clear);
+            SetColorOfAllEnabledSprites(ChangePalette.holder.color2);
             yield return new WaitForSeconds(flickerDelay / 2f);
             SetColorOfAllEnabledSprites(Color.white);
         }
