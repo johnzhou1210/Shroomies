@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: 683f9dd7dfd0aab46a9deb6c7d471561
+guid: 88bb6f53a21cfba47b04ae7d749014b0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - Animator: {instanceID: 0}
-  - enemyParticleExplosion: {instanceID: 0}
-  - Hitbox: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
