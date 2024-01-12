@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ParticleTest
+  m_Name: ParticleBits
   m_Shader: {fileID: -6465566751694194690, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -54,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: bbe2d12fb76d5fe43a976f7c483f5476, type: 3}
+        m_Texture: {fileID: 2800000, guid: a8856f074cc01114280c5dafe85d5450, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:

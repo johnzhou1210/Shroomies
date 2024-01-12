@@ -338,22 +338,11 @@ MonoBehaviour:
   CurrentHealth: 0
   MulchReward: 5
   Animator: {fileID: 5043039757489132429}
-  ps: {fileID: 7289316772650338732, guid: 8f3c9a49a3e3f004b8abde9ee2f2122c, type: 3}
-  _shakeCam:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  ParticlesExplosion: {fileID: 7289316772650338732, guid: 8f3c9a49a3e3f004b8abde9ee2f2122c, type: 3}
+  ParticlesBits: {fileID: 7289316772650338732, guid: 0201b36b76982c5459fc03b55ae78a49, type: 3}
+  ParticlesDeath: 0
+  ParticlesAmount: 1
+  BitsAmount: 4
   OnDeath:
     m_PersistentCalls:
       m_Calls:

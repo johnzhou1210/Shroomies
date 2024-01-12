@@ -17,9 +17,9 @@ public class DandelionOnHit : EnemyOnHit, IDamageable
             OnDeath.Invoke();
             GiveMulch.Invoke(MulchReward);
             AudioManager.Instance.PlaySFX("Enemy Death Sound");
-            StartCoroutine(Flicker(3, .24f));
+            //StartCoroutine(Flicker(3, .24f));
         } else {
-            StartCoroutine(Flicker(1, .12f));
+            //StartCoroutine(Flicker(1, .12f));
         }
         
     }

@@ -292,9 +292,12 @@ MonoBehaviour:
   CurrentHealth: 0
   MulchReward: 15
   Animator: {fileID: 5678910839467403377}
-  ps: {fileID: 7289316772650338732, guid: 8f3c9a49a3e3f004b8abde9ee2f2122c, type: 3}
+  ParticlesExplosion: {fileID: 7289316772650338732, guid: 8f3c9a49a3e3f004b8abde9ee2f2122c, type: 3}
+  ParticlesBits: {fileID: 7289316772650338732, guid: 0201b36b76982c5459fc03b55ae78a49, type: 3}
   ParticlesDeath: 0
   ParticlesAmount: 2
+  defaultMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  shaderMaterial: {fileID: -876546973899608171, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
   OnDeath:
     m_PersistentCalls:
       m_Calls:

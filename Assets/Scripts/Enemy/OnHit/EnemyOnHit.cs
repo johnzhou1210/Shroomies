@@ -13,9 +13,11 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
 
     public Animator Animator;
     //public GameObject enemyParticleExplosion;
-    public ParticleSystem ps;
+    public ParticleSystem ParticlesExplosion;
+    public ParticleSystem ParticlesBits;
     public int ParticlesDeath = 0;
     public int ParticlesAmount = 1;
+    public int BitsAmount = 5;
     //public int ParticlesColor = 0;
 
     public UnityEvent OnDeath;
@@ -37,13 +39,27 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             Animator.Play("Dead");
 
             //particle call here
-            ParticleSystem.TextureSheetAnimationModule psTSA = ps.textureSheetAnimation;
-            psTSA.rowIndex = ParticlesDeath;
+            ParticleSystem.TextureSheetAnimationModule psDeathTSA = ParticlesExplosion.textureSheetAnimation;
+            psDeathTSA.rowIndex = ParticlesDeath;
 
-            ParticleSystem.MainModule psMAIN = ps.main;
-            psMAIN.startColor = ChangePalette.holder.color1;
-            psMAIN.maxParticles = ParticlesAmount;
-            Instantiate(ps,transform.position,Quaternion.identity);
+            ParticleSystem.MainModule psDeathMAIN = ParticlesExplosion.main;
+            psDeathMAIN.startColor = ChangePalette.holder.color1;
+            psDeathMAIN.maxParticles = ParticlesAmount;
+            Instantiate(ParticlesExplosion,transform.position, Quaternion.identity);
+
+            ParticleSystem.MainModule psBitsMAIN = ParticlesBits.main;
+            psBitsMAIN.startColor = ChangePalette.holder.color3;
+            psBitsMAIN.maxParticles = BitsAmount;
+            Instantiate(ParticlesBits, transform.position, Quaternion.identity);
+
+            psBitsMAIN.startColor = ChangePalette.holder.color1;
+            psBitsMAIN.maxParticles = (int)Mathf.Floor((float)BitsAmount / 2f);
+            Instantiate(ParticlesBits, transform.position, Quaternion.identity);
+
+            //psTSA.rowIndex = 1;
+            //psMAIN.startColor = ChangePalette.holder.color2;
+            //psMAIN.maxParticles = 1;
+            //Instantiate(ps, transform.position, Quaternion.identity);
 
             Camera.main.GetComponent<CameraShaker>().Shake(.01f, .1f);
 
@@ -70,8 +86,18 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(flickerDelay / 2f);
             //SetColorOfAllEnabledSprites(Color.clear);
             SetColorOfAllEnabledSprites(ChangePalette.holder.color2);
+
+            //Get the object's material
+            //replace material color1 with palette color2
+            //replace material color3 with palette color2
+            //replace material color4 with palette color2
+
             yield return new WaitForSeconds(flickerDelay / 2f);
             SetColorOfAllEnabledSprites(Color.white);
+
+            //replace material color1 with palette color 1
+            //replace material color3 with palette color 3
+            //replace material color4 with palette color 4
         }
         if (isDead()) {
             yield return new WaitForSeconds(flickerDelay);
