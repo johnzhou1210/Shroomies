@@ -7,7 +7,9 @@ public class AudioManager : MonoBehaviour {
     public static AudioManager Instance;
 
     public Sound[] MusicSounds, SFXSounds;
+    public List<Sound> Playlist;
     public AudioSource MusicSource, ShootingSFXSource, OtherSFXSource;
+    public GameSettings GameSettings;
 
     private void Awake() {
         if (Instance == null) {
@@ -47,6 +49,23 @@ public class AudioManager : MonoBehaviour {
         // give it a fade out effect
         StopAllCoroutines();
         StartCoroutine(MusicTransition(music));
+    }
+
+    public void PlayMistaDJ() {
+        Sound music;
+        if(GameSettings.currentTrack == Playlist.Count) {
+            GameSettings.currentTrack = 0;
+            music = Playlist[GameSettings.currentTrack];
+            StopAllCoroutines();
+            StartCoroutine(MusicTransition(music));
+            GameSettings.currentTrack++;
+        }
+        else if(GameSettings.currentTrack < Playlist.Count) {
+            music = Playlist[GameSettings.currentTrack];
+            StopAllCoroutines();
+            StartCoroutine(MusicTransition(music));
+            GameSettings.currentTrack++;
+        }
     }
 
     public void PlayShootingSFX(string SFXName) {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class SelectedObject : MonoBehaviour
 {
@@ -19,18 +20,45 @@ public class SelectedObject : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        StartCoroutine(NewSelection());
-        Debug.Log(selectedObject.GetComponentInParent<Animator>().name);
+        StartCoroutine(OnSelectedButton());
     }
 
     IEnumerator NewSelection() {
         while(selectedObject != EventSystem.current.currentSelectedGameObject) {
-            EventSystem.current.currentSelectedGameObject.GetComponentInParent<Animator>().Play("ButtonSelect");
-            selectedObject = EventSystem.current.currentSelectedGameObject;
-            if (gameObject.GetComponentInParent<Animator>().name != EventSystem.current.currentSelectedGameObject.GetComponentInParent<Animator>().name) {
-                animator.Play("ButtonDeselect");
-                Debug.Log(gameObject.GetComponentInParent<Animator>().name + EventSystem.current.currentSelectedGameObject.GetComponentInParent<Animator>().name);
+
+            if (EventSystem.current.currentSelectedGameObject.GetComponentInParent<Animator>() != null) {
+                EventSystem.current.currentSelectedGameObject.GetComponentInParent<Animator>().Play("ButtonSelect");
+
+                selectedObject = EventSystem.current.currentSelectedGameObject;
+
+                if (gameObject.GetComponentInParent<Animator>().name != EventSystem.current.currentSelectedGameObject.GetComponentInParent<Animator>().name) {
+                    animator.Play("ButtonDeselect");
+                }
             }
+            else if(EventSystem.current.currentSelectedGameObject.GetComponent<Animator>() == null) {
+                animator.Play("ButtonDeselect");
+            }
+            //else if (EventSystem.current.currentSelectedGameObject.GetComponent<Animator>() == null) { }
+            EventBroker.CallPaletteChange();
+            yield return null;
+        }
+        EventBroker.CallPaletteChange();
+        yield return null;
+    }
+
+    IEnumerator OnSelectedButton() {
+        while(EventSystem.current.currentSelectedGameObject.GetComponentInParent<Animator>() != null) {
+            if(gameObject.name == EventSystem.current.currentSelectedGameObject.GetComponentInParent<Animator>().name) {
+                animator.Play("ButtonSelect");
+            }
+            else if(gameObject.name != EventSystem.current.currentSelectedGameObject.GetComponentInParent<Animator>().name) {
+                animator.Play("ButtonDeselect");
+            }
+            EventBroker.CallPaletteChange();
+            yield return null;
+        }
+        while(EventSystem.current.currentSelectedGameObject.GetComponentInParent<Animator>() == null) {
+            animator.Play("ButtonDeselect");
             EventBroker.CallPaletteChange();
             yield return null;
         }

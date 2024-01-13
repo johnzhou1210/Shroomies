@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
-  m_Name: PhotoNegative
+  m_Name: Photo Negative
   m_EditorClassIdentifier: 
   color1: {r: 0.050980397, g: 0.050980397, b: 0.050980397, a: 1}
   color2: {r: 1, g: 0, b: 0.6509804, a: 1}

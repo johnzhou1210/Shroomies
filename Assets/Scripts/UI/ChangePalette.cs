@@ -10,8 +10,8 @@ public class ChangePalette : MonoBehaviour
 
     [SerializeField]
     private List<Palette> palettes = new List<Palette>();
-    public bool firstRun = true;
     public static Palette holder;
+    public GameSettings GameSettings;
 
     private static int count = 0;
 
@@ -19,42 +19,61 @@ public class ChangePalette : MonoBehaviour
 
     private void Awake()
     {
-        ChangeColor(Count, firstRun);
+        ChangeColor(GameSettings.currentPalette);
     }
 
 
     public void ChangeColor()
     {        
-        Count++;
+        GameSettings.currentPalette++;
 
-        if(Count > palettes.Count - 1) {
-            Count = 0;
+        if(GameSettings.currentPalette > palettes.Count - 1) {
+            GameSettings.currentPalette = 0;
         }
 
-        paletteShader.SetColor("_Color1", palettes[Count].color1);
-        paletteShader.SetColor("_Color2", palettes[Count].color2);
-        paletteShader.SetColor("_Color3", palettes[Count].color3);
-        paletteShader.SetColor("_Color4", palettes[Count].color4);
+        paletteShader.SetColor("_Color1", palettes[GameSettings.currentPalette].color1);
+        paletteShader.SetColor("_Color2", palettes[GameSettings.currentPalette].color2);
+        paletteShader.SetColor("_Color3", palettes[GameSettings.currentPalette].color3);
+        paletteShader.SetColor("_Color4", palettes[GameSettings.currentPalette].color4);
 
-        holder = palettes[Count];
+        holder = palettes[GameSettings.currentPalette];
 
         EventBroker.CallPaletteChange();
     }
 
-    public void ChangeColor(int paletteSet, bool firstTime)
+    public void ChangeColor(int paletteSet)
     {
-        Count = paletteSet;
+        GameSettings.currentPalette = paletteSet;
 
-        if (Count > palettes.Count - 1)
+        if (GameSettings.currentPalette > palettes.Count - 1)
         {
-            Count = 0;
+            GameSettings.currentPalette = 0;
         }
-        paletteShader.SetColor("_Color1", palettes[Count].color1);
-        paletteShader.SetColor("_Color2", palettes[Count].color2);
-        paletteShader.SetColor("_Color3", palettes[Count].color3);
-        paletteShader.SetColor("_Color4", palettes[Count].color4);
+        paletteShader.SetColor("_Color1", palettes[GameSettings.currentPalette].color1);
+        paletteShader.SetColor("_Color2", palettes[GameSettings.currentPalette].color2);
+        paletteShader.SetColor("_Color3", palettes[GameSettings.currentPalette].color3);
+        paletteShader.SetColor("_Color4", palettes[GameSettings.currentPalette].color4);
 
-        holder = palettes[Count];
+        holder = palettes[GameSettings.currentPalette];
+        GameSettings.paletteName = palettes[GameSettings.currentPalette].name;
+
+        EventBroker.CallPaletteChange();
+    }
+
+    public void ChangeColor(bool Right) {
+        if(Right) GameSettings.currentPalette++;
+        else if(!Right) GameSettings.currentPalette--;
+
+        if (GameSettings.currentPalette > palettes.Count - 1) GameSettings.currentPalette = 0;
+        else if(GameSettings.currentPalette < 0) GameSettings.currentPalette = palettes.Count -1 ;
+
+        paletteShader.SetColor("_Color1", palettes[GameSettings.currentPalette].color1);
+        paletteShader.SetColor("_Color2", palettes[GameSettings.currentPalette].color2);
+        paletteShader.SetColor("_Color3", palettes[GameSettings.currentPalette].color3);
+        paletteShader.SetColor("_Color4", palettes[GameSettings.currentPalette].color4);
+
+        holder = palettes[GameSettings.currentPalette];
+        GameSettings.paletteName = palettes[GameSettings.currentPalette].name;
 
         EventBroker.CallPaletteChange();
     }
