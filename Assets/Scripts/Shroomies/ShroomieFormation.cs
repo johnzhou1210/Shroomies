@@ -32,6 +32,9 @@ public class ShroomieFormation : MonoBehaviour
             ShroomiePositionData desiredShroomie = FormationData.Data.Find(shrm => shrm.order == spawned + 1);
             // create shroomie and place it.
             GameObject newShroomie = Instantiate(_shroomiePrefab, transform);
+
+            //particles
+
             // add listener to upgrade update event
             GetComponent<ShroomiesUpgradeController>().RequestShroomiesUpgradeUpdate.AddListener(newShroomie.GetComponent<ShroomieShooting>().OnUpgradeUpdate);
             // also add listener for barrel respositioner for double shots

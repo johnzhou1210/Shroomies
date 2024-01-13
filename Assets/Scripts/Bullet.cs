@@ -14,6 +14,9 @@ public class Bullet : MonoBehaviour {
     [SerializeField] GameObject _explosionPrefab, _critEffect;
     [SerializeField] Sprite _wideBulletUndamaged, _wideBulletDamaged;
 
+    public ParticleSystem ParticlesLightning;
+    public int LightningAmount = 4;
+
     readonly float _removeTime = 9f;
     int _pierceCounter = 0, _bulletClearCounter = 0, _bulletBounceCounter = 0;
 
@@ -139,7 +142,16 @@ public class Bullet : MonoBehaviour {
                         // deal damage, account for crit rate.
                         if (Random.Range(0f, 1f) <= _critRate) {
                             _damage *= 2;
-                            Instantiate(_critEffect, collision.transform.position, Quaternion.identity);
+                            //Instantiate(_critEffect, collision.transform.position, Quaternion.identity);
+
+                            ParticleSystem.MainModule psLightningMAIN = ParticlesLightning.main;
+                            psLightningMAIN.startColor = ChangePalette.holder.color2;
+                            psLightningMAIN.maxParticles = (int)Mathf.Floor((float)LightningAmount / 2f);
+                            Instantiate(ParticlesLightning, transform.position, Quaternion.identity);
+                            psLightningMAIN.startColor = ChangePalette.holder.color1;
+                            psLightningMAIN.maxParticles = (int)Mathf.Floor((float)LightningAmount / 2f);
+                            Instantiate(ParticlesLightning, transform.position, Quaternion.identity);
+
                             AudioManager.Instance.PlaySFX("Critical Hit Sound");
                             // do camera shake
                             Camera.main.GetComponent<CameraShaker>().Shake(.02f, .1f);

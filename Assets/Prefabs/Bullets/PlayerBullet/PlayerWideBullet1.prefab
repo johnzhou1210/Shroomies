@@ -54,6 +54,7 @@ MonoBehaviour:
   _critEffect: {fileID: 5903540695073766936, guid: bf6e3d22bbc2def4c8d46b7bd019bc56, type: 3}
   _wideBulletUndamaged: {fileID: 0}
   _wideBulletDamaged: {fileID: 0}
+  ParticlesLightning: {fileID: 7289316772650338732, guid: 6a2a6d63dbfe64840ad1630514288eb9, type: 3}
   _rigidBody: {fileID: -6347954244632682985}
 --- !u!212 &7443703293665180681
 SpriteRenderer:

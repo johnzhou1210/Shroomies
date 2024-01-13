@@ -258,10 +258,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Toggle: 0
-  _baseFireRate: 0.5
+  _baseFireRate: 0.25
   _baseCritRate: 0.05
   _baseBulletVelocity: 6
-  _baseAttackPower: 35
+  _baseAttackPower: 20
   _basePierceCount: 0
   FireRate: 0.5
   BulletVelocity: 5
