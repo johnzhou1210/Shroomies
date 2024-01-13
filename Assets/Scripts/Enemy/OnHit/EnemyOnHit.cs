@@ -19,6 +19,7 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     public int ParticlesAmount = 1;
     public int BitsAmount = 5;
     //public int ParticlesColor = 0;
+    Material material;
 
     public UnityEvent OnDeath;
     [HideInInspector] public UnityIntEvent GiveMulch;
@@ -37,6 +38,8 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             AudioManager.Instance.PlaySFX("Enemy Death Sound");
             StartCoroutine(Flicker(0, .35f));
             Animator.Play("Dead");
+
+            GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 0);
 
             //particle call here
             ParticleSystem.TextureSheetAnimationModule psDeathTSA = ParticlesExplosion.textureSheetAnimation;
@@ -85,19 +88,20 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
         for (int i = 0; i < amountOfTimes; i++) {
             yield return new WaitForSeconds(flickerDelay / 2f);
             //SetColorOfAllEnabledSprites(Color.clear);
-            SetColorOfAllEnabledSprites(ChangePalette.holder.color2);
+            //SetColorOfAllEnabledSprites(ChangePalette.holder.color2);
 
-            //Get the object's material
-            //replace material color1 with palette color2
-            //replace material color3 with palette color2
-            //replace material color4 with palette color2
+            //material.SetFloat("_Flash", 1);
+            GetComponentInChildren<SpriteRenderer>().material.SetColor("_ColorFlash", ChangePalette.holder.color2);
+            GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 1);
+            //SetColorOfAllEnabledSprites(ChangePalette.holder.color2);
 
-            yield return new WaitForSeconds(flickerDelay / 2f);
-            SetColorOfAllEnabledSprites(Color.white);
+            yield return new WaitForSeconds(flickerDelay / 1f);
+            //SetColorOfAllEnabledSprites(Color.white);
 
-            //replace material color1 with palette color 1
-            //replace material color3 with palette color 3
-            //replace material color4 with palette color 4
+            //material.SetFloat("_Flash", 0);
+            GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 0);
+            //SetColorOfAllEnabledSprites(Color.white);
+
         }
         if (isDead()) {
             yield return new WaitForSeconds(flickerDelay);
@@ -111,6 +115,7 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     void Start() {
         Hitbox = GetComponent<Collider2D>();
         setCurrHealthToMaxHealth();
+
     }
 
     public void setCurrHealthToMaxHealth() {

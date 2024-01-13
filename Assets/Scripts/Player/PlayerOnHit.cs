@@ -40,7 +40,34 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
     }
 
     IEnumerator RefreshDebounce(float duration) {
-        yield return new WaitForSeconds(duration);
+        GetComponentInChildren<SpriteRenderer>().material.SetColor("_ColorFlash", ChangePalette.holder.color1);
+        GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 1);
+
+        yield return new WaitForSeconds(duration * 0.2f);
+
+        GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 0);
+
+        /*if (Dead == false)
+        {
+            GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color1", ChangePalette.holder.color2);
+            GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color4", ChangePalette.holder.color1);
+        }
+
+        yield return new WaitForSeconds(duration * 0.2f);*/
+        
+        if (Dead == false)
+        {
+            GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color1", ChangePalette.holder.color3);
+            GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color4", ChangePalette.holder.color4);
+        }
+
+        yield return new WaitForSeconds(duration * 0.8f);
+
+        GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color1", ChangePalette.holder.color1);
+        GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color2", ChangePalette.holder.color2);
+        GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color3", ChangePalette.holder.color3);
+        GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color4", ChangePalette.holder.color4);
+
         Debounce = false;
     }
 
