@@ -259,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Toggle: 0
   _baseFireRate: 0.25
-  _baseCritRate: 1
+  _baseCritRate: 0.05
   _baseBulletVelocity: 6
   _baseAttackPower: 20
   _basePierceCount: 0
