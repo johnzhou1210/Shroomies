@@ -259,6 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2273672081721156826}
   - component: {fileID: 2092685625479184330}
+  - component: {fileID: 7343215821228698403}
   - component: {fileID: 1702996903809359654}
   m_Layer: 8
   m_Name: Shroomie
@@ -266,7 +267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2273672081721156826
 Transform:
   m_ObjectHideFlags: 0
@@ -305,6 +306,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7343215821228698403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552111602614107038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d499b6fcace187045987feb056e1d2d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticlesExplosion: {fileID: 7289316772650338732, guid: 8f3c9a49a3e3f004b8abde9ee2f2122c, type: 3}
+  ParticlesBits: {fileID: 7289316772650338732, guid: 0201b36b76982c5459fc03b55ae78a49, type: 3}
 --- !u!114 &1702996903809359654
 MonoBehaviour:
   m_ObjectHideFlags: 0

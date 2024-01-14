@@ -59,6 +59,7 @@ public class BuyShroomie : MonoBehaviour
                     currNumShroomies = GameObject.FindWithTag("Player").GetComponent<PlayerOnHit>().CurrentShroomies;
                     GameObject shroomieToEnable = formation.ShroomieObjects.Find(obj => obj.name == currNumShroomies.ToString());
                     shroomieToEnable.SetActive(true);
+
                 } else {
                     AudioManager.Instance.PlaySFX("Deny Sound");
                 }

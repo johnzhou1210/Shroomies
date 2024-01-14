@@ -6584,7 +6584,7 @@ Camera:
   far clip plane: 1000
   field of view: 82.4
   orthographic: 1
-  orthographic size: 5.015855
+  orthographic size: 5.02062
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8036,7 +8036,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -72.748}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -253.00609, y: -0.5786133}
+  m_AnchoredPosition: {x: -253.00613, y: -0.5786133}
   m_SizeDelta: {x: -510.01205, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1390846357
@@ -8403,7 +8403,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -72.748}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -253.00609, y: -0.5786133}
+  m_AnchoredPosition: {x: -253.00613, y: -0.5786133}
   m_SizeDelta: {x: -510.01205, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414531570
@@ -11392,7 +11392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1894058665
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12572,6 +12572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefaultFormation
       objectReference: {fileID: 0}
+    - target: {fileID: 7913454589825946194, guid: b1249b06b44f4a447b5efb2d892a20bb, type: 3}
+      propertyPath: ParticlesBits
+      value: 
+      objectReference: {fileID: 7289316772650338732, guid: 0201b36b76982c5459fc03b55ae78a49, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

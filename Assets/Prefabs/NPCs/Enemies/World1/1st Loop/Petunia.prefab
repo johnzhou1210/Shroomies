@@ -296,8 +296,7 @@ MonoBehaviour:
   ParticlesBits: {fileID: 7289316772650338732, guid: 0201b36b76982c5459fc03b55ae78a49, type: 3}
   ParticlesDeath: 0
   ParticlesAmount: 2
-  defaultMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  shaderMaterial: {fileID: -876546973899608171, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
+  BitsAmount: 5
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -394,7 +393,7 @@ MonoBehaviour:
   BulletVelocity: 3
   AttackPower: 1
   StartShootY: 7
-  EndShootY: -3
+  EndShootY: -2.5
   BulletsBounce: 0
   ObstaclePierceCount: 0
   BulletClearLimit: 2

@@ -95,7 +95,7 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 1);
             //SetColorOfAllEnabledSprites(ChangePalette.holder.color2);
 
-            yield return new WaitForSeconds(flickerDelay / 1f);
+            yield return new WaitForSeconds(flickerDelay / 2f);
             //SetColorOfAllEnabledSprites(Color.white);
 
             //material.SetFloat("_Flash", 0);

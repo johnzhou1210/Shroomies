@@ -14,6 +14,8 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
     public bool Debounce = false;
     public bool Dead = false;
 
+    public ParticleSystem ParticlesExplosion;
+
     public void takeDamage(int damage) {
         ShroomieFormation formation = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomieFormation>();
         if (Debounce == false && !Dead) {
@@ -72,7 +74,20 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
     }
 
     IEnumerator DestroyShroomie(GameObject obj) {
-        Instantiate(_explosionPrefab, obj.transform.position, Quaternion.identity);
+        //Instantiate(_explosionPrefab, obj.transform.position, Quaternion.identity);
+
+        //particles
+        ParticleSystem.TextureSheetAnimationModule psDeathTSA = ParticlesExplosion.textureSheetAnimation;
+        psDeathTSA.rowIndex = 0;
+
+        ParticleSystem.MainModule psDeathMAIN = ParticlesExplosion.main;
+        psDeathMAIN.startColor = ChangePalette.holder.color1;
+        psDeathMAIN.maxParticles = 2;
+
+        Vector3 explo = obj.transform.position;
+        explo.y -= 0.25f;
+        Instantiate(ParticlesExplosion, explo, Quaternion.identity);
+
         obj.GetComponent<Animator>().Play("ShroomieDeath");
         yield return new WaitForSeconds(.35f);
         obj.SetActive(false);
