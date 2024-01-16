@@ -8,12 +8,13 @@ using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
 {
-    [SerializeField] GameObject _pauseMenu, _pauseButton;
+    [SerializeField] GameObject _pauseMenu, _pauseButton, _optionsMenu;
     [SerializeField] Sprite _buttonPressed, _buttonNormal;
     [SerializeField] GameObject _dragArea;
 
     private PlayerInputActions playerInputActions;
-    public Button primaryButton;
+    public Button primaryButton, PauseMenuButton, OptionsMenuButton;
+    public bool randomPalette = true;
 
     private void Start() {
         playerInputActions = InputManager.inputActions;
@@ -47,6 +48,25 @@ public class PauseGame : MonoBehaviour
         Time.timeScale = 1f;
         AudioManager.Instance.StopAllMusic(false);
         SceneManager.LoadScene(1);
+    }
+
+    public void MenuToOptions() {
+        _pauseMenu.SetActive(false);
+        _optionsMenu.SetActive(true);
+        OptionsMenuButton.Select();
+    }
+
+    public void OptionsToMenu() {
+        _optionsMenu.SetActive(false);
+        _pauseMenu.SetActive(true);
+        PauseMenuButton.Select();
+    }
+
+    public void ToggleRandomPalette() {
+        if(randomPalette)
+            randomPalette = false;
+        else if(!randomPalette)
+            randomPalette = true;
     }
 
     private void Update() {

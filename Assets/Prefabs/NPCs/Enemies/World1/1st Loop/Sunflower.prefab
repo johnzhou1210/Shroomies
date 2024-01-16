@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683f9dd7dfd0aab46a9deb6c7d471561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 245
+  MaxHealth: 200
   alreadyCounted: 0
   CurrentHealth: 0
   MulchReward: 55
@@ -409,7 +409,7 @@ MonoBehaviour:
   FireRate: 5.5
   BulletVelocity: 6.25
   AttackPower: 1
-  StartShootY: 5.5
+  StartShootY: 7
   EndShootY: -3
   BulletsBounce: 0
   ObstaclePierceCount: 0

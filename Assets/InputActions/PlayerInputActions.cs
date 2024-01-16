@@ -435,6 +435,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""63950970-29f0-473b-a1a3-263f33650be1"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c34d669f-e0a3-44be-aae6-453084f645b3"",
+                    ""path"": ""<Touchscreen>/touch*/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""94238e3e-e89e-4ff4-a32d-b5abaa75557b"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",

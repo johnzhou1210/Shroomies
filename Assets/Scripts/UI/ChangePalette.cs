@@ -41,6 +41,19 @@ public class ChangePalette : MonoBehaviour
         EventBroker.CallPaletteChange();
     }
 
+    public void ChangeColorRandom() {
+        GameSettings.currentPalette = Random.Range(0, palettes.Count - 1);
+
+        paletteShader.SetColor("_Color1", palettes[GameSettings.currentPalette].color1);
+        paletteShader.SetColor("_Color2", palettes[GameSettings.currentPalette].color2);
+        paletteShader.SetColor("_Color3", palettes[GameSettings.currentPalette].color3);
+        paletteShader.SetColor("_Color4", palettes[GameSettings.currentPalette].color4);
+
+        holder = palettes[GameSettings.currentPalette];
+
+        EventBroker.CallPaletteChange();
+    }
+
     public void ChangeColor(int paletteSet)
     {
         GameSettings.currentPalette = paletteSet;

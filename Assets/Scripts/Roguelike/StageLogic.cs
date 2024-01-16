@@ -23,6 +23,7 @@ public class StageLogic : MonoBehaviour {
     [SerializeField] GameObject _upgradeFrame, _uiCanvas, _playerDragArea, _buyShroomieButton, _gameOverEffect, _resultsScreen, _thankYouScreen, _pauseMenu;
 
     public GameSettings GameSettings;
+    public ChangePalette ChangePalette;
 
     public UnityBoolEvent InvokeEnableBossHPDisplay;
 
@@ -32,6 +33,7 @@ public class StageLogic : MonoBehaviour {
     public int AccumulatedMulch = 0;
     public int AccumulatedShroomies = 0;
     public int AccumulatedShroomItUps = 0;
+    public int CurrentShroomItUpCost = 0;
     public int ShroomieBaseCost = 25;
 
     public int previousShroomiesCost = 25;
@@ -58,7 +60,7 @@ public class StageLogic : MonoBehaviour {
             setPlayerControls(false);
             Difficulty = (WorldNumber * 2) + StageNumber;
 
-            if (StageNumber != _bossStage && StageNumber !=_bossStage2) { AudioManager.Instance.PlayMistaDJ(); }//{ AudioManager.Instance.PlayMusic("Shroomies Next Spread"); }
+            if (StageNumber != _bossStage && StageNumber !=_bossStage2) { AudioManager.Instance.PlayMistaDJ(); }//{ AudioManager.Instance.PlayMusic("s Next Spread"); }
             cueStageBanner.Invoke(StageNumber == _bossStage || StageNumber == _bossStage2 ? "<color=#" + ChangePalette.holder.color2.ToHexString() + ">" + WorldNumber + "-" + StageNumber + "</color>" : WorldNumber + "-" + StageNumber);
             yield return new WaitForSeconds(_stageBeginWaitDelay);
 
@@ -138,6 +140,9 @@ public class StageLogic : MonoBehaviour {
                 upgradeFrame.transform.SetAsFirstSibling();
                 yield return new WaitUntil(() => upgradeFrame.activeInHierarchy == false);
                 GameObject.Destroy(upgradeFrame);
+                if (_pauseMenu.GetComponent<PauseGame>().randomPalette) {
+                    ChangePalette.ChangeColorRandom();
+                }
             } else {
                 // open up special shop
             }

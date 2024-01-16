@@ -34,7 +34,6 @@ public class UpgradeScreen : MonoBehaviour
 
     private void Update() {
             StartCoroutine(NewSelection());
-            Debug.Log(selectedObject.name);
     }
 
     public void ShowShroomiesDescription(bool val) {
@@ -70,6 +69,7 @@ public class UpgradeScreen : MonoBehaviour
             if (_shroomItUp.GetComponent<ShroomItUp>().CheckBoxSelected) {
                 GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().decreaseMulch(_shroomItUp.GetComponent<ShroomItUp>().ShroomItUpCost);
                 GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().incrementShroomItUps();
+                GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().CurrentShroomItUpCost = _shroomItUp.GetComponent<ShroomItUp>().ShroomItUpCost;
             }
             // play confirm animation on buttonObj
             AudioManager.Instance.PlaySFX("Player Get Upgrade");

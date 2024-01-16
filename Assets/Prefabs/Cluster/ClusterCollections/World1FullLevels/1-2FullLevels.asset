@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clusters:
   - {fileID: 8822587751376999144, guid: da0aa06141c4e974499be77246e3a545, type: 3}
-  - {fileID: 8822587751376999144, guid: cb7c321222746174b8f53c06dde6e18c, type: 3}
   - {fileID: 8822587751376999144, guid: 3edaf1ad2d040204980044f4092cfd7f, type: 3}
+  - {fileID: 8822587751376999144, guid: cb7c321222746174b8f53c06dde6e18c, type: 3}
   WorldNumber: 1
   StageNumber: 2
