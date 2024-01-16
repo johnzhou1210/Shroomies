@@ -14,6 +14,7 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
     public bool Debounce = false;
     public bool Dead = false;
 
+    public Material mymat;
     public ParticleSystem ParticlesExplosion;
 
     public void takeDamage(int damage) {
@@ -42,12 +43,36 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
     }
 
     IEnumerator RefreshDebounce(float duration) {
-        GetComponentInChildren<SpriteRenderer>().material.SetColor("_ColorFlash", ChangePalette.holder.color1);
-        GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 1);
+        if (Dead == false)
+        {
+            GetComponentInChildren<SpriteRenderer>().material.SetColor("_ColorFlash", ChangePalette.holder.color1);
+            GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 1);
+            GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Outline", 1);
 
-        yield return new WaitForSeconds(duration * 0.2f);
+            Time.timeScale = 0.4f;
 
+            yield return new WaitForSeconds(duration * 0.1f);
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().material.SetColor("_ColorFlash", ChangePalette.holder.color2);
+            GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 1);
+
+            yield return new WaitForSeconds(duration * 0.2f);
+        }
+        
         GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 0);
+
+        if (Dead == false)
+        {
+            GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color1", ChangePalette.holder.color3);
+            GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color4", ChangePalette.holder.color4);
+            GetComponentInChildren<SpriteRenderer>().material.SetColor("_ColorOutline", ChangePalette.holder.color1);
+        }
+
+        yield return new WaitForSeconds(duration * 0.1f);
+
+        Time.timeScale = 1f;
 
         /*if (Dead == false)
         {
@@ -57,18 +82,18 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
 
         yield return new WaitForSeconds(duration * 0.2f);*/
         
-        if (Dead == false)
-        {
-            GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color1", ChangePalette.holder.color3);
-            GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color4", ChangePalette.holder.color4);
-        }
+        
 
         yield return new WaitForSeconds(duration * 0.8f);
 
-        GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color1", ChangePalette.holder.color1);
+        /*GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color1", ChangePalette.holder.color1);
         GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color2", ChangePalette.holder.color2);
         GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color3", ChangePalette.holder.color3);
         GetComponentInChildren<SpriteRenderer>().material.SetColor("_Color4", ChangePalette.holder.color4);
+        GetComponentInChildren<SpriteRenderer>().material.SetColor("_ColorOutline", ChangePalette.holder.color4);*/
+        GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Outline", 0);
+
+        GetComponentInChildren<SpriteRenderer>().material = mymat;
 
         Debounce = false;
     }
@@ -82,11 +107,11 @@ public class PlayerOnHit : MonoBehaviour, IDamageable
 
         ParticleSystem.MainModule psDeathMAIN = ParticlesExplosion.main;
         psDeathMAIN.startColor = ChangePalette.holder.color1;
-        psDeathMAIN.maxParticles = 2;
+        psDeathMAIN.maxParticles = 4;
 
-        Vector3 explo = obj.transform.position;
-        explo.y -= 0.25f;
-        Instantiate(ParticlesExplosion, explo, Quaternion.identity);
+        Vector3 psDeathOffset = obj.transform.position;
+        psDeathOffset.y -= 0.25f;
+        Instantiate(ParticlesExplosion, psDeathOffset, Quaternion.identity);
 
         obj.GetComponent<Animator>().Play("ShroomieDeath");
         yield return new WaitForSeconds(.35f);

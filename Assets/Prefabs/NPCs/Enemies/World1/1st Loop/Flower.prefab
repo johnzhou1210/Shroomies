@@ -298,7 +298,7 @@ MonoBehaviour:
   FireRate: 3
   BulletVelocity: 5
   AttackPower: 1
-  StartShootY: 7
+  StartShootY: 6
   EndShootY: -2.5
   BulletsBounce: 0
   ObstaclePierceCount: 0
@@ -343,6 +343,7 @@ MonoBehaviour:
   ParticlesDeath: 0
   ParticlesAmount: 1
   BitsAmount: 4
+  mymat: {fileID: -876546973899608171, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
   OnDeath:
     m_PersistentCalls:
       m_Calls:

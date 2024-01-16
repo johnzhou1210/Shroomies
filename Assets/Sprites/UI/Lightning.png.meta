@@ -167,7 +167,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 120
+        width: 160
         height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -186,9 +186,9 @@ TextureImporter:
       name: Lightning_1
       rect:
         serializedVersion: 2
-        x: 120
+        x: 160
         y: 0
-        width: 120
+        width: 160
         height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -207,9 +207,9 @@ TextureImporter:
       name: Lightning_2
       rect:
         serializedVersion: 2
-        x: 240
+        x: 320
         y: 0
-        width: 120
+        width: 160
         height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -228,9 +228,9 @@ TextureImporter:
       name: Lightning_3
       rect:
         serializedVersion: 2
-        x: 360
+        x: 480
         y: 0
-        width: 120
+        width: 160
         height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -249,9 +249,9 @@ TextureImporter:
       name: Lightning_4
       rect:
         serializedVersion: 2
-        x: 480
+        x: 640
         y: 0
-        width: 120
+        width: 160
         height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -270,9 +270,9 @@ TextureImporter:
       name: Lightning_5
       rect:
         serializedVersion: 2
-        x: 600
+        x: 800
         y: 0
-        width: 120
+        width: 160
         height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -281,29 +281,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ff0952a0e5f1524f9c57c5ecd5116bf
-      internalID: 1961879064
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Lightning_6
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 0
-        width: 120
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cc4b20d622518144db5c223fde64cf75
-      internalID: -1848289678
+      spriteID: 1ccfd07aac7efdc4fbaceb27ca586e83
+      internalID: -727198408
       vertices: []
       indices: 
       edges: []
@@ -324,8 +303,7 @@ TextureImporter:
       Lightning_2: -29117228
       Lightning_3: -377950629
       Lightning_4: 1361155930
-      Lightning_5: 1961879064
-      Lightning_6: -1848289678
+      Lightning_5: -727198408
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
