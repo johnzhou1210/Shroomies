@@ -19,7 +19,7 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     public int ParticlesAmount = 1;
     public int BitsAmount = 5;
     //public int ParticlesColor = 0;
-    Material material;
+    public Material mymat;
 
     public UnityEvent OnDeath;
     [HideInInspector] public UnityIntEvent GiveMulch;
@@ -48,16 +48,20 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             ParticleSystem.MainModule psDeathMAIN = ParticlesExplosion.main;
             psDeathMAIN.startColor = ChangePalette.holder.color1;
             psDeathMAIN.maxParticles = ParticlesAmount;
-            Instantiate(ParticlesExplosion,transform.position, Quaternion.identity);
+            Vector3 psDeathOffset = GetComponent<Transform>().position;
+            psDeathOffset.y += 0.1f;
+            Instantiate(ParticlesExplosion, psDeathOffset, Quaternion.identity);
 
             ParticleSystem.MainModule psBitsMAIN = ParticlesBits.main;
             psBitsMAIN.startColor = ChangePalette.holder.color3;
             psBitsMAIN.maxParticles = BitsAmount;
-            Instantiate(ParticlesBits, transform.position, Quaternion.identity);
+            Vector3 psBitsOffset = GetComponent<Transform>().position;
+            psBitsOffset.y += 0.25f;
+            Instantiate(ParticlesBits, psBitsOffset, Quaternion.identity);
 
             psBitsMAIN.startColor = ChangePalette.holder.color1;
             psBitsMAIN.maxParticles = (int)Mathf.Floor((float)BitsAmount / 2f);
-            Instantiate(ParticlesBits, transform.position, Quaternion.identity);
+            Instantiate(ParticlesBits, psBitsOffset, Quaternion.identity);
 
             //psTSA.rowIndex = 1;
             //psMAIN.startColor = ChangePalette.holder.color2;
@@ -95,12 +99,14 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 1);
             //SetColorOfAllEnabledSprites(ChangePalette.holder.color2);
 
-            yield return new WaitForSeconds(flickerDelay / 1f);
+            yield return new WaitForSeconds(flickerDelay / 2f);
             //SetColorOfAllEnabledSprites(Color.white);
 
             //material.SetFloat("_Flash", 0);
             GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 0);
             //SetColorOfAllEnabledSprites(Color.white);
+
+            GetComponentInChildren<SpriteRenderer>().material = mymat;
 
         }
         if (isDead()) {
@@ -115,7 +121,6 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     void Start() {
         Hitbox = GetComponent<Collider2D>();
         setCurrHealthToMaxHealth();
-
     }
 
     public void setCurrHealthToMaxHealth() {

@@ -145,12 +145,14 @@ public class Bullet : MonoBehaviour {
                             //Instantiate(_critEffect, collision.transform.position, Quaternion.identity);
 
                             ParticleSystem.MainModule psLightningMAIN = ParticlesLightning.main;
+                            Vector3 psLightningOffset = GetComponent<Transform>().position;
+                            psLightningOffset.y += 0.5f;
                             psLightningMAIN.startColor = ChangePalette.holder.color2;
                             psLightningMAIN.maxParticles = (int)Mathf.Floor((float)LightningAmount / 2f);
-                            Instantiate(ParticlesLightning, transform.position, Quaternion.identity);
+                            Instantiate(ParticlesLightning, psLightningOffset, Quaternion.identity);
                             psLightningMAIN.startColor = ChangePalette.holder.color1;
                             psLightningMAIN.maxParticles = (int)Mathf.Floor((float)LightningAmount / 2f);
-                            Instantiate(ParticlesLightning, transform.position, Quaternion.identity);
+                            Instantiate(ParticlesLightning, psLightningOffset, Quaternion.identity);
 
                             AudioManager.Instance.PlaySFX("Critical Hit Sound");
                             // do camera shake
