@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
   m_Name: But What If It Was
   m_EditorClassIdentifier: 
-  color1: {r: 0.8078432, g: 0.6392157, b: 0.8470589, a: 1}
-  color2: {r: 0.54840684, g: 0.39215684, b: 0.98039216, a: 1}
-  color3: {r: 0.44217685, g: 0.22789115, b: 0.5, a: 1}
-  color4: {r: 0.28187925, g: 0.18120804, b: 0.5, a: 1}
+  color1: {r: 0.83925927, g: 0.66407406, b: 0.88, a: 1}
+  color2: {r: 0.55440015, g: 0.39600003, b: 0.99, a: 1}
+  color3: {r: 0.41492182, g: 0.21296872, b: 0.47, a: 1}
+  color4: {r: 0.26437503, g: 0.16890623, b: 0.47, a: 1}

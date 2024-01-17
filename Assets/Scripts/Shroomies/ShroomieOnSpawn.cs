@@ -24,6 +24,8 @@ public class ShroomieOnSpawn : MonoBehaviour
         ParticleSystem.MainModule psBitsMAIN = ParticlesBits.main;
         psBitsMAIN.startColor = ChangePalette.holder.color1;
         psBitsMAIN.maxParticles = 2;
+        Vector3 psBitsOffset = GetComponent<Transform>().position;
+        psBitsOffset.y += 1f;
         ParticleSystem.TextureSheetAnimationModule psBitsTSA = ParticlesBits.textureSheetAnimation;
         psBitsTSA.rowIndex = 2;
         Instantiate(ParticlesBits, transform.position, Quaternion.identity);

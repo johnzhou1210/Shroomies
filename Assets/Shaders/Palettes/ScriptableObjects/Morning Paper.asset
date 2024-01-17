@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
-  m_Name: Arizona Can
+  m_Name: Morning Paper
   m_EditorClassIdentifier: 
-  color1: {r: 1, g: 0.9851153, b: 0.6650944, a: 1}
-  color2: {r: 1, g: 1, b: 1, a: 1}
-  color3: {r: 0.51891243, g: 0.6509434, b: 0.607738, a: 1}
-  color4: {r: 0.990566, g: 0.6868548, b: 0.6868548, a: 1}
+  color1: {r: 0.6745098, g: 0.6745098, b: 0.54509807, a: 1}
+  color2: {r: 0.87058824, g: 0.9411765, b: 0.90588236, a: 1}
+  color3: {r: 0.27058825, g: 0.33333334, b: 0.40784314, a: 1}
+  color4: {r: 0.11372549, g: 0.13725491, b: 0.12941177, a: 1}

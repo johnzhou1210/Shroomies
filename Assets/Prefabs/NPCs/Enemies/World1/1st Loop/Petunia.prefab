@@ -297,6 +297,7 @@ MonoBehaviour:
   ParticlesDeath: 0
   ParticlesAmount: 2
   BitsAmount: 5
+  mymat: {fileID: -876546973899608171, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
   OnDeath:
     m_PersistentCalls:
       m_Calls:

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ce18fd997eb0343a2b92a8ef6fc693, type: 3}
   m_Name: ShroomBoy
   m_EditorClassIdentifier: 
-  color1: {r: 0.827451, g: 0.7882353, b: 0.32941177, a: 1}
-  color2: {r: 0.6392157, g: 0.627451, b: 0.25882354, a: 1}
+  color1: {r: 0.7, g: 0.68711656, b: 0.28343558, a: 1}
+  color2: {r: 0.85, g: 0.8097157, b: 0.33838862, a: 1}
   color3: {r: 0.4392157, g: 0.4745098, b: 0.15686275, a: 1}
   color4: {r: 0.25490198, g: 0.2901961, b: 0.043137256, a: 1}

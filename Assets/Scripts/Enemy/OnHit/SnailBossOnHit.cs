@@ -28,7 +28,7 @@ public class SnailBossOnHit : EnemyOnHit, IDamageable
             StartCoroutine(Flicker(3, .24f));
             Invoke("HideDeadBody", 7f);
         } else {
-            StartCoroutine(Flicker(1, .0733f));
+            //StartCoroutine(Flicker(1, .0733f));
         }
         
     }

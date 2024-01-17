@@ -99,6 +99,13 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 1);
             //SetColorOfAllEnabledSprites(ChangePalette.holder.color2);
 
+            ParticleSystem.MainModule psMiniBitsMAIN = ParticlesBits.main;
+            psMiniBitsMAIN.startColor = ChangePalette.holder.color3;
+            psMiniBitsMAIN.maxParticles = (int)Mathf.Floor((float)BitsAmount / 3f);
+            Vector3 psBitsOffset = GetComponent<Transform>().position;
+            psBitsOffset.y += 0.5f;
+            Instantiate(ParticlesBits, psBitsOffset, Quaternion.identity);
+
             yield return new WaitForSeconds(flickerDelay / 2f);
             //SetColorOfAllEnabledSprites(Color.white);
 
