@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnPosition: {x: -1.3103973, y: 7, z: 0}
   MinMovementSpeed: 4
-  MaxMovementSpeed: 4.5
+  MaxMovementSpeed: 4
   MovementSpeed: 4.0119348
   NextClusterMinDelay: 1
   NextClusterMaxDelay: 1
@@ -439,6 +439,11 @@ MonoBehaviour:
   CurrentHealth: 0
   MulchReward: 1000
   Animator: {fileID: 4011285868181351348}
+  ParticlesExplosion: {fileID: 0}
+  ParticlesBits: {fileID: 0}
+  ParticlesDeath: 0
+  ParticlesAmount: 1
+  BitsAmount: 5
   OnDeath:
     m_PersistentCalls:
       m_Calls:

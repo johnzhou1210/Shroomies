@@ -382,6 +382,7 @@ public class StageLogic : MonoBehaviour {
     IEnumerator ThankYouScreen() {
         GameObject.FindWithTag("Score").SetActive(false);
         AudioManager.Instance.PlayMusic("House Fever");
+        InputManager.ToggleActionMap(InputManager.inputActions.UI);
         _thankYouScreen.SetActive(true);
         yield return new WaitForSeconds(5f);
         _thankYouScreen.transform.Find("Prompt").GetComponent<TextMeshProUGUI>().text = "PRESS ANYWHERE TO CONTINUE";

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class ChangePalette : MonoBehaviour
 {
@@ -21,7 +22,6 @@ public class ChangePalette : MonoBehaviour
     {
         ChangeColor(GameSettings.currentPalette);
     }
-
 
     public void ChangeColor()
     {        

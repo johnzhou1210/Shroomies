@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c656f70339094f2408feb0e62f20e452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 1
+  FireRate: 1.2
   BulletVelocity: 7
   AttackPower: 1
   StartShootY: 6
@@ -343,6 +343,7 @@ MonoBehaviour:
   ParticlesDeath: 0
   ParticlesAmount: 1
   BitsAmount: 4
+  mymat: {fileID: -876546973899608171, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
   OnDeath:
     m_PersistentCalls:
       m_Calls:

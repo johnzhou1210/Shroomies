@@ -1850,7 +1850,6 @@ GameObject:
   - component: {fileID: 157929696}
   - component: {fileID: 157929698}
   - component: {fileID: 157929699}
-  - component: {fileID: 157929701}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -1911,43 +1910,6 @@ MonoBehaviour:
   PauseMenuButton: {fileID: 145594579}
   OptionsMenuButton: {fileID: 316295501}
   randomPalette: 1
---- !u!114 &157929701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157929695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a03cd10cdfde8234a96bf87b9a8759ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paletteShader: {fileID: -876546973899608171, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
-  palettes:
-  - {fileID: 11400000, guid: 601debb3381e14645aa147958b430425, type: 2}
-  - {fileID: 11400000, guid: 3e343a98ed28d6146bdecb91d14fbb32, type: 2}
-  - {fileID: 11400000, guid: 4a91e7eb11d3d414c831669fbdb50ea8, type: 2}
-  - {fileID: 11400000, guid: 016e9ce5d95d8704080383e5c16bc997, type: 2}
-  - {fileID: 11400000, guid: 540a369712decc44f975448923812fc2, type: 2}
-  - {fileID: 11400000, guid: 25682e454df5b92468b825c898588e9c, type: 2}
-  - {fileID: 11400000, guid: 91a1a80b1b6880f429674e6abe883267, type: 2}
-  - {fileID: 11400000, guid: 5a31c65ffdfdef747ab0fca1af64a640, type: 2}
-  - {fileID: 11400000, guid: 837b584c8432ba3478281924af4480e5, type: 2}
-  - {fileID: 11400000, guid: bd02f3c55eb62ab4482351f5d102dfa7, type: 2}
-  - {fileID: 11400000, guid: f14c069d74f5574408b4bbebf9802452, type: 2}
-  - {fileID: 11400000, guid: 4603413e24bac064a80eea8ff01e5713, type: 2}
-  - {fileID: 11400000, guid: 926ae1603197ddd40814070081c1858f, type: 2}
-  - {fileID: 11400000, guid: e42456524918c1a4c812dbfd989972d9, type: 2}
-  - {fileID: 11400000, guid: 52783afa233437c42b68440a6e2381f8, type: 2}
-  - {fileID: 11400000, guid: 13437435f94e2fa4f8ed0af766808631, type: 2}
-  - {fileID: 11400000, guid: 2c47295cf072e7149a05027e1f41a5f3, type: 2}
-  - {fileID: 11400000, guid: 25231dabf72c8d94bb5e4623e933a552, type: 2}
-  - {fileID: 11400000, guid: 94b0ef5276135dc409e9a3edef456b45, type: 2}
-  - {fileID: 11400000, guid: 7ca0cd43202aba74d9812c541e065579, type: 2}
-  - {fileID: 11400000, guid: 61f543e3561aa4149b7499966bca012c, type: 2}
-  - {fileID: 11400000, guid: e53d01b4ebc6adf4fbc1ba437234ba23, type: 2}
-  GameSettings: {fileID: 11400000, guid: e8bfb51804af4264d9d88c5ae7cff857, type: 2}
 --- !u!1 &209223606
 GameObject:
   m_ObjectHideFlags: 0
@@ -3465,7 +3427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.6958618, y: 189}
+  m_AnchoredPosition: {x: -3.6958008, y: 189}
   m_SizeDelta: {x: -484.47, y: -1338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &394505186
@@ -4766,6 +4728,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &569487236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 569487238}
+  - component: {fileID: 569487237}
+  m_Layer: 0
+  m_Name: ============== [Palette Manager] ========
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &569487237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569487236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03cd10cdfde8234a96bf87b9a8759ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paletteShader: {fileID: -876546973899608171, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
+  palettes:
+  - {fileID: 11400000, guid: 601debb3381e14645aa147958b430425, type: 2}
+  - {fileID: 11400000, guid: 3e343a98ed28d6146bdecb91d14fbb32, type: 2}
+  - {fileID: 11400000, guid: 4a91e7eb11d3d414c831669fbdb50ea8, type: 2}
+  - {fileID: 11400000, guid: 016e9ce5d95d8704080383e5c16bc997, type: 2}
+  - {fileID: 11400000, guid: 540a369712decc44f975448923812fc2, type: 2}
+  - {fileID: 11400000, guid: 25682e454df5b92468b825c898588e9c, type: 2}
+  - {fileID: 11400000, guid: 91a1a80b1b6880f429674e6abe883267, type: 2}
+  - {fileID: 11400000, guid: 5a31c65ffdfdef747ab0fca1af64a640, type: 2}
+  - {fileID: 11400000, guid: 837b584c8432ba3478281924af4480e5, type: 2}
+  - {fileID: 11400000, guid: bd02f3c55eb62ab4482351f5d102dfa7, type: 2}
+  - {fileID: 11400000, guid: f14c069d74f5574408b4bbebf9802452, type: 2}
+  - {fileID: 11400000, guid: 4603413e24bac064a80eea8ff01e5713, type: 2}
+  - {fileID: 11400000, guid: 926ae1603197ddd40814070081c1858f, type: 2}
+  - {fileID: 11400000, guid: e42456524918c1a4c812dbfd989972d9, type: 2}
+  - {fileID: 11400000, guid: 52783afa233437c42b68440a6e2381f8, type: 2}
+  - {fileID: 11400000, guid: 13437435f94e2fa4f8ed0af766808631, type: 2}
+  - {fileID: 11400000, guid: 2c47295cf072e7149a05027e1f41a5f3, type: 2}
+  - {fileID: 11400000, guid: 25231dabf72c8d94bb5e4623e933a552, type: 2}
+  - {fileID: 11400000, guid: 94b0ef5276135dc409e9a3edef456b45, type: 2}
+  - {fileID: 11400000, guid: 7ca0cd43202aba74d9812c541e065579, type: 2}
+  - {fileID: 11400000, guid: 61f543e3561aa4149b7499966bca012c, type: 2}
+  - {fileID: 11400000, guid: e53d01b4ebc6adf4fbc1ba437234ba23, type: 2}
+  GameSettings: {fileID: 11400000, guid: e8bfb51804af4264d9d88c5ae7cff857, type: 2}
+--- !u!4 &569487238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569487236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.30505124, y: -0.005106628, z: 0.19976825}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &588198139
 GameObject:
   m_ObjectHideFlags: 0
@@ -6053,7 +6084,7 @@ MonoBehaviour:
         m_CallState: 2
   _stageBeginWaitDelay: 0
   _interstageDelay: 15
-  _numStagesPerWorldIncludingBoss: 13
+  _numStagesPerWorldIncludingBoss: 7
   _bossStage: 5
   _bossStage2: 13
   _upgradeFrame: {fileID: 4616672574126157272, guid: ca89c2fe1b691ea4399361c016e6c9b0, type: 3}
@@ -6065,7 +6096,7 @@ MonoBehaviour:
   _thankYouScreen: {fileID: 1293033123}
   _pauseMenu: {fileID: 157929695}
   GameSettings: {fileID: 11400000, guid: e8bfb51804af4264d9d88c5ae7cff857, type: 2}
-  ChangePalette: {fileID: 157929701}
+  ChangePalette: {fileID: 569487237}
   InvokeEnableBossHPDisplay:
     m_PersistentCalls:
       m_Calls: []
@@ -9441,7 +9472,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 157929701}
+      - m_Target: {fileID: 569487237}
         m_TargetAssemblyTypeName: ChangePalette, Assembly-CSharp
         m_MethodName: ChangeColor
         m_Mode: 6
@@ -16077,7 +16108,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 157929701}
+      - m_Target: {fileID: 569487237}
         m_TargetAssemblyTypeName: ChangePalette, Assembly-CSharp
         m_MethodName: ChangeColor
         m_Mode: 6
@@ -16698,7 +16729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 107.600006, y: 80}
+  m_AnchoredPosition: {x: 107.600006, y: 1288}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &4644617896925243523
