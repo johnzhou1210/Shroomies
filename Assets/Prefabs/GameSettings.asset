@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   currentTrack: 0
-  CurrentPalette: 0
+  currentPalette: 0
+  paletteName: Shroomies

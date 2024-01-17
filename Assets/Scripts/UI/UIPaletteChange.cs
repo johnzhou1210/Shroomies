@@ -20,12 +20,16 @@ public class UIPaletteChange : MonoBehaviour
     {
         EventBroker.onPaletteChange += changeColor;
 
-        changeColor();
+
     }
 
     private void OnDisable()
     {
         EventBroker.onPaletteChange -= changeColor;
+    }
+
+    private void Start() {
+        changeColor();
     }
 
 
