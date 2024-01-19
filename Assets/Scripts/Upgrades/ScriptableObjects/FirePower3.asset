@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FirePower3
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 4f86d137fdc951049ba9b33f65bb0f67, type: 3}
-  UpgradeName: Overwhelming Strength III
+  UpgradeName: Fungal Flex III
   UpgradeDescription: Drastically increases Fire Power of Player's shot
   ShroomItUpDescription: Drastically increases Fire Power of Player's and Shroomie's
     shot

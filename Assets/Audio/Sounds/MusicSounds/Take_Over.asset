@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919d8024d4257634f80fb947787c6eb2, type: 3}
+  m_Name: Take_Over
+  m_EditorClassIdentifier: 
+  Name: Take_Over
+  AudioClip: {fileID: 8300000, guid: 7c36fc6c948f8e047916a84cdd140b23, type: 3}
+  Loop: 1
+  Volume: 0.75
+  Pitch: 1
+  Cooldown: 0.01
+  LastTimePlayed: 0

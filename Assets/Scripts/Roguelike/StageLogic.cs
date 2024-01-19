@@ -19,7 +19,7 @@ public class StageLogic : MonoBehaviour {
 
     [SerializeField] float _stageBeginWaitDelay;
     [SerializeField] float _interstageDelay;
-    [SerializeField] int _numStagesPerWorldIncludingBoss, _bossStage = 5, _bossStage2 = 13;
+    [SerializeField] int _numStagesPerWorldIncludingBoss, _bossStage = 7, _bossStage2 = 13;
     [SerializeField] GameObject _upgradeFrame, _uiCanvas, _playerDragArea, _buyShroomieButton, _gameOverEffect, _resultsScreen, _thankYouScreen, _pauseMenu;
 
     public GameSettings GameSettings;

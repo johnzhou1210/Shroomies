@@ -61,9 +61,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Toggle: 1
-  FireRate: 2
+  FireRate: 1
   BulletVelocity: 5
-  AttackPower: 8
+  AttackPower: 5
   CritRate: 0.05
   PierceCount: 0
   BulletClearLimit: 0

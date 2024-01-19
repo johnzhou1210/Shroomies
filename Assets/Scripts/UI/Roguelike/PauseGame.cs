@@ -8,12 +8,12 @@ using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
 {
-    [SerializeField] GameObject _pauseMenu, _pauseButton, _optionsMenu;
+    [SerializeField] GameObject _pauseMenu, _pauseButton, _optionsMenu, CreditsMenu;
     [SerializeField] Sprite _buttonPressed, _buttonNormal;
     [SerializeField] GameObject _dragArea;
 
     private PlayerInputActions playerInputActions;
-    public Button primaryButton, PauseMenuButton, OptionsMenuButton;
+    public Button primaryButton, PauseMenuButton, OptionsMenuButton, CreditsMenuButton;
     public bool randomPalette = true;
 
     private void Start() {
@@ -58,6 +58,18 @@ public class PauseGame : MonoBehaviour
 
     public void OptionsToMenu() {
         _optionsMenu.SetActive(false);
+        _pauseMenu.SetActive(true);
+        PauseMenuButton.Select();
+    }
+
+    public void MenuToCredits() {
+        _pauseMenu.SetActive(false);
+        CreditsMenu.SetActive(true);
+        CreditsMenuButton.Select();
+    }
+
+    public void CreditsToMenu() {
+        CreditsMenu.SetActive(false);
         _pauseMenu.SetActive(true);
         PauseMenuButton.Select();
     }
