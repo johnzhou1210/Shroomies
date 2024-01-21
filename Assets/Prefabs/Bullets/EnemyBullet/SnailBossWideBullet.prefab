@@ -54,6 +54,8 @@ MonoBehaviour:
   _critEffect: {fileID: 5903540695073766936, guid: bf6e3d22bbc2def4c8d46b7bd019bc56, type: 3}
   _wideBulletUndamaged: {fileID: 0}
   _wideBulletDamaged: {fileID: 0}
+  ParticlesLightning: {fileID: 0}
+  LightningAmount: 4
   _rigidBody: {fileID: 6568927270704322053}
 --- !u!212 &7443703293665180681
 SpriteRenderer:
@@ -119,7 +121,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 1000000
+  m_Mass: 10000
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -146,7 +148,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 72

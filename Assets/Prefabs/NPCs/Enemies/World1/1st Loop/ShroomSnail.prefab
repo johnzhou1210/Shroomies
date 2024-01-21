@@ -966,8 +966,8 @@ MonoBehaviour:
   - {fileID: 8756499470089159880}
   _minionCollection: {fileID: 11400000, guid: c58e07e2fc188cc4da1848a90909051a, type: 2}
   _minionCollection2: {fileID: 11400000, guid: 532ec121ce691bb43b45f109ddb2b6e2, type: 2}
-  _minMinionSpawnTime: 4
-  _maxMinionSpawnTime: 8
+  _minMinionSpawnTime: 2
+  _maxMinionSpawnTime: 6
 --- !u!114 &7301685808615635077
 MonoBehaviour:
   m_ObjectHideFlags: 0

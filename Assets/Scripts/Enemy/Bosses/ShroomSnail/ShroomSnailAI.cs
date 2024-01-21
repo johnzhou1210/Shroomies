@@ -67,7 +67,7 @@ public class ShroomSnailAI : EnemyShooting {
     }
 
     private void Update() {
-        if (GetComponent<SnailBossOnHit>().CurrentHealth <= GetComponent<SnailBossOnHit>().MaxHealth*.67f && !_phase2 && !_phase3) {
+        if (GetComponent<SnailBossOnHit>().CurrentHealth <= GetComponent<SnailBossOnHit>().MaxHealth*.75f && !_phase2 && !_phase3) {
             _phase2 = true;
             AudioManager.Instance.PlaySFX("Snail Boss Phase 2");
             GetComponent<SnailBossOnHit>().StartCoroutine(GetComponent<SnailBossOnHit>().ExplosionEffect(32, 1.4f));
@@ -75,7 +75,7 @@ public class ShroomSnailAI : EnemyShooting {
             Animator.speed = 1.1f;
             // spawn minions every 4-8 seconds.
             StartCoroutine(MinionSpawn());
-        } else if (GetComponent<SnailBossOnHit>().CurrentHealth <= GetComponent<SnailBossOnHit>().MaxHealth * .33f && !_phase3) {
+        } else if (GetComponent<SnailBossOnHit>().CurrentHealth <= GetComponent<SnailBossOnHit>().MaxHealth * .50f && !_phase3) {
             _phase3 = true;
             AudioManager.Instance.PlaySFX("Snail Boss Phase 2");
             GetComponent<SnailBossOnHit>().StartCoroutine(GetComponent<SnailBossOnHit>().ExplosionEffect(50, 1.4f));
@@ -171,7 +171,7 @@ public class ShroomSnailAI : EnemyShooting {
                     break;
                 case SnailBossAction.ROLLOUT:
                     Animator.Play("ShroomSnailRolloutPrepare");
-                    yield return new WaitForSeconds(.75f);
+                    yield return new WaitForSeconds(.5f);
                     // choose a random rollout
                     AudioManager.Instance.PlaySFX("Snail Boss Rollout Sound");
                     int chosenNum = UnityEngine.Random.Range(1, 4);

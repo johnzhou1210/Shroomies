@@ -311,7 +311,7 @@ MonoBehaviour:
   StateManager: {fileID: 4479650827182798106}
   _moveSpeed: 2
   _changeDirectionChance: 0.2
-  _frequency: 2.37
+  _frequency: 2.3
   _amplitude: 1
 --- !u!114 &3371121880171774365
 MonoBehaviour:
