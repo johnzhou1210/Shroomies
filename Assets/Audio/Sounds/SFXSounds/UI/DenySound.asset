@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Deny Sound
   AudioClip: {fileID: 8300000, guid: 94bb1ea4d1add1749b921589c32a143d, type: 3}
   Loop: 0
-  Volume: 1.3
+  Volume: 1.4
   Pitch: 1
   Cooldown: 0.001
   LastTimePlayed: 0

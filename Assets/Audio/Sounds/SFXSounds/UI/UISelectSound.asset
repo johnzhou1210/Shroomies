@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: UI Select Sound
   AudioClip: {fileID: 8300000, guid: 7cfdc6d7419b1934db3f880f31d86188, type: 3}
   Loop: 0
-  Volume: 0.461
+  Volume: 0.5
   Pitch: 1
   Cooldown: 0.001
-  LastTimePlayed: 5.149707
+  LastTimePlayed: 0

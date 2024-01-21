@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Player Damage Sound
   AudioClip: {fileID: 8300000, guid: f999803666c94ee41a91d0049a62f47e, type: 3}
   Loop: 0
-  Volume: 0.819
+  Volume: 1.3
   Pitch: 1
   Cooldown: 0.001
-  LastTimePlayed: 0
+  LastTimePlayed: 27.699999
