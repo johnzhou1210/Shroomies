@@ -79,6 +79,8 @@ public class Bullet : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision) {
         GameObject hitTarget = collision.gameObject;
 
+        Debug.Log("collision enter " + hitTarget);
+
         void bounce() {
             ContactPoint2D contact = collision.contacts[0];
             // reflect our old velocity off the contact point's normal vector
@@ -110,17 +112,25 @@ public class Bullet : MonoBehaviour {
 
 
         if (transform.position.y < 5.1f) {
+            
             if (((hitTarget.CompareTag("Enemy") && Ownership == BulletOwnershipType.ENEMY) || (hitTarget.CompareTag("Player") && Ownership == BulletOwnershipType.PLAYER))
                   ) {
+                Debug.Log("IN A");
+
                 if (hitTarget.layer == 11) {
+                    Debug.Log("IN A1");
                     //Debug.Log("call 1 " + transform.name + " collision enter with " + hitTarget.name);
                     Destroy();
                 }
             } else {
+                Debug.Log("IN B");
+
                 if (_debounce == false) {
+                    Debug.Log("IN B1");
                     _debounce = true;
                 }
-                //Debug.Log(transform.name + " collision enter with " + hitTarget.name);
+
+
                 if (hitTarget.CompareTag("Player") || hitTarget.CompareTag("Enemy")) {
                     IDamageable onHit;
                     if (hitTarget.CompareTag("Player")) {
@@ -210,6 +220,7 @@ public class Bullet : MonoBehaviour {
                 }
             }
         } else {
+            
             // ignore collisions with this target from now on
             ignoreCollisionsWithTarget();
             keepBulletGoingAfterCollision();

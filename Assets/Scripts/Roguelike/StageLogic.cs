@@ -49,6 +49,7 @@ public class StageLogic : MonoBehaviour {
 
     }
 
+    // Handles game loop (roguelike run) logic
     IEnumerator BeginRoguelikeRun() {
         StartCoroutine(CountClearTime());
         WorldNumber = 1; StageNumber = 1;
@@ -94,7 +95,11 @@ public class StageLogic : MonoBehaviour {
                 AddEnemyListeners(bossClusterPrefab.transform.GetChild(0), Difficulty);
                 yield return new WaitForSeconds(3f);
                 // cue boss banner
-                _cueBossBanner.Invoke(bossClusterPrefab.transform.GetChild(0).GetComponent<DisplayData>().DisplayInfo);
+                
+                // cluster collection's stage and world must match current stage and world!
+                _cueBossBanner.Invoke(bossClusterPrefab.transform.GetChild(0).GetComponent<DisplayData>().DisplayInfo); // assumes first cluster in scene will be boss or else it will bug out!
+
+
                 AudioManager.Instance.PlayMusic("It's Getting Harder");
                 yield return new WaitForSeconds(4f);
                 setPlayerControls(true);
@@ -164,7 +169,7 @@ public class StageLogic : MonoBehaviour {
         if (trans.CompareTag("Enemy")) {
             EnemyOnHit enemyOnHit = trans.GetComponent<EnemyOnHit>();
             enemyOnHit.GiveMulch.AddListener(OnEnemyKill);
-            //enemyOnHit.MaxHealth = (int)Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.03f, 1.06f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f));
+            //enemyOnHit.MaxHealth = (int)Mathf.Clamp((enemyOnHit.MaxHealth * (Mathf.Pow(1.03f, 1.06f * difficulty) - .4f)), 1f, Mathf.Pow(2f, 16f)); // dynamic scaling for enemy hp
             enemyOnHit.setCurrHealthToMaxHealth();
         }
     }

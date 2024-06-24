@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 801285b6956b968439313f07de42b045, type: 3}
-  m_Name: 1-5
+  m_Name: SnailBoss2
   m_EditorClassIdentifier: 
   Clusters:
-  - {fileID: 8247984190089710094, guid: 8af7a84f74fd1794f90c780d9122276c, type: 3}
+  - {fileID: 8247984190089710094, guid: ea9515b4710dd2142a822cf4a9dbc739, type: 3}
   WorldNumber: 1
-  StageNumber: 5
+  StageNumber: 13

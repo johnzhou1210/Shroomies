@@ -3837,14 +3837,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clusterCollections:
-  - {fileID: 11400000, guid: d6fe51ffc2a1e094b8591dcc1acef283, type: 2}
-  - {fileID: 11400000, guid: 1cf573b9b68f3ae4ea60e2ee5924e3fa, type: 2}
-  - {fileID: 11400000, guid: fc4f62ed503c1ef48a2212dfb1ddf072, type: 2}
-  - {fileID: 11400000, guid: 30f15c2a43516ec4b8d29e0fcc228b9d, type: 2}
+  - {fileID: 11400000, guid: b0eb3988acd2f364aa94b49ab0028562, type: 2}
+  - {fileID: 11400000, guid: 57ccf79ceeb9c7a4194defda9ca45e95, type: 2}
+  - {fileID: 11400000, guid: 3b9398697930d2e4380eb2133f9284c6, type: 2}
+  - {fileID: 11400000, guid: 209bfad51b65e514797cd4b4c7506265, type: 2}
   - {fileID: 11400000, guid: 99d72458a2dd80c43b50658e4955e19b, type: 2}
   - {fileID: 11400000, guid: c58e07e2fc188cc4da1848a90909051a, type: 2}
-  - {fileID: 11400000, guid: 5772f59aac5c6c942a13ff324c6165fc, type: 2}
-  - {fileID: 11400000, guid: 7925dac022e81c243aa209094014b045, type: 2}
+  - {fileID: 11400000, guid: e0be23d7bd589124abda85a07ba864ab, type: 2}
+  - {fileID: 11400000, guid: f2c303364ce375c46ba04f3632cae9f2, type: 2}
   - {fileID: 11400000, guid: 91ee4eb454680bd48889d3763313ce90, type: 2}
   - {fileID: 11400000, guid: 91784a278d553224ebf14adab9afee22, type: 2}
   - {fileID: 11400000, guid: e44fbb484d62240499a748f5f49d4ee0, type: 2}
@@ -3945,7 +3945,7 @@ MonoBehaviour:
   _stageBeginWaitDelay: 0
   _interstageDelay: 15
   _numStagesPerWorldIncludingBoss: 13
-  _bossStage: 5
+  _bossStage: 7
   _bossStage2: 13
   _upgradeFrame: {fileID: 4616672574126157272, guid: ca89c2fe1b691ea4399361c016e6c9b0, type: 3}
   _uiCanvas: {fileID: 527809549}
@@ -3960,7 +3960,7 @@ MonoBehaviour:
       m_Calls: []
   WorldNumber: 1
   StageNumber: 5
-  AccumulatedMulch: 0
+  AccumulatedMulch: 10000
   AccumulatedShroomies: 0
   AccumulatedShroomItUps: 0
   ShroomieBaseCost: 50
@@ -6552,7 +6552,7 @@ Camera:
   far clip plane: 1000
   field of view: 82.4
   orthographic: 1
-  orthographic size: 5.0166316
+  orthographic size: 5.0153546
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

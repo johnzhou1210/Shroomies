@@ -36,6 +36,7 @@ public class BasicBarrel : BarrelConfiguration
                 dmgInfo.SetShooter(transform.parent);
                 BulletInfo newBulletInfo = BulletPool.BulletPoolInstance.GetBullet(bulletType, ownership, dmgInfo);
                 GameObject newBullet = newBulletInfo.Reference;
+                
                 newBullet.transform.position = child.position;
                 newBullet.transform.rotation = child.rotation;
                 newBullet.GetComponent<Bullet>().SetVelocity(child.up * dmgInfo.Velocity);
@@ -43,6 +44,7 @@ public class BasicBarrel : BarrelConfiguration
                 createdBullets.Add(newBullet);
             }
         }
+
         // make all bullets ignore each other
         for (int i = 0; i < createdBullets.Count - 1; i++) {
             for (int j = i + 1; j < createdBullets.Count; j++) {
