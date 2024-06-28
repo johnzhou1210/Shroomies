@@ -82,6 +82,10 @@ public class Bullet : MonoBehaviour {
         Debug.Log("collision enter " + hitTarget);
 
         void bounce() {
+            if (hitTarget.CompareTag("Indestructible")) {
+                Destroy();
+            }
+
             ContactPoint2D contact = collision.contacts[0];
             // reflect our old velocity off the contact point's normal vector
             Vector2 reflectedVelocity = Vector3.Reflect(_lastVelocity, contact.normal);
