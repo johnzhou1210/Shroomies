@@ -20,6 +20,7 @@ TagManager:
   - Banner
   - Text
   - Overlay
+  - Indestructible
   layers:
   - Default
   - TransparentFX
