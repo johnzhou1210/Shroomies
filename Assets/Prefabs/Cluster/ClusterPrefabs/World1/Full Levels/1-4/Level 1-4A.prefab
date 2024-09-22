@@ -99,15 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPosition: {x: -1.3103973, y: 7, z: 0}
-<<<<<<< HEAD
-  MinMovementSpeed: 3
-  MaxMovementSpeed: 3.5
-  MovementSpeed: 3.6253254
-=======
   MinMovementSpeed: 4
   MaxMovementSpeed: 4.5
   MovementSpeed: 4.018728
->>>>>>> 16aea6ccb1fecd657a85c21bb2bdadbc40bd3d49
   NextClusterMinDelay: 1
   NextClusterMaxDelay: 1
 --- !u!114 &515540422472329140
