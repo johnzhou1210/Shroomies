@@ -37,7 +37,7 @@ public class ShroomieFormation : MonoBehaviour
             GetComponent<ShroomiesUpgradeController>().RequestShroomiesUpgradeUpdate.AddListener(newShroomie.GetComponent<ShroomieShooting>().OnUpgradeUpdate);
             // also add listener for barrel respositioner for double shots
             GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().BulletTypeEvent.AddListener(newShroomie.transform.Find("BarrelConfigs").Find("BarrelLv1").GetComponent<DoubleShotBarrelWidthSpacing>().setSpacing);
-            //Debug.Log("Added barrel listener");
+            Debug.Log("Added barrel listener");
             newShroomie.transform.localPosition = desiredShroomie.SpawnPosition;
             spawned++;
             newShroomie.name = spawned.ToString();

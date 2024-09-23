@@ -18,6 +18,9 @@ public class DoubleShotBarrelWidthSpacing : MonoBehaviour
     }
 
     public void setSpacing(BulletType bulletType) {
+        if (_leftBarrel == null || _rightBarrel == null) {
+            return;
+        }
         Debug.Log("set spacing called " + bulletType);
         Debug.Log(_leftBarrel); Debug.Log(_rightBarrel);
         // determine if current shroomie is a player or a shroomie
