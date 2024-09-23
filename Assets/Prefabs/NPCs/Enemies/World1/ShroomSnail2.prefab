@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 5937060744113767173}
   m_Layer: 11
   m_Name: Shell
-  m_TagString: Obstacle
+  m_TagString: Indestructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -998,6 +998,12 @@ MonoBehaviour:
   CurrentHealth: 0
   MulchReward: 2023
   Animator: {fileID: 0}
+  ParticlesExplosion: {fileID: 0}
+  ParticlesBits: {fileID: 0}
+  ParticlesDeath: 0
+  ParticlesAmount: 1
+  BitsAmount: 5
+  mymat: {fileID: 0}
   OnDeath:
     m_PersistentCalls:
       m_Calls:

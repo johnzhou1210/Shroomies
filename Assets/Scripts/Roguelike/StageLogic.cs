@@ -27,8 +27,11 @@ public class StageLogic : MonoBehaviour {
 
     public UnityBoolEvent InvokeEnableBossHPDisplay;
 
-    public int WorldNumber = 1;
-    public int StageNumber = 13;
+    [HideInInspector] public int WorldNumber = 1;
+    [HideInInspector] public int StageNumber = 1;
+
+    [SerializeField] int StartWorld = 1;
+    [SerializeField] int StartStage = 1;
 
     public int AccumulatedMulch = 0;
     public int AccumulatedShroomies = 0;
@@ -55,7 +58,7 @@ public class StageLogic : MonoBehaviour {
 
     IEnumerator BeginRoguelikeRun() {
         StartCoroutine(CountClearTime());
-        WorldNumber = 1; StageNumber = 1;
+        WorldNumber = StartWorld; StageNumber = StartStage;
         while (StageNumber <= _numStagesPerWorldIncludingBoss) {
             setPlayerControls(false);
             Difficulty = (WorldNumber * 2) + StageNumber;

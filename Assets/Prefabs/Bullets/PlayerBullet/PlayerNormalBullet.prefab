@@ -55,6 +55,7 @@ MonoBehaviour:
   _wideBulletUndamaged: {fileID: 0}
   _wideBulletDamaged: {fileID: 0}
   ParticlesLightning: {fileID: 7289316772650338732, guid: 6a2a6d63dbfe64840ad1630514288eb9, type: 3}
+  LightningAmount: 4
   _rigidBody: {fileID: -6347954244632682985}
 --- !u!212 &7443703293665180681
 SpriteRenderer:
@@ -130,7 +131,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 200
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1

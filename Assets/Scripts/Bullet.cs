@@ -59,13 +59,13 @@ public class Bullet : MonoBehaviour {
     }
 
     public void Destroy() {
+        HitTargets.Clear();
         Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
     }
 
     private void OnDisable() {
         _rigidBody.velocity = Vector2.zero;
-        HitTargets.Clear();
         CancelInvoke();
     }
 
@@ -75,14 +75,24 @@ public class Bullet : MonoBehaviour {
     }
     bool bulletCanClearBullets(Bullet b) {
         return b._bulletClearLimit > 0;
-            
+
     }
 
 
     void OnCollisionEnter2D(Collision2D collision) {
+
+
         GameObject hitTarget = collision.gameObject;
 
+        Debug.LogWarning("COLLISION ENTER WITH " + collision.gameObject + " and " + gameObject + "!");
+
+        if (hitTarget.CompareTag("Indestructible") && !CompareTag("Indestructible")) { // indestructible means that anything bullet that touches it will be disintegrated, with the exception of another indestructible object.
+
+            Destroy();
+        }
+
         void bounce() {
+
             ContactPoint2D contact = collision.contacts[0];
             // reflect our old velocity off the contact point's normal vector
             Vector2 reflectedVelocity = Vector3.Reflect(_lastVelocity, contact.normal);
@@ -113,6 +123,7 @@ public class Bullet : MonoBehaviour {
 
 
         if (transform.position.y < 5.1f) {
+
             if (((hitTarget.CompareTag("Enemy") && Ownership == BulletOwnershipType.ENEMY) || (hitTarget.CompareTag("Player") && Ownership == BulletOwnershipType.PLAYER))
                   ) {
                 if (hitTarget.layer == 11) {
@@ -196,7 +207,7 @@ public class Bullet : MonoBehaviour {
                     bounce();
                 } else {
                     // if this is a clearing bullet
-                    if (bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget) && !sameSource(hitTarget) && _rigidBody.mass > hitTarget.GetComponent<Rigidbody2D>().mass) { 
+                    if (bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget) && !sameSource(hitTarget) && _rigidBody.mass > hitTarget.GetComponent<Rigidbody2D>().mass) {
                         // destroy other bullet
                         if (Type == BulletType.WIDE1 && Ownership == BulletOwnershipType.ENEMY) {
                             GetComponent<SpriteRenderer>().sprite = _wideBulletDamaged;
@@ -209,16 +220,33 @@ public class Bullet : MonoBehaviour {
                             Destroy();
                         }
                     } else {
-                        if (!bulletCanClearBullets(this) || gameObjectIsABullet(hitTarget)) {
+
+                        // piercing bullets cannot pierce through clearing bullets
+
+
+
+                        if (!bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget) && bulletCanClearBullets(hitTarget.GetComponent<Bullet>())) {
+                            Destroy();
+                        } else {
                             // just "pierce" it
-                            // ignore collisions with this target from now on
-                            //Debug.Log("ignoring collisions involving " + transform.name + " with " + hitTarget.name);
+                            //    // ignore collisions with this target from now on
+                            Debug.LogWarning("ignoring collisions involving " + transform.name + " with " + hitTarget.name);
                             ignoreCollisionsWithTarget();
                             keepBulletGoingAfterCollision();
-                        } else {
-                            //Debug.Log("call 5 " + transform.name + " collision enter with " + hitTarget.name);
-                            Destroy();
                         }
+
+                        // default case is that they pass through each other
+
+                        //if (!bulletCanClearBullets(this) || gameObjectIsABullet(hitTarget)) {
+                        //    // just "pierce" it
+                        //    // ignore collisions with this target from now on
+                        //    Debug.LogWarning("ignoring collisions involving " + transform.name + " with " + hitTarget.name);
+                        //    ignoreCollisionsWithTarget();
+                        //    keepBulletGoingAfterCollision();
+                        //} else {
+
+                        //    Destroy();
+                        //}
 
                     }
                 }

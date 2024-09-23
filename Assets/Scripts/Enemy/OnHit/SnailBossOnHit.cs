@@ -26,21 +26,11 @@ public class SnailBossOnHit : EnemyOnHit, IDamageable
             StartCoroutine(ExplosionEffect(64, 1.4f));
             AudioManager.Instance.PlaySFX("Enemy Death Sound");
             StartCoroutine(Flicker(3, .24f));
-            Invoke("HideDeadBody", 7f);
+            Invoke(nameof(HideDeadBody), 7f);
         } else {
-            //StartCoroutine(Flicker(1, .0733f));
+            StartCoroutine(Flicker(1, .12f));
         }
         
-    }
-
-    IEnumerator Flicker(int amountOfTimes, float flickerDelay) {
-        for (int i = 0; i < amountOfTimes; i++) {
-            yield return new WaitForSeconds(flickerDelay / 2f);
-            SetColorOfAllEnabledSprites(Color.clear);
-            yield return new WaitForSeconds(flickerDelay / 2f);
-            SetColorOfAllEnabledSprites(Color.white);
-        } 
-        yield return null;
     }
 
     IEnumerator LowHealthExplosion() {
@@ -84,9 +74,7 @@ public class SnailBossOnHit : EnemyOnHit, IDamageable
 
     // Start is called before the first frame update
     void Start() {
-        if (GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().StageNumber == 13) {
-            MulchReward = 1337;
-        }
+      
         StartCoroutine(AttachHPBarListener());
         Debug.Log("currhealth is " + CurrentHealth + " and maxhealth is " + MaxHealth);
         Hitbox = GetComponent<Collider2D>();

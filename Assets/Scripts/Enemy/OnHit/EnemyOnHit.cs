@@ -4,8 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyOnHit : MonoBehaviour, IDamageable
-{
+public class EnemyOnHit : MonoBehaviour, IDamageable {
     public int MaxHealth = 5;
     public bool alreadyCounted = false;
     public int CurrentHealth;
@@ -73,7 +72,7 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
         } else {
             StartCoroutine(Flicker(1, .12f));
         }
-        
+
     }
 
     public bool isDead() {
@@ -88,16 +87,25 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
         }
     }
 
-    IEnumerator Flicker(int amountOfTimes, float flickerDelay) {
+    protected void SetDescendantsMaterialFloat(string name, float value) {
+        foreach (SpriteRenderer rend in GetComponentsInChildren<SpriteRenderer>()) {
+            rend.material.SetFloat(name, value);
+        }
+    }
+
+    protected void SetDescendantsMaterialColor(string name, Color value) {
+        foreach (SpriteRenderer rend in GetComponentsInChildren<SpriteRenderer>()) {
+            rend.material.SetColor(name, value);
+        }
+    }
+
+    protected IEnumerator Flicker(int amountOfTimes, float flickerDelay) {
         for (int i = 0; i < amountOfTimes; i++) {
             yield return new WaitForSeconds(flickerDelay / 2f);
-            //SetColorOfAllEnabledSprites(Color.clear);
-            //SetColorOfAllEnabledSprites(ChangePalette.holder.color2);
 
-            //material.SetFloat("_Flash", 1);
-            GetComponentInChildren<SpriteRenderer>().material.SetColor("_ColorFlash", ChangePalette.holder.color2);
-            GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 1);
-            //SetColorOfAllEnabledSprites(ChangePalette.holder.color2);
+            SetDescendantsMaterialColor("_ColorFlash", ChangePalette.holder.color2);
+
+            SetDescendantsMaterialFloat("_Flash", 1);
 
             ParticleSystem.MainModule psMiniBitsMAIN = ParticlesBits.main;
             psMiniBitsMAIN.startColor = ChangePalette.holder.color3;
@@ -107,11 +115,8 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
             Instantiate(ParticlesBits, psBitsOffset, Quaternion.identity);
 
             yield return new WaitForSeconds(flickerDelay / 2f);
-            //SetColorOfAllEnabledSprites(Color.white);
 
-            //material.SetFloat("_Flash", 0);
-            GetComponentInChildren<SpriteRenderer>().material.SetFloat("_Flash", 0);
-            //SetColorOfAllEnabledSprites(Color.white);
+            SetDescendantsMaterialFloat("_Flash", 0);
 
             GetComponentInChildren<SpriteRenderer>().material = mymat;
 
@@ -131,7 +136,7 @@ public class EnemyOnHit : MonoBehaviour, IDamageable
     }
 
     public void setCurrHealthToMaxHealth() {
-        
+
         CurrentHealth = MaxHealth;
     }
 }

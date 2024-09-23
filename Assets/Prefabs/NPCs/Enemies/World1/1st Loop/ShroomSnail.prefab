@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 5937060744113767173}
   m_Layer: 11
   m_Name: Shell
-  m_TagString: Obstacle
+  m_TagString: Indestructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -993,10 +993,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0596a0c66407714d8b69619a7d7745f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 6666
+  MaxHealth: 4444
   alreadyCounted: 0
   CurrentHealth: 0
-  MulchReward: 665
+  MulchReward: 1337
   Animator: {fileID: 0}
   ParticlesExplosion: {fileID: 7289316772650338732, guid: 8f3c9a49a3e3f004b8abde9ee2f2122c, type: 3}
   ParticlesBits: {fileID: 7289316772650338732, guid: 0201b36b76982c5459fc03b55ae78a49, type: 3}

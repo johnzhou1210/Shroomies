@@ -24,16 +24,6 @@ public class DandelionOnHit : EnemyOnHit, IDamageable
         
     }
 
-    IEnumerator Flicker(int amountOfTimes, float flickerDelay) {
-        for (int i = 0; i < amountOfTimes; i++) {
-            yield return new WaitForSeconds(flickerDelay / 2f);
-            SetColorOfAllEnabledSprites(Color.clear);
-            yield return new WaitForSeconds(flickerDelay / 2f);
-            SetColorOfAllEnabledSprites(Color.white);
-        } 
-        yield return null;
-    }
-
     public void HideDeadBody() {
         SetColorOfAllEnabledSprites(Color.clear);
         gameObject.SetActive(false);

@@ -49,7 +49,7 @@ MonoBehaviour:
   SpawnPosition: {x: 0, y: 0, z: 0}
   MinMovementSpeed: 0.5
   MaxMovementSpeed: 0.6
-  MovementSpeed: 0.5762492
+  MovementSpeed: 0.5685638
   NextClusterMinDelay: 4
   NextClusterMaxDelay: 7
 --- !u!114 &-2698148348787476012
@@ -85,14 +85,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: -876546973899608171, guid: 9303b20ec5303c24ab104ff95bf4818c, type: 3}
-    - target: {fileID: 5064359560851857720, guid: 89ff9ba53f095f0439b6065870f0c8c8, type: 3}
-      propertyPath: MaxHealth
-      value: 4444
-      objectReference: {fileID: 0}
-    - target: {fileID: 5064359560851857720, guid: 89ff9ba53f095f0439b6065870f0c8c8, type: 3}
-      propertyPath: MulchReward
-      value: 900
-      objectReference: {fileID: 0}
     - target: {fileID: 6078385167065827571, guid: 89ff9ba53f095f0439b6065870f0c8c8, type: 3}
       propertyPath: m_Name
       value: ShroomSnail
