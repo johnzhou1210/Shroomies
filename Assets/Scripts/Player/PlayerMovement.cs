@@ -18,16 +18,13 @@ public class PlayerMovement : MonoBehaviour {
 
     Rigidbody2D _rigidBody; // _playerPrefab's rigidbody2D component.
 
-    private void OnEnable() {
-        DragPlayer.OnUpdatePlayerPosition += UpdateDragPos;
-    }
-
-    private void OnDisable() {
+    private void OnDestroy() {
         DragPlayer.OnUpdatePlayerPosition -= UpdateDragPos;
     }
 
 
     private void Start() {
+        DragPlayer.OnUpdatePlayerPosition += UpdateDragPos;
         _rigidBody = GetComponent<Rigidbody2D>();
         playerInputActions = InputManager.InputActions;
         
