@@ -2234,8 +2234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33d9bd9c9563a843979428be2d50af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeed: 0
-  verticalSpeed: 0.05
+  HorizontalSpeed: 0
+  VerticalSpeed: 0.2
 --- !u!23 &238095322
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7242,8 +7242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33d9bd9c9563a843979428be2d50af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeed: 0
-  verticalSpeed: 0.075
+  HorizontalSpeed: 0
+  VerticalSpeed: 0.2
 --- !u!23 &740125964
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15434,22 +15434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb2333c60981c744b17aaf7527053b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pooledBullets:
-  - {fileID: 4305114188465493893, guid: 335feb82d9d57134d88eb174b6ae3637, type: 3}
-  - {fileID: 6326310165885061096, guid: 2aa6c7352f40db4469c985918937f979, type: 3}
-  - {fileID: 4305114188465493893, guid: 171e401679b919b4e96dcb329b3bae1d, type: 3}
-  - {fileID: 4305114188465493893, guid: 47354dfad428adc4c8b552d217e47cbd, type: 3}
-  - {fileID: 4305114188465493893, guid: b3278aa0aa79aed4e82ee31134a401ef, type: 3}
-  - {fileID: 7876497311133718510, guid: 5f67c0936f32ff94eafd57dd9ff2af11, type: 3}
-  - {fileID: 4305114188465493893, guid: 2bf9d37f19051da41ba03133be5fb86b, type: 3}
-  - {fileID: 4305114188465493893, guid: cb4e3a51ae2f0614998fdabf06b8a3a1, type: 3}
-  - {fileID: 4305114188465493893, guid: b2db62f2360fa25438c83a4cb1b6e99d, type: 3}
-  - {fileID: 4305114188465493893, guid: fe0c12426e46c494a99a668fc9e3390d, type: 3}
-  - {fileID: 7045535884582309644, guid: 7b0ca4b395d9b5d49a1a1ce5f73bd27a, type: 3}
-  - {fileID: 4305114188465493893, guid: 747af38bc1a20c94e906673bec541e63, type: 3}
-  - {fileID: 4305114188465493893, guid: 3b9da5df35096d14bbc6aaca95f88779, type: 3}
-  - {fileID: 4305114188465493893, guid: 6de88ae106aa62247b690d6af6baaa0b, type: 3}
-  - {fileID: 4305114188465493893, guid: 1ab203cc44ae0314192856383c8e89b4, type: 3}
 --- !u!1 &1713352154
 GameObject:
   m_ObjectHideFlags: 0
@@ -16646,8 +16630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33d9bd9c9563a843979428be2d50af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeed: 0
-  verticalSpeed: 0.01
+  HorizontalSpeed: 0
+  VerticalSpeed: 0.2
 --- !u!1 &1878821627
 GameObject:
   m_ObjectHideFlags: 0
@@ -18860,6 +18844,14 @@ PrefabInstance:
       propertyPath: ParticlesBits
       value: 
       objectReference: {fileID: 7289316772650338732, guid: 0201b36b76982c5459fc03b55ae78a49, type: 3}
+    - target: {fileID: 7913454589825946194, guid: b1249b06b44f4a447b5efb2d892a20bb, type: 3}
+      propertyPath: formationData
+      value: 
+      objectReference: {fileID: 11400000, guid: f12e2a48d31d0db4abae02398e720eca, type: 2}
+    - target: {fileID: 7913454589825946194, guid: b1249b06b44f4a447b5efb2d892a20bb, type: 3}
+      propertyPath: shroomiePrefab
+      value: 
+      objectReference: {fileID: 2552111602614107038, guid: c19f9fd706979ab46951edd71093c495, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
