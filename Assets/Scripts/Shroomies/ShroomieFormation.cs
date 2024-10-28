@@ -12,8 +12,8 @@ public class ShroomiePositionData {
 
 public class ShroomieFormation : MonoBehaviour
 {
-    [SerializeField] ShroomiesFormationData FormationData;
-    [SerializeField] GameObject _shroomiePrefab;
+    [SerializeField] ShroomiesFormationData formationData;
+    [SerializeField] GameObject shroomiePrefab;
 
     public List<GameObject> ShroomieObjects;
 
@@ -23,27 +23,21 @@ public class ShroomieFormation : MonoBehaviour
     }
 
     IEnumerator InitializeFormation() {
-        yield return new WaitUntil (() => FormationData != null && FormationData.Data != null && FormationData.Data.Count > 0);
+        yield return new WaitUntil (() => formationData != null && formationData.Data != null && formationData.Data.Count > 0);
         // spawn formation from given instructions.
         int spawned = 0;
-        while (spawned < FormationData.Data.Count) {
+        while (spawned < formationData.Data.Count) {
             // create shroomie and place it.
-            GameObject newShroomie = Instantiate(_shroomiePrefab, transform);
-            Debug.Log("instantiated shroomie");
+            GameObject newShroomie = Instantiate(shroomiePrefab, transform);
             // add listener to upgrade update event
             GetComponent<ShroomiesUpgradeController>().RequestShroomiesUpgradeUpdate.AddListener(newShroomie.GetComponent<ShroomieShooting>().OnUpgradeUpdate);
-            Debug.Log("instantiated shroomie2");
             // also add listener for barrel respositioner for double shots
             GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().BulletTypeEvent.AddListener(newShroomie.transform.Find("BarrelConfigs").Find("BarrelLv1").GetComponent<DoubleShotBarrelWidthSpacing>().setSpacing);
-            Debug.Log("instantiated shroomie3");
-            Debug.Log(spawned);
             //Debug.Log("Added barrel listener");
             // find desired number
-            ShroomiePositionData desiredShroomie = FormationData.Data[spawned];
+            ShroomiePositionData desiredShroomie = formationData.Data[spawned];
             newShroomie.transform.localPosition = desiredShroomie.SpawnPosition;
-            Debug.Log("instantiated shroomie4");
             spawned++;
-            
             newShroomie.name = spawned.ToString();
             ShroomieObjects.Add(newShroomie);
             newShroomie.SetActive(false);

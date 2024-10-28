@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class ScrollBackground : MonoBehaviour
 {
-    public float horizontalSpeed = 0;
-    public float verticalSpeed = .2f;
-    Renderer _renderer;
+    public float HorizontalSpeed = 0;
+    public float VerticalSpeed = .2f;
+    new Renderer renderer;
 
     private void Start() {
-        _renderer = GetComponent<Renderer>();
+        renderer = GetComponent<Renderer>();
     }
 
     private void FixedUpdate() {
-        Vector2 offset = new Vector2(Time.fixedTime * horizontalSpeed, Time.fixedTime * verticalSpeed);
-        _renderer.material.mainTextureOffset = offset;
+        Vector2 offset = new Vector2(Time.fixedTime * HorizontalSpeed, Time.fixedTime * VerticalSpeed);
+        renderer.material.mainTextureOffset = offset;
     }
 
 }

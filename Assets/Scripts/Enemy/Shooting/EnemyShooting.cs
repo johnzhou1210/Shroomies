@@ -42,7 +42,6 @@ public class EnemyShooting : MonoBehaviour {
 
         // Flower will just loop basic bullet attack every 3-4 seconds
         while (StateManager.CurrentState != StateManager.DeadState) {
-            Debug.Log("in loop. current state is " + StateManager.CurrentState);
             yield return new WaitForSeconds(FireRate / 2f);
 
             if (transform.position.y <= StartShootY && transform.position.y >= EndShootY) {
@@ -53,7 +52,6 @@ public class EnemyShooting : MonoBehaviour {
             yield return new WaitForSeconds(FireRate / 2f);
 
         }
-        Debug.Log(" out of loop ");
         yield return null;
     }
 
@@ -73,7 +71,6 @@ public class EnemyShooting : MonoBehaviour {
         // shoot bullets depending on current barrel configuration.
         BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, 0, ObstaclePierceCount, BulletsBounce, BulletClearLimit);
         CurrentBarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.ENEMY, dmgInfo);
-        Debug.Log("Shot enemy bullet");
         yield return null;
     }
 

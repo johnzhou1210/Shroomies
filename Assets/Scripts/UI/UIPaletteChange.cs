@@ -18,22 +18,22 @@ public class UIPaletteChange : MonoBehaviour
 
     private void OnEnable()
     {
-        EventBroker.onPaletteChange += changeColor;
+        EventBroker.OnPaletteChange += ChangeColor;
 
 
     }
 
     private void OnDisable()
     {
-        EventBroker.onPaletteChange -= changeColor;
+        EventBroker.OnPaletteChange -= ChangeColor;
     }
 
     private void Start() {
-        changeColor();
+        ChangeColor();
     }
 
 
-    public void changeColor()
+    public void ChangeColor()
     {
 
         if (gameObject.CompareTag("Banner"))
