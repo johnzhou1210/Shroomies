@@ -8,7 +8,7 @@ public class ResultScreenContinue : MonoBehaviour {
     public bool Won = false;
 
     private void Update() {
-        if (InputManager.inputActions.UI.Enter.WasPressedThisFrame() || Input.touchCount > 0) {
+        if (InputManager.InputActions.UI.Enter.WasPressedThisFrame() || Input.touchCount > 0) {
             if (Won) {
                 AudioManager.Instance.StopAllMusic(false);
                 SceneManager.LoadScene(0);

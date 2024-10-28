@@ -48,10 +48,10 @@ public class ShroomiesUpgradeController : MonoBehaviour
     private void Start() {
     }
 
-    void onSingleTap() {
+    void OnSingleTap() {
     }
 
-    void onDoubleTap() {
+    void OnDoubleTap() {
         Toggle = !Toggle;
     }
 

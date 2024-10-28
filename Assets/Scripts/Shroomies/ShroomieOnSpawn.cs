@@ -22,7 +22,7 @@ public class ShroomieOnSpawn : MonoBehaviour
     {
         //particles
         ParticleSystem.MainModule psBitsMAIN = ParticlesBits.main;
-        psBitsMAIN.startColor = ChangePalette.holder.color1;
+        psBitsMAIN.startColor = ChangePalette.Holder.color1;
         psBitsMAIN.maxParticles = 2;
         Vector3 psBitsOffset = GetComponent<Transform>().position;
         psBitsOffset.y += 1f;

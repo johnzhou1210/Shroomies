@@ -45,27 +45,22 @@ public class EnemyOnHit : MonoBehaviour, IDamageable {
             psDeathTSA.rowIndex = ParticlesDeath;
 
             ParticleSystem.MainModule psDeathMAIN = ParticlesExplosion.main;
-            psDeathMAIN.startColor = ChangePalette.holder.color1;
+            psDeathMAIN.startColor = ChangePalette.Holder.color1;
             psDeathMAIN.maxParticles = ParticlesAmount;
             Vector3 psDeathOffset = GetComponent<Transform>().position;
             psDeathOffset.y += 0.1f;
             Instantiate(ParticlesExplosion, psDeathOffset, Quaternion.identity);
 
             ParticleSystem.MainModule psBitsMAIN = ParticlesBits.main;
-            psBitsMAIN.startColor = ChangePalette.holder.color3;
+            psBitsMAIN.startColor = ChangePalette.Holder.color3;
             psBitsMAIN.maxParticles = BitsAmount;
             Vector3 psBitsOffset = GetComponent<Transform>().position;
             psBitsOffset.y += 0.25f;
             Instantiate(ParticlesBits, psBitsOffset, Quaternion.identity);
 
-            psBitsMAIN.startColor = ChangePalette.holder.color1;
+            psBitsMAIN.startColor = ChangePalette.Holder.color1;
             psBitsMAIN.maxParticles = (int)Mathf.Floor((float)BitsAmount / 2f);
             Instantiate(ParticlesBits, psBitsOffset, Quaternion.identity);
-
-            //psTSA.rowIndex = 1;
-            //psMAIN.startColor = ChangePalette.holder.color2;
-            //psMAIN.maxParticles = 1;
-            //Instantiate(ps, transform.position, Quaternion.identity);
 
             Camera.main.GetComponent<CameraShaker>().Shake(.01f, .1f);
 
@@ -103,12 +98,12 @@ public class EnemyOnHit : MonoBehaviour, IDamageable {
         for (int i = 0; i < amountOfTimes; i++) {
             yield return new WaitForSeconds(flickerDelay / 2f);
 
-            SetDescendantsMaterialColor("_ColorFlash", ChangePalette.holder.color2);
+            SetDescendantsMaterialColor("_ColorFlash", ChangePalette.Holder.color2);
 
             SetDescendantsMaterialFloat("_Flash", 1);
 
             ParticleSystem.MainModule psMiniBitsMAIN = ParticlesBits.main;
-            psMiniBitsMAIN.startColor = ChangePalette.holder.color3;
+            psMiniBitsMAIN.startColor = ChangePalette.Holder.color3;
             psMiniBitsMAIN.maxParticles = (int)Mathf.Floor((float)BitsAmount / 3f);
             Vector3 psBitsOffset = GetComponent<Transform>().position;
             psBitsOffset.y += 0.5f;

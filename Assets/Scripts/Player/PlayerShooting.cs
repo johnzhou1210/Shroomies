@@ -7,17 +7,10 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PlayerStateManager))]
 public class PlayerShooting : MonoBehaviour {
-    private PlayerInputActions playerInputActions;
-
-    public bool Toggle = false;
-    float _cooldown = 1f;
-    [SerializeField] float _baseFireRate = .5f, _baseCritRate = .05f, _baseBulletVelocity = 8f;
-    [SerializeField] int _baseAttackPower = 3, _basePierceCount = 0;
-
-
     [Range(.01f, 5f)] public float FireRate = .5f;
     [Range(0, 8f)] public float BulletVelocity = 5f;
-    [Range(0, 64)] public int AttackPower = 3;
+    public bool Toggle = false;
+    public int AttackPower = 100;
     [Range(0, 1f)] public float CritRate = .05f;
     [Range(0, 32f)] public int PierceCount = 0, BulletClearLimit = 0;
     public bool BulletsBounce = false;
@@ -27,26 +20,34 @@ public class PlayerShooting : MonoBehaviour {
     public ShroomiesUpgradeController ShroomiesController;
 
 
-    Animator _animator;
-    PlayerStateManager _stateManager;
-    [SerializeField] List<BarrelConfiguration> _barrelConfigurations;
-    BarrelConfiguration _currentBarrelConfiguration;
+
+    [SerializeField] private float baseFireRate = .5f, baseCritRate = .05f, baseBulletVelocity = 8f;
+    [SerializeField] private int baseAttackPower = 3, basePierceCount = 0;
+    [SerializeField] private List<BarrelConfiguration> _barrelConfigurations;
+
+    private float cooldown = 1f;
+
+    private Animator animator;
+    private PlayerStateManager stateManager;
+    private BarrelConfiguration currentBarrelConfiguration;
+    private PlayerInputActions playerInputActions;
+
 
     private void Awake() {
-        playerInputActions = InputManager.inputActions;
+        playerInputActions = InputManager.InputActions;
     }
 
     private void Start() {
         ShroomiesController = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomiesUpgradeController>();
 
-        _animator = GetComponent<Animator>();
-        _stateManager = GetComponent<PlayerStateManager>();
-        _currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
-        FireRate = _baseFireRate;
-        PierceCount = _basePierceCount;
-        BulletVelocity = _baseBulletVelocity;
-        AttackPower = _baseAttackPower;
-        CritRate = _baseCritRate;
+        animator = GetComponent<Animator>();
+        stateManager = GetComponent<PlayerStateManager>();
+        currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
+        FireRate = baseFireRate;
+        PierceCount = basePierceCount;
+        BulletVelocity = baseBulletVelocity;
+        AttackPower = baseAttackPower;
+        CritRate = baseCritRate;
 
         ShroomiesController.AttackPower = AttackPower / 5;
 
@@ -59,41 +60,40 @@ public class PlayerShooting : MonoBehaviour {
 
 
     private void Update() {
-        _cooldown = Mathf.Clamp(_cooldown - Time.deltaTime, 0, FireRate);
-        if (Toggle && _cooldown <= 0f && _stateManager.CurrentState == _stateManager.AliveState) {
+        cooldown = Mathf.Clamp(cooldown - Time.deltaTime, 0, FireRate);
+        if (Toggle && cooldown <= 0f && stateManager.CurrentState == stateManager.AliveState) {
             // shoot bullet
-            StartCoroutine(fireAnim());
+            StartCoroutine(FireAnimCoroutine());
             // reset cooldown
-            _cooldown = FireRate;
+            cooldown = FireRate;
         }
-        if (_currentBarrelConfiguration != _barrelConfigurations[ExtraBulletUpgradeLevel]) {
-            _currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
+        if (currentBarrelConfiguration != _barrelConfigurations[ExtraBulletUpgradeLevel]) {
+            currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
         }
 
     }
 
-    IEnumerator fireAnim() {
+    IEnumerator FireAnimCoroutine() {
         // play animation
-        _animator.speed = 1 / FireRate;
-        _animator.Play("PlayerShoot");
+        animator.speed = 1 / FireRate;
+        animator.Play("PlayerShoot");
         yield return null;
     }
 
     public void Fire() {
-        StartCoroutine(fire());
+        StartCoroutine(FireCoroutine());
     }
 
-    IEnumerator fire() {
+    IEnumerator FireCoroutine() {
         // shoot bullets depending on current barrel configuration.
         AudioManager.Instance.PlaySFX("Player Shoot Sound");
         BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, CritRate, PierceCount, BulletsBounce, BulletClearLimit);
-        _currentBarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.PLAYER, dmgInfo);
-        Debug.Log("Shot bullet");
+        currentBarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.PLAYER, dmgInfo);
         yield return null;
     }
 
     public void RateOfFireUpgrade(float reduction, bool shroomItUp) {
-        FireRate = _baseFireRate * (1 - reduction);
+        FireRate = baseFireRate * (1 - reduction);
         if (shroomItUp) {
             ShroomiesController.FireRate = FireRate * 4;
         }
@@ -101,7 +101,7 @@ public class PlayerShooting : MonoBehaviour {
     }
 
     public void FirePowerUpgrade(float increase, bool shroomItUp) {
-        AttackPower = (int)Mathf.Ceil(_baseAttackPower * (1 + increase));
+        AttackPower = (int)Mathf.Ceil(baseAttackPower * (1 + increase));
         if (shroomItUp) {
 
             ShroomiesController.AttackPower = AttackPower / 4;
@@ -109,22 +109,20 @@ public class PlayerShooting : MonoBehaviour {
     }
 
     public void CritUpgrade(float newPercent, bool shroomItUp) {
-        CritRate = _baseCritRate + newPercent;
+        CritRate = baseCritRate + newPercent;
         if (shroomItUp) {
             ShroomiesController.CritRate = CritRate;
         }
     }
 
     public void PierceUpgrade(Int32 newNumber, bool shroomItUp) {
-        Debug.Log("recieved " + newNumber);
-        PierceCount = _basePierceCount + newNumber;
+        PierceCount = basePierceCount + newNumber;
         if (shroomItUp) {
             ShroomiesController.PierceCount = PierceCount;
         }
     }
 
     public void ExtraShotUpgrade(Int32 newNumber, bool shroomItUp) {
-        Debug.Log("recieved " + newNumber);
         ExtraBulletUpgradeLevel = newNumber;
         float multFactor = 1;
         switch (newNumber) {
@@ -136,13 +134,11 @@ public class PlayerShooting : MonoBehaviour {
         AttackPower = (int)Mathf.Ceil(AttackPower * multFactor);
         if (shroomItUp) {
             ShroomiesController.ExtraBulletUpgradeLevel = ExtraBulletUpgradeLevel;
-            Debug.Log(AttackPower + " divided by 4");
             ShroomiesController.AttackPower = AttackPower / 4;
         }
     }
 
     public void WideShotUpgrade(Int32 newNumber, bool shroomItUp) {
-        Debug.Log("recieved " + newNumber);
         switch (newNumber) {
             case 0:
                 CurrentBulletType = BulletType.NORMAL; break;
@@ -159,7 +155,6 @@ public class PlayerShooting : MonoBehaviour {
     }
 
     public void RicochetUpgrade(Boolean val, bool shroomItUp) {
-        Debug.Log("recieved " + val);
         BulletsBounce = val;
         ShroomiesController.BulletsBounce = BulletsBounce;
     }

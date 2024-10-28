@@ -15,7 +15,7 @@ public class BuyShroomie : MonoBehaviour
     public float closeEnoughX, closeEnoughY;
 
     private void Start() {
-        playerInputActions = InputManager.inputActions;
+        playerInputActions = InputManager.InputActions;
         _roguelikeManager = GameObject.FindWithTag("Roguelike Manager").gameObject.GetComponent<StageLogic>();
         shroomieCost = _roguelikeManager.ShroomieBaseCost;
     }

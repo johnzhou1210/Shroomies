@@ -8,7 +8,6 @@ using UnityEngine;
 [System.Serializable]
 public class ShroomiePositionData {
     public Vector2 SpawnPosition;
-    public int order;
 }
 
 public class ShroomieFormation : MonoBehaviour
@@ -28,18 +27,23 @@ public class ShroomieFormation : MonoBehaviour
         // spawn formation from given instructions.
         int spawned = 0;
         while (spawned < FormationData.Data.Count) {
-            // find desired number
-            ShroomiePositionData desiredShroomie = FormationData.Data.Find(shrm => shrm.order == spawned + 1);
             // create shroomie and place it.
             GameObject newShroomie = Instantiate(_shroomiePrefab, transform);
-
+            Debug.Log("instantiated shroomie");
             // add listener to upgrade update event
             GetComponent<ShroomiesUpgradeController>().RequestShroomiesUpgradeUpdate.AddListener(newShroomie.GetComponent<ShroomieShooting>().OnUpgradeUpdate);
+            Debug.Log("instantiated shroomie2");
             // also add listener for barrel respositioner for double shots
             GameObject.FindWithTag("UpgradeManager").GetComponent<UpgradeManager>().BulletTypeEvent.AddListener(newShroomie.transform.Find("BarrelConfigs").Find("BarrelLv1").GetComponent<DoubleShotBarrelWidthSpacing>().setSpacing);
+            Debug.Log("instantiated shroomie3");
+            Debug.Log(spawned);
             //Debug.Log("Added barrel listener");
+            // find desired number
+            ShroomiePositionData desiredShroomie = FormationData.Data[spawned];
             newShroomie.transform.localPosition = desiredShroomie.SpawnPosition;
+            Debug.Log("instantiated shroomie4");
             spawned++;
+            
             newShroomie.name = spawned.ToString();
             ShroomieObjects.Add(newShroomie);
             newShroomie.SetActive(false);

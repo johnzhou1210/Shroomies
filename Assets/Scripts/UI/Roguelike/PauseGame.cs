@@ -17,7 +17,7 @@ public class PauseGame : MonoBehaviour
     public bool randomPalette = true;
 
     private void Start() {
-        playerInputActions = InputManager.inputActions;
+        playerInputActions = InputManager.InputActions;
     }
 
     public void OnClick() {
@@ -30,10 +30,10 @@ public class PauseGame : MonoBehaviour
         _pauseButton.SetActive(Time.timeScale == 0f ? false : true);
         if (Time.timeScale == 1f ) {
             _dragArea.SetActive(true);
-            InputManager.ToggleActionMap(InputManager.inputActions.Player);
+            InputManager.ToggleActionMap(InputManager.InputActions.Player);
         } else {
             _dragArea.SetActive(false);
-            InputManager.ToggleActionMap(InputManager.inputActions.UI);
+            InputManager.ToggleActionMap(InputManager.InputActions.UI);
             primaryButton.Select();
         }
     }

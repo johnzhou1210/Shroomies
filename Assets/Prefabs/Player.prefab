@@ -176,11 +176,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4845a087c1795664d9b6cabe85ec03a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5.25
-  XMin: -2.38
-  XMax: 2.38
-  YMin: -4.61
-  YMax: 4.61
+  _moveSpeed: 6
+  XMin: -2.4
+  XMax: 2.4
+  YMin: -3.75
+  YMax: 4.6
   CanMove: 1
   _plrOnHit: {fileID: 6790670755102139078}
 --- !u!50 &1538716476841018906
@@ -258,14 +258,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Toggle: 0
-  _baseFireRate: 0.3
-  _baseCritRate: 0.05
-  _baseBulletVelocity: 6
-  _baseAttackPower: 20
-  _basePierceCount: 0
+  baseFireRate: 0.25
+  baseCritRate: 0.05
+  baseBulletVelocity: 8
+  baseAttackPower: 20
+  basePierceCount: 0
   FireRate: 0.5
   BulletVelocity: 5
-  AttackPower: 35
+  AttackPower: 64
   CritRate: 0.05
   PierceCount: 0
   BulletClearLimit: 0

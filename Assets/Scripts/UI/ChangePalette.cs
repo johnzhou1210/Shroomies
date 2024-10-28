@@ -5,12 +5,11 @@ using UnityEngine;
 public class ChangePalette : MonoBehaviour
 {
 
-    [SerializeField]
-    private Material paletteShader;
+    [SerializeField] private Material paletteShader;
 
-    [SerializeField]
-    private List<Palette> palettes = new List<Palette>();
-    public static Palette holder;
+    [SerializeField] private List<Palette> palettes = new();
+
+    public static Palette Holder;
     public GameSettings GameSettings;
 
     private static int count = 0;
@@ -35,7 +34,7 @@ public class ChangePalette : MonoBehaviour
         paletteShader.SetColor("_Color3", palettes[GameSettings.currentPalette].color3);
         paletteShader.SetColor("_Color4", palettes[GameSettings.currentPalette].color4);
 
-        holder = palettes[GameSettings.currentPalette];
+        Holder = palettes[GameSettings.currentPalette];
 
         EventBroker.CallPaletteChange();
     }
@@ -48,7 +47,7 @@ public class ChangePalette : MonoBehaviour
         paletteShader.SetColor("_Color3", palettes[GameSettings.currentPalette].color3);
         paletteShader.SetColor("_Color4", palettes[GameSettings.currentPalette].color4);
 
-        holder = palettes[GameSettings.currentPalette];
+        Holder = palettes[GameSettings.currentPalette];
 
         EventBroker.CallPaletteChange();
     }
@@ -66,7 +65,7 @@ public class ChangePalette : MonoBehaviour
         paletteShader.SetColor("_Color3", palettes[GameSettings.currentPalette].color3);
         paletteShader.SetColor("_Color4", palettes[GameSettings.currentPalette].color4);
 
-        holder = palettes[GameSettings.currentPalette];
+        Holder = palettes[GameSettings.currentPalette];
         GameSettings.paletteName = palettes[GameSettings.currentPalette].name;
 
         EventBroker.CallPaletteChange();
@@ -84,7 +83,7 @@ public class ChangePalette : MonoBehaviour
         paletteShader.SetColor("_Color3", palettes[GameSettings.currentPalette].color3);
         paletteShader.SetColor("_Color4", palettes[GameSettings.currentPalette].color4);
 
-        holder = palettes[GameSettings.currentPalette];
+        Holder = palettes[GameSettings.currentPalette];
         GameSettings.paletteName = palettes[GameSettings.currentPalette].name;
 
         EventBroker.CallPaletteChange();

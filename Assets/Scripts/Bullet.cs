@@ -158,10 +158,10 @@ public class Bullet : MonoBehaviour {
                             ParticleSystem.MainModule psLightningMAIN = ParticlesLightning.main;
                             Vector3 psLightningOffset = GetComponent<Transform>().position;
                             psLightningOffset.y += 0.5f;
-                            psLightningMAIN.startColor = ChangePalette.holder.color2;
+                            psLightningMAIN.startColor = ChangePalette.Holder.color2;
                             psLightningMAIN.maxParticles = (int)Mathf.Floor((float)LightningAmount / 2f);
                             Instantiate(ParticlesLightning, psLightningOffset, Quaternion.identity);
-                            psLightningMAIN.startColor = ChangePalette.holder.color1;
+                            psLightningMAIN.startColor = ChangePalette.Holder.color1;
                             psLightningMAIN.maxParticles = (int)Mathf.Floor((float)LightningAmount / 2f);
                             Instantiate(ParticlesLightning, psLightningOffset, Quaternion.identity);
 

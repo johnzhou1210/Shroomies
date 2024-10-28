@@ -19671,10 +19671,6 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
-      propertyPath: BulletVelocity
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 346198759166424087, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: _baseAttackPower
       value: 20
       objectReference: {fileID: 0}
@@ -19749,26 +19745,6 @@ PrefabInstance:
     - target: {fileID: 8299392897518019744, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
-      propertyPath: XMax
-      value: 2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
-      propertyPath: XMin
-      value: -2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
-      propertyPath: YMax
-      value: 4.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
-      propertyPath: YMin
-      value: -3.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8934650272900455183, guid: 1c9b7119a86dbe049b55d28dea9262fc, type: 3}
-      propertyPath: _moveSpeed
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

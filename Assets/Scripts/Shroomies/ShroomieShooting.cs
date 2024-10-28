@@ -7,13 +7,13 @@ public class ShroomieShooting : MonoBehaviour {
 
     [SerializeField] ShroomiesUpgradeController _controller;
 
-    float FireRate = .5f;
-    float BulletVelocity = 5f;
-    int AttackPower = 3;
-    float CritRate = .05f;
-    int PierceCount = 0, BulletClearLimit = 0;
-    bool BulletsBounce = false;
-    int ExtraBulletUpgradeLevel = 0;
+    private float fireRate = .5f;
+    private float bulletVelocity = 5f;
+    private int attackPower = 3;
+    private float critRate = .05f;
+    private int pierceCount = 0, bulletClearLimit = 0;
+    private bool bulletsBounce = false;
+    private int extraBulletUpgradeLevel = 0;
 
     BulletType CurrentBulletType;
 
@@ -27,21 +27,21 @@ public class ShroomieShooting : MonoBehaviour {
         
         _animator = GetComponent<Animator>();
         OnUpgradeUpdate();
-        _currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
+        _currentBarrelConfiguration = _barrelConfigurations[extraBulletUpgradeLevel];
     }
 
     public void OnUpgradeUpdate() {
         ShroomiesUpgradeController source = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomiesUpgradeController>();
         if (source != null) {
             Debug.Log("UPDATING SHROOMIE UPGRADES");
-            FireRate = source.FireRate;
-            PierceCount = source.PierceCount;
-            BulletVelocity = source.BulletVelocity;
-            AttackPower = source.AttackPower;
-            CritRate = source.CritRate;
-            ExtraBulletUpgradeLevel = source.ExtraBulletUpgradeLevel;
-            BulletsBounce = source.BulletsBounce;
-            BulletClearLimit = source.BulletClearLimit;
+            fireRate = source.FireRate;
+            pierceCount = source.PierceCount;
+            bulletVelocity = source.BulletVelocity;
+            attackPower = source.AttackPower;
+            critRate = source.CritRate;
+            extraBulletUpgradeLevel = source.ExtraBulletUpgradeLevel;
+            bulletsBounce = source.BulletsBounce;
+            bulletClearLimit = source.BulletClearLimit;
 
             switch(source.CurrentBulletType) {
                 case BulletType.NORMAL: CurrentBulletType = BulletType.NORMAL_S; break;
@@ -61,26 +61,26 @@ public class ShroomieShooting : MonoBehaviour {
     
 
     private void Update() {
-        if (_currentBarrelConfiguration != _barrelConfigurations[ExtraBulletUpgradeLevel]) {
-            _currentBarrelConfiguration = _barrelConfigurations[ExtraBulletUpgradeLevel];
+        if (_currentBarrelConfiguration != _barrelConfigurations[extraBulletUpgradeLevel]) {
+            _currentBarrelConfiguration = _barrelConfigurations[extraBulletUpgradeLevel];
         }
 
     }
 
     public IEnumerator FireAnim() {
         // play animation
-        _animator.speed = 1 / FireRate;
+        _animator.speed = 1 / fireRate;
         _animator.Play("ShroomieShoot");
         yield return null;
     }
 
     public void Fire() {
-        StartCoroutine(fire());
+        StartCoroutine(FireCoroutine());
     }
 
-    IEnumerator fire() {
+    IEnumerator FireCoroutine() {
         // shoot bullets depending on current barrel configuration.
-        BulletDamageInfo dmgInfo = new BulletDamageInfo(BulletVelocity, AttackPower, CritRate, PierceCount, BulletsBounce, BulletClearLimit);
+        BulletDamageInfo dmgInfo = new BulletDamageInfo(bulletVelocity, attackPower, critRate, pierceCount, bulletsBounce, bulletClearLimit);
         _currentBarrelConfiguration.Fire(CurrentBulletType, BulletOwnershipType.PLAYER, dmgInfo);
         Debug.Log("Shot bullet");
         yield return null;

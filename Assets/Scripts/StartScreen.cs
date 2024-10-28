@@ -54,7 +54,7 @@ public class StartScreen : MonoBehaviour, IPointerDownHandler {
 
     private void Start() {
         Application.targetFrameRate = 30;
-        playerInputActions = InputManager.inputActions;
+        playerInputActions = InputManager.InputActions;
     }
 
 }

@@ -64,7 +64,7 @@ public class StageLogic : MonoBehaviour {
             Difficulty = (WorldNumber * 2) + StageNumber;
 
             if (StageNumber != _bossStage && StageNumber !=_bossStage2) { AudioManager.Instance.PlayMistaDJ(); }//{ AudioManager.Instance.PlayMusic("s Next Spread"); }
-            cueStageBanner.Invoke(StageNumber == _bossStage || StageNumber == _bossStage2 ? "<color=#" + ChangePalette.holder.color2.ToHexString() + ">" + WorldNumber + "-" + StageNumber + "</color>" : WorldNumber + "-" + StageNumber);
+            cueStageBanner.Invoke(StageNumber == _bossStage || StageNumber == _bossStage2 ? "<color=#" + ChangePalette.Holder.color2.ToHexString() + ">" + WorldNumber + "-" + StageNumber + "</color>" : WorldNumber + "-" + StageNumber);
             yield return new WaitForSeconds(_stageBeginWaitDelay);
 
             // choose which collection to use to spawn with
@@ -230,7 +230,7 @@ public class StageLogic : MonoBehaviour {
     }
 
     public void onPlayerDeath() {
-        InputManager.ToggleActionMap(InputManager.inputActions.UI);
+        InputManager.ToggleActionMap(InputManager.InputActions.UI);
         GameObject.FindWithTag("Score").SetActive(false);
         _buyShroomieButton.SetActive(false);
         InvokeEnableBossHPDisplay.Invoke(false);
@@ -385,11 +385,11 @@ public class StageLogic : MonoBehaviour {
     IEnumerator ThankYouScreen() {
         GameObject.FindWithTag("Score").SetActive(false);
         AudioManager.Instance.PlayMusic("House Fever");
-        InputManager.ToggleActionMap(InputManager.inputActions.UI);
+        InputManager.ToggleActionMap(InputManager.InputActions.UI);
         _thankYouScreen.SetActive(true);
         yield return new WaitForSeconds(5f);
         _thankYouScreen.transform.Find("Prompt").GetComponent<TextMeshProUGUI>().text = "PRESS ANYWHERE TO CONTINUE";
-        yield return new WaitUntil(()=> InputManager.inputActions.UI.Enter.WasPressedThisFrame() || Input.touchCount > 0);
+        yield return new WaitUntil(()=> InputManager.InputActions.UI.Enter.WasPressedThisFrame() || Input.touchCount > 0);
         _thankYouScreen.transform.Find("Prompt").GetComponent<TextMeshProUGUI>().text = "";
         StartCoroutine(ResultsScreen(true));
         yield return null;
@@ -421,7 +421,7 @@ public class StageLogic : MonoBehaviour {
     }
 
     bool userClickedOrTappedScreen() {
-        return (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || InputManager.inputActions.UI.Enter.WasPressedThisFrame();
+        return (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || InputManager.InputActions.UI.Enter.WasPressedThisFrame();
     }
     
 }

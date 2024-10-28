@@ -9,11 +9,11 @@ using UnityEngine.SceneManagement;
 public class InputManager : MonoBehaviour {
 
     public static InputManager Instance;
-    public static PlayerInputActions inputActions;
-    public static event Action<InputActionMap> actionMapchange;
+    public static PlayerInputActions InputActions;
+    public static event Action<InputActionMap> ChangeActionMap;
 
     private void Awake() {
-        inputActions = new PlayerInputActions();
+        InputActions = new PlayerInputActions();
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -22,9 +22,9 @@ public class InputManager : MonoBehaviour {
         }
 
         if (SceneManager.GetActiveScene().name == "TitleScene")
-            ToggleActionMap(inputActions.UI);
+            ToggleActionMap(InputActions.UI);
         else if (SceneManager.GetActiveScene().name == "GameScene")
-            ToggleActionMap(inputActions.Player);
+            ToggleActionMap(InputActions.Player);
     }
 
     public static void ToggleActionMap(InputActionMap actionMap) {
@@ -32,8 +32,8 @@ public class InputManager : MonoBehaviour {
             return;
         }
 
-        inputActions.Disable();
-        actionMapchange?.Invoke(actionMap);
+        InputActions.Disable();
+        ChangeActionMap?.Invoke(actionMap);
         actionMap.Enable();
     }
 
@@ -43,12 +43,12 @@ public class InputManager : MonoBehaviour {
         }
 
         if (actionmap.name == "Player") {
-            inputActions.Player.Disable();
-            inputActions.UI.Enable();
+            InputActions.Player.Disable();
+            InputActions.UI.Enable();
 
         } else if (actionmap.name == "UI") {
-            inputActions.Player.Enable();
-            inputActions.UI.Disable();
+            InputActions.Player.Enable();
+            InputActions.UI.Disable();
         }
     }
 }

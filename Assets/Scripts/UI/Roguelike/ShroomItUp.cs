@@ -55,27 +55,11 @@ public class ShroomItUp : MonoBehaviour
             CheckBoxSelected = false;
             _checkBox.transform.Find("X").GetComponent<TextMeshProUGUI>().text = "";
         }
-        //ShroomItUpCost = (int)(Mathf.Pow(GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().StageNumber * 20, 1.45f) + 25);
+
         ShroomItUpCost = (GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().CurrentShroomItUpCost + 
             ((GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().AccumulatedShroomItUps + 1) * 50));
-        //GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().CurrentShroomItUpCost = ShroomItUpCost;
 
-        //ShroomItUpCost = (int)(ShroomItUpCost + ((_roguelikeManager.AccumulatedShroomies + 1) * 50));
-        //ShroomItUpCost = (int)(ShroomItUpCost + ((_roguelikeManager.AccumulatedShroomItUps + 1) * 50));
-
-        //ShroomItUpCost = (int)(GameObject.FindWithTag("Roguelike Manager").GetComponent<StageLogic>().StageNumber * 20);
-
-        /*if (ShroomItUpCost % 5 != 0)
-        {
-            ShroomItUpCost = (int)(Mathf.Floor(ShroomItUpCost / 5) * 5);
-        }
-
-        if (ShroomItUpCost > 100)
-        {
-            ShroomItUpCost -= 25;
-        }*/
-
-        _costField.GetComponent<TextMeshProUGUI>().text = "Shroom it up?\n\n" + "<color=#" + ChangePalette.holder.color2.ToHexString() + ">" + ShroomItUpCost.ToString() + "</color>";
+        _costField.GetComponent<TextMeshProUGUI>().text = "Shroom it up?\n\n" + "<color=#" + ChangePalette.Holder.color2.ToHexString() + ">" + ShroomItUpCost.ToString() + "</color>";
     }
 
     IEnumerator SelectAnim() {

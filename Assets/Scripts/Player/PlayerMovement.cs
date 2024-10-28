@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Start() {
         _rigidBody = GetComponent<Rigidbody2D>();
-        playerInputActions = InputManager.inputActions;
+        playerInputActions = InputManager.InputActions;
         
     }
 

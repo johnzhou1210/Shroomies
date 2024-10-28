@@ -116,7 +116,7 @@ public class UpgradeScreen : MonoBehaviour
             {
                 if (newWord[i] == keyword)
                 {
-                    newWord[i] = ("<color=#" + ChangePalette.holder.color2.ToHexString() + ">" + keyword + "</color>");
+                    newWord[i] = ("<color=#" + ChangePalette.Holder.color2.ToHexString() + ">" + keyword + "</color>");
                 }
             }
 
@@ -157,7 +157,7 @@ public class UpgradeScreen : MonoBehaviour
         _contents.SetActive(false);
         _selected = false; SelectedButton = null;
         gameObject.SetActive(false);
-        InputManager.ToggleActionMap(InputManager.inputActions.Player);
+        InputManager.ToggleActionMap(InputManager.InputActions.Player);
     }
 
     public void onShow() {
@@ -168,7 +168,7 @@ public class UpgradeScreen : MonoBehaviour
         
         GetComponent<Animator>().Play("UpgradeFrameFadeIn");
 
-        InputManager.ToggleActionMap(InputManager.inputActions.UI);
+        InputManager.ToggleActionMap(InputManager.InputActions.UI);
         StartCoroutine(GenerateOptions());
 
     }

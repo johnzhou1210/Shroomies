@@ -11,7 +11,7 @@ public class ToggleShooting : MonoBehaviour {
     ShroomiesUpgradeController _shroomieShooting;
 
     private void Start() {
-        playerInputActions = InputManager.inputActions;
+        playerInputActions = InputManager.InputActions;
         _shroomieShooting = GameObject.FindWithTag("Shroomie Formation").GetComponent<ShroomiesUpgradeController>();
     }
 
