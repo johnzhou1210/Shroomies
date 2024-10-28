@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,10 @@ using UnityEngine.EventSystems;
 
 
 public class DragPlayer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
-    public UnityVector3Event updatePlayerPosition;
-    Vector2 _lastDragPos = Vector2.zero, _posDelta = Vector2.zero;
-    [SerializeField] float _maxDragSpeed = 1f;
+    public static event Action<Vector3> OnUpdatePlayerPosition;
+    
+    private Vector2 lastDragPos = Vector2.zero, posDelta = Vector2.zero;
+    [SerializeField] float maxDragSpeed = 1f;
 
     private void Start() {
         addPhysics2DRaycaster();
@@ -28,21 +30,20 @@ public class DragPlayer : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData) {
-        //Debug.Log("Dragging " + eventData.position);
         Vector2 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);
         Vector2 fingerDownPos = Camera.main.ScreenToWorldPoint(eventData.pressPosition);
-        _lastDragPos = _lastDragPos == Vector2.zero ? fingerDownPos : _lastDragPos;
-        _posDelta = (dragPos - _lastDragPos);
+        lastDragPos = lastDragPos == Vector2.zero ? fingerDownPos : lastDragPos;
+        posDelta = (dragPos - lastDragPos);
         // clamp magnitude of posDelta
-        _posDelta = Vector2.ClampMagnitude(_posDelta, _maxDragSpeed);
-        updatePlayerPosition.Invoke(_posDelta);
-        _lastDragPos = dragPos;
+        posDelta = Vector2.ClampMagnitude(posDelta, maxDragSpeed);
+        OnUpdatePlayerPosition?.Invoke(posDelta);
+        lastDragPos = dragPos;
 
     }
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData) {
         Debug.Log("End drag");
-        _lastDragPos = Vector2.zero;
+        lastDragPos = Vector2.zero;
     }
 
 }

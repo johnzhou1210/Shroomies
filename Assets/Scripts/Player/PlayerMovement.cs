@@ -7,9 +7,9 @@ using UnityEngine.Events;
 public class PlayerMovement : MonoBehaviour {
 
     private PlayerInputActions playerInputActions;
-    [SerializeField] float _moveSpeed;
+    [SerializeField] float moveSpeed = 6f;
 
-    Vector3 _worldPos;
+    private Vector3 worldPos;
 
     public float XMin, XMax, YMin, YMax;
     public bool CanMove = true;
@@ -17,6 +17,15 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] PlayerOnHit _plrOnHit;
 
     Rigidbody2D _rigidBody; // _playerPrefab's rigidbody2D component.
+
+    private void OnEnable() {
+        DragPlayer.OnUpdatePlayerPosition += UpdateDragPos;
+    }
+
+    private void OnDisable() {
+        DragPlayer.OnUpdatePlayerPosition -= UpdateDragPos;
+    }
+
 
     private void Start() {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -27,14 +36,14 @@ public class PlayerMovement : MonoBehaviour {
     private void FixedUpdate() {
 
         if (!_plrOnHit.Dead && CanMove) {
-            _worldPos = transform.position;
+            worldPos = transform.position;
             //float verticalAxis = Input.GetAxisRaw("Vertical");
             //float horizontalAxis = Input.GetAxisRaw("Horizontal");
 
             Vector2 inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
 
             Vector3 movementVector = new Vector3(inputVector.x, inputVector.y, 0);
-            movementVector = movementVector.normalized * _moveSpeed * Time.deltaTime;
+            movementVector = movementVector.normalized * moveSpeed * Time.deltaTime;
             transform.Translate(movementVector);
             transform.position = new Vector2(Mathf.Clamp(transform.position.x, XMin, XMax), Mathf.Clamp(transform.position.y, YMin, YMax));
         }

@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4845a087c1795664d9b6cabe85ec03a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 6
+  moveSpeed: 6
   XMin: -2.4
   XMax: 2.4
   YMin: -3.75
@@ -257,14 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7c161498cb30c449c56b7339e56159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Toggle: 0
-  baseFireRate: 0.25
-  baseCritRate: 0.05
-  baseBulletVelocity: 8
-  baseAttackPower: 20
-  basePierceCount: 0
   FireRate: 0.5
   BulletVelocity: 5
+  Toggle: 0
   AttackPower: 64
   CritRate: 0.05
   PierceCount: 0
@@ -273,6 +268,11 @@ MonoBehaviour:
   ExtraBulletUpgradeLevel: 0
   CurrentBulletType: 0
   ShroomiesController: {fileID: 0}
+  baseFireRate: 0.25
+  baseCritRate: 0.05
+  baseBulletVelocity: 8
+  baseAttackPower: 20
+  basePierceCount: 0
   _barrelConfigurations:
   - {fileID: 4160406694858748625}
   - {fileID: 698564912755790524}
