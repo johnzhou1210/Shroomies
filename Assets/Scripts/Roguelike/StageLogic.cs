@@ -12,7 +12,14 @@ using UnityEngine.EventSystems;
 public class StageLogic : MonoBehaviour {
     [SerializeField] ClusterCollection[] _clusterCollections;
 
-    [SerializeField] UnityStringEvent cueStageBanner;
+    /* EVENTS */
+    
+    public static event Action<EntityDisplayInfo> OnCueBossBanner;
+    public static event Action<string> OnCueStageBanner;
+    public static event Action<int> OnUpdateMulch, OnShroomieUpdateCost;
+    public static event Action<bool> OnInvokeCelebrate, OnInvokeGameOver;
+    
+    
     [SerializeField] UnityEntityDisplayInfoEvent _cueBossBanner;
     [SerializeField] UnityIntEvent updateMulch, shroomieUpdateCost;
     [SerializeField] UnityBoolEvent _invokeCelebrate, _invokeGameOver;
@@ -64,7 +71,8 @@ public class StageLogic : MonoBehaviour {
             Difficulty = (WorldNumber * 2) + StageNumber;
 
             if (StageNumber != _bossStage && StageNumber !=_bossStage2) { AudioManager.Instance.PlayMistaDJ(); }//{ AudioManager.Instance.PlayMusic("s Next Spread"); }
-            cueStageBanner.Invoke(StageNumber == _bossStage || StageNumber == _bossStage2 ? "<color=#" + ChangePalette.Holder.color2.ToHexString() + ">" + WorldNumber + "-" + StageNumber + "</color>" : WorldNumber + "-" + StageNumber);
+            OnCueStageBanner?.Invoke(StageNumber == _bossStage || StageNumber == _bossStage2 ? "<color=#" + ChangePalette.Holder.color2.ToHexString() + ">" + WorldNumber + "-" + StageNumber + "</color>" : WorldNumber + "-" + StageNumber);
+            
             yield return new WaitForSeconds(_stageBeginWaitDelay);
 
             // choose which collection to use to spawn with
@@ -101,7 +109,8 @@ public class StageLogic : MonoBehaviour {
                 AddEnemyListeners(bossClusterPrefab.transform.GetChild(0), Difficulty);
                 yield return new WaitForSeconds(3f);
                 // cue boss banner
-                _cueBossBanner.Invoke(bossClusterPrefab.transform.GetChild(0).GetComponent<DisplayData>().DisplayInfo);
+                OnCueBossBanner?.Invoke(bossClusterPrefab.transform.GetChild(0).GetComponent<DisplayData>().DisplayInfo);
+                
                 AudioManager.Instance.PlayMusic("It's Getting Harder");
                 yield return new WaitForSeconds(4f);
                 setPlayerControls(true);
