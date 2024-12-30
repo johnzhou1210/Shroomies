@@ -85,7 +85,7 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    public void PlaySFX(string SFXName) {
+    public void PlaySFX(string SFXName, float customVolume = 0) {
         Sound sfx = Array.Find(SFXSounds, s => s.Name == SFXName);
         if (sfx == null) {
             Debug.Log("SFX: " + SFXName + " not found!");
@@ -95,7 +95,7 @@ public class AudioManager : MonoBehaviour {
         if (Time.time - sfx.LastTimePlayed >= sfx.Cooldown) { // to avoid sounds stacking volume
             OtherSFXSource.clip = sfx.AudioClip;
             OtherSFXSource.loop = sfx.Loop;
-            OtherSFXSource.volume = sfx.Volume;
+            OtherSFXSource.volume = customVolume > 0f ? customVolume : sfx.Volume;
             OtherSFXSource.pitch = sfx.Pitch;
             OtherSFXSource.PlayOneShot(OtherSFXSource.clip, OtherSFXSource.volume);
             sfx.LastTimePlayed = Time.time;

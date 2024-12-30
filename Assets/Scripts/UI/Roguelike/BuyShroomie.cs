@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +20,16 @@ public class BuyShroomie : MonoBehaviour
         playerInputActions = InputManager.InputActions;
         _roguelikeManager = GameObject.FindWithTag("Roguelike Manager").gameObject.GetComponent<StageLogic>();
         shroomieCost = _roguelikeManager.ShroomieBaseCost;
+    }
+
+    private void OnEnable()
+    {
+        StageLogic.OnShroomieUpdateCost += UpdateShroomiePrice;
+    }
+
+    private void OnDisable()
+    {
+        StageLogic.OnShroomieUpdateCost -= UpdateShroomiePrice;
     }
 
     private void Update() {
@@ -52,8 +64,7 @@ public class BuyShroomie : MonoBehaviour
                     _roguelikeManager.incrementAccumulatedShroomies();
                     _roguelikeManager.decreaseMulch(shroomieCost);
                     // make future purchases more expensive
-                    //OnChangePrice((int)(shroomieCost * 2f));
-                    OnChangePrice((int)(shroomieCost + ((_roguelikeManager.AccumulatedShroomies + 1) * 25)));
+                    UpdateShroomiePrice((int)(shroomieCost + ((_roguelikeManager.AccumulatedShroomies + 1) * 25)));
                     // add a shroomie
                     GameObject.FindWithTag("Player").GetComponent<PlayerOnHit>().CurrentShroomies++;
                     currNumShroomies = GameObject.FindWithTag("Player").GetComponent<PlayerOnHit>().CurrentShroomies;
@@ -79,14 +90,14 @@ public class BuyShroomie : MonoBehaviour
             _priceText.GetComponent<TextMeshProUGUI>().enabled = true;
     }
 
-    public void OnChangePrice(int newPrice) {
+    public void UpdateShroomiePrice(int newPrice) {
         if (_priceText != null) {
             shroomieCost = newPrice;
             _priceText.GetComponent<TextMeshProUGUI>().text = "" + newPrice.ToString();
         }
     }
 
-    public void onFinishShroomieButtonHide() {
+    public void OnFinishShroomieButtonHide() {
         gameObject.SetActive(false);
     }
 

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class MulchText : MonoBehaviour
 {
@@ -12,7 +14,17 @@ public class MulchText : MonoBehaviour
         _textComponent = GetComponent<TextMeshProUGUI>();
     }
 
-    public void OnIncreaseMulch(int newVal) {
+    private void OnEnable()
+    {
+        StageLogic.OnUpdateMulch += UpdateMulchText;
+    }
+
+    private void OnDisable()
+    {
+        StageLogic.OnUpdateMulch -= UpdateMulchText;
+    }
+
+    public void UpdateMulchText(int newVal) {
         _animator.StopPlayback();
         _animator.Play("MulchGain");
         _textComponent.text = newVal.ToString();

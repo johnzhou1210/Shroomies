@@ -43,9 +43,12 @@ public class ShroomiesUpgradeController : MonoBehaviour
 
     private void OnEnable() {
         Toggle = GameObject.FindWithTag("Player").GetComponent<PlayerShooting>().Toggle;
+        StageLogic.OnInvokeCelebrate += Celebrate;
     }
 
-    private void Start() {
+    private void OnDisable()
+    {
+        StageLogic.OnInvokeCelebrate -= Celebrate;
     }
 
     void OnSingleTap() {
@@ -59,8 +62,9 @@ public class ShroomiesUpgradeController : MonoBehaviour
     public void RequestUpgrade() {
         RequestShroomiesUpgradeUpdate.Invoke();
     }
+    
 
-    public void OnInvokeCelebrate(bool val) {
+    public void Celebrate(bool val) {
         foreach (Transform child in transform) {
             if (child.gameObject.activeInHierarchy) {
                 if (val) {
