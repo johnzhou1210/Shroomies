@@ -75,6 +75,10 @@ public class UpgradeScreen : MonoBehaviour
             AudioManager.Instance.PlaySFX("Player Get Upgrade");
             buttonObj.GetComponent<Animator>().Play("UpgradeButtonConfirmed");
             GetComponent<Animator>().Play("UpgradeFrameFadeOut");
+            // Invoke disable frame to make sure it is disabled (causes bug in WebGL where it was actually not disabled via animation)
+            // hideContents not being called may be because of animation event not triggering if placed on last animation key frame
+            Invoke(nameof(hideContents),2f);
+            
             // fire player upgrade event
             onPlayerUpgrade.Invoke(buttonObj.transform.Find("Image").GetComponent<RenderUpgradeButton>().Upgrade, _shroomItUp.GetComponent<ShroomItUp>().CheckBoxSelected);
 
@@ -156,8 +160,8 @@ public class UpgradeScreen : MonoBehaviour
     public void hideContents() {
         _contents.SetActive(false);
         _selected = false; SelectedButton = null;
-        gameObject.SetActive(false);
         InputManager.ToggleActionMap(InputManager.InputActions.Player);
+        gameObject.SetActive(false);
     }
 
     public void onShow() {

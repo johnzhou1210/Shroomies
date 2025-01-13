@@ -2607,7 +2607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &266344824
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4901,7 +4901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.8999634, y: 59.106995}
+  m_AnchoredPosition: {x: 0.8999634, y: 59.106934}
   m_SizeDelta: {x: -525.25, y: -1372.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501652219
@@ -7062,96 +7062,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 36dd4546bdfba4d4590127af9da28576, type: 2}
   - {fileID: 11400000, guid: a2824eb67995e084cbbaa8144c2690f3, type: 2}
   - {fileID: 11400000, guid: 532ec121ce691bb43b45f109ddb2b6e2, type: 2}
-  cueStageBanner:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6449184234597803807}
-        m_TargetAssemblyTypeName: StageBanner, Assembly-CSharp
-        m_MethodName: OnBannerCue
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _cueBossBanner:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1299222901}
-        m_TargetAssemblyTypeName: BossIntroBanner, Assembly-CSharp
-        m_MethodName: OnBossBannerInvoke
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  updateMulch:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 708360620}
-        m_TargetAssemblyTypeName: MulchText, Assembly-CSharp
-        m_MethodName: OnIncreaseMulch
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  shroomieUpdateCost:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3639420160090943068}
-        m_TargetAssemblyTypeName: BuyShroomie, Assembly-CSharp
-        m_MethodName: OnChangePrice
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _invokeCelebrate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1795117643}
-        m_TargetAssemblyTypeName: ShroomiesUpgradeController, Assembly-CSharp
-        m_MethodName: OnInvokeCelebrate
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _invokeGameOver:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2005306593}
-        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
-        m_MethodName: OnGameOver
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _stageBeginWaitDelay: 0
   _interstageDelay: 15
   _numStagesPerWorldIncludingBoss: 7
@@ -7444,7 +7354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.7557983, y: -40.596985}
+  m_AnchoredPosition: {x: 3.7557983, y: -40.596924}
   m_SizeDelta: {x: -485.55, y: -1366.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &784295975
@@ -12052,10 +11962,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a14eac929a490a4284ff660d029cada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossIntro: {fileID: 1752025889}
-  _bannerObj: {fileID: 266344823}
-  _bossTitle: {fileID: 1585447676}
-  _bossImage: {fileID: 411346151}
+  bossIntro: {fileID: 1752025889}
+  bannerObj: {fileID: 266344823}
+  bossTitle: {fileID: 1585447676}
+  bossImage: {fileID: 411346151}
+--- !u!1 &1345368361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1345368363}
+  - component: {fileID: 1345368362}
+  m_Layer: 0
+  m_Name: DEBUGGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1345368362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345368361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853256db28726664b8e532373b1d6436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1345368363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345368361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.46534622, y: 1.8484691, z: -9.806401}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1374831708
 GameObject:
   m_ObjectHideFlags: 0
@@ -12696,7 +12650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: results
+  m_text: ...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8581925fa86bb394d81a7bf979f9c9b9, type: 2}
   m_sharedMaterial: {fileID: -3826033220002010747, guid: 8581925fa86bb394d81a7bf979f9c9b9, type: 2}
@@ -12759,7 +12713,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -35.00522, w: 0}
+  m_margin: {x: -20.843796, y: 0, z: -48.71823, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -13864,7 +13818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SHROOM SNAIL
+  m_text: GASPORE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89ad169567e5d344181427e37f10e3de, type: 2}
   m_sharedMaterial: {fileID: -3826033220002010747, guid: 89ad169567e5d344181427e37f10e3de, type: 2}
@@ -13891,7 +13845,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14.55
+  m_fontSize: 12.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14815,7 +14769,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: funny looking snail
+  m_text: gaspore
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89ad169567e5d344181427e37f10e3de, type: 2}
   m_sharedMaterial: {fileID: -3826033220002010747, guid: 89ad169567e5d344181427e37f10e3de, type: 2}
@@ -14842,7 +14796,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.5
+  m_fontSize: 45.05
   m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16114,17 +16068,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1795117643 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6974639270871476100, guid: b1249b06b44f4a447b5efb2d892a20bb, type: 3}
-  m_PrefabInstance: {fileID: 1135555987393236668}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7d946dcbf832524cb2eefcd69782a26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1797936964
 GameObject:
   m_ObjectHideFlags: 0

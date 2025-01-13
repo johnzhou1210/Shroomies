@@ -184,7 +184,7 @@ public class StageLogic : MonoBehaviour
                 AudioManager.Instance.PlayMusic("Where To Infect");
                 GameObject upgradeFrame = Instantiate(_upgradeFrame, _uiCanvas.transform);
                 upgradeFrame.transform.SetAsFirstSibling();
-                yield return new WaitUntil(() => upgradeFrame.activeInHierarchy == false);
+                yield return new WaitUntil(() => UpgradeFrameActiveInHierarchy(upgradeFrame) == false);
                 GameObject.Destroy(upgradeFrame);
                 if (_pauseMenu.GetComponent<PauseGame>().randomPalette)
                 {
@@ -204,6 +204,13 @@ public class StageLogic : MonoBehaviour
         yield return null;
     }
 
+    
+    // DEBUG
+    private bool UpgradeFrameActiveInHierarchy(GameObject upgradeFrame) {
+        print(upgradeFrame.activeInHierarchy);
+        return upgradeFrame.activeInHierarchy;
+    }
+    
 
     // Makes shroomies jump for joy
     public void Celebrate(bool val)
