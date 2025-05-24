@@ -69,7 +69,6 @@ public class Bullet : MonoBehaviour {
         CancelInvoke();
     }
 
-
     bool gameObjectIsABullet(GameObject go) {
         return (go.layer == 7 || go.layer == 9);
     }
@@ -78,9 +77,7 @@ public class Bullet : MonoBehaviour {
 
     }
 
-
     void OnCollisionEnter2D(Collision2D collision) {
-
 
         GameObject hitTarget = collision.gameObject;
 
@@ -121,11 +118,9 @@ public class Bullet : MonoBehaviour {
             return Shooter == hitTarget.GetComponent<Bullet>().Shooter;
         }
 
-
         if (transform.position.y < 5.1f) {
 
-            if (((hitTarget.CompareTag("Enemy") && Ownership == BulletOwnershipType.ENEMY) || (hitTarget.CompareTag("Player") && Ownership == BulletOwnershipType.PLAYER))
-                  ) {
+            if (((hitTarget.CompareTag("Enemy") && Ownership == BulletOwnershipType.ENEMY) || (hitTarget.CompareTag("Player") && Ownership == BulletOwnershipType.PLAYER))) {
                 if (hitTarget.layer == 11) {
                     //Debug.Log("call 1 " + transform.name + " collision enter with " + hitTarget.name);
                     Destroy();
@@ -223,8 +218,6 @@ public class Bullet : MonoBehaviour {
 
                         // piercing bullets cannot pierce through clearing bullets
 
-
-
                         if (!bulletCanClearBullets(this) && gameObjectIsABullet(hitTarget) && bulletCanClearBullets(hitTarget.GetComponent<Bullet>())) {
                             Destroy();
                         } else {
@@ -258,7 +251,6 @@ public class Bullet : MonoBehaviour {
         }
     }
 
-
     public void SetVelocity(float velocity) {
         _velocity = velocity;
     }
@@ -286,8 +278,5 @@ public class Bullet : MonoBehaviour {
     public void SetShooter(Transform shooter) {
         Shooter = shooter;
     }
-
-
-
 
 }
