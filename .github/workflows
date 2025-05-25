@@ -1,0 +1,94 @@
+name: Build-And-Release-Android-Main
+
+# Trigger on pushes to the main branch
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allow manual triggering
+
+# Define a base version - UPDATE THIS AS YOUR MAIN VERSION CHANGES
+env:
+  BASE_VERSION: "0.1.0" # <-- IMPORTANT: Set your starting base version here
+
+jobs:
+  buildAndroid:
+    name: Build for Android
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@v1.3.1
+        with:
+           tool-cache: false
+           android: true
+           dotnet: true
+           haskell: true
+           large-packages: false
+           swap-storage: false
+
+      - name: Build Unity Project (Android)
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: Android
+          # Optional: Specify build options if needed
+          # androidAppBundle: true # Set true for .aab
+          # buildName: YourGameName # Set if needed
+
+      - name: Upload Android Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Build-Android # Consistent artifact name
+          path: build/Android # Upload the build output directory
+
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: buildAndroid # Run only after buildAndroid succeeds
+    # --- Add this permissions block ---
+    permissions:
+      contents: write # Allow creating releases and uploading artifacts
+    # ----------------------------------
+    steps:
+      - name: Download Android Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Build-Android # Must match the upload name
+          path: build/Android # Download to this path
+
+      - name: Calculate Version Tag
+        id: calculate_version
+        run: |
+          VERSION_TAG="v${{ env.BASE_VERSION }}-build.${{ github.run_number }}"
+          echo "Calculated tag: $VERSION_TAG"
+          echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_ENV
+
+      # Check artifact paths are correct for your build output
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: |
+            build/Android/*.apk
+            build/Android/*.aab
+          # Or specify exact names:
+          # artifacts: build/Android/YourGameName.apk,build/Android/YourGameName.aab
+          tag: ${{ env.VERSION_TAG }}
+          name: "Build ${{ github.run_number }} (${{ env.VERSION_TAG }})"
+          body: "Automated build for commit ${{ github.sha }} on main branch."
+          token: ${{ secrets.GITHUB_TOKEN }} # Continue using the standard token
+          prerelease: true
+          makeLatest: false
+          allowUpdates: false
